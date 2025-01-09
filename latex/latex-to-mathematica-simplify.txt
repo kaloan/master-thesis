@@ -1,0 +1,8 @@
+$&\frac{\beta_{vh} a_1 p_{11} e^{-\mu_1 \tau}}{p_{11} N_1 + p_{21} N_2} (2 N_1 (2A + M_1 \kappa A) + M_1 A) + \\
+&\frac{\beta_{vh} a_2 p_{12} e^{-\mu_2 \tau}}{p_{12} N_1 + p_{22} N_2}(2 N_1 (2A + M_2 \kappa A) + M_1 A) + \gamma_1 A + \\
+&\frac{\beta_{hv} a_1 p_{11}}{p_{11} N_1 + p_{21} N_2} (2 M_1 (2A + N_1 \kappa A) + N_1 A) + \\
+&\frac{\beta_{hv} a_1 p_{21}}{p_{11} N_1 + p_{21} N_2} (2 M_1 (2A + N_2 \kappa A) + N_2 A) + \mu_1 A + \\
+&\frac{\beta_{vh} a_1 p_{21} e^{-\mu_1 \tau}}{p_{11} N_1 + p_{21} N_2} (2 N_1 (2A + M_1 \kappa A) + M_1 A) + \\
+&\frac{\beta_{vh} a_2 p_{22} e^{-\mu_2 \tau}}{p_{12} N_1 + p_{22} N_2}(2 N_1 (2A + M_2 \kappa A) + M_1 A) + \gamma_2 A + \\
+&\frac{\beta_{hv} a_2 p_{12}}{p_{12} N_1 + p_{22} N_2} (2 M_2 (2A + N_1 \kappa A) + N_1 A) + \\
+&\frac{\beta_{hv} a_2 p_{22}}{p_{12} N_1 + p_{22} N_2} (2 M_2 (2A + N_2 \kappa A) + N_2 A) + \mu_2 A$
