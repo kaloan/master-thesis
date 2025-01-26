@@ -1,0 +1,68 @@
+{
+    "latex-workshop.intellisense.citation.backend": "biblatex",
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk",
+            "tools": [
+                "latexmk"
+            ]
+        },
+        {
+            "name": "pdflatex -> biber -> pdflatex*2",
+            "tools": [
+                "pdflatex",
+                "biber",
+                "pdflatex",
+                "pdflatex"
+            ]
+        }
+    ],
+    // "latex-workshop.latex.tools": [
+    //     {
+    //         "name": "latexmk",
+    //         "command": "latexmk",
+    //         "args": [
+    //             "-synctex=1",
+    //             "-interaction=nonstopmode",
+    //             "-file-line-error",
+    //             "-pdf",
+    //             "-outdir=%OUTDIR%",
+    //             "-auxdir=%OUTDIR%/build",
+    //             "%DOC%"
+    //         ],
+    //         // "env": {}
+    //     },
+    //     {
+    //         "name": "pdflatex",
+    //         "command": "pdflatex",
+    //         "args": [
+    //             "-synctex=1",
+    //             "-interaction=nonstopmode",
+    //             "-file-line-error",
+    //             "-aux_directory=%OUTDIR%/build",
+    //             "%DOC%"
+    //         ],
+    //         // "env": {}
+    //     },
+    //     {
+    //         "name": "biber",
+    //         "command": "biber",
+    //         "args": [
+    //             "--output-directory=%OUTDIR%",
+    //             "%DOCFILE%"
+    //         ],
+    //         // "env": {}
+    //     }
+    // ],
+    "latex-workshop.linting.chktex.enabled": false,
+    "latex-workshop.linting.lacheck.enabled": true,
+    "latex-workshop.bibtex-format.sort.enabled": true,
+    "latex-workshop.bibtex-format.trailingComma": true,
+    "latex-workshop.bibtex-format.sortby": [
+        "author",
+        "year-desc",
+        "title"
+    ],
+    "latex-workshop.formatting.latex": "tex-fmt",
+    "gitlens.blame.ignoreWhitespace": true
+}
