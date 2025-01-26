@@ -1,62 +1,4 @@
-\documentclass[bulgarian, 12pt]{article}
-\usepackage[
-	a4paper,
-	includeheadfoot,
-	margin = 1.5 cm]
-{geometry}
-
-% Fonts
-\usepackage[T2A]{fontenc}
-% \usepackage{tempora}
-\usepackage[utf8]{inputenc}
-\usepackage{bm}
-
-% % Languages
-% \usepackage[base]{babel}
-% % Some languages define these commands, so you have to write this to protect yourself from namespace collision errors
-% \AfterBabelLanguage{bulgarian}{%
-%   \let\sh\relax\let\ch\relax\let\tg\relax
-%   \let\arctg\relax\let\arcctg\relax
-%   \expandafter\let\expandafter\th\csname ltx@th\endcsname
-%   \let\ctg\relax\let\cth\relax\let\cosec\relax
-% }
-\usepackage[bulgarian, english]{babel}
-\usepackage{hyphenat}
-
-% Indent first line in paragraph
-\usepackage{indentfirst}
-
-% Place tags on the left
-\usepackage[leqno]{amsmath}
-
-% Better math
-\usepackage{amsbsy}
-\usepackage{amssymb}
-\usepackage{mathtools}
-\usepackage{comment}
-\usepackage{mathptmx}
-\usepackage[makeroom]{cancel}
-\usepackage{mathrsfs}
-
-% Better theorems
-\usepackage{amsthm}
-
-% SI units
-%\usepackage{siunitx}
-
-% Derivative notations
-\usepackage{physics}
-%\usepackage{derivative}
-
-\usepackage{blindtext}
-\usepackage{scrextend}
-
-\title{Изследване на ефектите на репелент срещу комари в малариен модел на Ross-Macdonald с две местообитания}
-\author{Калоян Стоилов}
-
-\begin{document}
-\selectlanguage{bulgarian}
-\maketitle
+\section{Съществуване на решение}
 Имаме системата:
 \begin{align*}
   &\dot{x}_1(t) = \beta_{vh} (N_1-x_1) \left(\frac{p_{11} e^{-\mu_1 \tau} a_1 (1-\kappa u_1) y_1}{p_{11} N_1 + p_{21} N_2} + \frac{p_{12} e^{-\mu_2 \tau} a_2 (1-\kappa u_1) y_2}{p_{12} N_1 + p_{22} N_2 }\right) - \gamma_1 x_1 \\
@@ -78,17 +20,17 @@
 Ще използваме това твърдение при дозателството на Липшицовата непрекъснатост на дясната страна. Взимаме произволни допустими двойки $(x_1, y_1, x_2, y_2), (x'_1, y'_1, x'_2, y'_2) \in \Omega$ и $(u_1, u_2), (u'_1, u'_2) \in [0, \bar{u}_1] \cross [0, \bar{u}_2]$.
 Първо от неравенството на триъгълника имаме, че:
 \begin{align*}
-&\|F(x_1, y_1, x_2, y_2, u_1, u_2) - F(x'_1, y'_1, x'_2, y'_2, u'_1, u'_2)\| \leq \\
-&|f_1(x_1, y_1, x_2, y_2, u_1, u_2) - f_1(x'_1, y'_1, x'_2, y'_2, u'_1, u'_2)| + |g_2(x_1, y_1, x_2, y_2, u_1, u_2) - g_2(x'_1, y'_1, x'_2, y'_2, u'_1, u'_2)| + \\
-&|g_1(x_1, y_1, x_2, y_2, u_1, u_2) - g_1(x'_1, y'_1, x'_2, y'_2, u'_1, u'_2)| + |f_2(x_1, y_1, x_2, y_2, u_1, u_2) - f_2(x'_1, y'_1, x'_2, y'_2, u'_1, u'_2)|
+  &\|F(x_1, y_1, x_2, y_2, u_1, u_2) - F(x'_1, y'_1, x'_2, y'_2, u'_1, u'_2)\| \leq \\
+  &|f_1(x_1, y_1, x_2, y_2, u_1, u_2) - f_1(x'_1, y'_1, x'_2, y'_2, u'_1, u'_2)| + |g_2(x_1, y_1, x_2, y_2, u_1, u_2) - g_2(x'_1, y'_1, x'_2, y'_2, u'_1, u'_2)| + \\
+  &|g_1(x_1, y_1, x_2, y_2, u_1, u_2) - g_1(x'_1, y'_1, x'_2, y'_2, u'_1, u'_2)| + |f_2(x_1, y_1, x_2, y_2, u_1, u_2) - f_2(x'_1, y'_1, x'_2, y'_2, u'_1, u'_2)|
 \end{align*}
 Сега може неколкократно да ползваме горната оценка за $f_1$:
 \begin{align*}
-&\bigg|\beta_{vh} (N_1-x_1) \left(\frac{a_1 p_{11} e^{-\mu_1 \tau} (1-\kappa u_1) y_1}{p_{11} N_1 + p_{21} N_2} + \frac{a_2 p_{12} e^{-\mu_2 \tau} (1-\kappa u_1) y_2}{p_{12} N_1 + p_{22} N_2 }\right) - \gamma_1 x_1 - \\
-&\beta_{vh} (N_1-x'_1) \left(\frac{a_1 p_{11} e^{-\mu_1 \tau} (1-\kappa u'_1) y'_1}{p_{11} N_1 + p_{21} N_2} + \frac{a_2 p_{12} e^{-\mu_2 \tau} (1-\kappa u'_1) y'_2}{p_{12} N_1 + p_{22} N_2 }\right) + \gamma_1 x'_1\bigg| \leq \\
-&\frac{\beta_{vh} a_1 p_{11} e^{-\mu_1 \tau}}{p_{11} N_1 + p_{21} N_2} \left|(N_1-x_1) [(1-\kappa u_1) y_1] - (N_1-x'_1) [(1-\kappa u'_1) y'_1]\right| + \\
-&\frac{\beta_{vh} a_2 p_{12} e^{-\mu_2 \tau}}{p_{12} N_1 + p_{22} N_2} \left|(N_1-x_1) [(1-\kappa u_1) y_2] - (N_1-x'_1) [(1-\kappa u'_1) y'_2]\right| + \\
-&\gamma_1 |x_1-x'_1|
+  &\bigg|\beta_{vh} (N_1-x_1) \left(\frac{a_1 p_{11} e^{-\mu_1 \tau} (1-\kappa u_1) y_1}{p_{11} N_1 + p_{21} N_2} + \frac{a_2 p_{12} e^{-\mu_2 \tau} (1-\kappa u_1) y_2}{p_{12} N_1 + p_{22} N_2 }\right) - \gamma_1 x_1 - \\
+  &\beta_{vh} (N_1-x'_1) \left(\frac{a_1 p_{11} e^{-\mu_1 \tau} (1-\kappa u'_1) y'_1}{p_{11} N_1 + p_{21} N_2} + \frac{a_2 p_{12} e^{-\mu_2 \tau} (1-\kappa u'_1) y'_2}{p_{12} N_1 + p_{22} N_2 }\right) + \gamma_1 x'_1\bigg| \leq \\
+  &\frac{\beta_{vh} a_1 p_{11} e^{-\mu_1 \tau}}{p_{11} N_1 + p_{21} N_2} \left|(N_1-x_1) [(1-\kappa u_1) y_1] - (N_1-x'_1) [(1-\kappa u'_1) y'_1]\right| + \\
+  &\frac{\beta_{vh} a_2 p_{12} e^{-\mu_2 \tau}}{p_{12} N_1 + p_{22} N_2} \left|(N_1-x_1) [(1-\kappa u_1) y_2] - (N_1-x'_1) [(1-\kappa u'_1) y'_2]\right| + \\
+  &\gamma_1 |x_1-x'_1|
 \end{align*}
 Имаме, че $x_1, x'_1 \leq N_1, \quad (1-\kappa u_1)y_1, (1-\kappa u_1) y'_1 \leq M_1, \quad (1-\kappa u_1)y_2, (1-\kappa u_1) y'_2 \leq M_2$:
 \begin{align*}
@@ -116,7 +58,7 @@
   & 2 M_1 (2|x_2 - x'_2| + N_2 \kappa |u_2 - u'_2|) + N_2 |y_1 - y'_1|
 \end{align*}
 Тук също ползвахме $1-\kappa u_1, 1-\kappa u'_1, 1-\kappa u_2, 1-\kappa u'_2 \leq 1, \quad x_1, x'_1 \leq M_1, \quad x_2, x'_2 \leq M_2$. Така получихе оценка отгоре за второто събираемо \\
-Тъй като видът на $g_2$ е същият с точност до индекси, то директно получаваме и оценка за третото събираемо. \\
+Тъй като видът на $g_2$ е същият с точност до индекси, то директно получаваме и оценка за четвъртото събираемо. \\
 Тогава заместваме всичко и за цялата дясна страна е в сила:
 \begin{align*}
   &\|F(x_1, y_1, x_2, y_2, u_1, u_2) - F(x'_1, y'_1, x'_2, y'_2, u'_1, u'_2)\| \leq \\
@@ -129,4 +71,3 @@
   &\frac{\beta_{hv} a_2 p_{12}}{p_{12} N_1 + p_{22} N_2} (2 M_2 (2|x_1 - x'_1| + N_1 \kappa |u_1 - u'_1|) + N_1 |y_2 - y'_2|) + \\
   &\frac{\beta_{hv} a_2 p_{22}}{p_{12} N_1 + p_{22} N_2} (2 M_2 (2|x_2 - x'_2| + N_2 \kappa |u_2 - u'_2|) + N_2 |y_2 - y'_2|) + \mu_2 |y_2 - y'_2| \leq
 \end{align*}
-\end{document}

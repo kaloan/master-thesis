@@ -1,0 +1,128 @@
+\documentclass[bulgarian, 12pt]{article}
+\usepackage[
+  a4paper,
+  includeheadfoot,
+margin = 1.5 cm]
+{geometry}
+\usepackage{color}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks,
+  linktocpage,
+  citecolor=black,
+  filecolor=black,
+  linkcolor=black,
+  urlcolor=blue,
+  pdftitle={Малария с репелент},
+  pdfauthor={Калоян Стоилов},
+  pdfsubject={Изследване на ефектите на репелент срещу
+    комари в малариен модел на Ross-Macdonald
+  с две местообитания},
+  pdfcreator={Калоян Стоилов},
+  pdfproducer={Калоян Стоилов},
+  pdfkeywords={SIS, Ross-Macdonald, репелент, миграция},
+}
+
+% Fonts
+\usepackage[T2A]{fontenc}
+% \usepackage{tempora}
+\usepackage[utf8]{inputenc}
+\usepackage{bm}
+
+% % Languages
+% \usepackage[base]{babel}
+% % Some languages define these commands, so you have to write this to protect yourself from namespace collision errors
+% \AfterBabelLanguage{bulgarian}{%
+%   \let\sh\relax\let\ch\relax\let\tg\relax
+%   \let\arctg\relax\let\arcctg\relax
+%   \expandafter\let\expandafter\th\csname ltx@th\endcsname
+%   \let\ctg\relax\let\cth\relax\let\cosec\relax
+% }
+\usepackage[bulgarian, english]{babel}
+\usepackage{hyphenat}
+
+% Indent first line in paragraph
+\usepackage{indentfirst}
+
+% Place tags on the left
+\usepackage[leqno]{amsmath}
+
+% Better math
+\usepackage{amsbsy}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{comment}
+\usepackage{mathptmx}
+\usepackage[makeroom]{cancel}
+\usepackage{mathrsfs}
+
+% Better theorems
+\usepackage{amsthm}
+
+% SI units
+%\usepackage{siunitx}
+
+% Derivative notations
+\usepackage{physics}
+%\usepackage{derivative}
+
+\usepackage{blindtext}
+\usepackage{scrextend}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{tempora}  % Times for numbers in math mode
+\usepackage{newtxmath}  % Times in math mode
+\usepackage{import}
+
+\usepackage[backend=biber]{biblatex}
+\usepackage{csquotes}
+
+% Fix original date
+% \usepackage{datetime}
+\addbibresource[bibencoding=utf8]{thesis.bib}
+\title{Изследване на ефектите на репелент срещу комари в малариен модел на Ross-Macdonald с две местообитания}
+\author{Калоян Стоилов}
+
+\begin{document}
+\selectlanguage{bulgarian}
+\begin{titlepage}
+  \begin{center}
+    \vspace*{1cm}
+
+    \Huge
+    \textbf{Изследване на ефектите на репелент срещу комари в малариен модел на Ross-Macdonald с две местообитания}
+
+    % \vspace{0.5cm}
+    % \LARGE
+    % Thesis Subtitle
+
+    \vspace{1.5cm}
+
+    \textbf{Калоян Стоилов}
+
+    \vfill
+
+    Дипломна работа за образователна степен магистър
+
+    \vspace{0.8cm}
+
+    \includegraphics[width=0.2\textwidth]{logo_su_s_nadpis_imagelarge.jpg}
+
+    \Large
+    Факултет по математика и информатика\\
+    Софийски Университет "Свети Климент Охридски"\\
+    \today
+
+  \end{center}
+\end{titlepage}
+% \maketitle
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+\setcounter{page}{1}
+\import{sections/}{lipschitz.tex}
+\cite{Rashkov2019}
+\cite{Capasso2008}
+\cite{Osher2003}
+\printbibliography
+\end{document}
