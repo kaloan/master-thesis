@@ -5,6 +5,9 @@
         "christian-kohler.path-intellisense",
         "eamodio.gitlens",
         "donjayamanne.githistory",
-        "mechatroner.rainbow-csv"
+        "mechatroner.rainbow-csv",
+        "jeff-hykin.better-cpp-syntax",
+        "danielpinto8zz6.c-cpp-project-generator",
+        "llvm-vs-code-extensions.vscode-clangd"
     ]
 }
