@@ -50,8 +50,8 @@ const auto ll2 = sqrt(ll1);
 const auto ll = 1.05 * ll2;
 
 // maximum of partial derivatives, Hamiltonian
-const array<double, 2> mpd = {Gamma + alpha * nu * (1 + k * umax),
-                              mu + Beta * (1 + k * umax)};
+const array<double, 2> mpd = {1 + Gamma + alpha * nu * (1 + k * umax),
+                              1 + mu + Beta * (1 + k * umax)};
 // mpd = mpd + 1; ????
 
 // numerical space step
@@ -63,7 +63,7 @@ constexpr auto dy = ymax / Ny;
 // numerical time step dt < 1/ll (!)
 // numerical time step
 // const auto dt = 0.9 * min({1. / (mpd[0] / dx + mpd[1] / dy), 1. / ll});
-const auto dt = 0.9 / max({mpd[0] / dx + mpd[1] / dy, ll});
+const auto dt = 0.9 / max(mpd[0] / dx + mpd[1] / dy, ll);
 
 template <typename Type, std::size_t... sizes>
 auto concatenate(const std::array<Type, sizes> &...arrays) {
@@ -144,6 +144,19 @@ double find_maxv2(const array<array<double, cols>, rows> &matrix) {
     }
   }
   return maxv2;
+}
+
+template <size_t cols, size_t rows>
+array<array<double, cols>, rows>
+max(const array<array<double, cols>, rows> &mat1,
+    const array<array<double, cols>, rows> &mat2) {
+  array<array<double, cols>, rows> result;
+  for (size_t i = 0; i < rows; i++) {
+    for (size_t j = 0; j < cols; j++) {
+      result[i][j] = max(mat1[i][j], mat2[i][j]);
+    }
+  }
+  return result;
 }
 
 template <typename T, size_t size> void printArray(const array<T, size> &arr) {
@@ -241,26 +254,37 @@ derf(const array<array<T, cols>, rows> &mat) {
 
   derivativeApproximations<rows, cols> result;
 
-  auto epsY = find_maxv2(wy);
-  for (size_t i = 0; i < wy.size() - 4; i++) {
+  auto epsY = 1e-6 * find_maxv2(wy) + 1e-99;
+  for (size_t i = 0; i < wy.size() - 5; i++) {
     result.fym[i] =
         derf(wy[i], wy[i + 1], wy[i + 2], wy[i + 3], wy[i + 4], epsY);
   }
-  for (size_t i = 4; i < wy.size(); i++) {
+  for (size_t i = 5; i < wy.size(); i++) {
     result.fyp[i - 4] =
         derf(wy[i], wy[i - 1], wy[i - 2], wy[i - 3], wy[i - 4], epsY);
   }
 
-  auto epsX = find_maxv2(wx);
+  auto epsX = 1e-6 * find_maxv2(wx) + 1e-99;
   auto transposedWx = transpose(wx);
   array<array<double, rows - 6>, cols - 6> transposedFx;
-  for (size_t i = 0; i < transposedWx.size() - 4; i++) {
+  for (int i = 0; i < cols - 6; i++) {
+    for (int j = 0; j < rows - 6; j++) {
+      transposedFx[i][j] = 0;
+    }
+  }
+  for (size_t i = 0; i < transposedWx.size() - 5; i++) {
     transposedFx[i] =
         derf(transposedWx[i], transposedWx[i + 1], transposedWx[i + 2],
              transposedWx[i + 3], transposedWx[i + 4], epsX);
   }
   result.fxm = transpose(transposedFx);
-  for (size_t i = 4; i < transposedWx.size(); i++) {
+
+  for (int i = 0; i < cols - 6; i++) {
+    for (int j = 0; j < rows - 6; j++) {
+      transposedFx[i][j] = 0;
+    }
+  }
+  for (size_t i = 5; i < transposedWx.size(); i++) {
     transposedFx[i - 4] =
         derf(transposedWx[i], transposedWx[i - 1], transposedWx[i - 2],
              transposedWx[i - 3], transposedWx[i - 4], epsX);
@@ -355,7 +379,8 @@ int main(int argc, char *argv[]) {
                                 firstApprox.fym, firstApprox.fyp);
     for (size_t i = 0; i < y.size(); i++) {
       for (size_t j = 0; j < x.size(); j++) {
-        wnew0[i + 3][j + 3] = (1 - ll * dt) * w[i + 3][j + 3] - hamilton[i][j];
+        wnew0[i + 3][j + 3] = max(
+            (1 - ll * dt) * w[i + 3][j + 3] - hamilton[i][j] * dt, gs[i][j]);
       }
     }
     matrixContinuation(wnew0);
@@ -366,10 +391,12 @@ int main(int argc, char *argv[]) {
     for (size_t i = 0; i < y.size(); i++) {
       for (size_t j = 0; j < x.size(); j++) {
         wnew1[i + 3][j + 3] =
-            (1 - ll * dt) * wnew0[i + 3][j + 3] - hamilton[i][j];
+            max((1 - ll * dt) * wnew0[i + 3][j + 3] - hamilton[i][j] * dt,
+                gs[i][j]);
       }
     }
     matrixContinuation(wnew1);
+
     auto wnew = halfSum(wnew0, wnew1);
     err0 = 0;
     for (size_t i = 0; i < y.size(); i++) {
