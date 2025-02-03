@@ -230,40 +230,40 @@ array<double, n> derf(const array<double, n> &v1, const array<double, n> &v2,
 template <typename T, size_t rows, size_t cols>
 derivativeApproximations<rows, cols>
 derf(const array<array<T, cols>, rows> &mat) {
-  array<array<double, cols>, rows - 6> wx;
-  array<array<double, cols - 6>, rows> wy;
+  array<array<double, cols - 6>, rows - 6> wx;
+  array<array<double, cols - 6>, rows - 6> wy;
   for (int i = 0; i < rows - 6; i++) {
     for (int j = 0; j < cols - 6; j++) {
-      wx[i][j] = (w[i + 3][j + 1] - w[i + 3][j]) / dx;
-      wy[i][j] = (w[i + 1][j + 3] - w[i][j + 3]) / dy;
+      wx[i][j] = (mat[i + 3][j + 4] - mat[i + 3][j + 3]) / dx;
+      wy[i][j] = (mat[i + 4][j + 3] - mat[i + 3][j + 3]) / dy;
     }
   }
 
   derivativeApproximations<rows, cols> result;
 
-  auto epsX = find_maxv2(wx);
+  auto epsY = find_maxv2(wy);
   for (size_t i = 0; i < wy.size() - 4; i++) {
     result.fym[i] =
-        derf(wy[i], wy[i + 1], wy[i + 2], wy[i + 3], wy[i + 4], epsX);
+        derf(wy[i], wy[i + 1], wy[i + 2], wy[i + 3], wy[i + 4], epsY);
   }
   for (size_t i = 4; i < wy.size(); i++) {
     result.fyp[i - 4] =
-        derf(wy[i], wy[i - 1], wy[i - 2], wy[i - 3], wy[i - 4], epsX);
+        derf(wy[i], wy[i - 1], wy[i - 2], wy[i - 3], wy[i - 4], epsY);
   }
 
-  auto epsY = find_maxv2(wy);
+  auto epsX = find_maxv2(wx);
   auto transposedWx = transpose(wx);
   array<array<double, rows - 6>, cols - 6> transposedFx;
   for (size_t i = 0; i < transposedWx.size() - 4; i++) {
     transposedFx[i] =
         derf(transposedWx[i], transposedWx[i + 1], transposedWx[i + 2],
-             transposedWx[i + 3], transposedWx[i + 4], epsY);
+             transposedWx[i + 3], transposedWx[i + 4], epsX);
   }
   result.fxm = transpose(transposedFx);
   for (size_t i = 4; i < transposedWx.size(); i++) {
     transposedFx[i - 4] =
         derf(transposedWx[i], transposedWx[i - 1], transposedWx[i - 2],
-             transposedWx[i - 3], transposedWx[i - 4], epsY);
+             transposedWx[i - 3], transposedWx[i - 4], epsX);
   }
   result.fxp = transpose(transposedFx);
 
