@@ -4,7 +4,7 @@
   includeheadfoot,
 margin = 1.5 cm]
 {geometry}
-\usepackage{color}
+\usepackage[svgnames]{xcolor}
 \usepackage{hyperref}
 \hypersetup{
   colorlinks,
@@ -22,6 +22,10 @@ margin = 1.5 cm]
   pdfproducer={Калоян Стоилов},
   pdfkeywords={SIS, Ross-Macdonald, репелент, миграция},
 }
+
+% Somehow prevents "Too many math alphabets used in version normal"
+\newcommand\hmmax{0}
+\newcommand\bmmax{0}
 
 % Fonts
 \usepackage[T2A]{fontenc}
@@ -75,6 +79,7 @@ margin = 1.5 cm]
 \usepackage{import}
 
 \usepackage[backend=biber]{biblatex}
+\usepackage[nottoc,numbib]{tocbibind}
 \usepackage{csquotes}
 
 % Fix original date
@@ -85,44 +90,18 @@ margin = 1.5 cm]
 
 \begin{document}
 \selectlanguage{bulgarian}
-\begin{titlepage}
-  \begin{center}
-    \vspace*{1cm}
-
-    \Huge
-    \textbf{Изследване на ефектите на репелент срещу комари в малариен модел на Ross-Macdonald с две местообитания}
-
-    % \vspace{0.5cm}
-    % \LARGE
-    % Thesis Subtitle
-
-    \vspace{1.5cm}
-
-    \textbf{Калоян Стоилов}
-
-    \vfill
-
-    Дипломна работа за образователна степен магистър
-
-    \vspace{0.8cm}
-
-    \includegraphics[width=0.2\textwidth]{logo_su_s_nadpis_imagelarge.jpg}
-
-    \Large
-    Факултет по математика и информатика\\
-    Софийски Университет "Свети Климент Охридски"\\
-    \today
-
-  \end{center}
-\end{titlepage}
+\import{sections/}{titlepage.tex}
 % \maketitle
 \tableofcontents
 \thispagestyle{empty}
 \newpage
 \setcounter{page}{1}
+\import{sections/}{introduction.tex}
+\import{sections/}{theproblem.tex}
 \import{sections/}{lipschitz.tex}
-\cite{Rashkov2019}
-\cite{Capasso2008}
-\cite{Osher2003}
-\printbibliography
+\import{sections/}{numerical.tex}
+\pagebreak
+\printbibliography[heading=bibintoc]
+% \listoffigures
+% \listoftables
 \end{document}
