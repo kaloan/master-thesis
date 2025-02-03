@@ -125,6 +125,16 @@ array<T, size> halfSum(const array<T, size> &arr1, const array<T, size> &arr2) {
   return res;
 }
 
+template <typename T, size_t rows, size_t cols>
+array<array<T, cols>, rows> halfSum(const array<array<T, cols>, rows> &mat1,
+                                    const array<array<T, cols>, rows> &mat2) {
+  array<array<T, cols>, rows> res;
+  for (size_t i = 0; i < rows; i++) {
+    res[i] = halfSum(mat1[i], mat2[i]);
+  }
+  return res;
+}
+
 template <size_t cols, size_t rows>
 double find_maxv2(const array<array<double, cols>, rows> &matrix) {
   auto maxv2 = 0.;
@@ -150,7 +160,7 @@ void printMatrix(const array<array<T, cols>, rows> &arr) {
 }
 
 template <typename T, size_t rows, size_t cols>
-void matrixContinuation(const array<array<T, cols>, rows> &mat) {
+void matrixContinuation(array<array<T, cols>, rows> &mat) {
   for (size_t j = 0; j < x.size(); j++) {
     mat[0][j + 3] = mat[1][j + 3] = mat[2][j + 3] = mat[3][j + 3];
     mat[y.size() + 3][j + 3] = mat[y.size() + 4][j + 3] =
