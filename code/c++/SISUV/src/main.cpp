@@ -1,9 +1,12 @@
 #include <algorithm>
 #include <array>
+#include <chrono>
 #include <cmath>
+#include <iomanip>
 #include <iostream>
 #include <iterator>
 #include <tuple>
+#include <vector>
 // #include <numeric>
 // #include <functional>
 using namespace std;
@@ -128,7 +131,8 @@ template <typename T, size_t size>
 array<T, size> halfSum(const array<T, size> &arr1, const array<T, size> &arr2) {
   array<T, size> res;
   for (size_t i = 0; i < size; i++) {
-    res[i] = (arr1[i] + arr2[i]) / 2.;
+    // res[i] = (arr1[i] + arr2[i]) / 2.;
+    res[i] = arr1[i] / 2. + arr2[i] / 2.;
   }
   return res;
 }
@@ -247,49 +251,47 @@ array<double, n> derf(const array<double, n> &v1, const array<double, n> &v2,
 template <typename T, size_t rows, size_t cols>
 derivativeApproximations<rows, cols>
 derf(const array<array<T, cols>, rows> &mat) {
-  array<array<double, cols - 6>, rows - 6> wx;
-  array<array<double, cols - 6>, rows - 6> wy;
+  array<array<double, cols - 1>, rows - 6> wx;
+  array<array<double, cols - 6>, rows - 1> wy;
   for (size_t i = 0; i < rows - 6; i++) {
+    for (size_t j = 0; j < cols - 1; j++) {
+      wx[i][j] = (mat[i + 3][j + 1] - mat[i + 3][j]) / dx;
+    }
+  }
+  for (size_t i = 0; i < rows - 1; i++) {
     for (size_t j = 0; j < cols - 6; j++) {
-      wx[i][j] = (mat[i + 3][j + 4] - mat[i + 3][j + 3]) / dx;
-      wy[i][j] = (mat[i + 4][j + 3] - mat[i + 3][j + 3]) / dy;
+      wy[i][j] = (mat[i + 1][j + 3] - mat[i][j + 3]) / dy;
     }
   }
 
   derivativeApproximations<rows, cols> result;
 
-  for (size_t i = 0; i < wy.size() - 5; i++) {
-    result.fym[i] = derf(wy[i], wy[i + 1], wy[i + 2], wy[i + 3], wy[i + 4]);
-  }
-  for (size_t i = 5; i < wy.size(); i++) {
-    result.fyp[i - 4] = derf(wy[i], wy[i - 1], wy[i - 2], wy[i - 3], wy[i - 4]);
-  }
-
-  auto transposedWx = transpose(wx);
-  array<array<double, rows - 6>, cols - 6> transposedFx;
-  for (size_t i = 0; i < cols - 6; i++) {
-    for (size_t j = 0; j < rows - 6; j++) {
-      transposedFx[i][j] = 0;
+  for (size_t i = 0; i < rows - 6; i++) {
+    for (size_t j = 0; j < cols - 6; j++) {
+      result.fxm[i][j] = derf(wx[i][j], wx[i][j + 1], wx[i][j + 2],
+                              wx[i][j + 3], wx[i][j + 4]);
     }
   }
-  for (size_t i = 0; i < transposedWx.size() - 5; i++) {
-    transposedFx[i] =
-        derf(transposedWx[i], transposedWx[i + 1], transposedWx[i + 2],
-             transposedWx[i + 3], transposedWx[i + 4]);
-  }
-  result.fxm = transpose(transposedFx);
 
-  for (size_t i = 0; i < cols - 6; i++) {
-    for (size_t j = 0; j < rows - 6; j++) {
-      transposedFx[i][j] = 0;
+  for (size_t i = 0; i < rows - 6; i++) {
+    for (size_t j = 0; j < cols - 6; j++) {
+      result.fxp[i][j] = derf(wx[i][j + 5], wx[i][j + 4], wx[i][j + 3],
+                              wx[i][j + 2], wx[i][j + 1]);
     }
   }
-  for (size_t i = 5; i < transposedWx.size(); i++) {
-    transposedFx[i - 4] =
-        derf(transposedWx[i], transposedWx[i - 1], transposedWx[i - 2],
-             transposedWx[i - 3], transposedWx[i - 4]);
+
+  for (size_t i = 0; i < rows - 6; i++) {
+    for (size_t j = 0; j < cols - 6; j++) {
+      result.fym[i][j] = derf(wy[i][j], wy[i + 1][j], wy[i + 2][j],
+                              wy[i + 3][j], wy[i + 4][j]);
+    }
   }
-  result.fxp = transpose(transposedFx);
+  for (size_t i = 0; i < rows - 6; i++) {
+    for (size_t j = 0; j < cols - 6; j++) {
+      result.fyp[i][j] = derf(wy[i + 5][j], wy[i + 4][j], wy[i + 3][j],
+                              wy[i + 2][j], wy[i + 1][j]);
+    }
+  }
 
   return result;
 }
@@ -308,7 +310,7 @@ hamiltonian(const array<array<double, cols>, rows> &xp,
       auto interm =
           h1[i][j] + (m1[i][j] * (xp[i][j] + xm[i][j]) / 2 > 1e-99) * m1[i][j];
       // upwind outside ww1 Osher & Shu (2.11) - (2.11) 1st case
-      hamiltonian[i][j] +=
+      hamiltonian[i][j] =
           (1 - chooseAx) * ((interm < 1e-99) * interm * xp[i][j] +
                             (interm > 1e-99) * interm * xm[i][j]);
       hamiltonian[i][j] += chooseAx * interm * (xp[i][j] + xm[i][j]) /
@@ -370,19 +372,18 @@ int main(int argc, char *argv[]) {
   matrixContinuation(w);
   auto wnew0 = w;
   auto wnew1 = w;
-  // printMatrix(w);
+
   auto err0 = 1.;
-  auto ntim = 1;
+  vector<double> err;
   auto ncounter = 0;
+  auto start = chrono::high_resolution_clock::now();
+
   while (err0 > errtol) {
-    // while (ncounter++ < ntim) {
-    // auto wnew0 = w;
-    // auto wnew1 = w;
 
     // Heun's predictor-corrector method
     auto firstApprox = derf(w);
-    auto hamilton = hamiltonian(firstApprox.fxm, firstApprox.fxp,
-                                firstApprox.fym, firstApprox.fyp);
+    auto hamilton = hamiltonian(firstApprox.fxp, firstApprox.fxm,
+                                firstApprox.fyp, firstApprox.fym);
     for (size_t i = 0; i < y.size(); i++) {
       for (size_t j = 0; j < x.size(); j++) {
         wnew0[i + 3][j + 3] = max(
@@ -403,7 +404,7 @@ int main(int argc, char *argv[]) {
     }
     matrixContinuation(wnew1);
 
-    auto wnew = halfSum(wnew0, wnew1);
+    auto wnew = halfSum(w, wnew1);
     err0 = 0;
     for (size_t i = 0; i < y.size(); i++) {
       for (size_t j = 0; j < x.size(); j++) {
@@ -411,5 +412,14 @@ int main(int argc, char *argv[]) {
       }
     }
     w = wnew;
+    ncounter++;
+    err.push_back(err0);
   }
+  auto end = chrono::high_resolution_clock::now();
+  double time_taken =
+      1e-9 * chrono::duration_cast<chrono::nanoseconds>(end - start).count();
+  cout << "Main calculation took: " << fixed << time_taken << setprecision(9)
+       << " sec" << endl;
+  cout << "Steps: " << ncounter << endl;
+  cout << "Final error: " << err.back() << endl;
 }
