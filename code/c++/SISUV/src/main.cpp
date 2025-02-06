@@ -2,6 +2,9 @@
 #include <array>
 #include <chrono>
 #include <cmath>
+#include <filesystem>
+#include <format>
+#include <fstream>
 #include <iomanip>
 #include <iostream>
 #include <iterator>
@@ -10,10 +13,10 @@
 using namespace std;
 
 template <size_t rows, size_t cols> struct derivativeApproximations {
-  array<array<double, cols - 6>, rows - 6> fxp;
-  array<array<double, cols - 6>, rows - 6> fxm;
-  array<array<double, cols - 6>, rows - 6> fyp;
-  array<array<double, cols - 6>, rows - 6> fym;
+  array<array<double, cols>, rows> fxp;
+  array<array<double, cols>, rows> fxm;
+  array<array<double, cols>, rows> fyp;
+  array<array<double, cols>, rows> fym;
 };
 
 // parameters from Goldberg, Agusto 2021
@@ -56,9 +59,9 @@ const array<double, 2> mpd = {1 + Gamma + alpha * nu * (1 + k * umax),
 // mpd = mpd + 1; ????
 
 // numerical space step
-constexpr auto Nx = 150;
+constexpr auto Nx = 50;
 constexpr auto dx = Imax / (Nx - 1);
-constexpr auto Ny = 100;
+constexpr auto Ny = 50;
 constexpr auto dy = ymax / (Ny - 1);
 
 // numerical time step dt < 1/ll (!)
@@ -66,19 +69,9 @@ constexpr auto dy = ymax / (Ny - 1);
 // const auto dt = 0.9 * min({1. / (mpd[0] / dx + mpd[1] / dy), 1. / ll});
 const auto dt = 0.9 / max(mpd[0] / dx + mpd[1] / dy, ll);
 
-template <typename Type, std::size_t... sizes>
-auto concatenate(const std::array<Type, sizes> &...arrays) {
-  std::array<Type, (sizes + ...)> result;
-  std::size_t index{};
-
-  ((std::copy_n(arrays.begin(), sizes, result.begin() + index), index += sizes),
-   ...);
-
-  return result;
-}
-
 template <typename T, size_t rows, size_t cols>
-array<array<T, rows>, cols> transpose(const array<array<T, cols>, rows> &mat) {
+array<array<T, rows>, cols>
+transpose(const array<array<T, cols>, rows> &mat) noexcept {
   array<array<T, rows>, cols> transposed;
 
   for (size_t i = 0; i < rows; ++i) {
@@ -107,7 +100,8 @@ array<array<double, x.size()>, y.size()> gs;
 array<array<double, x.size() + 6>, y.size() + 6> w;
 
 template <typename T, size_t size>
-array<T, size> sum(const array<T, size> &arr1, const array<T, size> &arr2) {
+array<T, size> sum(const array<T, size> &arr1,
+                   const array<T, size> &arr2) noexcept {
   array<T, size> res;
   for (size_t i = 0; i < size; ++i) {
     res[i] = arr1[i] + arr2[i];
@@ -116,18 +110,19 @@ array<T, size> sum(const array<T, size> &arr1, const array<T, size> &arr2) {
 }
 
 template <typename T, size_t size>
-array<T, size> halfSum(const array<T, size> &arr1, const array<T, size> &arr2) {
+array<T, size> halfSum(const array<T, size> &arr1,
+                       const array<T, size> &arr2) noexcept {
   array<T, size> res;
   for (size_t i = 0; i < size; ++i) {
     res[i] = (arr1[i] + arr2[i]) / 2.;
-    // res[i] = arr1[i] / 2. + arr2[i] / 2.;
   }
   return res;
 }
 
 template <typename T, size_t rows, size_t cols>
-array<array<T, cols>, rows> halfSum(const array<array<T, cols>, rows> &mat1,
-                                    const array<array<T, cols>, rows> &mat2) {
+array<array<T, cols>, rows>
+halfSum(const array<array<T, cols>, rows> &mat1,
+        const array<array<T, cols>, rows> &mat2) noexcept {
   array<array<T, cols>, rows> res;
   for (size_t i = 0; i < rows; ++i) {
     res[i] = halfSum(mat1[i], mat2[i]);
@@ -136,7 +131,7 @@ array<array<T, cols>, rows> halfSum(const array<array<T, cols>, rows> &mat1,
 }
 
 template <size_t cols, size_t rows>
-double find_maxv2(const array<array<double, cols>, rows> &matrix) {
+double find_maxv2(const array<array<double, cols>, rows> &matrix) noexcept {
   auto maxv2 = 0.;
   for (size_t i = 0; i < rows; ++i) {
     for (size_t j = 0; j < cols; ++j) {
@@ -149,7 +144,7 @@ double find_maxv2(const array<array<double, cols>, rows> &matrix) {
 template <size_t cols, size_t rows>
 array<array<double, cols>, rows>
 max(const array<array<double, cols>, rows> &mat1,
-    const array<array<double, cols>, rows> &mat2) {
+    const array<array<double, cols>, rows> &mat2) noexcept {
   array<array<double, cols>, rows> result;
   for (size_t i = 0; i < rows; ++i) {
     for (size_t j = 0; j < cols; ++j) {
@@ -159,21 +154,24 @@ max(const array<array<double, cols>, rows> &mat1,
   return result;
 }
 
-template <typename T, size_t size> void printArray(const array<T, size> &arr) {
-  std::copy(std::begin(arr), std::end(arr),
-            std::ostream_iterator<T>(std::cout, ", "));
-  std::cout << std::endl;
+template <typename T, size_t size>
+void printArray(const array<T, size> &arr, ostream &stream = std::cout,
+                const string &delim = ", ") noexcept {
+  copy(begin(arr), end(arr), ostream_iterator<T>(stream, delim.c_str()));
+  stream << "\n";
 }
 
 template <typename T, size_t rows, size_t cols>
-void printMatrix(const array<array<T, cols>, rows> &arr) {
+void printMatrix(const array<array<T, cols>, rows> &arr,
+                 ostream &stream = std::cout,
+                 const string &delim = ", ") noexcept {
   for (auto row : arr) {
-    printArray(row);
+    printArray(row, stream, delim);
   }
 }
 
 template <typename T, size_t rows, size_t cols>
-void matrixContinuation(array<array<T, cols>, rows> &mat) {
+void matrixContinuation(array<array<T, cols>, rows> &mat) noexcept {
   for (size_t j = 0; j < x.size(); ++j) {
     mat[0][j + 3] = mat[1][j + 3] = mat[2][j + 3] = mat[3][j + 3];
     mat[y.size() + 3][j + 3] = mat[y.size() + 4][j + 3] =
@@ -196,7 +194,7 @@ void matrixContinuation(array<array<T, cols>, rows> &mat) {
 
 tuple<double, double, double> stencils(const double &v1, const double &v2,
                                        const double &v3, const double &v4,
-                                       const double &v5) {
+                                       const double &v5) noexcept {
   // smoothness of stencils
   auto S1 = 13. / 12 * (v1 - 2 * v2 + v3) * (v1 - 2 * v2 + v3) +
             1. / 4 * (v1 - 4 * v2 + 3 * v3) * (v1 - 4 * v2 + 3 * v3);
@@ -209,7 +207,7 @@ tuple<double, double, double> stencils(const double &v1, const double &v2,
 }
 
 double derf(const double &v1, const double &v2, const double &v3,
-            const double &v4, const double &v5) {
+            const double &v4, const double &v5) noexcept {
   // smoothness of stencils
   auto S1 = 13. / 12. * (v1 - 2. * v2 + v3) * (v1 - 2. * v2 + v3) +
             1. / 4. * (v1 - 4. * v2 + 3. * v3) * (v1 - 4. * v2 + 3. * v3);
@@ -236,7 +234,7 @@ double derf(const double &v1, const double &v2, const double &v3,
 template <size_t n>
 array<double, n> derf(const array<double, n> &v1, const array<double, n> &v2,
                       const array<double, n> &v3, const array<double, n> &v4,
-                      const array<double, n> &v5) {
+                      const array<double, n> &v5) noexcept {
   array<double, n> res;
   for (size_t i = 0; i < n; ++i) {
     res[i] = derf(v1[i], v2[i], v3[i], v4[i], v5[i]);
@@ -245,8 +243,8 @@ array<double, n> derf(const array<double, n> &v1, const array<double, n> &v2,
 }
 
 template <typename T, size_t rows, size_t cols>
-derivativeApproximations<rows, cols>
-derf(const array<array<T, cols>, rows> &mat) {
+derivativeApproximations<rows - 6, cols - 6>
+derf(const array<array<T, cols>, rows> &mat) noexcept {
   array<array<double, cols - 1>, rows - 6> wx;
   array<array<double, cols - 6>, rows - 1> wy;
   for (size_t i = 0; i < rows - 6; ++i) {
@@ -260,7 +258,7 @@ derf(const array<array<T, cols>, rows> &mat) {
     }
   }
 
-  derivativeApproximations<rows, cols> result;
+  derivativeApproximations<rows - 6, cols - 6> result;
 
   for (size_t i = 0; i < rows - 6; ++i) {
     for (size_t j = 0; j < cols - 6; ++j) {
@@ -294,35 +292,40 @@ derf(const array<array<T, cols>, rows> &mat) {
 
 template <size_t rows, size_t cols>
 array<array<double, cols>, rows>
-hamiltonian(const array<array<double, cols>, rows> &xp,
-            const array<array<double, cols>, rows> &xm,
-            const array<array<double, cols>, rows> &yp,
-            const array<array<double, cols>, rows> &ym) {
+hamiltonian(const derivativeApproximations<rows, cols> &approx) noexcept {
   array<array<double, cols>, rows> hamiltonian;
 
   for (size_t i = 0; i < rows; ++i) {
     for (size_t j = 0; j < cols; ++j) {
-      auto chooseAx = wwx[i][j] * (xp[i][j] * xm[i][j] < 1e-99);
+      auto chooseAx = wwx[i][j] * (approx.fxp[i][j] * approx.fxm[i][j] < 1e-99);
       auto interm =
-          h1[i][j] + (m1[i][j] * (xp[i][j] + xm[i][j]) / 2. > 1e-99) * m1[i][j];
+          h1[i][j] +
+          (m1[i][j] * (approx.fxp[i][j] + approx.fxm[i][j]) / 2. > 1e-99) *
+              m1[i][j];
       // upwind outside ww1 Osher & Shu (2.11) - (2.11) 1st case
       hamiltonian[i][j] =
-          (1 - chooseAx) * ((interm < 1e-99) * interm * xp[i][j] +
-                            (interm > 1e-99) * interm * xm[i][j]);
-      hamiltonian[i][j] += chooseAx * interm * (xp[i][j] + xm[i][j]) /
+          (1 - chooseAx) * ((interm < 1e-99) * interm * approx.fxp[i][j] +
+                            (interm > 1e-99) * interm * approx.fxm[i][j]);
+      hamiltonian[i][j] += chooseAx * interm *
+                           (approx.fxp[i][j] + approx.fxm[i][j]) /
                            2.; // Osher & Shu (2.11) -2nd case
-      hamiltonian[i][j] -= chooseAx * ax[i][j] * (xp[i][j] - xm[i][j]) / 2.;
+      hamiltonian[i][j] -=
+          chooseAx * ax[i][j] * (approx.fxp[i][j] - approx.fxm[i][j]) / 2.;
 
-      auto chooseAy = wwy[i][j] * (yp[i][j] * ym[i][j] < 1e-99);
+      auto chooseAy = wwy[i][j] * (approx.fyp[i][j] * approx.fym[i][j] < 1e-99);
       auto interm2 =
-          h2[i][j] + (m2[i][j] * (yp[i][j] + ym[i][j]) / 2. > 1e-99) * m2[i][j];
+          h2[i][j] +
+          (m2[i][j] * (approx.fyp[i][j] + approx.fym[i][j]) / 2. > 1e-99) *
+              m2[i][j];
       // upwind outside ww1 Osher & Shu (2.11) - (2.11) 1st case
       hamiltonian[i][j] +=
-          (1 - chooseAy) * ((interm2 < 1e-99) * interm2 * yp[i][j] +
-                            (interm2 > 1e-99) * interm2 * ym[i][j]);
-      hamiltonian[i][j] += chooseAy * interm2 * (yp[i][j] + ym[i][j]) /
+          (1 - chooseAy) * ((interm2 < 1e-99) * interm2 * approx.fyp[i][j] +
+                            (interm2 > 1e-99) * interm2 * approx.fym[i][j]);
+      hamiltonian[i][j] += chooseAy * interm2 *
+                           (approx.fyp[i][j] + approx.fym[i][j]) /
                            2.; // Osher & Shu (2.11) -2nd case
-      hamiltonian[i][j] -= chooseAy * ay[i][j] * (yp[i][j] - ym[i][j]) / 2.;
+      hamiltonian[i][j] -=
+          chooseAy * ay[i][j] * (approx.fyp[i][j] - approx.fym[i][j]) / 2.;
     }
   }
 
@@ -375,7 +378,7 @@ int main(int argc, char *argv[]) {
 
     // Heun's predictor-corrector method
     auto approx = derf(w);
-    auto hamilton = hamiltonian(approx.fxp, approx.fxm, approx.fyp, approx.fym);
+    auto hamilton = hamiltonian(approx);
     for (size_t i = 0; i < y.size(); ++i) {
       for (size_t j = 0; j < x.size(); ++j) {
         wnew0[i + 3][j + 3] = max(
@@ -385,7 +388,7 @@ int main(int argc, char *argv[]) {
     matrixContinuation(wnew0);
 
     approx = derf(wnew0);
-    hamilton = hamiltonian(approx.fxp, approx.fxm, approx.fyp, approx.fym);
+    hamilton = hamiltonian(approx);
     for (size_t i = 0; i < y.size(); ++i) {
       for (size_t j = 0; j < x.size(); ++j) {
         wnew1[i + 3][j + 3] =
@@ -418,9 +421,19 @@ int main(int argc, char *argv[]) {
   auto end = chrono::high_resolution_clock::now();
   double time_taken =
       1e-9 * chrono::duration_cast<chrono::nanoseconds>(end - start).count();
-  cout << endl
-       << "Main calculation took: " << fixed << time_taken << setprecision(9)
-       << " sec" << endl;
-  cout << "Steps: " << ncounter << endl;
+  cout << endl;
   cout << "Final error: " << err.back() << endl;
+  cout << "Steps: " << ncounter << endl;
+  cout << "Main calculation took: " << fixed << time_taken << setprecision(9)
+       << " sec" << endl;
+
+  filesystem::path outputFile = "solution/finalSolution.csv";
+  filesystem::create_directories(outputFile.parent_path());
+  ofstream finalSolution(outputFile);
+  printMatrix(w, finalSolution);
+
+  // system(format("cat {}", outputFile.c_str()).c_str());
+  ifstream finalSolutionReRead(outputFile);
+  cout << string((istreambuf_iterator<char>(finalSolutionReRead)),
+                 istreambuf_iterator<char>());
 }
