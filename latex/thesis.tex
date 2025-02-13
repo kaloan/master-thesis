@@ -82,6 +82,9 @@ margin = 1.5 cm]
 \usepackage[nottoc,numbib]{tocbibind}
 \usepackage{csquotes}
 
+% Since physics package uses physics <.|.> notation
+\renewcommand{\innerproduct}[2]{\langle #1, #2 \rangle}
+
 % Fix original date
 % \usepackage{datetime}
 \addbibresource[bibencoding=utf8]{thesis.bib}
@@ -99,6 +102,7 @@ margin = 1.5 cm]
 \import{sections/}{introduction.tex}
 \import{sections/}{theproblem.tex}
 \import{sections/}{lipschitz.tex}
+\import{sections/}{hjb.tex}
 \import{sections/}{numerical.tex}
 \pagebreak
 \printbibliography[heading=bibintoc]

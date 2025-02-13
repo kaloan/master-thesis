@@ -1,0 +1,24 @@
+\section{Вариационна задача на Хамилтон-Якоби-Белман}
+За намиране на ядрото на допустимост $\eqref{eq:ViabilityKernel}$ се подхожда със задачата на Хамилтон-Якоби-Белман за минимизация на функционал, като $v$ е фунцкията на стойността. Опитваме се да решим:
+\begin{equation}
+  \label{eq:HJB}
+  \min\{\lambda v(x_1, y_1, x_2, y_2) + \mathcal{H}(x_1, y_1, x_2, y_2, \grad{v}), v(x_1, y_1, x_2, y_2) - \Gamma(x_1, y_1, x_2, y_2)\} = 0
+\end{equation}
+Хамилтонянът е дефиниран чрез производна по направлението $\grad{v}$, като:
+\begin{equation}
+  \label{eq:Hamiltonian}
+  \mathcal{H}(x_1, y_1, x_2, y_2, \grad{v}) = - \max_{u \in \mathcal{U}}\innerproduct{\mathbf{F}(x_1,y_1,x_2,y_2,u_1,u_2)}{\grad{v}}
+\end{equation}
+
+Използвайки вида на $\mathbf{F}$, след групиране по части зависещи/независещи от управлението, получаваме:
+\begin{align*}
+  \label{eq:HamiltonianFull}
+  \mathcal{H}(x_1, y_1, x_2, y_2, \grad{v}) = &\left[\gamma_1 x_1(t) - \beta_{vh} (N_1-x_1(t)) \left(\frac{p_{11} e^{-\mu_1 \tau} a_1 y_1(t)}{p_{11} N_1 + p_{21} N_2} + \frac{p_{12} e^{-\mu_2 \tau} a_2 y_2(t)}{p_{12} N_1 + p_{22} N_2 }\right) \right] \pdv{v}{x_1} + \\
+  &\left[\mu_1 y_1(t) - \beta_{hv} a_1 (M_1-y_1(t)) \frac{p_{11} x_1(t) + p_{21} x_2(t)}{p_{11} N_1 + p_{21} N_2}\right] \pdv{v}{y_1} + \\
+  &\left[\gamma_2 x_2(t) - \beta_{vh} (N_2-x_2(t)) \left(\frac{p_{21} e^{-\mu_1 \tau} a_1 y_1(t)}{p_{11} N_1 + p_{21} N_2 } + \frac{p_{22} e^{-\mu_2 \tau} a_2 y_2(t)}{p_{12} N_1 + p_{22} N_2}\right) \right] \pdv{v}{x_2} + \\
+  &\left[\mu_2 y_2(t) - \beta_{hv} a_2 (M_2-y_2(t)) \frac{p_{12} x_1(t) + p_{22} x_2(t)}{p_{12} N_1 + p_{22} N_2}\right] \pdv{v}{y_2} + \\
+  & \max\left\{0,\beta_{vh} (N_1-x_1(t)) \kappa \bar{u}_1 \left(\frac{p_{11} e^{-\mu_1 \tau} a_1 y_1(t)}{p_{11} N_1 + p_{21} N_2} + \frac{p_{12} e^{-\mu_2 \tau} a_2  y_2(t)}{p_{12} N_1 + p_{22} N_2 }\right) \pdv{v}{x_1}\right\} + \\
+  & \max\left\{0,\beta_{hv} a_1 (M_1-y_1(t)) \kappa \frac{p_{11} \bar{u}_1 x_1(t) + p_{21} \bar{u}_2 x_2(t)}{p_{11} N_1 + p_{21} N_2} \pdv{v}{y_1}\right\} + \\
+  & \max\left\{0,\beta_{vh} (N_2-x_2(t)) \kappa \bar{u}_2 \left(\frac{p_{21} e^{-\mu_1 \tau} a_1 y_1(t)}{p_{11} N_1 + p_{21} N_2} + \frac{p_{22} e^{-\mu_2 \tau} a_2 y_2(t)}{p_{12} N_1 + p_{22} N_2}\right) \pdv{v}{x_2}\right\} + \\
+  & \max\left\{0,\beta_{hv} a_1 (M_2-y_2(t)) \kappa \frac{p_{12} \bar{u}_1 x_1(t) + p_{22} \bar{u}_2 x_2(t)}{p_{12} N_1 + p_{22} N_2} \pdv{v}{y_2}\right\}
+\end{align*}
