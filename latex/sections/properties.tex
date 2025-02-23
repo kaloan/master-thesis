@@ -76,9 +76,28 @@
   \frac{\beta_{hv} a_2 p_{22}}{p_{12} N_1 + p_{22} N_2} (4 M_2 |x_2 - x'_2| + N_2 |y_2 - y'_2|) + \mu_2 |y_2 - y'_2| \leq \\
   & C \|(x_1, y_1, x_2, y_2) - (x'_1, y'_1, x'_2, y'_2)\|
 \end{align*}
-Накрая се използват неравенства от вида $|x_1-x'_1| \leq \|(x_1, y_1, x_2, y_2) - (x'_1, y'_1, x'_2, y'_2)\|$. Тогава съществува решение на $\eqref{eq:TheProblem}$ за произволни $t$.
+Накрая се използват неравенства от вида $|x_1-x'_1| \leq \|(x_1, y_1, x_2, y_2) - (x'_1, y'_1, x'_2, y'_2)\|$. Тогава, спрямо общата теория на диференциалните решения с управление, съществува единствено решение на $\eqref{eq:TheProblem}$ за произволни $t$.
 
 \subsection{Ограниченост на решението}
+Да разгледаме множеството
+\begin{equation}
+  X = {0 \leq x_1 \leq N_1, 0 \leq y_1 \leq M_1, 0 \leq x_2 \leq N_2, 0 \leq y_2 \leq M_2}
+\end{equation}
+Началното условие е някъде в това множество, тъй като популациите са неотрицателни, а заразените индивиди не са над общата популация за съответната категория. Лесно може да се види, че е в сила:
+\begin{align}
+  (x_1(0), y_1(0), x_2(0), y_2(0)) \in X \implies \forall{t>0}\left((x_1(0), y_1(0), x_2(0), y_2(0)) \in X\right)
+\end{align}
+Трябва да се покаже, че $\mathbf{F}$ сочи към вътрешността на $X$, ако решението се намира по границата $\partial X$. Но това наистина е така, от:
+\begin{align*}
+  &\dot{x}_1(t)\vert_{X \cap \{x_1(t)=0\}} = \beta_{vh} N_1(t) \left(\frac{p_{11} e^{-\mu_1 \tau} a_1 (1-\kappa u_1(t)) y_1(t)}{p_{11} N_1 + p_{21} N_2} + \frac{p_{12} e^{-\mu_2 \tau} a_2 (1-\kappa u_1(t)) y_2(t)}{p_{12} N_1 + p_{22} N_2 }\right) \geq 0 \\
+  &\dot{x}_1(t)\vert_{X \cap \{x_1(t)=N_1\}} = - \gamma_1 N_1 \leq 0 \\
+  &\dot{y}_1(t)\vert_{X \cap \{y_1(t)=0\}} = \beta_{hv} a_1 M_1 \frac{p_{11} (1-\kappa u_1(t)) x_1(t) + p_{21} (1-\kappa u_2(t)) x_2(t)}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
+  &\dot{y}_1(t)\vert_{X \cap \{y_1(t)=M_1\}} = - \mu_1 M_1 = 0 \\
+  &\dot{x}_2(t)\vert_{X \cap \{x_2(t)=0\}} = \beta_{vh} N_2 \left(\frac{p_{21} e^{-\mu_1 \tau} a_1 (1-\kappa u_2(t)) y_1(t)}{p_{11} N_1 + p_{21} N_2} + \frac{p_{22} e^{-\mu_2 \tau} a_2 (1-\kappa u_2(t)) y_2(t)}{p_{12} N_1 + p_{22} N_2}\right) \geq 0 \\
+  &\dot{x}_2(t)\vert_{X \cap \{x_2(t)=N_2\}} = - \gamma_2 N_2 \leq 0 \\
+  &\dot{y}_2(t)\vert_{X \cap \{y_2(t)=0\}} = \beta_{hv} a_2 M_2 \frac{p_{12} (1-\kappa u_1(t)) x_1(t) + p_{22} (1-\kappa u_2(t)) x_2(t)}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
+  &\dot{y}_2(t)\vert_{X \cap \{y_2(t)=M_2\}} = - \mu_2 M_2 \leq 0
+\end{align*}
 
 \subsection{Линейно нарастване}
 За да покажем линейния растеж, да забележим, че $\mathbf{F}(\mathbf{0}) = \mathbf{0}$. Тогава може да запишем:
@@ -96,4 +115,20 @@
   &\tilde{C}(1 + \|(x_1,y_1,x_2,y_2)\|)
 \end{align*}
 
-\subsection{Квазилинейност}
+\subsection{Квазимонотонност}
+Доказваме квазимонотонността по дефиницията \color{Red} ДЕФИНИЦИЯ!!!
+\color{Black}
+\begin{align*}
+  &\pdv{\dot{x}_1}{y_1} = \beta_{vh} (N_1-x_1(t)) \frac{p_{11} e^{-\mu_1 \tau} a_1 (1-\kappa u_1(t))}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
+  &\pdv{\dot{x}_1}{x_2} = 0 \\
+  &\pdv{\dot{x}_1}{y_2} = \beta_{vh} (N_1-x_1(t))\frac{p_{12} e^{-\mu_2 \tau} a_2 (1-\kappa u_1(t))}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
+  &\pdv{\dot{y}_1}{x_1} = \beta_{hv} a_1 (M_1-y_1(t)) \frac{p_{11} (1-\kappa u_1(t))}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
+  &\pdv{\dot{y}_1}{x_2} = \beta_{hv} a_1 (M_1-y_1(t)) \frac{p_{21} (1-\kappa u_2(t))}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
+  &\pdv{\dot{y}_1}{y_2} = 0 \\
+  &\pdv{\dot{x}_2}{x_1} = 0 \\
+  &\pdv{\dot{x}_2}{y_1} = \beta_{vh} (N_2-x_2(t)) \frac{p_{21} e^{-\mu_1 \tau} a_1 (1-\kappa u_2(t))}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
+  &\pdv{\dot{x}_2}{y_2} = \beta_{vh} (N_2-x_2(t)) \frac{p_{22} e^{-\mu_2 \tau} a_2 (1-\kappa u_2(t))}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
+  &\pdv{\dot{y}_2}{x_1} = \beta_{hv} a_2 (M_2-y_2(t)) \frac{p_{12} (1-\kappa u_1(t))}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
+  &\pdv{\dot{y}_2}{y_1} = 0 \\
+  &\pdv{\dot{y}_2}{x_2} = \beta_{hv} a_2 (M_2-y_2(t)) \frac{p_{22} (1-\kappa u_2(t))}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
+\end{align*}
