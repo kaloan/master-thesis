@@ -111,22 +111,25 @@
     \pdv{\mathbf{F}_{x_2}}{x_1} && \pdv{\mathbf{F}_{x_2}}{y_1} && \pdv{\mathbf{F}_{x_2}}{x_2} && \pdv{\mathbf{F}_{x_2}}{y_2} \\
     \pdv{\mathbf{F}_{y_2}}{x_1} && \pdv{\mathbf{F}_{y_2}}{y_1} && \pdv{\mathbf{F}_{y_2}}{x_2} && \pdv{\mathbf{F}_{y_2}}{y_2}
   \end{pmatrix} \\
-  &\pdv{\mathbf{F}_{x_1}}{x_1} = \pdv{\dot{x}_1}{x_1} = -\beta_{vh} \left(\frac{p_{11} e^{-\mu_1 \tau} a_1 (1-\kappa u_1) y_1(t)}{p_{11} N_1 + p_{21} N_2} + \frac{p_{12} e^{-\mu_2 \tau} a_2 (1-\kappa u_1) y_2(t)}{p_{12} N_1 + p_{22} N_2}\right) - \gamma_1 < 0 \\
+  &\pdv{\mathbf{F}_{x_1}}{x_1} = \pdv{\dot{x}_1}{x_1} = -\beta_{vh} \left(\frac{p_{11} e^{-\mu_1 \tau} a_1 (1-\kappa u_1(t)) y_1(t)}{p_{11} N_1 + p_{21} N_2} + \frac{p_{12} e^{-\mu_2 \tau} a_2 (1-\kappa u_1(t)) y_2(t)}{p_{12} N_1 + p_{22} N_2}\right) - \gamma_1 < 0 \\
   &\pdv{\mathbf{F}_{x_1}}{y_1} = \pdv{\dot{x}_1}{y_1} = \beta_{vh} (N_1-x_1(t)) \frac{p_{11} e^{-\mu_1 \tau} a_1 (1-\kappa u_1(t))}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
   &\pdv{\mathbf{F}_{x_1}}{x_2} = \pdv{\dot{x}_1}{x_2} = 0 \\
   &\pdv{\mathbf{F}_{x_1}}{y_2} = \pdv{\dot{x}_1}{y_2} = \beta_{vh} (N_1-x_1(t))\frac{p_{12} e^{-\mu_2 \tau} a_2 (1-\kappa u_1(t))}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
-  &\pdv{\mathbf{F}_{y_1}}{y_1} = \pdv{\dot{y}_1}{x_1} = \beta_{hv} a_1 (M_1-y_1(t)) \frac{p_{11} (1-\kappa u_1(t))}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
-  &\pdv{\mathbf{F}_{y_1}}{y_1} = \pdv{\dot{y}_1}{y_1} = -\beta_{hv} a_1 \frac{p_{11} (1-\kappa u_1) x_1(t) + p_{21} (1-\kappa u_2) x_2(t)}{p_{11} N_1 + p_{21} N_2} - \mu_1 < 0 \\
+  %
+  &\pdv{\mathbf{F}_{y_1}}{x_1} = \pdv{\dot{y}_1}{x_1} = \beta_{hv} a_1 (M_1-y_1(t)) \frac{p_{11} (1-\kappa u_1(t))}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
+  &\pdv{\mathbf{F}_{y_1}}{y_1} = \pdv{\dot{y}_1}{y_1} = -\beta_{hv} a_1 \frac{p_{11} (1-\kappa u_1(t)) x_1(t) + p_{21} (1-\kappa u_2(t)) x_2(t)}{p_{11} N_1 + p_{21} N_2} - \mu_1 < 0 \\
   &\pdv{\mathbf{F}_{y_1}}{x_2} = \pdv{\dot{y}_1}{x_2} = \beta_{hv} a_1 (M_1-y_1(t)) \frac{p_{21} (1-\kappa u_2(t))}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
   &\pdv{\mathbf{F}_{y_1}}{y_2} = \pdv{\dot{y}_1}{y_2} = 0 \\
+  %
   &\pdv{\mathbf{F}_{x_2}}{x_1} = \pdv{\dot{x}_2}{x_1} = 0 \\
   &\pdv{\mathbf{F}_{x_2}}{y_1} = \pdv{\dot{x}_2}{y_1} = \beta_{vh} (N_2-x_2(t)) \frac{p_{21} e^{-\mu_1 \tau} a_1 (1-\kappa u_2(t))}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
-  &\pdv{\mathbf{F}_{x_2}}{x_2} = \pdv{\dot{x}_2}{x_2} = -\beta_{vh} \left(\frac{p_{21} e^{-\mu_1 \tau} a_1 (1-\kappa u_2) y_1(t)}{p_{11} N_1 + p_{21} N_2} + \frac{p_{22} e^{-\mu_2 \tau} a_2 (1-\kappa u_2) y_2(t)}{p_{12} N_1 + p_{22} N_2}\right) - \gamma_2 < 0 \\
+  &\pdv{\mathbf{F}_{x_2}}{x_2} = \pdv{\dot{x}_2}{x_2} = -\beta_{vh} \left(\frac{p_{21} e^{-\mu_1 \tau} a_1 (1-\kappa u_2(t)) y_1(t)}{p_{11} N_1 + p_{21} N_2} + \frac{p_{22} e^{-\mu_2 \tau} a_2 (1-\kappa u_2(t)) y_2(t)}{p_{12} N_1 + p_{22} N_2}\right) - \gamma_2 < 0 \\
   &\pdv{\mathbf{F}_{x_2}}{y_2} = \pdv{\dot{x}_2}{y_2} = \beta_{vh} (N_2-x_2(t)) \frac{p_{22} e^{-\mu_2 \tau} a_2 (1-\kappa u_2(t))}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
+  %
   &\pdv{\mathbf{F}_{y_2}}{x_1} = \pdv{\dot{y}_2}{x_1} = \beta_{hv} a_2 (M_2-y_2(t)) \frac{p_{12} (1-\kappa u_1(t))}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
   &\pdv{\mathbf{F}_{y_12}}{y_1} = \pdv{\dot{y}_2}{y_1} = 0 \\
   &\pdv{\mathbf{F}_{y_2}}{x_2} = \pdv{\dot{y}_2}{x_2} = \beta_{hv} a_2 (M_2-y_2(t)) \frac{p_{22} (1-\kappa u_2(t))}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
-  &\pdv{\mathbf{F}_{y_2}}{y_2} = \pdv{\dot{y}_2}{y_2} = -\beta_{hv} a_2 \frac{p_{12} (1-\kappa u_1) x_1(t) + p_{22} (1-\kappa u_2) x_2(t)}{p_{12} N_1 + p_{22} N_2} - \mu_2 < 0
+  &\pdv{\mathbf{F}_{y_2}}{y_2} = \pdv{\dot{y}_2}{y_2} = -\beta_{hv} a_2 \frac{p_{12} (1-\kappa u_1(t)) x_1(t) + p_{22} (1-\kappa u_2(t)) x_2(t)}{p_{12} N_1 + p_{22} N_2} - \mu_2 < 0
 \end{align*}
 
 Извън главния диагонал има само неотрицателни елементи, тогава системата е кооперативна.
@@ -149,11 +152,133 @@
 %   &\pdv{\dot{y}_2}{x_2} = \beta_{hv} a_2 (M_2-y_2(t)) \frac{p_{22} (1-\kappa u_2(t))}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
 % \end{align*}
 
+\subsection{Неразложимост}
+Използваме еквивалентната графова дефиниция и заместваме ненулевите елементи на $\mathrm{D} \mathbf{F}$ с 1. Така получаваме граф с матрица на съседство $\mathrm{D}$:
+\begin{equation}
+  \mathrm{D} =
+  \begin{pmatrix}
+    1 && 1 && 0 && 1 \\
+    1 && 1 && 1 && 0 \\
+    0 && 1 && 1 && 1 \\
+    1 && 0 && 1 && 1 \\
+  \end{pmatrix}
+  \implies
+  \mathrm{D}^3 =
+  \begin{pmatrix}
+    7 && 7 && 6 && 7 \\
+    7 && 7 && 7 && 6 \\
+    6 && 7 && 7 && 7 \\
+    7 && 6 && 7 && 7 \\
+  \end{pmatrix}
+  >
+  \mathscr{O}
+\end{equation}
+Тъй графа има 4 върха, с матрицата на съседство повдигната на 3-та степен виждаме кои върхове са свързани помежду си и кои не (тъй като ще получим информация за свързаните компоненти, от факта че всеки прост път е с дължина не по-голяма от 3). Тъй като има единствена свързана компонента, то графът е свързан, откъдето $\mathrm{D}\mathbf{F}$ е неразложижа.
+
+\subsection{Силна вдлъбнатост}
+Трябва да покажем, че $\mathbf{0} < \mathbf{z}_1 < \mathbf{z}_2 \implies \mathrm{D}\mathbf{F}(\mathbf{z}_2) < \mathrm{D}\mathbf{F}(\mathbf{z}_1)$. Достатъчно условие за това е всяка компонента на $\mathrm{D}\mathbf{F}$ да е нерастяща функция по всички променливи, като за поне една от тях да е намаляваща. Това може да проверим с производни по различните променливи:
+{\allowdisplaybreaks
+  \begin{align*}
+    &\pdv{\mathbf{F}_{x_1}}{x_1}{x_1} = 0, \quad
+    \pdv{\mathbf{F}_{x_1}}{x_1}{y_1} = -\beta_{vh} \frac{p_{11} e^{-\mu_1 \tau} a_1 (1-\kappa u_1(t))}{p_{11} N_1 + p_{21} N_2} < 0, \\
+    &\pdv{\mathbf{F}_{x_1}}{x_1}{x_2} = 0, \quad
+    \pdv{\mathbf{F}_{x_1}}{x_1}{y_2} = -\beta_{vh} \frac{p_{12} e^{-\mu_2 \tau} a_2 (1-\kappa u_1(t))}{p_{12} N_1 + p_{22} N_2} < 0 \\
+    %
+    &\pdv{\mathbf{F}_{x_1}}{y_1}{x_1} = -\beta_{vh} \frac{p_{11} e^{-\mu_1 \tau} a_1 (1-\kappa u_1(t))}{p_{11} N_1 + p_{21} N_2}  < 0, \quad
+    \pdv{\mathbf{F}_{x_1}}{y_1}{y_1} = 0, \\
+    &\pdv{\mathbf{F}_{x_1}}{y_1}{x_2} = 0, \quad
+    \pdv{\mathbf{F}_{x_1}}{y_1}{y_2} = 0 \\
+    %
+    &\pdv{\mathbf{F}_{x_1}}{x_2}{x_1} = 0, \quad
+    \pdv{\mathbf{F}_{x_1}}{x_2}{y_1} = 0, \\
+    &\pdv{\mathbf{F}_{x_1}}{x_2}{x_2} = 0, \quad
+    \pdv{\mathbf{F}_{x_1}}{x_2}{y_2} = 0 \\
+    %
+    &\pdv{\mathbf{F}_{x_1}}{y_2}{x_1} = -\beta_{vh} \frac{p_{12} e^{-\mu_2 \tau} a_2 (1-\kappa u_1(t))}{p_{12} N_1 + p_{22} N_2} < 0, \quad
+    \pdv{\mathbf{F}_{x_1}}{y_2}{y_1} = 0, \\
+    &\pdv{\mathbf{F}_{x_1}}{y_2}{x_2} = 0, \quad
+    \pdv{\mathbf{F}_{x_1}}{y_2}{y_2} = 0 \\
+    %
+    %
+    %
+    &\pdv{\mathbf{F}_{y_1}}{x_1}{x_1} = 0, \quad
+    \pdv{\mathbf{F}_{y_1}}{x_1}{y_1} = -\beta_{hv} a_1 \frac{p_{11} (1-\kappa u_1(t))}{p_{11} N_1 + p_{21} N_2} < 0, \\
+    &\pdv{\mathbf{F}_{y_1}}{x_1}{x_2} = 0, \quad
+    \pdv{\mathbf{F}_{y_1}}{x_1}{y_2} = 0 \\
+    %
+    &\pdv{\mathbf{F}_{y_1}}{y_1}{x_1} = -\beta_{hv} a_1 \frac{p_{11} (1-\kappa u_1(t))}{p_{11} N_1 + p_{21} N_2} < 0, \quad
+    \pdv{\mathbf{F}_{y_1}}{y_1}{y_1} = 0, \\
+    &\pdv{\mathbf{F}_{y_1}}{y_1}{x_2} = -\beta_{hv} a_1 \frac{p_{21} (1-\kappa u_2(t)) x_2(t)}{p_{11} N_1 + p_{21} N_2}, \quad
+    \pdv{\mathbf{F}_{y_1}}{y_1}{y_2} = 0 \\
+    %
+    &\pdv{\mathbf{F}_{y_1}}{x_2}{x_1} = 0, \quad
+    \pdv{\mathbf{F}_{y_1}}{x_2}{y_1} = -\beta_{hv} a_1 \frac{p_{21} (1-\kappa u_2(t))}{p_{11} N_1 + p_{21} N_2} < 0, \\
+    &\pdv{\mathbf{F}_{y_1}}{x_2}{x_2} = 0, \quad
+    \pdv{\mathbf{F}_{y_1}}{x_2}{y_2} = 0 \\
+    %
+    &\pdv{\mathbf{F}_{y_1}}{y_2}{x_1} = 0, \quad
+    \pdv{\mathbf{F}_{y_1}}{y_2}{y_1} = 0, \\
+    &\pdv{\mathbf{F}_{y_1}}{y_2}{x_2} = 0, \quad
+    \pdv{\mathbf{F}_{y_1}}{y_2}{y_2} = 0 \\
+    %
+    %
+    %
+    &\pdv{\mathbf{F}_{x_2}}{x_1}{x_1} = 0, \quad
+    \pdv{\mathbf{F}_{x_2}}{x_1}{y_1} = 0, \\
+    &\pdv{\mathbf{F}_{x_2}}{x_1}{x_2} = 0, \quad
+    \pdv{\mathbf{F}_{x_2}}{x_1}{y_2} = 0 \\
+    %
+    &\pdv{\mathbf{F}_{x_2}}{y_1}{x_1} = 0, \quad
+    \pdv{\mathbf{F}_{x_2}}{y_1}{y_1} = 0, \\
+    &\pdv{\mathbf{F}_{x_2}}{y_1}{x_2} = -\beta_{vh} \frac{p_{21} e^{-\mu_1 \tau} a_1 (1-\kappa u_2(t))}{p_{11} N_1 + p_{21} N_2} < 0, \quad
+    \pdv{\mathbf{F}_{x_2}}{y_1}{y_2} = 0 \\
+    %
+    &\pdv{\mathbf{F}_{x_2}}{x_2}{x_1} = 0, \quad
+    \pdv{\mathbf{F}_{x_2}}{x_2}{y_1} = -\beta_{vh} \frac{p_{21} e^{-\mu_1 \tau} a_1 (1-\kappa u_2(t))}{p_{11} N_1 + p_{21} N_2} < 0, \\
+    &\pdv{\mathbf{F}_{x_2}}{x_2}{x_2} = 0, \quad
+    \pdv{\mathbf{F}_{x_2}}{x_2}{y_2} = -\beta_{vh} \frac{p_{22} e^{-\mu_2 \tau} a_2 (1-\kappa u_2(t))}{p_{12} N_1 + p_{22} N_2} < 0 \\
+    %
+    &\pdv{\mathbf{F}_{x_2}}{y_2}{x_1} = 0, \quad
+    \pdv{\mathbf{F}_{x_2}}{y_2}{y_1} = 0, \\
+    &\pdv{\mathbf{F}_{x_2}}{y_2}{x_2} = -\beta_{vh} \frac{p_{22} e^{-\mu_2 \tau} a_2 (1-\kappa u_2(t))}{p_{12} N_1 + p_{22} N_2} < 0, \quad
+    \pdv{\mathbf{F}_{x_2}}{y_2}{y_2} = 0 \\
+    %
+    %
+    %
+    &\pdv{\mathbf{F}_{y_2}}{x_1}{x_1} = 0, \quad
+    \pdv{\mathbf{F}_{y_2}}{x_1}{y_1} = 0, \\
+    &\pdv{\mathbf{F}_{y_2}}{x_1}{x_2} = 0, \quad
+    \pdv{\mathbf{F}_{y_2}}{x_1}{y_2} = -\beta_{hv} a_2 \frac{p_{12} (1-\kappa u_1(t))}{p_{12} N_1 + p_{22} N_2} < 0 \\
+    %
+    &\pdv{\mathbf{F}_{y_2}}{y_1}{x_1} = 0, \quad
+    \pdv{\mathbf{F}_{y_2}}{y_1}{y_1} = 0, \\
+    &\pdv{\mathbf{F}_{y_2}}{y_1}{x_2} = 0, \quad
+    \pdv{\mathbf{F}_{y_2}}{y_1}{y_2} = 0 \\
+    %
+    &\pdv{\mathbf{F}_{y_2}}{x_2}{x_1} = 0, \quad
+    \pdv{\mathbf{F}_{y_2}}{x_2}{y_1} = 0, \\
+    &\pdv{\mathbf{F}_{y_2}}{x_2}{x_2} = 0, \quad
+    \pdv{\mathbf{F}_{y_2}}{x_2}{y_2} = -\beta_{hv} a_2 \frac{p_{22} (1-\kappa u_2(t))}{p_{12} N_1 + p_{22} N_2} < 0 \\
+    %
+    &\pdv{\mathbf{F}_{y_2}}{y_2}{x_1} = -\beta_{hv} a_2 \frac{p_{12} (1-\kappa u_1(t))}{p_{12} N_1 + p_{22} N_2} < 0, \quad
+    \pdv{\mathbf{F}_{y_2}}{y_2}{y_1} = 0, \\
+    &\pdv{\mathbf{F}_{y_2}}{y_2}{x_2} = -\beta_{hv} a_2 \frac{p_{22} (1-\kappa u_2(t))}{p_{12} N_1 + p_{22} N_2} < 0, \quad
+    \pdv{\mathbf{F}_{y_2}}{y_2}{y_2} = 0
+  \end{align*}
+}
+Така достатъчното условие е изпълнено и системата притежава силна вдлъбнатост.
+
 \subsection{Неподвижни точки}
-Да разгледаме $\mathbf{u}(t)=\bar{\mathbf{u}}$. Веднага се вижда, че $\mathbf{F}(\mathbf{0}, \mathbf{u}) = \mathbf{0}$, т.е. $\mathbf{0}$ е тривиалната неподвижна точка на системата.
+Да разгледаме константно управление $\mathbf{u}(t)=\mathbf{u}$. Веднага се вижда, че $\mathbf{F}(\mathbf{0}, \mathbf{u}) = \mathbf{0}$, т.е. $\mathbf{0}$ е тривиалната неподвижна точка на системата.
 Сега разглеждаме за фиксирано укравление $\mathbf{u}(t) \equiv \mathbf{u}$.
 
-Ще използваме теоремата на Смит за автономни системи.
+Ще използваме теоремата на Smith за автономни системи. Видя се, че системата е кооперативна, с неразложима матрица на Якоби и е силно вдлъбната. Тогава имаме всички условия от ЦИТАТ!!!.
+При $R_0 \leq 1$, $\mathbf{0}$ е единствена устойчива неподвижна точка, а при $R_0 > 1$, то $\mathbf{0}$ е неустойчива неподвижна точка и съществува точно една друга устойчива, намираща се във вътрешността на $X$.
+
+Във случая $\mathbf{u}(t)=\bar{\mathbf{u}}$, то ако имаме ендемична точка $\mathbf{p}$ и $p_1 > \bar{I}_1 \lor p_3 > \bar{I}_2$, то търсената от нас задача няма решение. Наистина, всяка друга система $\mathbf{u}(t)$ мяжорира тази, а тук поне от някъде нататък траекторията злиза извън желаното множество. Но тогава и за всяка друга система траекторията ще излезе от него, тоест не можем да намерим каквото и да било управление, за което във всеки момент заразените и в двете области хора да са под желаните прагове.
+
+Обратната посока не е ясна. В случая $\mathbf{u}(t)=\mathbf{0}$, то ако липсва ендемична точка, решението ще клони към $\mathbf{0}$, но не е ясно дали винаги се намира в желаното множество, или по някакъв начин се нгъва и клони излизайки от него.
+
 % Да изведем матрицата на Якоби $\mathrm{D} \mathbf{F}(x_1, y_1, x_2, y_2)(t)$:
 % \begin{align*}
 %   &\mathrm{D} \mathbf{F}(x_1, y_1, x_2, y_2)(t) = \\
