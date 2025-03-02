@@ -100,7 +100,7 @@
 \end{align*}
 
 
-\subsection{Квазимонотонност}
+\subsection{Кооперативност (квазимонотонност)}
 Доказваме квазимонотонността по дефиницията \color{Red} ДЕФИНИЦИЯ!!!
 \color{Black}
 \begin{align*}
@@ -119,7 +119,23 @@
 \end{align*}
 
 \subsection{Неподвижни точки}
-Да разгледаме $\mathbf{u}(t)=\bar{\mathbf{u}}$. Веднага се вижда, че $\mathbf{F}(\mathbf{0}, \mathbf{u}) = \mathbf{0}$, т.е. $\mathbf{0}$ е тривиалната неподвижна точка на системата. Ако тази точка е устойчива, то тя е единствена, а ако е неустойчива, то съществува единствена друга неподвижна точка.
+Да разгледаме $\mathbf{u}(t)=\bar{\mathbf{u}}$. Веднага се вижда, че $\mathbf{F}(\mathbf{0}, \mathbf{u}) = \mathbf{0}$, т.е. $\mathbf{0}$ е тривиалната неподвижна точка на системата.
+Сега разглеждаме за фиксирано укравление $\mathbf{u}(t) \equiv \mathbf{u}$.
+
+Ще използваме теоремата на Смит за автономни системи.
+Да изведем матрицата на Якоби $\mathrm{D} \mathbf{F}(x_1, y_1, x_2, y_2)(t)$:
+\begin{align*}
+  &\mathrm{D} \mathbf{F}(x_1, y_1, x_2, y_2)(t) = \\
+  &
+  \begin{small}
+    \begin{pmatrix}
+      - \beta_{vh} \left(\frac{p_{11} e^{-\mu_1 \tau} a_1 (1-\kappa u_1) y_1(t)}{p_{11} N_1 + p_{21} N_2} + \frac{p_{12} e^{-\mu_2 \tau} a_2 (1-\kappa u_1) y_2(t)}{p_{12} N_1 + p_{22} N_2}\right) - \gamma_1 && \beta_{vh} (N_1-x_1(t)) \frac{p_{11} e^{-\mu_1 \tau} a_1 (1-\kappa u_1)}{p_{11} N_1 + p_{21} N_2} && 0 && \beta_{vh} (N_1-x_1(t)) \frac{p_{12} e^{-\mu_2 \tau} a_2 (1-\kappa u_1)}{p_{12} N_1 + p_{22} N_2} \\
+      \beta_{hv} a_1 (M_1-y_1(t)) \frac{p_{11} (1-\kappa u_1)}{p_{11} N_1 + p_{21} N_2} && -\beta_{hv} a_1 \frac{p_{11} (1-\kappa u_1) x_1(t) + p_{21} (1-\kappa u_2) x_2(t)}{p_{11} N_1 + p_{21} N_2} - \mu_1 && \beta_{hv} a_1 (M_1-y_1(t)) \frac{p_{21} (1-\kappa u_2)}{p_{11} N_1 + p_{21} N_2}&& 0 \\
+      0 && \beta_{vh} (N_2-x_2(t)) \frac{p_{21} e^{-\mu_1 \tau} a_1 (1-\kappa u_2)}{p_{11} N_1 + p_{21} N_2} && -\beta_{vh} \left(\frac{p_{21} e^{-\mu_1 \tau} a_1 (1-\kappa u_2) y_1(t)}{p_{11} N_1 + p_{21} N_2} + \frac{p_{22} e^{-\mu_2 \tau} a_2 (1-\kappa u_2) y_2(t)}{p_{12} N_1 + p_{22} N_2}\right) - \gamma_2 && \beta_{vh} (N_2-x_2(t)) \frac{p_{22} e^{-\mu_2 \tau} a_2 (1-\kappa u_2) y_2(t)}{p_{12} N_1 + p_{22} N_2} \\
+      \beta_{hv} a_2 (M_2-y_2(t)) \frac{p_{12} (1-\kappa u_1)}{p_{12} N_1 + p_{22} N_2} && 0 && \beta_{hv} a_2 (M_2-y_2(t)) \frac{p_{22} (1-\kappa u_2) x_2(t)}{p_{12} N_1 + p_{22} N_2} && -\beta_{hv} a_2 \frac{p_{12} (1-\kappa u_1) x_1(t) + p_{22} (1-\kappa u_2) x_2(t)}{p_{12} N_1 + p_{22} N_2} - \mu_2 \\
+    \end{pmatrix}
+  \end{small}
+\end{align*}
 
 % % Да разгледаме $A_{ij}=\frac{a_j b_j p_ij e^{-\mu_j \tau_j}}{H_j}$, $B_{ij}=\frac{a_j c_j \delta_{ij}}{H_j}$
 % \color{Red} ДА СЕ ОПРАВЯТ ЗНАМЕНАТЕЛИТЕ!!!
