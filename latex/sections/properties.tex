@@ -90,52 +90,83 @@
 Трябва да се покаже, че $\mathbf{F}$ сочи към вътрешността на $X$, ако решението се намира по границата $\partial X$. Но това наистина е така, от:
 \begin{align*}
   &\dot{x}_1(t)\vert_{X \cap \{x_1(t)=0\}} = \beta_{vh} N_1(t) \left(\frac{p_{11} e^{-\mu_1 \tau} a_1 (1-\kappa u_1(t)) y_1(t)}{p_{11} N_1 + p_{21} N_2} + \frac{p_{12} e^{-\mu_2 \tau} a_2 (1-\kappa u_1(t)) y_2(t)}{p_{12} N_1 + p_{22} N_2 }\right) \geq 0 \\
-  &\dot{x}_1(t)\vert_{X \cap \{x_1(t)=N_1\}} = - \gamma_1 N_1 \leq 0 \\
+  &\dot{x}_1(t)\vert_{X \cap \{x_1(t)=N_1\}} = - \gamma_1 N_1 < 0 \\
   &\dot{y}_1(t)\vert_{X \cap \{y_1(t)=0\}} = \beta_{hv} a_1 M_1 \frac{p_{11} (1-\kappa u_1(t)) x_1(t) + p_{21} (1-\kappa u_2(t)) x_2(t)}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
-  &\dot{y}_1(t)\vert_{X \cap \{y_1(t)=M_1\}} = - \mu_1 M_1 = 0 \\
+  &\dot{y}_1(t)\vert_{X \cap \{y_1(t)=M_1\}} = - \mu_1 M_1 < 0 \\
   &\dot{x}_2(t)\vert_{X \cap \{x_2(t)=0\}} = \beta_{vh} N_2 \left(\frac{p_{21} e^{-\mu_1 \tau} a_1 (1-\kappa u_2(t)) y_1(t)}{p_{11} N_1 + p_{21} N_2} + \frac{p_{22} e^{-\mu_2 \tau} a_2 (1-\kappa u_2(t)) y_2(t)}{p_{12} N_1 + p_{22} N_2}\right) \geq 0 \\
-  &\dot{x}_2(t)\vert_{X \cap \{x_2(t)=N_2\}} = - \gamma_2 N_2 \leq 0 \\
+  &\dot{x}_2(t)\vert_{X \cap \{x_2(t)=N_2\}} = - \gamma_2 N_2 < 0 \\
   &\dot{y}_2(t)\vert_{X \cap \{y_2(t)=0\}} = \beta_{hv} a_2 M_2 \frac{p_{12} (1-\kappa u_1(t)) x_1(t) + p_{22} (1-\kappa u_2(t)) x_2(t)}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
-  &\dot{y}_2(t)\vert_{X \cap \{y_2(t)=M_2\}} = - \mu_2 M_2 \leq 0
+  &\dot{y}_2(t)\vert_{X \cap \{y_2(t)=M_2\}} = - \mu_2 M_2 < 0
 \end{align*}
-
 
 \subsection{Кооперативност (квазимонотонност)}
 Доказваме квазимонотонността по дефиницията \color{Red} ДЕФИНИЦИЯ!!!
 \color{Black}
+Матрицата на Якоби $\mathrm{D} \mathbf{F}(x_1, y_1, x_2, y_2)(t)$ ще ни трябав и натам, затова нека я изведем изцяло:
 \begin{align*}
-  &\pdv{\dot{x}_1}{y_1} = \beta_{vh} (N_1-x_1(t)) \frac{p_{11} e^{-\mu_1 \tau} a_1 (1-\kappa u_1(t))}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
-  &\pdv{\dot{x}_1}{x_2} = 0 \\
-  &\pdv{\dot{x}_1}{y_2} = \beta_{vh} (N_1-x_1(t))\frac{p_{12} e^{-\mu_2 \tau} a_2 (1-\kappa u_1(t))}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
-  &\pdv{\dot{y}_1}{x_1} = \beta_{hv} a_1 (M_1-y_1(t)) \frac{p_{11} (1-\kappa u_1(t))}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
-  &\pdv{\dot{y}_1}{x_2} = \beta_{hv} a_1 (M_1-y_1(t)) \frac{p_{21} (1-\kappa u_2(t))}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
-  &\pdv{\dot{y}_1}{y_2} = 0 \\
-  &\pdv{\dot{x}_2}{x_1} = 0 \\
-  &\pdv{\dot{x}_2}{y_1} = \beta_{vh} (N_2-x_2(t)) \frac{p_{21} e^{-\mu_1 \tau} a_1 (1-\kappa u_2(t))}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
-  &\pdv{\dot{x}_2}{y_2} = \beta_{vh} (N_2-x_2(t)) \frac{p_{22} e^{-\mu_2 \tau} a_2 (1-\kappa u_2(t))}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
-  &\pdv{\dot{y}_2}{x_1} = \beta_{hv} a_2 (M_2-y_2(t)) \frac{p_{12} (1-\kappa u_1(t))}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
-  &\pdv{\dot{y}_2}{y_1} = 0 \\
-  &\pdv{\dot{y}_2}{x_2} = \beta_{hv} a_2 (M_2-y_2(t)) \frac{p_{22} (1-\kappa u_2(t))}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
+  &\mathrm{D} \mathbf{F}(x_1, y_1, x_2, y_2)(t) =
+  \begin{pmatrix}
+    \pdv{\mathbf{F}_{x_1}}{x_1} && \pdv{\mathbf{F}_{x_1}}{y_1} && \pdv{\mathbf{F}_{x_1}}{x_2} && \pdv{\mathbf{F}_{x_1}}{y_2} \\
+    \pdv{\mathbf{F}_{y_1}}{x_1} && \pdv{\mathbf{F}_{y_1}}{y_1} && \pdv{\mathbf{F}_{y_1}}{x_2} && \pdv{\mathbf{F}_{y_1}}{y_2} \\
+    \pdv{\mathbf{F}_{x_2}}{x_1} && \pdv{\mathbf{F}_{x_2}}{y_1} && \pdv{\mathbf{F}_{x_2}}{x_2} && \pdv{\mathbf{F}_{x_2}}{y_2} \\
+    \pdv{\mathbf{F}_{y_2}}{x_1} && \pdv{\mathbf{F}_{y_2}}{y_1} && \pdv{\mathbf{F}_{y_2}}{x_2} && \pdv{\mathbf{F}_{y_2}}{y_2}
+  \end{pmatrix} \\
+  &\pdv{\mathbf{F}_{x_1}}{x_1} = \pdv{\dot{x}_1}{x_1} = -\beta_{vh} \left(\frac{p_{11} e^{-\mu_1 \tau} a_1 (1-\kappa u_1) y_1(t)}{p_{11} N_1 + p_{21} N_2} + \frac{p_{12} e^{-\mu_2 \tau} a_2 (1-\kappa u_1) y_2(t)}{p_{12} N_1 + p_{22} N_2}\right) - \gamma_1 < 0 \\
+  &\pdv{\mathbf{F}_{x_1}}{y_1} = \pdv{\dot{x}_1}{y_1} = \beta_{vh} (N_1-x_1(t)) \frac{p_{11} e^{-\mu_1 \tau} a_1 (1-\kappa u_1(t))}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
+  &\pdv{\mathbf{F}_{x_1}}{x_2} = \pdv{\dot{x}_1}{x_2} = 0 \\
+  &\pdv{\mathbf{F}_{x_1}}{y_2} = \pdv{\dot{x}_1}{y_2} = \beta_{vh} (N_1-x_1(t))\frac{p_{12} e^{-\mu_2 \tau} a_2 (1-\kappa u_1(t))}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
+  &\pdv{\mathbf{F}_{y_1}}{y_1} = \pdv{\dot{y}_1}{x_1} = \beta_{hv} a_1 (M_1-y_1(t)) \frac{p_{11} (1-\kappa u_1(t))}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
+  &\pdv{\mathbf{F}_{y_1}}{y_1} = \pdv{\dot{y}_1}{y_1} = -\beta_{hv} a_1 \frac{p_{11} (1-\kappa u_1) x_1(t) + p_{21} (1-\kappa u_2) x_2(t)}{p_{11} N_1 + p_{21} N_2} - \mu_1 < 0 \\
+  &\pdv{\mathbf{F}_{y_1}}{x_2} = \pdv{\dot{y}_1}{x_2} = \beta_{hv} a_1 (M_1-y_1(t)) \frac{p_{21} (1-\kappa u_2(t))}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
+  &\pdv{\mathbf{F}_{y_1}}{y_2} = \pdv{\dot{y}_1}{y_2} = 0 \\
+  &\pdv{\mathbf{F}_{x_2}}{x_1} = \pdv{\dot{x}_2}{x_1} = 0 \\
+  &\pdv{\mathbf{F}_{x_2}}{y_1} = \pdv{\dot{x}_2}{y_1} = \beta_{vh} (N_2-x_2(t)) \frac{p_{21} e^{-\mu_1 \tau} a_1 (1-\kappa u_2(t))}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
+  &\pdv{\mathbf{F}_{x_2}}{x_2} = \pdv{\dot{x}_2}{x_2} = -\beta_{vh} \left(\frac{p_{21} e^{-\mu_1 \tau} a_1 (1-\kappa u_2) y_1(t)}{p_{11} N_1 + p_{21} N_2} + \frac{p_{22} e^{-\mu_2 \tau} a_2 (1-\kappa u_2) y_2(t)}{p_{12} N_1 + p_{22} N_2}\right) - \gamma_2 < 0 \\
+  &\pdv{\mathbf{F}_{x_2}}{y_2} = \pdv{\dot{x}_2}{y_2} = \beta_{vh} (N_2-x_2(t)) \frac{p_{22} e^{-\mu_2 \tau} a_2 (1-\kappa u_2(t))}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
+  &\pdv{\mathbf{F}_{y_2}}{x_1} = \pdv{\dot{y}_2}{x_1} = \beta_{hv} a_2 (M_2-y_2(t)) \frac{p_{12} (1-\kappa u_1(t))}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
+  &\pdv{\mathbf{F}_{y_12}}{y_1} = \pdv{\dot{y}_2}{y_1} = 0 \\
+  &\pdv{\mathbf{F}_{y_2}}{x_2} = \pdv{\dot{y}_2}{x_2} = \beta_{hv} a_2 (M_2-y_2(t)) \frac{p_{22} (1-\kappa u_2(t))}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
+  &\pdv{\mathbf{F}_{y_2}}{y_2} = \pdv{\dot{y}_2}{y_2} = -\beta_{hv} a_2 \frac{p_{12} (1-\kappa u_1) x_1(t) + p_{22} (1-\kappa u_2) x_2(t)}{p_{12} N_1 + p_{22} N_2} - \mu_2 < 0
 \end{align*}
+
+Извън главния диагонал има само неотрицателни елементи, тогава системата е кооперативна.
+
+% \subsection{Кооперативност (квазимонотонност)}
+% Доказваме квазимонотонността по дефиницията \color{Red} ДЕФИНИЦИЯ!!!
+% \color{Black}
+% \begin{align*}
+%   &\pdv{\dot{x}_1}{y_1} = \beta_{vh} (N_1-x_1(t)) \frac{p_{11} e^{-\mu_1 \tau} a_1 (1-\kappa u_1(t))}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
+%   &\pdv{\dot{x}_1}{x_2} = 0 \\
+%   &\pdv{\dot{x}_1}{y_2} = \beta_{vh} (N_1-x_1(t))\frac{p_{12} e^{-\mu_2 \tau} a_2 (1-\kappa u_1(t))}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
+%   &\pdv{\dot{y}_1}{x_1} = \beta_{hv} a_1 (M_1-y_1(t)) \frac{p_{11} (1-\kappa u_1(t))}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
+%   &\pdv{\dot{y}_1}{x_2} = \beta_{hv} a_1 (M_1-y_1(t)) \frac{p_{21} (1-\kappa u_2(t))}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
+%   &\pdv{\dot{y}_1}{y_2} = 0 \\
+%   &\pdv{\dot{x}_2}{x_1} = 0 \\
+%   &\pdv{\dot{x}_2}{y_1} = \beta_{vh} (N_2-x_2(t)) \frac{p_{21} e^{-\mu_1 \tau} a_1 (1-\kappa u_2(t))}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
+%   &\pdv{\dot{x}_2}{y_2} = \beta_{vh} (N_2-x_2(t)) \frac{p_{22} e^{-\mu_2 \tau} a_2 (1-\kappa u_2(t))}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
+%   &\pdv{\dot{y}_2}{x_1} = \beta_{hv} a_2 (M_2-y_2(t)) \frac{p_{12} (1-\kappa u_1(t))}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
+%   &\pdv{\dot{y}_2}{y_1} = 0 \\
+%   &\pdv{\dot{y}_2}{x_2} = \beta_{hv} a_2 (M_2-y_2(t)) \frac{p_{22} (1-\kappa u_2(t))}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
+% \end{align*}
 
 \subsection{Неподвижни точки}
 Да разгледаме $\mathbf{u}(t)=\bar{\mathbf{u}}$. Веднага се вижда, че $\mathbf{F}(\mathbf{0}, \mathbf{u}) = \mathbf{0}$, т.е. $\mathbf{0}$ е тривиалната неподвижна точка на системата.
 Сега разглеждаме за фиксирано укравление $\mathbf{u}(t) \equiv \mathbf{u}$.
 
 Ще използваме теоремата на Смит за автономни системи.
-Да изведем матрицата на Якоби $\mathrm{D} \mathbf{F}(x_1, y_1, x_2, y_2)(t)$:
-\begin{align*}
-  &\mathrm{D} \mathbf{F}(x_1, y_1, x_2, y_2)(t) = \\
-  &
-  \begin{small}
-    \begin{pmatrix}
-      - \beta_{vh} \left(\frac{p_{11} e^{-\mu_1 \tau} a_1 (1-\kappa u_1) y_1(t)}{p_{11} N_1 + p_{21} N_2} + \frac{p_{12} e^{-\mu_2 \tau} a_2 (1-\kappa u_1) y_2(t)}{p_{12} N_1 + p_{22} N_2}\right) - \gamma_1 && \beta_{vh} (N_1-x_1(t)) \frac{p_{11} e^{-\mu_1 \tau} a_1 (1-\kappa u_1)}{p_{11} N_1 + p_{21} N_2} && 0 && \beta_{vh} (N_1-x_1(t)) \frac{p_{12} e^{-\mu_2 \tau} a_2 (1-\kappa u_1)}{p_{12} N_1 + p_{22} N_2} \\
-      \beta_{hv} a_1 (M_1-y_1(t)) \frac{p_{11} (1-\kappa u_1)}{p_{11} N_1 + p_{21} N_2} && -\beta_{hv} a_1 \frac{p_{11} (1-\kappa u_1) x_1(t) + p_{21} (1-\kappa u_2) x_2(t)}{p_{11} N_1 + p_{21} N_2} - \mu_1 && \beta_{hv} a_1 (M_1-y_1(t)) \frac{p_{21} (1-\kappa u_2)}{p_{11} N_1 + p_{21} N_2}&& 0 \\
-      0 && \beta_{vh} (N_2-x_2(t)) \frac{p_{21} e^{-\mu_1 \tau} a_1 (1-\kappa u_2)}{p_{11} N_1 + p_{21} N_2} && -\beta_{vh} \left(\frac{p_{21} e^{-\mu_1 \tau} a_1 (1-\kappa u_2) y_1(t)}{p_{11} N_1 + p_{21} N_2} + \frac{p_{22} e^{-\mu_2 \tau} a_2 (1-\kappa u_2) y_2(t)}{p_{12} N_1 + p_{22} N_2}\right) - \gamma_2 && \beta_{vh} (N_2-x_2(t)) \frac{p_{22} e^{-\mu_2 \tau} a_2 (1-\kappa u_2) y_2(t)}{p_{12} N_1 + p_{22} N_2} \\
-      \beta_{hv} a_2 (M_2-y_2(t)) \frac{p_{12} (1-\kappa u_1)}{p_{12} N_1 + p_{22} N_2} && 0 && \beta_{hv} a_2 (M_2-y_2(t)) \frac{p_{22} (1-\kappa u_2) x_2(t)}{p_{12} N_1 + p_{22} N_2} && -\beta_{hv} a_2 \frac{p_{12} (1-\kappa u_1) x_1(t) + p_{22} (1-\kappa u_2) x_2(t)}{p_{12} N_1 + p_{22} N_2} - \mu_2 \\
-    \end{pmatrix}
-  \end{small}
-\end{align*}
+% Да изведем матрицата на Якоби $\mathrm{D} \mathbf{F}(x_1, y_1, x_2, y_2)(t)$:
+% \begin{align*}
+%   &\mathrm{D} \mathbf{F}(x_1, y_1, x_2, y_2)(t) = \\
+%   &
+%   \begin{tiny}
+%     \begin{pmatrix}
+%       - \beta_{vh} \left(\frac{p_{11} e^{-\mu_1 \tau} a_1 (1-\kappa u_1) y_1(t)}{p_{11} N_1 + p_{21} N_2} + \frac{p_{12} e^{-\mu_2 \tau} a_2 (1-\kappa u_1) y_2(t)}{p_{12} N_1 + p_{22} N_2}\right) - \gamma_1 && \beta_{vh} (N_1-x_1(t)) \frac{p_{11} e^{-\mu_1 \tau} a_1 (1-\kappa u_1)}{p_{11} N_1 + p_{21} N_2} && 0 && \beta_{vh} (N_1-x_1(t)) \frac{p_{12} e^{-\mu_2 \tau} a_2 (1-\kappa u_1)}{p_{12} N_1 + p_{22} N_2} \\
+%       \beta_{hv} a_1 (M_1-y_1(t)) \frac{p_{11} (1-\kappa u_1)}{p_{11} N_1 + p_{21} N_2} && -\beta_{hv} a_1 \frac{p_{11} (1-\kappa u_1) x_1(t) + p_{21} (1-\kappa u_2) x_2(t)}{p_{11} N_1 + p_{21} N_2} - \mu_1 && \beta_{hv} a_1 (M_1-y_1(t)) \frac{p_{21} (1-\kappa u_2)}{p_{11} N_1 + p_{21} N_2}&& 0 \\
+%       0 && \beta_{vh} (N_2-x_2(t)) \frac{p_{21} e^{-\mu_1 \tau} a_1 (1-\kappa u_2)}{p_{11} N_1 + p_{21} N_2} && -\beta_{vh} \left(\frac{p_{21} e^{-\mu_1 \tau} a_1 (1-\kappa u_2) y_1(t)}{p_{11} N_1 + p_{21} N_2} + \frac{p_{22} e^{-\mu_2 \tau} a_2 (1-\kappa u_2) y_2(t)}{p_{12} N_1 + p_{22} N_2}\right) - \gamma_2 && \beta_{vh} (N_2-x_2(t)) \frac{p_{22} e^{-\mu_2 \tau} a_2 (1-\kappa u_2) y_2(t)}{p_{12} N_1 + p_{22} N_2} \\
+%       \beta_{hv} a_2 (M_2-y_2(t)) \frac{p_{12} (1-\kappa u_1)}{p_{12} N_1 + p_{22} N_2} && 0 && \beta_{hv} a_2 (M_2-y_2(t)) \frac{p_{22} (1-\kappa u_2) x_2(t)}{p_{12} N_1 + p_{22} N_2} && -\beta_{hv} a_2 \frac{p_{12} (1-\kappa u_1) x_1(t) + p_{22} (1-\kappa u_2) x_2(t)}{p_{12} N_1 + p_{22} N_2} - \mu_2 \\
+%     \end{pmatrix}
+%   \end{tiny}
+% \end{align*}
 
 % % Да разгледаме $A_{ij}=\frac{a_j b_j p_ij e^{-\mu_j \tau_j}}{H_j}$, $B_{ij}=\frac{a_j c_j \delta_{ij}}{H_j}$
 % \color{Red} ДА СЕ ОПРАВЯТ ЗНАМЕНАТЕЛИТЕ!!!
