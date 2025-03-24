@@ -20,7 +20,7 @@ margin = 1.5 cm]
   с две местообитания},
   pdfcreator={Калоян Стоилов},
   pdfproducer={Калоян Стоилов},
-  pdfkeywords={SIS, Ross-Macdonald, репелент, миграция},
+  pdfkeywords={SIS, Ross-Macdonald, репелент, мобилност},
 }
 
 % Somehow prevents "Too many math alphabets used in version normal"
@@ -81,9 +81,27 @@ margin = 1.5 cm]
 \usepackage[backend=biber]{biblatex}
 \usepackage[nottoc,numbib]{tocbibind}
 \usepackage{csquotes}
+\usepackage{titlesec}
 
 % Since physics package uses physics <.|.> notation
 \renewcommand{\innerproduct}[2]{\langle #1, #2 \rangle}
+
+% For Roman numbers on sections
+\renewcommand{\thesection}{\Roman{section}}
+% For new page after end of section
+\newcommand{\sectionbreak}{\clearpage}
+
+% For theorem text
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{corollary}[theorem]{Следствие}
+\newtheorem{lemma}[theorem]{Лема}
+\newtheorem{proposition}[theorem]{Твърдение}
+\newtheorem*{remark}{Забележка}
+\theoremstyle{definition}
+\newtheorem{definition}{Дефиниция}[section]
+
+% For symbol at end of proof environment
+\renewcommand\qedsymbol{$\blacksquare$}
 
 % Fix original date
 % \usepackage{datetime}
