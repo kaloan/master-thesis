@@ -156,13 +156,14 @@
     \pdv{\mathbf{F}_{y_2}}{x_1} && \pdv{\mathbf{F}_{y_2}}{x_2} && \pdv{\mathbf{F}_{y_2}}{y_1} && \pdv{\mathbf{F}_{y_2}}{y_2}
     \end{pmatrix}
     \end{equation}
-    
+
     \begin{proposition}
     Система \ref{eq:TheDimensionlessProblem} е кооперативна.
     \end{proposition}
-    
+
     \begin{proof}
     \begin{equation}
+      \label{eq:JacobianElements}
     \begin{split}
       &\pdv{\mathbf{F}_{x_1}}{x_1} = \pdv{\dot{x}_1}{x_1} = -(1-\kappa u_1(t)) \left(b_{11} y_1(t) + b_{12} y_2(t)\right) - \gamma_1 < 0 \\
       &\pdv{\mathbf{F}_{x_1}}{x_2} = \pdv{\dot{x}_1}{x_2} = 0 \\
@@ -218,7 +219,7 @@
   Якобианът на системата $\ref{eq:TheProblem}$ е неразложим.
 \end{proposition}
 \begin{proof}
-  Заместваме ненулевите елементи на $\mathrm{D} \mathbf{F}$ с 1. Така получаваме графа с матрица на съседство $\mathrm{D}$:
+  Заместваме ненулевите елементи на $\mathrm{D} \mathbf{F}$ с 1 (тях знаем от \ref{eq:JacobianElements}). Така получаваме графа с матрица на съседство $\mathrm{D}$:
   \begin{equation}
     \mathrm{D} =
     \begin{pmatrix}
@@ -253,89 +254,89 @@
 {\allowdisplaybreaks
   \begin{align*}
     &\pdv{\mathbf{F}_{x_1}}{x_1}{x_1} = 0, \quad
-    \pdv{\mathbf{F}_{x_1}}{x_1}{y_1} = -\beta_{vh} \frac{p_{11} e^{-\mu_1 \tau} a_1 (1-\kappa u_1(t))}{p_{11} N_1 + p_{21} N_2} < 0, \\
-    &\pdv{\mathbf{F}_{x_1}}{x_1}{x_2} = 0, \quad
-    \pdv{\mathbf{F}_{x_1}}{x_1}{y_2} = -\beta_{vh} \frac{p_{12} e^{-\mu_2 \tau} a_2 (1-\kappa u_1(t))}{p_{12} N_1 + p_{22} N_2} < 0 \\
-    %
-    &\pdv{\mathbf{F}_{x_1}}{y_1}{x_1} = -\beta_{vh} \frac{p_{11} e^{-\mu_1 \tau} a_1 (1-\kappa u_1(t))}{p_{11} N_1 + p_{21} N_2}  < 0, \quad
-    \pdv{\mathbf{F}_{x_1}}{y_1}{y_1} = 0, \\
-    &\pdv{\mathbf{F}_{x_1}}{y_1}{x_2} = 0, \quad
-    \pdv{\mathbf{F}_{x_1}}{y_1}{y_2} = 0 \\
+    \pdv{\mathbf{F}_{x_1}}{x_1}{x_2} = 0, \quad
+    \pdv{\mathbf{F}_{x_1}}{x_1}{y_1} = -(1-\kappa u_1(t)) b_{11} < 0, \quad
+    \pdv{\mathbf{F}_{x_1}}{x_1}{y_2} = -(1-\kappa u_1(t)) b_{12} < 0 \\
     %
     &\pdv{\mathbf{F}_{x_1}}{x_2}{x_1} = 0, \quad
-    \pdv{\mathbf{F}_{x_1}}{x_2}{y_1} = 0, \\
-    &\pdv{\mathbf{F}_{x_1}}{x_2}{x_2} = 0, \quad
+    \pdv{\mathbf{F}_{x_1}}{x_2}{x_2} = 0, \quad
+    \pdv{\mathbf{F}_{x_1}}{x_2}{y_1} = 0, \quad
     \pdv{\mathbf{F}_{x_1}}{x_2}{y_2} = 0 \\
     %
-    &\pdv{\mathbf{F}_{x_1}}{y_2}{x_1} = -\beta_{vh} \frac{p_{12} e^{-\mu_2 \tau} a_2 (1-\kappa u_1(t))}{p_{12} N_1 + p_{22} N_2} < 0, \quad
-    \pdv{\mathbf{F}_{x_1}}{y_2}{y_1} = 0, \\
-    &\pdv{\mathbf{F}_{x_1}}{y_2}{x_2} = 0, \quad
+    &\pdv{\mathbf{F}_{x_1}}{y_1}{x_1} = -(1-\kappa u_1(t)) b_{11} < 0, \quad
+    \pdv{\mathbf{F}_{x_1}}{y_1}{x_2} = 0, \quad
+    \pdv{\mathbf{F}_{x_1}}{y_1}{y_1} = 0, \quad
+    \pdv{\mathbf{F}_{x_1}}{y_1}{y_2} = 0 \\
+    %
+    &\pdv{\mathbf{F}_{x_1}}{y_2}{x_1} = -(1-\kappa u_1(t)) b_{12} < 0, \quad
+    \pdv{\mathbf{F}_{x_1}}{y_2}{x_2} = 0, \quad
+    \pdv{\mathbf{F}_{x_1}}{y_2}{y_1} = 0, \quad
     \pdv{\mathbf{F}_{x_1}}{y_2}{y_2} = 0 \\
     %
     %
     %
-    &\pdv{\mathbf{F}_{y_1}}{x_1}{x_1} = 0, \quad
-    \pdv{\mathbf{F}_{y_1}}{x_1}{y_1} = -\beta_{hv} a_1 \frac{p_{11} (1-\kappa u_1(t))}{p_{11} N_1 + p_{21} N_2} < 0, \\
-    &\pdv{\mathbf{F}_{y_1}}{x_1}{x_2} = 0, \quad
-    \pdv{\mathbf{F}_{y_1}}{x_1}{y_2} = 0 \\
-    %
-    &\pdv{\mathbf{F}_{y_1}}{y_1}{x_1} = -\beta_{hv} a_1 \frac{p_{11} (1-\kappa u_1(t))}{p_{11} N_1 + p_{21} N_2} < 0, \quad
-    \pdv{\mathbf{F}_{y_1}}{y_1}{y_1} = 0, \\
-    &\pdv{\mathbf{F}_{y_1}}{y_1}{x_2} = -\beta_{hv} a_1 \frac{p_{21} (1-\kappa u_2(t)) x_2(t)}{p_{11} N_1 + p_{21} N_2}, \quad
-    \pdv{\mathbf{F}_{y_1}}{y_1}{y_2} = 0 \\
-    %
-    &\pdv{\mathbf{F}_{y_1}}{x_2}{x_1} = 0, \quad
-    \pdv{\mathbf{F}_{y_1}}{x_2}{y_1} = -\beta_{hv} a_1 \frac{p_{21} (1-\kappa u_2(t))}{p_{11} N_1 + p_{21} N_2} < 0, \\
-    &\pdv{\mathbf{F}_{y_1}}{x_2}{x_2} = 0, \quad
-    \pdv{\mathbf{F}_{y_1}}{x_2}{y_2} = 0 \\
-    %
-    &\pdv{\mathbf{F}_{y_1}}{y_2}{x_1} = 0, \quad
-    \pdv{\mathbf{F}_{y_1}}{y_2}{y_1} = 0, \\
-    &\pdv{\mathbf{F}_{y_1}}{y_2}{x_2} = 0, \quad
-    \pdv{\mathbf{F}_{y_1}}{y_2}{y_2} = 0 \\
-    %
-    %
-    %
     &\pdv{\mathbf{F}_{x_2}}{x_1}{x_1} = 0, \quad
-    \pdv{\mathbf{F}_{x_2}}{x_1}{y_1} = 0, \\
-    &\pdv{\mathbf{F}_{x_2}}{x_1}{x_2} = 0, \quad
+    \pdv{\mathbf{F}_{x_2}}{x_1}{x_2} = 0, \quad
+    \pdv{\mathbf{F}_{x_2}}{x_1}{y_1} = 0, \quad
     \pdv{\mathbf{F}_{x_2}}{x_1}{y_2} = 0 \\
     %
+    &\pdv{\mathbf{F}_{x_2}}{x_2}{x_1} = 0, \quad
+    \pdv{\mathbf{F}_{x_2}}{x_2}{y_1} = -(1-\kappa u_2(t)) b_{21}, \quad
+    \pdv{\mathbf{F}_{x_2}}{x_2}{x_2} = 0, \quad
+    \pdv{\mathbf{F}_{x_2}}{x_2}{y_2} = -(1-\kappa u_2(t)) b_{22} < 0 \\
+    %
     &\pdv{\mathbf{F}_{x_2}}{y_1}{x_1} = 0, \quad
-    \pdv{\mathbf{F}_{x_2}}{y_1}{y_1} = 0, \\
-    &\pdv{\mathbf{F}_{x_2}}{y_1}{x_2} = -\beta_{vh} \frac{p_{21} e^{-\mu_1 \tau} a_1 (1-\kappa u_2(t))}{p_{11} N_1 + p_{21} N_2} < 0, \quad
+    \pdv{\mathbf{F}_{x_2}}{y_1}{x_2} = -(1-\kappa u_2(t)) b_{21}, \quad
+    \pdv{\mathbf{F}_{x_2}}{y_1}{y_1} = 0, \quad
     \pdv{\mathbf{F}_{x_2}}{y_1}{y_2} = 0 \\
     %
-    &\pdv{\mathbf{F}_{x_2}}{x_2}{x_1} = 0, \quad
-    \pdv{\mathbf{F}_{x_2}}{x_2}{y_1} = -\beta_{vh} \frac{p_{21} e^{-\mu_1 \tau} a_1 (1-\kappa u_2(t))}{p_{11} N_1 + p_{21} N_2} < 0, \\
-    &\pdv{\mathbf{F}_{x_2}}{x_2}{x_2} = 0, \quad
-    \pdv{\mathbf{F}_{x_2}}{x_2}{y_2} = -\beta_{vh} \frac{p_{22} e^{-\mu_2 \tau} a_2 (1-\kappa u_2(t))}{p_{12} N_1 + p_{22} N_2} < 0 \\
-    %
     &\pdv{\mathbf{F}_{x_2}}{y_2}{x_1} = 0, \quad
-    \pdv{\mathbf{F}_{x_2}}{y_2}{y_1} = 0, \\
-    &\pdv{\mathbf{F}_{x_2}}{y_2}{x_2} = -\beta_{vh} \frac{p_{22} e^{-\mu_2 \tau} a_2 (1-\kappa u_2(t))}{p_{12} N_1 + p_{22} N_2} < 0, \quad
+    \pdv{\mathbf{F}_{x_2}}{y_2}{x_2} = -(1-\kappa u_2(t)) b_{22} < 0, \quad
+    \pdv{\mathbf{F}_{x_2}}{y_2}{y_1} = 0, \quad
     \pdv{\mathbf{F}_{x_2}}{y_2}{y_2} = 0 \\
     %
     %
     %
-    &\pdv{\mathbf{F}_{y_2}}{x_1}{x_1} = 0, \quad
-    \pdv{\mathbf{F}_{y_2}}{x_1}{y_1} = 0, \\
-    &\pdv{\mathbf{F}_{y_2}}{x_1}{x_2} = 0, \quad
-    \pdv{\mathbf{F}_{y_2}}{x_1}{y_2} = -\beta_{hv} a_2 \frac{p_{12} (1-\kappa u_1(t))}{p_{12} N_1 + p_{22} N_2} < 0 \\
+    &\pdv{\mathbf{F}_{y_1}}{x_1}{x_1} = 0, \quad
+    \pdv{\mathbf{F}_{y_1}}{x_1}{x_2} = 0, \quad
+    \pdv{\mathbf{F}_{y_1}}{x_1}{y_1} = -(1-\kappa u_1(t))c_{11} < 0, \quad
+    \pdv{\mathbf{F}_{y_1}}{x_1}{y_2} = 0 \\
     %
-    &\pdv{\mathbf{F}_{y_2}}{y_1}{x_1} = 0, \quad
-    \pdv{\mathbf{F}_{y_2}}{y_1}{y_1} = 0, \\
-    &\pdv{\mathbf{F}_{y_2}}{y_1}{x_2} = 0, \quad
-    \pdv{\mathbf{F}_{y_2}}{y_1}{y_2} = 0 \\
+    &\pdv{\mathbf{F}_{y_1}}{x_2}{x_1} = 0, \quad
+    \pdv{\mathbf{F}_{y_1}}{x_2}{y_1} = -(1-\kappa u_1(t))c_{12} < 0, \quad
+    \pdv{\mathbf{F}_{y_1}}{x_2}{x_2} = 0, \quad
+    \pdv{\mathbf{F}_{y_1}}{x_2}{y_2} = 0 \\
+    %
+    &\pdv{\mathbf{F}_{y_1}}{y_1}{x_1} = -(1-\kappa u_1(t))c_{11} < 0, \quad
+    \pdv{\mathbf{F}_{y_1}}{y_1}{x_2} = -(1-\kappa u_1(t))c_{12}, \quad
+    \pdv{\mathbf{F}_{y_1}}{y_1}{y_1} = 0, \quad
+    \pdv{\mathbf{F}_{y_1}}{y_1}{y_2} = 0 \\
+    %
+    &\pdv{\mathbf{F}_{y_1}}{y_2}{x_1} = 0, \quad
+    \pdv{\mathbf{F}_{y_1}}{y_2}{x_2} = 0, \quad
+    \pdv{\mathbf{F}_{y_1}}{y_2}{y_1} = 0, \quad
+    \pdv{\mathbf{F}_{y_1}}{y_2}{y_2} = 0 \\
+    %
+    %
+    %
+    &\pdv{\mathbf{F}_{y_2}}{x_1}{x_1} = 0, \quad
+    \pdv{\mathbf{F}_{y_2}}{x_1}{x_2} = 0, \quad
+    \pdv{\mathbf{F}_{y_2}}{x_1}{y_1} = 0, \quad
+    \pdv{\mathbf{F}_{y_2}}{x_1}{y_2} = -(1-\kappa u_1(t)) c_{21} \\
     %
     &\pdv{\mathbf{F}_{y_2}}{x_2}{x_1} = 0, \quad
-    \pdv{\mathbf{F}_{y_2}}{x_2}{y_1} = 0, \\
-    &\pdv{\mathbf{F}_{y_2}}{x_2}{x_2} = 0, \quad
-    \pdv{\mathbf{F}_{y_2}}{x_2}{y_2} = -\beta_{hv} a_2 \frac{p_{22} (1-\kappa u_2(t))}{p_{12} N_1 + p_{22} N_2} < 0 \\
+    \pdv{\mathbf{F}_{y_2}}{x_2}{x_2} = 0, \quad
+    \pdv{\mathbf{F}_{y_2}}{x_2}{y_1} = 0, \quad
+    \pdv{\mathbf{F}_{y_2}}{x_2}{y_2} = -(1-\kappa u_2(t)) c_{22} < 0 \\
     %
-    &\pdv{\mathbf{F}_{y_2}}{y_2}{x_1} = -\beta_{hv} a_2 \frac{p_{12} (1-\kappa u_1(t))}{p_{12} N_1 + p_{22} N_2} < 0, \quad
-    \pdv{\mathbf{F}_{y_2}}{y_2}{y_1} = 0, \\
-    &\pdv{\mathbf{F}_{y_2}}{y_2}{x_2} = -\beta_{hv} a_2 \frac{p_{22} (1-\kappa u_2(t))}{p_{12} N_1 + p_{22} N_2} < 0, \quad
+    &\pdv{\mathbf{F}_{y_2}}{y_1}{x_1} = 0, \quad
+    \pdv{\mathbf{F}_{y_2}}{y_1}{x_2} = 0, \quad
+    \pdv{\mathbf{F}_{y_2}}{y_1}{y_1} = 0, \quad
+    \pdv{\mathbf{F}_{y_2}}{y_1}{y_2} = 0 \\
+    %
+    &\pdv{\mathbf{F}_{y_2}}{y_2}{x_1} = -(1-\kappa u_1(t)) c_{21} < 0, \quad
+    \pdv{\mathbf{F}_{y_2}}{y_2}{x_2} = -(1-\kappa u_2(t)) c_{22} < 0, \quad
+    \pdv{\mathbf{F}_{y_2}}{y_2}{y_1} = 0, \quad
     \pdv{\mathbf{F}_{y_2}}{y_2}{y_2} = 0
   \end{align*}
 }
