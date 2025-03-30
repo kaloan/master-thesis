@@ -1,0 +1,181 @@
+\documentclass[bulgarian, 12pt]{beamer}
+\usepackage[svgnames]{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks,
+  linktocpage,
+  citecolor=black,
+  filecolor=black,
+  linkcolor=black,
+  urlcolor=blue,
+  pdftitle={Малария с репелент},
+  pdfauthor={Калоян Стоилов},
+  pdfsubject={Изследване на ефектите на репелент срещу
+    комари в малариен модел на Ross-Macdonald
+  с две местообитания},
+  pdfcreator={Калоян Стоилов},
+  pdfproducer={Калоян Стоилов},
+  pdfkeywords={SIS, Ross-Macdonald, репелент, мобилност},
+}
+
+% Somehow prevents "Too many math alphabets used in version normal"
+\newcommand\hmmax{0}
+\newcommand\bmmax{0}
+
+% Fonts
+\usepackage[T2A]{fontenc}
+% \usepackage{tempora}
+\usepackage[utf8]{inputenc}
+% \usepackage{fontspec}
+\usepackage{bm}
+\tracinglostchars=2
+
+% % Languages
+% \usepackage[base]{babel}
+% % Some languages define these commands, so you have to write this to protect yourself from namespace collision errors
+% \AfterBabelLanguage{bulgarian}{%
+%   \let\sh\relax\let\ch\relax\let\tg\relax
+%   \let\arctg\relax\let\arcctg\relax
+%   \expandafter\let\expandafter\th\csname ltx@th\endcsname
+%   \let\ctg\relax\let\cth\relax\let\cosec\relax
+% }
+\usepackage[bulgarian, english]{babel}
+\usepackage{hyphenat}
+
+% Indent first line in paragraph
+\usepackage{indentfirst}
+
+% Place tags on the left
+% \usepackage[leqno]{amsmath}
+
+% Better math
+\usepackage{amsbsy}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{comment}
+\usepackage{mathptmx}
+\usepackage[makeroom]{cancel}
+\usepackage{mathrsfs}
+
+% Better theorems
+\usepackage{amsthm}
+
+% SI units
+%\usepackage{siunitx}
+
+% Derivative notations
+\usepackage{physics}
+%\usepackage{derivative}
+
+\usepackage{blindtext}
+\usepackage{scrextend}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{tempora}  % Times for numbers in math mode
+\usepackage{newtxmath}  % Times in math mode
+\usepackage{import}
+
+\usepackage{csquotes}
+% \usepackage{titlesec}
+
+% Bibliography using BibLaTeX
+% \usepackage[backend=biber, defernumbers=true]{biblatex}
+% \usepackage[nottoc,numbib]{tocbibind}
+% \addbibresource[bibencoding=utf8]{thesis.bib}
+
+% \usepackage{lmodern}
+% \usepackage{yfonts}
+% \usepackage{eurosym}
+% \usepackage{textcomp}
+% \usepackage{subcaption}
+% \usepackage{tabto}
+
+% Fix original date
+\usepackage{datetime}
+
+\usetheme{Frankfurt}
+% \usetheme{Copenhagen}
+%\usetheme{Malmoe}
+\usecolortheme[named=black]{structure}
+\beamertemplatenavigationsymbolsempty
+
+\DeclareFontShape{OT1}{cmss}{b}{n}{<->ssub * cmss/bx/n}{}
+
+\title{Моделиране на малария}
+\subtitle{Въведение в епидемологията и кооперативните динамични системи}
+\author{изготвил: Калоян Стоилов \\ ръководител: Петър Рашков}
+\date{\formatdate{1}{4}{2025}}
+
+\institute{\textbf{\textit{СОФИЙСКИ УНИВЕРСИТЕТ \\ "СВ. КЛИМЕНТ ОХРИДСКИ"}}
+  \begin{center}
+    \includegraphics[width=1.2cm,height=1.5cm]{logo_su_s_nadpis_imagelarge}
+  \end{center}
+  ФАКУЛТЕТ ПО МАТЕМАТИКА И ИНФОРМАТИКА
+}
+
+% Since physics package uses physics <.|.> notation
+\renewcommand{\innerproduct}[2]{\langle #1, #2 \rangle}
+
+% For Roman numbers on sections
+% \renewcommand{\thesection}{\Roman{section}}
+% For new page after end of section
+% \newcommand{\sectionbreak}{\clearpage}
+
+% For theorem text
+% \newtheorem{theorem}{Теорема}[section]
+% \newtheorem{corollary}[theorem]{Следствие}
+% \newtheorem{lemma}[theorem]{Лема}
+% \newtheorem{proposition}[theorem]{Твърдение}
+% \newtheorem*{remark}{Забележка}
+% \theoremstyle{definition}
+% \newtheorem{definition}{Дефиниция}[section]
+
+% For symbol at end of proof environment
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\begin{document}
+\selectlanguage{bulgarian}
+
+{
+  \setbeamertemplate{headline}[default]
+
+  \begin{frame}
+    \titlepage
+  \end{frame}
+}
+
+\begin{frame}[t]{Съдържание}
+  \tableofcontents
+\end{frame}
+% \thispagestyle{empty}
+% \newpage
+% \setcounter{page}{1}
+\import{sections/}{introduction.tex}
+\import{sections/}{endemics.tex}
+% \import{sections/}{properties.tex}
+% \import{sections/}{viability.tex}
+% \import{sections/}{hjb.tex}
+% \import{sections/}{numerical.tex}
+
+% \nocite{*}
+% \begin{frame}[Източници]
+%   \printbibliography
+% \end{frame}
+
+{
+  \setbeamertemplate{headline}[default]
+  \begin{frame}
+
+    \begin{center}
+      \textbf{Благодаря за вниманието}
+    \end{center}
+
+  \end{frame}
+}
+
+% \listoffigures
+% \listoftables
+\end{document}
+
+% заразèн
+% зарàзнен
