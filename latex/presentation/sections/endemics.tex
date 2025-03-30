@@ -17,3 +17,30 @@
     \mathscr{R}_0 > 1 \iff M > M^* = \frac{\gamma \mu N}{b^2 \beta_{vh} \beta_{hv}}
   \end{equation}
 \end{frame}
+
+\begin{frame}[t]{$\mathscr{R}_0$ в многомерни модели}
+  Нека имаме няколко категории хора, податливи на заразата, които сме разграничили и това са $\mathbf{z} = (z_1, \cdots, z_n)^T$.
+
+  Нека системата се представя във вида $\dot{\mathbf{z}} = \mathbf{G}{\mathbf{z}} = \mathscr{F}(\mathbf{z}) - \mathscr{V}(\mathbf{z})$.
+  $\mathscr{F}$ определя новите заразени, а $\mathscr{V}(\mathbf{z}) = \mathscr{V}^-(\mathbf{z}) - \mathscr{V}^+(\mathbf{z})$ е мобилността, която сме разделили на прииждащи и заминащи за съответните групи.
+
+  Може да се покаже, че е в сила следната теорема
+\end{frame}
+
+\begin{frame}[t]{$\mathscr{R}_0$ в многомерни модели}
+  \begin{theorem}
+    При изпълнени следните условия:
+    \begin{enumerate}
+      \item $\mathbf{z} \geq \mathbf{0} \implies \mathscr{V}(\mathbf{z}) \geq 0, \mathscr{V}^+(\mathbf{z}) \geq 0, \mathscr{V}^-(\mathbf{z}) \geq 0$
+      \item $z_i = 0 \implies \mathscr{V}_{i}^- = 0$
+      \item $\mathscr{F}(\mathbf{0}) = \mathbf{0}, \mathscr{V}(\mathbf{0}) = \mathbf{0}$
+      \item $\mathscr{F}(\mathbf{z}) = \mathbf{0} \implies$ всички собствени стойности на $D\mathbf{G}{\mathbf{0}}$ са с отрицателна реална част
+    \end{enumerate}
+    в сила за репродукционното число е $\mathscr{R}_0 = \rho(F V^{-1})$, където $\rho$ е спектралния радиус, а $F = D\mathscr{F}(\mathbf{0}), V = D\mathscr{V}(\mathbf{0})$, където $F \geq \mathscr{O}$, а $V$ е несингулярна M-матрица. \\
+    Допълнително, $\mathbf{0}$ е локално асимптотично устойчива, ако $\mathscr{R}_0 < 1$ и неустойчива, ако $\mathscr{R}_0 > 1$.
+  \end{theorem}
+\end{frame}
+
+\begin{frame}[t]{$\mathscr{R}_0$ в многомерни модели}
+  $F_{ij}$ е скоростта, с която индивид от група $j$ заразява индивиди от група $i$, а $V^{-1}_{jk}$ е средната продължителност на пребиваване на индивид от група $k$ сред индивидите от група $j$, съответно $(F V^-1)_{ik}$ са средния брой новозаразени от $i$ заради индивид от $k$.
+\end{frame}
