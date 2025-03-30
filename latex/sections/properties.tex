@@ -1,5 +1,6 @@
 \section{Съществуване на решение и основни свойства}
 \begin{lemma}
+  \label{lemma:Modulus}
   Нека $z, z', s, s', C_z, C_s \in \mathbb{R}$, за които $z, z' < C_z$ и $s, s' < C_s$. Тогава след полагането $C = \max\{2 |C_z|, |C_s|\}$ е в сила $|(C_z - z) s - (C_z - z') s'| \leq C (|s-s'| + |z - z'|)$.
 \end{lemma}
 
@@ -15,74 +16,76 @@
     \end{split}
     \end{equation}
     \end{proof}
-\subsection{Липшицовост по фазови променливи}
-Ще използваме това твърдение при дозателството на Липшицовата непрекъснатост на дясната страна по фазовите променливи $x_1, y_1, x_2, y_2$. Взимаме произволни допустими двойки, тоест $(x_1, y_1, x_2, y_2), (x'_1, y'_1, x'_2, y'_2) \in \Omega$ и $(u_1, u_2), (u'_1, u'_2) \in [0, \bar{u}_1] \cross [0, \bar{u}_2]$.
-Първо от неравенството на триъгълника имаме, че:
-\begin{align*}
-  &\|\mathbf{F}(x_1, y_1, x_2, y_2, u_1, u_2) - \mathbf{F}(x'_1, y'_1, x'_2, y'_2, u'_1, u'_2)\| \leq \\
-  &|f_1(x_1, y_1, x_2, y_2, u_1, u_2) - f_1(x'_1, y'_1, x'_2, y'_2, u'_1, u'_2)| + |g_2(x_1, y_1, x_2, y_2, u_1, u_2) - g_2(x'_1, y'_1, x'_2, y'_2, u'_1, u'_2)| + \\
-  &|g_1(x_1, y_1, x_2, y_2, u_1, u_2) - g_1(x'_1, y'_1, x'_2, y'_2, u'_1, u'_2)| + |f_2(x_1, y_1, x_2, y_2, u_1, u_2) - f_2(x'_1, y'_1, x'_2, y'_2, u'_1, u'_2)|
-\end{align*}
-Сега може неколкократно да ползваме горната оценка за $f_1$:
-\begin{align*}
-  &\bigg|\beta_{vh} (N_1-x_1) \left(\frac{a_1 p_{11} e^{-\mu_1 \tau} (1-\kappa u_1) y_1}{p_{11} N_1 + p_{21} N_2} + \frac{a_2 p_{12} e^{-\mu_2 \tau} (1-\kappa u_1) y_2}{p_{12} N_1 + p_{22} N_2 }\right) - \gamma_1 x_1 - \\
-  &\beta_{vh} (N_1-x'_1) \left(\frac{a_1 p_{11} e^{-\mu_1 \tau} (1-\kappa u'_1) y'_1}{p_{11} N_1 + p_{21} N_2} + \frac{a_2 p_{12} e^{-\mu_2 \tau} (1-\kappa u'_1) y'_2}{p_{12} N_1 + p_{22} N_2 }\right) + \gamma_1 x'_1\bigg| \leq \\
-  &\frac{\beta_{vh} a_1 p_{11} e^{-\mu_1 \tau}}{p_{11} N_1 + p_{21} N_2} \left|(N_1-x_1) [(1-\kappa u_1) y_1] - (N_1-x'_1) [(1-\kappa u'_1) y'_1]\right| + \\
-  &\frac{\beta_{vh} a_2 p_{12} e^{-\mu_2 \tau}}{p_{12} N_1 + p_{22} N_2} \left|(N_1-x_1) [(1-\kappa u_1) y_2] - (N_1-x'_1) [(1-\kappa u'_1) y'_2]\right| + \\
-  &\gamma_1 |x_1-x'_1|
-\end{align*}
-Имаме, че $x_1, x'_1 \leq N_1, \quad (1-\kappa u_1)y_1, (1-\kappa u_1) y'_1 \leq M_1, \quad (1-\kappa u_1)y_2, (1-\kappa u_1) y'_2 \leq M_2$:
-\begin{align*}
-  &\left|(N_1-x_1) [(1-\kappa u_1) y_1] - (N_1-x'_1) [(1-\kappa u'_1) y'_1]\right| \leq 2 N_1 |(1-\kappa u_1) y_1 - (1-\kappa u'_1) y'_1| + M_1 |x_1 - x'_1| \leq \\
-  &2 N_1 (2|y_1 - y'_1| + M_1 \kappa |u_1 - u'_1|) + M_1 |x_1 - x'_1| \\
-  &\left|(N_1-x_1) [(1-\kappa u_1) y_2] - (N_1-x'_1) [(1-\kappa u'_1) y'_2]\right| \leq 2 N_1 |(1-\kappa u_1) y_2 - (1-\kappa u'_1) y'_2| + M_2 |x_1 - x'_1| \leq \\
-  &2 N_1 (2|y_2 - y'_2| + M_2 \kappa |u_1 - u'_1|) + M_2 |x_1 - x'_1|
-\end{align*}
-Тук също ползвахме $1-\kappa u_1, 1-\kappa u'_1 \leq 1, \quad y_1, y'_1 \leq M_1, \quad y_2, y'_2 \leq M_2$. Така получихе оценка отгоре за първото събираемо \\
-Тъй като видът на $f_2$ е същият с точност до индекси, то директно получаваме и оценка за третото събираемо. \\
+\subsection{Съществуване на решение}
+\begin{proposition}
+  Системата \ref{eq:TheDimensionlessProblem} има единствено решение.
+\end{proposition}
 
-Сега да разгледаме за $g_1$:
-\begin{align*}
-  & \bigg|\beta_{hv} a_1 (M_1-y_1) \frac{p_{11} (1-\kappa u_1) x_1 + p_{21} (1-\kappa u_2) x_2}{p_{11} N_1 + p_{21} N_2} - \mu_1 y_1 - \\
-  &\beta_{hv} a_1 (M_1-y'_1) \frac{p_{11} (1-\kappa u'_1) x'_1 + p_{21} (1-\kappa u'_2) x'_2}{p_{11} N_1 + p_{21} N_2} + \mu_1 y'_1\bigg| \leq \\
-  & \frac{\beta_{hv} a_1 p_{11}}{p_{11} N_1 + p_{21} N_2} \left|(M_1-y_1) [(1-\kappa u_1) x_1] - (M_1-y'_1) [(1-\kappa u'_1) x'_1]\right| + \\
-  &\frac{\beta_{hv} a_1 p_{21}}{p_{11} N_1 + p_{21} N_2} \left|(M_1-y_1) [(1-\kappa u_2) x_2] - (M_1-y'_1) [(1-\kappa u'_2) x'_2]\right| + \\
-  &\mu_1 |y_1 - y'_1|
-\end{align*}
-Ограниченията са $y_1, y'_1 \leq M_1, \quad (1-\kappa u_1)x_1, (1-\kappa u'_1)x'_1 \leq N_1, \quad (1-\kappa u_2)x_2, (1-\kappa u'_2)x'_2 \leq N_2$:
-\begin{align*}
-  &\left|(M_1-y_1) [(1-\kappa u_1) x_1] - (M_1-y'_1) [(1-\kappa u'_1) x'_1]\right| \leq 2 M_1 |(1-\kappa u_1) x_1 - (1-\kappa u'_1) x'_1| + N_1 |y_1 - y'_1| \leq \\
-  & 2 M_1 (2|x_1 - x'_1| + N_1 \kappa |u_1 - u'_1|) + N_1 |y_1 - y'_1| \\
-  &\left|(M_1-y_1) [(1-\kappa u_2) x_2] - (M_1-y'_1) [(1-\kappa u'_2) x'_2]\right| \leq 2 M_1 |(1-\kappa u_2) x_2 - (1-\kappa u'_2) x'_2| + N_2 |y_1 - y'_1| \\
-  & 2 M_1 (2|x_2 - x'_2| + N_2 \kappa |u_2 - u'_2|) + N_2 |y_1 - y'_1|
-\end{align*}
-Тук също ползвахме $1-\kappa u_1, 1-\kappa u'_1, 1-\kappa u_2, 1-\kappa u'_2 \leq 1, \quad x_1, x'_1 \leq M_1, \quad x_2, x'_2 \leq M_2$. Така получихе оценка отгоре за второто събираемо \\
-Тъй като видът на $g_2$ е същият с точност до индекси, то директно получаваме и оценка за четвъртото събираемо. \\
-За да проверим липшицовостта по фазовите променливи, то заместваме с $u_1 = 1'_1, u_2 = u'_2$ всичко и за цялата дясна страна е в сила:
-% \begin{align*}
-% &\|\mathbf{F}(x_1, y_1, x_2, y_2, u_1, u_2) - \mathbf{F}(x'_1, y'_1, x'_2, y'_2, u'_1, u'_2)\| \leq \\
-% &\frac{\beta_{vh} a_1 p_{11} e^{-\mu_1 \tau}}{p_{11} N_1 + p_{21} N_2} (2 N_1 (2|y_1 - y'_1| + M_1 \kappa |u_1 - u'_1|) + M_1 |x_1 - x'_1|) + \\
-% &\frac{\beta_{vh} a_2 p_{12} e^{-\mu_2 \tau}}{p_{12} N_1 + p_{22} N_2}(2 N_1 (2|y_2 - y'_2| + M_2 \kappa |u_1 - u'_1|) + M_1 |x_1 - x'_1|) + \gamma_1 |x_1-x'_1| + \\
-% &\frac{\beta_{hv} a_1 p_{11}}{p_{11} N_1 + p_{21} N_2} (2 M_1 (2|x_1 - x'_1| + N_1 \kappa |u_1 - u'_1|) + N_1 |y_1 - y'_1|) + \\
-% &\frac{\beta_{hv} a_1 p_{21}}{p_{11} N_1 + p_{21} N_2} (2 M_1 (2|x_2 - x'_2| + N_2 \kappa |u_2 - u'_2|) + N_2 |y_1 - y'_1|) + \mu_1 |y_1 - y'_1| + \\
-% &\frac{\beta_{vh} a_1 p_{21} e^{-\mu_1 \tau}}{p_{11} N_1 + p_{21} N_2} (2 N_1 (2|y_1 - y'_1| + M_1 \kappa |u_1 - u'_1|) + M_1 |x_1 - x'_1|) + \\
-% &\frac{\beta_{vh} a_2 p_{22} e^{-\mu_2 \tau}}{p_{12} N_1 + p_{22} N_2}(2 N_1 (2|y_2 - y'_2| + M_2 \kappa |u_1 - u'_1|) + M_1 |x_1 - x'_1|) + \gamma_2 |x_2-x'_2| + \\
-% &\frac{\beta_{hv} a_2 p_{12}}{p_{12} N_1 + p_{22} N_2} (2 M_2 (2|x_1 - x'_1| + N_1 \kappa |u_1 - u'_1|) + N_1 |y_2 - y'_2|) + \\
-% &\frac{\beta_{hv} a_2 p_{22}}{p_{12} N_1 + p_{22} N_2} (2 M_2 (2|x_2 - x'_2| + N_2 \kappa |u_2 - u'_2|) + N_2 |y_2 - y'_2|) + \mu_2 |y_2 - y'_2| \leq
-% \end{align*}
-\begin{align*}
-  &\|\mathbf{F}(x_1, y_1, x_2, y_2, u'_1, u'_2) - \mathbf{F}(x'_1, y'_1, x'_2, y'_2, u'_1, u'_2)\| \leq \\
-  &\frac{\beta_{vh} a_1 p_{11} e^{-\mu_1 \tau}}{p_{11} N_1 + p_{21} N_2} (4 N_1 |y_1 - y'_1| + M_1 |x_1 - x'_1|) +
-  \frac{\beta_{vh} a_2 p_{12} e^{-\mu_2 \tau}}{p_{12} N_1 + p_{22} N_2}(4 N_1 |y_2 - y'_2| + M_1 |x_1 - x'_1|) + \gamma_1 |x_1-x'_1| + \\
-  &\frac{\beta_{hv} a_1 p_{11}}{p_{11} N_1 + p_{21} N_2} (4 M_1 |x_1 - x'_1| + N_1 |y_1 - y'_1|) +
-  \frac{\beta_{hv} a_1 p_{21}}{p_{11} N_1 + p_{21} N_2} (4 M_1 |x_2 - x'_2| + N_2 |y_1 - y'_1|) + \mu_1 |y_1 - y'_1| + \\
-  &\frac{\beta_{vh} a_1 p_{21} e^{-\mu_1 \tau}}{p_{11} N_1 + p_{21} N_2} (4 N_1 |y_1 - y'_1| + M_1 |x_1 - x'_1|) +
-  \frac{\beta_{vh} a_2 p_{22} e^{-\mu_2 \tau}}{p_{12} N_1 + p_{22} N_2}(4 N_1|y_2 - y'_2| + M_1 |x_1 - x'_1|) + \gamma_2 |x_2-x'_2| + \\
-  &\frac{\beta_{hv} a_2 p_{12}}{p_{12} N_1 + p_{22} N_2} (4 M_2 |x_1 - x'_1| + N_1 |y_2 - y'_2|) +
-  \frac{\beta_{hv} a_2 p_{22}}{p_{12} N_1 + p_{22} N_2} (4 M_2 |x_2 - x'_2| + N_2 |y_2 - y'_2|) + \mu_2 |y_2 - y'_2| \leq \\
-  & C \|(x_1, y_1, x_2, y_2) - (x'_1, y'_1, x'_2, y'_2)\|
-\end{align*}
-Накрая се използват неравенства от вида $|x_1-x'_1| \leq \|(x_1, y_1, x_2, y_2) - (x'_1, y'_1, x'_2, y'_2)\|$. Тогава, спрямо общата теория на диференциалните решения с управление, съществува единствено решение на $\eqref{eq:TheProblem}$ за произволни $t$.
+\begin{proof}
+  Трябва да покажем, че $\mathbf{F}$ е липшицова по фазовите применливи за всички възможни управления. Нека първо $\mathbf{z}, \mathbf{z}' \in \Omega, \mathbf{u} \in U$.
+  Първо от неравенството на триъгълника имаме, че:
+  \begin{equation}
+    \|\mathbf{F}(\mathbf{z}, \mathbf{u}) - \mathbf{F}(\mathbf{z}', \mathbf{u}')\| \leq
+    |F_{x_1}(\mathbf{z}, \mathbf{u})| + |F_{x_2}(\mathbf{z}, \mathbf{u})| + |F_{y_1}(\mathbf{z}, \mathbf{u})| + |F_{y_2}(\mathbf{z}, \mathbf{u})|
+  \end{equation}
+  Сега може да ползваме неколкократно \ref{lemma:Modulus} за $F_{x_1}$:
+  \begin{multline}
+    |(1-x_1) (1-\kappa u_1) \left(b_{11} y_1 + b_{12} y_2\right) - \gamma_1 x_1 - (1-x'_1) (1-\kappa u'_1) \left(b_{11} y'_1 + b_{12} y'_2\right) - \gamma_1 x'_1| \leq \\
+    b_{11} \left|(1-x_1)[(1 - \kappa u_1) y_1] -  (1-x'_1)[(1 - \kappa u'_1) y'_1]\right| + \\
+    b_{12} \left|(1-x_1)[(1 - \kappa u_1) y_2] -  (1-x'_1)[(1 - \kappa u'_2) y'_2]\right| + \gamma |x_1 - x'_1|
+  \end{multline}
+
+  Имаме, че $x_1, x'_1 \leq 1, \quad (1-\kappa u_1)y_1, (1-\kappa u_1) y'_1 \leq 1, \quad (1-\kappa u_1)y_2, (1-\kappa u_1) y'_2 \leq 1$:
+  \begin{multline}
+    \left|(1-x_1) [(1-\kappa u_1) y_1] - (1-x'_1) [(1-\kappa u'_1) y'_1]\right| \leq \\
+    2 |(1-\kappa u_1) y_1 - (1-\kappa u'_1) y'_1| + |x_1 - x'_1| \leq \\
+    2 (2|y_1 - y'_1| + \kappa |u_1 - u'_1|) + |x_1 - x'_1|
+  \end{multline}
+  \begin{multline}
+    \left|(1-x_1) [(1-\kappa u_1) y_2] - (1-x'_1) [(1-\kappa u'_1) y'_2]\right| \leq \\
+    2 |(1-\kappa u_1) y_2 - (1-\kappa u'_1) y'_2| + |x_1 - x'_1| \leq \\
+    2 (2|y_2 - y'_2| + \kappa |u_1 - u'_1|) + |x_1 - x'_1|
+  \end{multline}
+  
+  Тук също ползвахме $1-\kappa u_1, 1-\kappa u'_1 \leq 1, \quad y_1, y'_1 \leq 1, \quad y_2, y'_2 \leq 1$. Така получихе оценка отгоре за първото събираемо \\
+  Тъй като видът на $F_{x_2}$ е същият с точност до индекси, то директно получаваме и оценка за второто събираемо.
+  
+  Сега да разгледаме $F_{y_1}$:
+  \begin{multline}
+    |(1-y_1) \left(c_{11}(1-\kappa u_1) x_1 + c_{12}(1-\kappa u_2) x_2\right) - \mu_1 y_1 - (1-y'_1) \left(c_{11}(1-\kappa u'_1) x'_1 + c_{12}(1-\kappa u'_2) x'_2\right) - \mu_1 y'_1| \leq \\
+    c_{11} \left|(1-y_1)[(1-\kappa u_1) x_1] -  (1-y'_1)[(1 - \kappa u'_1) x'_1]\right| + \\
+    c_{12} \left|(1-y_1)[(1-\kappa u_2) x_2] -  (1-y'_1)[(1 - \kappa u'_2) x'_2]\right| + \mu |y_1 - y'_1|
+  \end{multline}
+  Ограниченията са $y_1, y'_1 \leq 1, \quad (1-\kappa u_1)x_1, (1-\kappa u'_1)x'_1 \leq 1, \quad (1-\kappa u_2)x_2, (1-\kappa u'_2)x'_2 \leq 1$:
+  \begin{multline}
+    \left|(1-y_1)[(1-\kappa u_1) x_1] -  (1-y'_1)[(1-\kappa u'_1) x'_1]\right| \leq \\
+    2 |(1-\kappa u_1) x_1 - (1-\kappa u'_1) x'_1| + |y_1 - y'_1| \leq \\
+    2 (2|x_1 - x'_1| + \kappa |u_1 - u'_1|) + |y_1 - y'_1|
+  \end{multline}
+  \begin{multline}
+    \left|(1-y_1)[(1 -\kappa u_2) x_2] -  (1-y'_1)[(1 -\kappa u'_2) x'_2]\right| \leq \\
+    2 |(1-\kappa u_2) x_2 - (1-\kappa u'_2) x'_2| + |y_1 - y'_1| \leq \\
+    2 (2|x_2 - x'_2| + \kappa |u_2 - u'_2|) + |y_1 - y'_1|
+  \end{multline}
+  Тук също ползвахме $1-\kappa u_1, 1-\kappa u'_1, 1-\kappa u_2, 1-\kappa u'_2 \leq 1, \quad x_1, x'_1 \leq M_1, \quad x_2, x'_2 \leq M_2$. Така получихе оценка отгоре за второто събираемо \\
+  Тъй като видът на $F_{y_2}$ е същият с точност до индекси, то директно получаваме и оценка за четвъртото събираемо. \\
+  
+  За да проверим липшицовостта по фазовите променливи, то заместваме с $u_1 = 1'_1, u_2 = u'_2$ всичко и за цялата дясна страна е в сила:
+  \begin{multline}
+    \|\mathbf{F}(\mathbf{z}, \mathbf{u}) - \mathbf{F}(\mathbf{z}', \mathbf{u}')\| \leq \\
+    b_{11} (4 |y_1 - y'_1| + |x_1 - x'_1|) +
+    b_{12} (4 |y_2 - y'_2| + |x_1 - x'_1|) + \gamma_1 |x_1-x'_1| + \\
+    b_{21} (4 |y_1 - y'_1| + |x_1 - x'_1|) +
+    b_{22} (4 |y_2 - y'_2| + |x_1 - x'_1|) + \gamma_2 |x_2-x'_2| + \\
+    c_{11} (4 |x_1 - x'_1| + |y_1 - y'_1|) +
+    c_{22} (4 |x_2 - x'_2| + |y_1 - y'_1|) + \mu_1 |y_1 - y'_1| + \\
+    c_{21} (4 |x_1 - x'_1| + |y_2 - y'_2|) +
+    c_{22} (4 |x_2 - x'_2| + |y_2 - y'_2|) + \mu_2 |y_2 - y'_2| \leq \\
+    C \|\mathbf{z} - \mathbf{z}'\|
+  \end{multline}
+  Накрая се използват неравенства от вида $|x_1-x'_1| \leq \|(x_1, x_2, y_1, y_2) - (x'_1, x'_2, y'_1, y'_2)\| = \|\mathbf{z} - \mathbf{z}'\|$.
+  Тогава, спрямо общата теория на диференциалните решения с управление, съществува единствено решение на $\eqref{eq:TheProblem}$ за произволни $t>0$.
+  \end{proof}
 
 \subsection{Ограниченост на решението}
 Началното условие е някъде в $\Omega$, тъй като популациите са неотрицателни, а заразените индивиди не са над общата популация за съответната категория. Лесно може да се види, че е в сила:
