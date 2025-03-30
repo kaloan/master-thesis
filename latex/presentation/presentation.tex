@@ -1,4 +1,4 @@
-\documentclass[bulgarian, 12pt]{beamer}
+\documentclass[bulgarian]{beamer}
 \usepackage[svgnames]{xcolor}
 \usepackage{hyperref}
 \hypersetup{
@@ -27,7 +27,7 @@
 % \usepackage{tempora}
 \usepackage[utf8]{inputenc}
 % \usepackage{fontspec}
-\usepackage{bm}
+% \usepackage{bm}
 \tracinglostchars=2
 
 % % Languages
@@ -45,17 +45,17 @@
 % Indent first line in paragraph
 \usepackage{indentfirst}
 
-% Place tags on the left
-% \usepackage[leqno]{amsmath}
-
 % Better math
 \usepackage{amsbsy}
 \usepackage{amssymb}
-\usepackage{mathtools}
+\usepackage[leqno]{mathtools}
 \usepackage{comment}
 \usepackage{mathptmx}
 \usepackage[makeroom]{cancel}
 \usepackage{mathrsfs}
+
+% Place tags on the left
+% \usepackage[leqno]{amsmath}
 
 % Better theorems
 \usepackage{amsthm}
@@ -79,7 +79,7 @@
 % \usepackage{titlesec}
 
 % Bibliography using BibLaTeX
-% \usepackage[backend=biber, defernumbers=true]{biblatex}
+% \usepackage[backend=biber, defernumbers=true, bibencoding=utf8]{biblatex}
 % \usepackage[nottoc,numbib]{tocbibind}
 % \addbibresource[bibencoding=utf8]{thesis.bib}
 
@@ -95,7 +95,7 @@
 
 \usetheme{Frankfurt}
 % \usetheme{Copenhagen}
-%\usetheme{Malmoe}
+% \usetheme{Malmoe}
 \usecolortheme[named=black]{structure}
 \beamertemplatenavigationsymbolsempty
 
@@ -154,8 +154,9 @@
 \import{sections/}{endemics.tex}
 \import{sections/}{bichara.tex}
 \import{sections/}{cooperative.tex}
-% \import{sections/}{hjb.tex}
-% \import{sections/}{numerical.tex}
+\import{sections/}{repellent.tex}
+\import{sections/}{problem.tex}
+\import{sections/}{properties.tex}
 
 % \nocite{*}
 % \begin{frame}[Източници]

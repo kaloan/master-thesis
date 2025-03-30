@@ -27,9 +27,9 @@
   Първо от неравенството на триъгълника имаме, че:
   \begin{equation}
     \|\mathbf{f}(\mathbf{z}, \mathbf{u}) - \mathbf{f}(\mathbf{z}', \mathbf{u}')\| \leq
-    |F_{x_1}(\mathbf{z}, \mathbf{u})| + |F_{x_2}(\mathbf{z}, \mathbf{u})| + |F_{y_1}(\mathbf{z}, \mathbf{u})| + |F_{y_2}(\mathbf{z}, \mathbf{u})|
+    |f_{x_1}(\mathbf{z}, \mathbf{u})| + |f_{x_2}(\mathbf{z}, \mathbf{u})| + |f_{y_1}(\mathbf{z}, \mathbf{u})| + |f_{y_2}(\mathbf{z}, \mathbf{u})|
   \end{equation}
-  Сега може да ползваме неколкократно \ref{lemma:Modulus} за $F_{x_1}$:
+  Сега може да ползваме неколкократно \ref{lemma:Modulus} за $f_{x_1}$:
   \begin{multline}
     |(1-x_1) (1-\kappa u_1) \left(b_{11} y_1 + b_{12} y_2\right) - \gamma_1 x_1 - (1-x'_1) (1-\kappa u'_1) \left(b_{11} y'_1 + b_{12} y'_2\right) - \gamma_1 x'_1| \leq \\
     b_{11} \left|(1-x_1)[(1 - \kappa u_1) y_1] -  (1-x'_1)[(1 - \kappa u'_1) y'_1]\right| + \\
@@ -48,10 +48,10 @@
     2 (2|y_2 - y'_2| + \kappa |u_1 - u'_1|) + |x_1 - x'_1|
   \end{multline}
 
-  Тук също ползвахме $1-\kappa u_1, 1-\kappa u'_1 \leq 1, \quad y_1, y'_1 \leq 1, \quad y_2, y'_2 \leq 1$. Така получихе оценка отгоре за първото събираемо \\
-  Тъй като видът на $F_{x_2}$ е същият с точност до индекси, то директно получаваме и оценка за второто събираемо.
+  Тук също ползвахме $1-\kappa u_1, 1-\kappa u'_1 \leq 1, \quad y_1, y'_1 \leq 1, \quad y_2, y'_2 \leq 1$. Така получихе оценка отгоре за първото събираемо. \\
+  Тъй като видът на $f_{x_2}$ е същият с точност до индекси, то директно получаваме и оценка за второто събираемо.
 
-  Сега да разгледаме $F_{y_1}$:
+  Сега да разгледаме $f_{y_1}$:
   \begin{multline}
     |(1-y_1) \left(c_{11}(1-\kappa u_1) x_1 + c_{12}(1-\kappa u_2) x_2\right) - \mu_1 y_1 - (1-y'_1) \left(c_{11}(1-\kappa u'_1) x'_1 + c_{12}(1-\kappa u'_2) x'_2\right) - \mu_1 y'_1| \leq \\
     c_{11} \left|(1-y_1)[(1-\kappa u_1) x_1] -  (1-y'_1)[(1 - \kappa u'_1) x'_1]\right| + \\
@@ -69,7 +69,7 @@
     2 (2|x_2 - x'_2| + \kappa |u_2 - u'_2|) + |y_1 - y'_1|
   \end{multline}
   Тук също ползвахме $1-\kappa u_1, 1-\kappa u'_1, 1-\kappa u_2, 1-\kappa u'_2 \leq 1, \quad x_1, x'_1 \leq M_1, \quad x_2, x'_2 \leq M_2$. Така получихе оценка отгоре за второто събираемо \\
-  Тъй като видът на $F_{y_2}$ е същият с точност до индекси, то директно получаваме и оценка за четвъртото събираемо. \\
+  Тъй като видът на $f_{y_2}$ е същият с точност до индекси, то директно получаваме и оценка за четвъртото събираемо. \\
 
   За да проверим липшицовостта по фазовите променливи, то заместваме с $u_1 = 1'_1, u_2 = u'_2$ всичко и за цялата дясна страна е в сила:
   \begin{multline}
@@ -89,11 +89,27 @@
   \end{proof}
 
 \subsection{Ограниченост на решението}
-Началното условие е някъде в $\Omega$, тъй като популациите са неотрицателни, а заразените индивиди не са над общата популация за съответната категория. Лесно може да се види, че е в сила:
-\begin{align}
-  (x_1(0), x_2(0), y_1(0), y_2(0))^T \in \Omega \implies \forall{t>0}\left((x_1(t), x_2(t), y_1(t), y_2(t))^T \in \Omega\right)
-\end{align}
-Трябва да се покаже, че $\mathbf{f}$ сочи към вътрешността на $\Omega$, ако решението се намира по границата $\partial \Omega$. Но това наистина е така, от:
+
+\begin{proposition}
+  $\mathbf{z}_0 \in \Omega \implies \forall{t>0}\left(\mathbf{z}(t) \in \Omega\right)$
+\end{proposition}
+
+\begin{proof}
+  Началното условие е някъде в $\Omega$, тъй като популациите са неотрицателни, а заразените индивиди не са над общата популация за съответната категория.
+  Трябва да се покаже, че $\mathbf{f}$ сочи към вътрешността на $\Omega$, ако решението се намира по границата $\partial \Omega$. Но това наистина е така, от:
+  \begin{equation}
+    \begin{split}
+      &\dot{x}_1(t)\vert_{\Omega \cap \{x_1(t)=0\}} = (1-\kappa u_1(t))(b_{11} y_1(t) + b_{12} y_2(t)) \geq 0 \\
+      &\dot{x}_1(t)\vert_{\Omega \cap \{x_1(t)=1\}} = - \gamma_1 < 0 \\
+      &\dot{x}_2(t)\vert_{\Omega \cap \{x_2(t)=0\}} = (1-\kappa u_2(t))(b_{21} y_1(t) + b_{22} y_2(t)) \geq 0 \\
+      &\dot{x}_2(t)\vert_{\Omega \cap \{x_2(t)=1\}} = - \gamma_2 < 0 \\
+      &\dot{y}_1(t)\vert_{\Omega \cap \{y_1(t)=0\}} = c_{11}(1-\kappa u_1(t)) x_1(t) + c_{12}(1-\kappa u_2(t)) x_2(t) \geq 0 \\
+      &\dot{y}_1(t)\vert_{\Omega \cap \{y_1(t)=1\}} = - \mu_1 < 0 \\
+      &\dot{y}_2(t)\vert_{\Omega \cap \{y_2(t)=0\}} = c_{21}(1-\kappa u_1(t)) x_1(t) + c_{22}(1-\kappa u_2(t)) x_2(t) \geq 0 \\
+      &\dot{y}_2(t)\vert_{\Omega \cap \{y_2(t)=1\}} = - \mu_2 < 0
+    \end{split}
+  \end{equation}
+\end{proof}
 % \begin{align*}
 % &\dot{x}_1(t)\vert_{\Omega \cap \{x_1(t)=0\}} = \beta_{vh} N_1(t) \left(\frac{p_{11} e^{-\mu_1 \tau} a_1 (1-\kappa u_1(t)) y_1(t)}{p_{11} N_1 + p_{21} N_2} + \frac{p_{12} e^{-\mu_2 \tau} a_2 (1-\kappa u_1(t)) y_2(t)}{p_{12} N_1 + p_{22} N_2 }\right) \geq 0 \\
 % &\dot{x}_1(t)\vert_{\Omega \cap \{x_1(t)=N_1\}} = - \gamma_1 N_1 < 0 \\
@@ -105,59 +121,46 @@
 % &\dot{y}_2(t)\vert_{\Omega \cap \{y_2(t)=M_2\}} = - \mu_2 M_2 < 0
 % \end{align*}
 
-\begin{equation}
-  \begin{split}
-    &\dot{x}_1(t)\vert_{\Omega \cap \{x_1(t)=0\}} = (1-\kappa u_1(t))(b_{11} y_1(t) + b_{12} y_2(t)) \geq 0 \\
-    &\dot{x}_1(t)\vert_{\Omega \cap \{x_1(t)=1\}} = - \gamma_1 < 0 \\
-    &\dot{x}_2(t)\vert_{\Omega \cap \{x_2(t)=0\}} = (1-\kappa u_2(t))(b_{21} y_1(t) + b_{22} y_2(t)) \geq 0 \\
-    &\dot{x}_2(t)\vert_{\Omega \cap \{x_2(t)=1\}} = - \gamma_2 < 0 \\
-    &\dot{y}_1(t)\vert_{\Omega \cap \{y_1(t)=0\}} = c_{11}(1-\kappa u_1(t)) x_1(t) + c_{12}(1-\kappa u_2(t)) x_2(t) \geq 0 \\
-    &\dot{y}_1(t)\vert_{\Omega \cap \{y_1(t)=1\}} = - \mu_1 < 0 \\
-    &\dot{y}_2(t)\vert_{\Omega \cap \{y_2(t)=0\}} = c_{21}(1-\kappa u_1(t)) x_1(t) + c_{22}(1-\kappa u_2(t)) x_2(t) \geq 0 \\
-    &\dot{y}_2(t)\vert_{\Omega \cap \{y_2(t)=1\}} = - \mu_2 < 0
-  \end{split}
-\end{equation}
-
 \subsection{Кооперативност (квазимонотонност)}
 % Доказваме квазимонотонността по дефиницията \ref{def:Cooperative}.
 % Матрицата на Якоби $\mathrm{D} \mathbf{f}(x_1, x_2, y_1, y_2)(t)$ ще ни трябав и натам, затова нека я изведем изцяло:
 % \begin{align*}
 % &\mathrm{D} \mathbf{f}(x_1, x_2, y_1, y_2)(t) =
 % \begin{pmatrix}
-%   \pdv{F_{x_1}}{x_1} && \pdv{F_{x_1}}{x_2} && \pdv{F_{x_1}}{y_1} && \pdv{F_{x_1}}{y_2} \\
-%   \pdv{F_{x_2}}{x_1} && \pdv{F_{x_2}}{x_2} && \pdv{F_{x_2}}{y_1} && \pdv{F_{x_2}}{y_2} \\
-%   \pdv{F_{y_1}}{x_1} && \pdv{F_{y_1}}{x_2} && \pdv{F_{y_1}}{y_1} && \pdv{F_{y_1}}{y_2} \\
-%   \pdv{F_{y_2}}{x_1} && \pdv{F_{y_2}}{x_2} && \pdv{F_{y_2}}{y_1} && \pdv{F_{y_2}}{y_2}
+%   \pdv{f_{x_1}}{x_1} && \pdv{f_{x_1}}{x_2} && \pdv{f_{x_1}}{y_1} && \pdv{f_{x_1}}{y_2} \\
+%   \pdv{f_{x_2}}{x_1} && \pdv{f_{x_2}}{x_2} && \pdv{f_{x_2}}{y_1} && \pdv{f_{x_2}}{y_2} \\
+%   \pdv{f_{y_1}}{x_1} && \pdv{f_{y_1}}{x_2} && \pdv{f_{y_1}}{y_1} && \pdv{f_{y_1}}{y_2} \\
+%   \pdv{f_{y_2}}{x_1} && \pdv{f_{y_2}}{x_2} && \pdv{f_{y_2}}{y_1} && \pdv{f_{y_2}}{y_2}
 % \end{pmatrix} \\
-% &\pdv{F_{x_1}}{x_1} = \pdv{\dot{x}_1}{x_1} = -\beta_{vh} \left(\frac{p_{11} e^{-\mu_1 \tau} a_1 (1-\kappa u_1(t)) y_1(t)}{p_{11} N_1 + p_{21} N_2} + \frac{p_{12} e^{-\mu_2 \tau} a_2 (1-\kappa u_1(t)) y_2(t)}{p_{12} N_1 + p_{22} N_2}\right) - \gamma_1 < 0 \\
-% &\pdv{F_{x_1}}{y_1} = \pdv{\dot{x}_1}{y_1} = \beta_{vh} (N_1-x_1(t)) \frac{p_{11} e^{-\mu_1 \tau} a_1 (1-\kappa u_1(t))}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
-% &\pdv{F_{x_1}}{x_2} = \pdv{\dot{x}_1}{x_2} = 0 \\
-% &\pdv{F_{x_1}}{y_2} = \pdv{\dot{x}_1}{y_2} = \beta_{vh} (N_1-x_1(t))\frac{p_{12} e^{-\mu_2 \tau} a_2 (1-\kappa u_1(t))}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
+% &\pdv{f_{x_1}}{x_1} = \pdv{\dot{x}_1}{x_1} = -\beta_{vh} \left(\frac{p_{11} e^{-\mu_1 \tau} a_1 (1-\kappa u_1(t)) y_1(t)}{p_{11} N_1 + p_{21} N_2} + \frac{p_{12} e^{-\mu_2 \tau} a_2 (1-\kappa u_1(t)) y_2(t)}{p_{12} N_1 + p_{22} N_2}\right) - \gamma_1 < 0 \\
+% &\pdv{f_{x_1}}{y_1} = \pdv{\dot{x}_1}{y_1} = \beta_{vh} (N_1-x_1(t)) \frac{p_{11} e^{-\mu_1 \tau} a_1 (1-\kappa u_1(t))}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
+% &\pdv{f_{x_1}}{x_2} = \pdv{\dot{x}_1}{x_2} = 0 \\
+% &\pdv{f_{x_1}}{y_2} = \pdv{\dot{x}_1}{y_2} = \beta_{vh} (N_1-x_1(t))\frac{p_{12} e^{-\mu_2 \tau} a_2 (1-\kappa u_1(t))}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
 % %
-% &\pdv{F_{y_1}}{x_1} = \pdv{\dot{y}_1}{x_1} = \beta_{hv} a_1 (M_1-y_1(t)) \frac{p_{11} (1-\kappa u_1(t))}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
-% &\pdv{F_{y_1}}{y_1} = \pdv{\dot{y}_1}{y_1} = -\beta_{hv} a_1 \frac{p_{11} (1-\kappa u_1(t)) x_1(t) + p_{21} (1-\kappa u_2(t)) x_2(t)}{p_{11} N_1 + p_{21} N_2} - \mu_1 < 0 \\
-% &\pdv{F_{y_1}}{x_2} = \pdv{\dot{y}_1}{x_2} = \beta_{hv} a_1 (M_1-y_1(t)) \frac{p_{21} (1-\kappa u_2(t))}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
-% &\pdv{F_{y_1}}{y_2} = \pdv{\dot{y}_1}{y_2} = 0 \\
+% &\pdv{f_{y_1}}{x_1} = \pdv{\dot{y}_1}{x_1} = \beta_{hv} a_1 (M_1-y_1(t)) \frac{p_{11} (1-\kappa u_1(t))}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
+% &\pdv{f_{y_1}}{y_1} = \pdv{\dot{y}_1}{y_1} = -\beta_{hv} a_1 \frac{p_{11} (1-\kappa u_1(t)) x_1(t) + p_{21} (1-\kappa u_2(t)) x_2(t)}{p_{11} N_1 + p_{21} N_2} - \mu_1 < 0 \\
+% &\pdv{f_{y_1}}{x_2} = \pdv{\dot{y}_1}{x_2} = \beta_{hv} a_1 (M_1-y_1(t)) \frac{p_{21} (1-\kappa u_2(t))}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
+% &\pdv{f_{y_1}}{y_2} = \pdv{\dot{y}_1}{y_2} = 0 \\
 % %
-% &\pdv{F_{x_2}}{x_1} = \pdv{\dot{x}_2}{x_1} = 0 \\
-% &\pdv{F_{x_2}}{y_1} = \pdv{\dot{x}_2}{y_1} = \beta_{vh} (N_2-x_2(t)) \frac{p_{21} e^{-\mu_1 \tau} a_1 (1-\kappa u_2(t))}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
-% &\pdv{F_{x_2}}{x_2} = \pdv{\dot{x}_2}{x_2} = -\beta_{vh} \left(\frac{p_{21} e^{-\mu_1 \tau} a_1 (1-\kappa u_2(t)) y_1(t)}{p_{11} N_1 + p_{21} N_2} + \frac{p_{22} e^{-\mu_2 \tau} a_2 (1-\kappa u_2(t)) y_2(t)}{p_{12} N_1 + p_{22} N_2}\right) - \gamma_2 < 0 \\
-% &\pdv{F_{x_2}}{y_2} = \pdv{\dot{x}_2}{y_2} = \beta_{vh} (N_2-x_2(t)) \frac{p_{22} e^{-\mu_2 \tau} a_2 (1-\kappa u_2(t))}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
+% &\pdv{f_{x_2}}{x_1} = \pdv{\dot{x}_2}{x_1} = 0 \\
+% &\pdv{f_{x_2}}{y_1} = \pdv{\dot{x}_2}{y_1} = \beta_{vh} (N_2-x_2(t)) \frac{p_{21} e^{-\mu_1 \tau} a_1 (1-\kappa u_2(t))}{p_{11} N_1 + p_{21} N_2} \geq 0 \\
+% &\pdv{f_{x_2}}{x_2} = \pdv{\dot{x}_2}{x_2} = -\beta_{vh} \left(\frac{p_{21} e^{-\mu_1 \tau} a_1 (1-\kappa u_2(t)) y_1(t)}{p_{11} N_1 + p_{21} N_2} + \frac{p_{22} e^{-\mu_2 \tau} a_2 (1-\kappa u_2(t)) y_2(t)}{p_{12} N_1 + p_{22} N_2}\right) - \gamma_2 < 0 \\
+% &\pdv{f_{x_2}}{y_2} = \pdv{\dot{x}_2}{y_2} = \beta_{vh} (N_2-x_2(t)) \frac{p_{22} e^{-\mu_2 \tau} a_2 (1-\kappa u_2(t))}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
 % %
-% &\pdv{F_{y_2}}{x_1} = \pdv{\dot{y}_2}{x_1} = \beta_{hv} a_2 (M_2-y_2(t)) \frac{p_{12} (1-\kappa u_1(t))}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
-% &\pdv{F_{y_12}}{y_1} = \pdv{\dot{y}_2}{y_1} = 0 \\
-% &\pdv{F_{y_2}}{x_2} = \pdv{\dot{y}_2}{x_2} = \beta_{hv} a_2 (M_2-y_2(t)) \frac{p_{22} (1-\kappa u_2(t))}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
-% &\pdv{F_{y_2}}{y_2} = \pdv{\dot{y}_2}{y_2} = -\beta_{hv} a_2 \frac{p_{12} (1-\kappa u_1(t)) x_1(t) + p_{22} (1-\kappa u_2(t)) x_2(t)}{p_{12} N_1 + p_{22} N_2} - \mu_2 < 0
+% &\pdv{f_{y_2}}{x_1} = \pdv{\dot{y}_2}{x_1} = \beta_{hv} a_2 (M_2-y_2(t)) \frac{p_{12} (1-\kappa u_1(t))}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
+% &\pdv{f_{y_12}}{y_1} = \pdv{\dot{y}_2}{y_1} = 0 \\
+% &\pdv{f_{y_2}}{x_2} = \pdv{\dot{y}_2}{x_2} = \beta_{hv} a_2 (M_2-y_2(t)) \frac{p_{22} (1-\kappa u_2(t))}{p_{12} N_1 + p_{22} N_2} \geq 0 \\
+% &\pdv{f_{y_2}}{y_2} = \pdv{\dot{y}_2}{y_2} = -\beta_{hv} a_2 \frac{p_{12} (1-\kappa u_1(t)) x_1(t) + p_{22} (1-\kappa u_2(t)) x_2(t)}{p_{12} N_1 + p_{22} N_2} - \mu_2 < 0
 % \end{align*}
 
 Якобианът за системата \ref{eq:TheDimensionlessProblem} може да се представи във вида:
 \begin{equation}
   \mathrm{D} \mathbf{f}(x_1, x_2, y_1, y_2)(t) =
   \begin{pmatrix}
-    \pdv{F_{x_1}}{x_1} && \pdv{F_{x_1}}{x_2} && \pdv{F_{x_1}}{y_1} && \pdv{F_{x_1}}{y_2} \\
-    \pdv{F_{x_2}}{x_1} && \pdv{F_{x_2}}{x_2} && \pdv{F_{x_2}}{y_1} && \pdv{F_{x_2}}{y_2} \\
-    \pdv{F_{y_1}}{x_1} && \pdv{F_{y_1}}{x_2} && \pdv{F_{y_1}}{y_1} && \pdv{F_{y_1}}{y_2} \\
-    \pdv{F_{y_2}}{x_1} && \pdv{F_{y_2}}{x_2} && \pdv{F_{y_2}}{y_1} && \pdv{F_{y_2}}{y_2}
+    \pdv{f_{x_1}}{x_1} && \pdv{f_{x_1}}{x_2} && \pdv{f_{x_1}}{y_1} && \pdv{f_{x_1}}{y_2} \\
+    \pdv{f_{x_2}}{x_1} && \pdv{f_{x_2}}{x_2} && \pdv{f_{x_2}}{y_1} && \pdv{f_{x_2}}{y_2} \\
+    \pdv{f_{y_1}}{x_1} && \pdv{f_{y_1}}{x_2} && \pdv{f_{y_1}}{y_1} && \pdv{f_{y_1}}{y_2} \\
+    \pdv{f_{y_2}}{x_1} && \pdv{f_{y_2}}{x_2} && \pdv{f_{y_2}}{y_1} && \pdv{f_{y_2}}{y_2}
   \end{pmatrix}
   \end{equation}
 
@@ -169,25 +172,25 @@
   \label{eq:JacobianElements}
   \begin{equation}
     \begin{split}
-      &\pdv{F_{x_1}}{x_1} = \pdv{\dot{x}_1}{x_1} = -(1-\kappa u_1(t)) \left(b_{11} y_1(t) + b_{12} y_2(t)\right) - \gamma_1 < 0 \\
-      &\pdv{F_{x_1}}{x_2} = \pdv{\dot{x}_1}{x_2} = 0 \\
-      &\pdv{F_{x_1}}{y_1} = \pdv{\dot{x}_1}{y_1} = (1-x_1(t)) (1-\kappa u_1(t)) b_{11} \geq 0 \\
-      &\pdv{F_{x_1}}{y_2} = \pdv{\dot{x}_1}{y_2} = (1-x_1(t)) (1-\kappa u_1(t)) b_{12} \geq 0 \\
+      &\pdv{f_{x_1}}{x_1} = \pdv{\dot{x}_1}{x_1} = -(1-\kappa u_1(t)) \left(b_{11} y_1(t) + b_{12} y_2(t)\right) - \gamma_1 < 0 \\
+      &\pdv{f_{x_1}}{x_2} = \pdv{\dot{x}_1}{x_2} = 0 \\
+      &\pdv{f_{x_1}}{y_1} = \pdv{\dot{x}_1}{y_1} = (1-x_1(t)) (1-\kappa u_1(t)) b_{11} \geq 0 \\
+      &\pdv{f_{x_1}}{y_2} = \pdv{\dot{x}_1}{y_2} = (1-x_1(t)) (1-\kappa u_1(t)) b_{12} \geq 0 \\
       %
-      &\pdv{F_{x_2}}{x_1} = \pdv{\dot{x}_2}{x_1} = 0 \\
-      &\pdv{F_{x_2}}{x_2} = \pdv{\dot{x}_2}{x_2} = -(1-\kappa u_2(t)) \left(b_{21} y_1(t) + b_{22} y_2(t)\right) - \gamma_2 < 0 \\
-      &\pdv{F_{x_2}}{y_1} = \pdv{\dot{x}_2}{y_1} = (1-x_2(t)) (1-\kappa u_2(t)) b_{21} \geq 0 \\
-      &\pdv{F_{x_2}}{y_2} = \pdv{\dot{x}_2}{y_2} = (1-x_2(t)) (1-\kappa u_2(t)) b_{22} \geq 0 \\
+      &\pdv{f_{x_2}}{x_1} = \pdv{\dot{x}_2}{x_1} = 0 \\
+      &\pdv{f_{x_2}}{x_2} = \pdv{\dot{x}_2}{x_2} = -(1-\kappa u_2(t)) \left(b_{21} y_1(t) + b_{22} y_2(t)\right) - \gamma_2 < 0 \\
+      &\pdv{f_{x_2}}{y_1} = \pdv{\dot{x}_2}{y_1} = (1-x_2(t)) (1-\kappa u_2(t)) b_{21} \geq 0 \\
+      &\pdv{f_{x_2}}{y_2} = \pdv{\dot{x}_2}{y_2} = (1-x_2(t)) (1-\kappa u_2(t)) b_{22} \geq 0 \\
       %
-      &\pdv{F_{y_1}}{x_1} = \pdv{\dot{y}_1}{x_1} = (1-y_1(t)) c_{11}(1-\kappa u_1(t)) \geq 0 \\
-      &\pdv{F_{y_1}}{x_2} = \pdv{\dot{y}_1}{x_2} = (1-y_1(t)) c_{12}(1-\kappa u_2(t)) \geq 0 \\
-      &\pdv{F_{y_1}}{y_1} = \pdv{\dot{y}_1}{y_1} = -\left(c_{11}(1-\kappa u_1(t)) x_1(t) + c_{12}(1-\kappa u_2(t)) x_2(t)\right) - \mu_1 < 0 \\
-      &\pdv{F_{y_1}}{y_2} = \pdv{\dot{y}_1}{y_2} = 0 \\
+      &\pdv{f_{y_1}}{x_1} = \pdv{\dot{y}_1}{x_1} = (1-y_1(t)) c_{11}(1-\kappa u_1(t)) \geq 0 \\
+      &\pdv{f_{y_1}}{x_2} = \pdv{\dot{y}_1}{x_2} = (1-y_1(t)) c_{12}(1-\kappa u_2(t)) \geq 0 \\
+      &\pdv{f_{y_1}}{y_1} = \pdv{\dot{y}_1}{y_1} = -\left(c_{11}(1-\kappa u_1(t)) x_1(t) + c_{12}(1-\kappa u_2(t)) x_2(t)\right) - \mu_1 < 0 \\
+      &\pdv{f_{y_1}}{y_2} = \pdv{\dot{y}_1}{y_2} = 0 \\
       %
-      &\pdv{F_{y_2}}{x_1} = \pdv{\dot{y}_2}{x_1} = (1-y_2(t)) c_{21}(1-\kappa u_1(t)) \geq 0 \\
-      &\pdv{F_{y_2}}{x_2} = \pdv{\dot{y}_2}{x_2} = (1-y_2(t)) c_{22}(1-\kappa u_2(t)) \geq 0 \\
-      &\pdv{F_{y_12}}{y_1} = \pdv{\dot{y}_2}{y_1} = 0 \\
-      &\pdv{F_{y_2}}{y_2} = \pdv{\dot{y}_2}{y_2} = -\left(c_{21}(1-\kappa u_1(t)) x_1(t) + c_{22}(1-\kappa u_2(t)) x_2(t)\right) - \mu_1 < 0
+      &\pdv{f_{y_2}}{x_1} = \pdv{\dot{y}_2}{x_1} = (1-y_2(t)) c_{21}(1-\kappa u_1(t)) \geq 0 \\
+      &\pdv{f_{y_2}}{x_2} = \pdv{\dot{y}_2}{x_2} = (1-y_2(t)) c_{22}(1-\kappa u_2(t)) \geq 0 \\
+      &\pdv{f_{y_12}}{y_1} = \pdv{\dot{y}_2}{y_1} = 0 \\
+      &\pdv{f_{y_2}}{y_2} = \pdv{\dot{y}_2}{y_2} = -\left(c_{21}(1-\kappa u_1(t)) x_1(t) + c_{22}(1-\kappa u_2(t)) x_2(t)\right) - \mu_1 < 0
     \end{split}
     \end{equation}
   Извън главния диагонал има само неотрицателни елементи и така системата е кооперативна.
@@ -257,91 +260,91 @@
 Достатъчно условие за това е всяка компонента на $\mathrm{D}\mathbf{f}$ да е нерастяща функция по всички променливи, като за поне една от тях да е намаляваща. Това може да проверим с производни по различните променливи:
 {\allowdisplaybreaks
   \begin{align*}
-    &\pdv{F_{x_1}}{x_1}{x_1} = 0, \quad
-    \pdv{F_{x_1}}{x_1}{x_2} = 0, \quad
-    \pdv{F_{x_1}}{x_1}{y_1} = -(1-\kappa u_1(t)) b_{11} < 0, \quad
-    \pdv{F_{x_1}}{x_1}{y_2} = -(1-\kappa u_1(t)) b_{12} < 0 \\
+    &\pdv{f_{x_1}}{x_1}{x_1} = 0, \quad
+    \pdv{f_{x_1}}{x_1}{x_2} = 0, \quad
+    \pdv{f_{x_1}}{x_1}{y_1} = -(1-\kappa u_1(t)) b_{11} < 0, \quad
+    \pdv{f_{x_1}}{x_1}{y_2} = -(1-\kappa u_1(t)) b_{12} < 0 \\
     %
-    &\pdv{F_{x_1}}{x_2}{x_1} = 0, \quad
-    \pdv{F_{x_1}}{x_2}{x_2} = 0, \quad
-    \pdv{F_{x_1}}{x_2}{y_1} = 0, \quad
-    \pdv{F_{x_1}}{x_2}{y_2} = 0 \\
+    &\pdv{f_{x_1}}{x_2}{x_1} = 0, \quad
+    \pdv{f_{x_1}}{x_2}{x_2} = 0, \quad
+    \pdv{f_{x_1}}{x_2}{y_1} = 0, \quad
+    \pdv{f_{x_1}}{x_2}{y_2} = 0 \\
     %
-    &\pdv{F_{x_1}}{y_1}{x_1} = -(1-\kappa u_1(t)) b_{11} < 0, \quad
-    \pdv{F_{x_1}}{y_1}{x_2} = 0, \quad
-    \pdv{F_{x_1}}{y_1}{y_1} = 0, \quad
-    \pdv{F_{x_1}}{y_1}{y_2} = 0 \\
+    &\pdv{f_{x_1}}{y_1}{x_1} = -(1-\kappa u_1(t)) b_{11} < 0, \quad
+    \pdv{f_{x_1}}{y_1}{x_2} = 0, \quad
+    \pdv{f_{x_1}}{y_1}{y_1} = 0, \quad
+    \pdv{f_{x_1}}{y_1}{y_2} = 0 \\
     %
-    &\pdv{F_{x_1}}{y_2}{x_1} = -(1-\kappa u_1(t)) b_{12} < 0, \quad
-    \pdv{F_{x_1}}{y_2}{x_2} = 0, \quad
-    \pdv{F_{x_1}}{y_2}{y_1} = 0, \quad
-    \pdv{F_{x_1}}{y_2}{y_2} = 0 \\
-    %
-    %
-    %
-    &\pdv{F_{x_2}}{x_1}{x_1} = 0, \quad
-    \pdv{F_{x_2}}{x_1}{x_2} = 0, \quad
-    \pdv{F_{x_2}}{x_1}{y_1} = 0, \quad
-    \pdv{F_{x_2}}{x_1}{y_2} = 0 \\
-    %
-    &\pdv{F_{x_2}}{x_2}{x_1} = 0, \quad
-    \pdv{F_{x_2}}{x_2}{y_1} = -(1-\kappa u_2(t)) b_{21}, \quad
-    \pdv{F_{x_2}}{x_2}{x_2} = 0, \quad
-    \pdv{F_{x_2}}{x_2}{y_2} = -(1-\kappa u_2(t)) b_{22} < 0 \\
-    %
-    &\pdv{F_{x_2}}{y_1}{x_1} = 0, \quad
-    \pdv{F_{x_2}}{y_1}{x_2} = -(1-\kappa u_2(t)) b_{21}, \quad
-    \pdv{F_{x_2}}{y_1}{y_1} = 0, \quad
-    \pdv{F_{x_2}}{y_1}{y_2} = 0 \\
-    %
-    &\pdv{F_{x_2}}{y_2}{x_1} = 0, \quad
-    \pdv{F_{x_2}}{y_2}{x_2} = -(1-\kappa u_2(t)) b_{22} < 0, \quad
-    \pdv{F_{x_2}}{y_2}{y_1} = 0, \quad
-    \pdv{F_{x_2}}{y_2}{y_2} = 0 \\
+    &\pdv{f_{x_1}}{y_2}{x_1} = -(1-\kappa u_1(t)) b_{12} < 0, \quad
+    \pdv{f_{x_1}}{y_2}{x_2} = 0, \quad
+    \pdv{f_{x_1}}{y_2}{y_1} = 0, \quad
+    \pdv{f_{x_1}}{y_2}{y_2} = 0 \\
     %
     %
     %
-    &\pdv{F_{y_1}}{x_1}{x_1} = 0, \quad
-    \pdv{F_{y_1}}{x_1}{x_2} = 0, \quad
-    \pdv{F_{y_1}}{x_1}{y_1} = -(1-\kappa u_1(t))c_{11} < 0, \quad
-    \pdv{F_{y_1}}{x_1}{y_2} = 0 \\
+    &\pdv{f_{x_2}}{x_1}{x_1} = 0, \quad
+    \pdv{f_{x_2}}{x_1}{x_2} = 0, \quad
+    \pdv{f_{x_2}}{x_1}{y_1} = 0, \quad
+    \pdv{f_{x_2}}{x_1}{y_2} = 0 \\
     %
-    &\pdv{F_{y_1}}{x_2}{x_1} = 0, \quad
-    \pdv{F_{y_1}}{x_2}{y_1} = -(1-\kappa u_1(t))c_{12} < 0, \quad
-    \pdv{F_{y_1}}{x_2}{x_2} = 0, \quad
-    \pdv{F_{y_1}}{x_2}{y_2} = 0 \\
+    &\pdv{f_{x_2}}{x_2}{x_1} = 0, \quad
+    \pdv{f_{x_2}}{x_2}{y_1} = -(1-\kappa u_2(t)) b_{21}, \quad
+    \pdv{f_{x_2}}{x_2}{x_2} = 0, \quad
+    \pdv{f_{x_2}}{x_2}{y_2} = -(1-\kappa u_2(t)) b_{22} < 0 \\
     %
-    &\pdv{F_{y_1}}{y_1}{x_1} = -(1-\kappa u_1(t))c_{11} < 0, \quad
-    \pdv{F_{y_1}}{y_1}{x_2} = -(1-\kappa u_1(t))c_{12}, \quad
-    \pdv{F_{y_1}}{y_1}{y_1} = 0, \quad
-    \pdv{F_{y_1}}{y_1}{y_2} = 0 \\
+    &\pdv{f_{x_2}}{y_1}{x_1} = 0, \quad
+    \pdv{f_{x_2}}{y_1}{x_2} = -(1-\kappa u_2(t)) b_{21}, \quad
+    \pdv{f_{x_2}}{y_1}{y_1} = 0, \quad
+    \pdv{f_{x_2}}{y_1}{y_2} = 0 \\
     %
-    &\pdv{F_{y_1}}{y_2}{x_1} = 0, \quad
-    \pdv{F_{y_1}}{y_2}{x_2} = 0, \quad
-    \pdv{F_{y_1}}{y_2}{y_1} = 0, \quad
-    \pdv{F_{y_1}}{y_2}{y_2} = 0 \\
+    &\pdv{f_{x_2}}{y_2}{x_1} = 0, \quad
+    \pdv{f_{x_2}}{y_2}{x_2} = -(1-\kappa u_2(t)) b_{22} < 0, \quad
+    \pdv{f_{x_2}}{y_2}{y_1} = 0, \quad
+    \pdv{f_{x_2}}{y_2}{y_2} = 0 \\
     %
     %
     %
-    &\pdv{F_{y_2}}{x_1}{x_1} = 0, \quad
-    \pdv{F_{y_2}}{x_1}{x_2} = 0, \quad
-    \pdv{F_{y_2}}{x_1}{y_1} = 0, \quad
-    \pdv{F_{y_2}}{x_1}{y_2} = -(1-\kappa u_1(t)) c_{21} \\
+    &\pdv{f_{y_1}}{x_1}{x_1} = 0, \quad
+    \pdv{f_{y_1}}{x_1}{x_2} = 0, \quad
+    \pdv{f_{y_1}}{x_1}{y_1} = -(1-\kappa u_1(t))c_{11} < 0, \quad
+    \pdv{f_{y_1}}{x_1}{y_2} = 0 \\
     %
-    &\pdv{F_{y_2}}{x_2}{x_1} = 0, \quad
-    \pdv{F_{y_2}}{x_2}{x_2} = 0, \quad
-    \pdv{F_{y_2}}{x_2}{y_1} = 0, \quad
-    \pdv{F_{y_2}}{x_2}{y_2} = -(1-\kappa u_2(t)) c_{22} < 0 \\
+    &\pdv{f_{y_1}}{x_2}{x_1} = 0, \quad
+    \pdv{f_{y_1}}{x_2}{y_1} = -(1-\kappa u_1(t))c_{12} < 0, \quad
+    \pdv{f_{y_1}}{x_2}{x_2} = 0, \quad
+    \pdv{f_{y_1}}{x_2}{y_2} = 0 \\
     %
-    &\pdv{F_{y_2}}{y_1}{x_1} = 0, \quad
-    \pdv{F_{y_2}}{y_1}{x_2} = 0, \quad
-    \pdv{F_{y_2}}{y_1}{y_1} = 0, \quad
-    \pdv{F_{y_2}}{y_1}{y_2} = 0 \\
+    &\pdv{f_{y_1}}{y_1}{x_1} = -(1-\kappa u_1(t))c_{11} < 0, \quad
+    \pdv{f_{y_1}}{y_1}{x_2} = -(1-\kappa u_1(t))c_{12}, \quad
+    \pdv{f_{y_1}}{y_1}{y_1} = 0, \quad
+    \pdv{f_{y_1}}{y_1}{y_2} = 0 \\
     %
-    &\pdv{F_{y_2}}{y_2}{x_1} = -(1-\kappa u_1(t)) c_{21} < 0, \quad
-    \pdv{F_{y_2}}{y_2}{x_2} = -(1-\kappa u_2(t)) c_{22} < 0, \quad
-    \pdv{F_{y_2}}{y_2}{y_1} = 0, \quad
-    \pdv{F_{y_2}}{y_2}{y_2} = 0
+    &\pdv{f_{y_1}}{y_2}{x_1} = 0, \quad
+    \pdv{f_{y_1}}{y_2}{x_2} = 0, \quad
+    \pdv{f_{y_1}}{y_2}{y_1} = 0, \quad
+    \pdv{f_{y_1}}{y_2}{y_2} = 0 \\
+    %
+    %
+    %
+    &\pdv{f_{y_2}}{x_1}{x_1} = 0, \quad
+    \pdv{f_{y_2}}{x_1}{x_2} = 0, \quad
+    \pdv{f_{y_2}}{x_1}{y_1} = 0, \quad
+    \pdv{f_{y_2}}{x_1}{y_2} = -(1-\kappa u_1(t)) c_{21} \\
+    %
+    &\pdv{f_{y_2}}{x_2}{x_1} = 0, \quad
+    \pdv{f_{y_2}}{x_2}{x_2} = 0, \quad
+    \pdv{f_{y_2}}{x_2}{y_1} = 0, \quad
+    \pdv{f_{y_2}}{x_2}{y_2} = -(1-\kappa u_2(t)) c_{22} < 0 \\
+    %
+    &\pdv{f_{y_2}}{y_1}{x_1} = 0, \quad
+    \pdv{f_{y_2}}{y_1}{x_2} = 0, \quad
+    \pdv{f_{y_2}}{y_1}{y_1} = 0, \quad
+    \pdv{f_{y_2}}{y_1}{y_2} = 0 \\
+    %
+    &\pdv{f_{y_2}}{y_2}{x_1} = -(1-\kappa u_1(t)) c_{21} < 0, \quad
+    \pdv{f_{y_2}}{y_2}{x_2} = -(1-\kappa u_2(t)) c_{22} < 0, \quad
+    \pdv{f_{y_2}}{y_2}{y_1} = 0, \quad
+    \pdv{f_{y_2}}{y_2}{y_2} = 0
   \end{align*}
 }
 Така достатъчното условие е изпълнено и системата притежава силна вдлъбнатост.

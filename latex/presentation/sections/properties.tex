@@ -1,0 +1,147 @@
+\begin{frame}[t]{Съществуване на решение}
+  Трябва да покажем липшицовост по фазовите променливи.
+  \begin{lemma}
+    \label{lemma:Modulus}
+    Нека $z, z', s, s', C_z, C_s \in \mathbb{R}$, за които $z, z' < C_z$ и $s, s' < C_s$. Тогава след полагането $C = \max\{2 |C_z|, |C_s|\}$ е в сила $|(C_z - z) s - (C_z - z') s'| \leq C (|s-s'| + |z - z'|)$.
+  \end{lemma}
+
+  \begin{proof}
+    \begin{equation}
+      \begin{split}
+        &|(C_z - z) s - (C_z - z') s'| =
+        |C_z s - z s - C_z s' + z' s' + z s' - z s'| = \\
+        &|C_z (s - s') - z (s - s') - s' (z - z')| \leq \\
+        &|C_z| |s - s'| + |z| |s - s'| + |s'| |z - z'| \leq
+        2 |C_z| |s - s'|  + |C_s| |z - z'| \leq \\
+        &\max\{2 |C_z|, |C_s|\} (|s-s'| + |z - z'|)
+      \end{split}
+    \end{equation}
+  \end{proof}
+\end{frame}
+
+\begin{frame}[t]{Съществуване на решение}
+  Първо от неравенството на триъгълника имаме, че:
+  \begin{equation}
+    \|\mathbf{f}(\mathbf{z}, \mathbf{u}) - \mathbf{f}(\mathbf{z}', \mathbf{u}')\| \leq
+    |F_{x_1}(\mathbf{z}, \mathbf{u})| + |F_{x_2}(\mathbf{z}, \mathbf{u})| + |F_{y_1}(\mathbf{z}, \mathbf{u})| + |F_{y_2}(\mathbf{z}, \mathbf{u})|
+  \end{equation}
+  Сега може да ползваме неколкократно \ref{lemma:Modulus} за $F_{x_1}$:
+  \begin{multline}
+    |(1-x_1) (1-\kappa u_1) \left(b_{11} y_1 + b_{12} y_2\right) - \gamma_1 x_1 - (1-x'_1) (1-\kappa u'_1) \left(b_{11} y'_1 + b_{12} y'_2\right) - \gamma_1 x'_1| \leq \\
+    b_{11} \left|(1-x_1)[(1 - \kappa u_1) y_1] -  (1-x'_1)[(1 - \kappa u'_1) y'_1]\right| + \\
+    b_{12} \left|(1-x_1)[(1 - \kappa u_1) y_2] -  (1-x'_1)[(1 - \kappa u'_2) y'_2]\right| + \gamma |x_1 - x'_1|
+  \end{multline}
+\end{frame}
+
+\begin{frame}[t]{Съществуване на решение}
+  Имаме, че $x_1, x'_1 \leq 1, \quad (1-\kappa u_1)y_1, (1-\kappa u_1) y'_1 \leq 1, \quad (1-\kappa u_1)y_2, (1-\kappa u_1) y'_2 \leq 1$:
+  \begin{multline}
+    \left|(1-x_1) [(1-\kappa u_1) y_1] - (1-x'_1) [(1-\kappa u'_1) y'_1]\right| \leq \\
+    2 |(1-\kappa u_1) y_1 - (1-\kappa u'_1) y'_1| + |x_1 - x'_1| \leq \\
+    2 (2|y_1 - y'_1| + \kappa |u_1 - u'_1|) + |x_1 - x'_1|
+  \end{multline}
+  \begin{multline}
+    \left|(1-x_1) [(1-\kappa u_1) y_2] - (1-x'_1) [(1-\kappa u'_1) y'_2]\right| \leq \\
+    2 |(1-\kappa u_1) y_2 - (1-\kappa u'_1) y'_2| + |x_1 - x'_1| \leq \\
+    2 (2|y_2 - y'_2| + \kappa |u_1 - u'_1|) + |x_1 - x'_1|
+  \end{multline}
+
+  Тук също ползвахме $1-\kappa u_1, 1-\kappa u'_1 \leq 1, \quad y_1, y'_1 \leq 1, \quad y_2, y'_2 \leq 1$. Така получихе оценка отгоре за първото събираемо. Аналогично за другите. \\
+\end{frame}
+
+\begin{frame}[t]{Съществуване на решение}
+  За да проверим липшицовостта по фазовите променливи, то заместваме с $u_1 = 1'_1, u_2 = u'_2$ всичко и за цялата дясна страна е в сила:
+  \begin{multline}
+    \|\mathbf{f}(\mathbf{z}, \mathbf{u}) - \mathbf{f}(\mathbf{z}', \mathbf{u}')\| \leq \\
+    b_{11} (4 |y_1 - y'_1| + |x_1 - x'_1|) +
+    b_{12} (4 |y_2 - y'_2| + |x_1 - x'_1|) + \gamma_1 |x_1-x'_1| + \\
+    b_{21} (4 |y_1 - y'_1| + |x_1 - x'_1|) +
+    b_{22} (4 |y_2 - y'_2| + |x_1 - x'_1|) + \gamma_2 |x_2-x'_2| + \\
+    c_{11} (4 |x_1 - x'_1| + |y_1 - y'_1|) +
+    c_{22} (4 |x_2 - x'_2| + |y_1 - y'_1|) + \mu_1 |y_1 - y'_1| + \\
+    c_{21} (4 |x_1 - x'_1| + |y_2 - y'_2|) +
+    c_{22} (4 |x_2 - x'_2| + |y_2 - y'_2|) + \mu_2 |y_2 - y'_2| \leq \\
+    L \|\mathbf{z} - \mathbf{z}'\|
+  \end{multline}
+  Накрая се използват неравенства от вида $|x_1-x'_1| \leq \|(x_1, x_2, y_1, y_2) - (x'_1, x'_2, y'_1, y'_2)\| = \|\mathbf{z} - \mathbf{z}'\|$.
+\end{frame}
+
+\begin{frame}[t]{Ограниченост на решението}
+  Трябва да се покаже, че $\mathbf{f}$ сочи към вътрешността на $\Omega$, ако решението се намира по границата $\partial \Omega$. Но това наистина е така, от:
+  \begin{equation}
+    \begin{split}
+      &\dot{x}_1(t)\vert_{\Omega \cap \{x_1(t)=0\}} = (1-\kappa u_1(t))(b_{11} y_1(t) + b_{12} y_2(t)) \geq 0 \\
+      &\dot{x}_1(t)\vert_{\Omega \cap \{x_1(t)=1\}} = - \gamma_1 < 0 \\
+      &\dot{x}_2(t)\vert_{\Omega \cap \{x_2(t)=0\}} = (1-\kappa u_2(t))(b_{21} y_1(t) + b_{22} y_2(t)) \geq 0 \\
+      &\dot{x}_2(t)\vert_{\Omega \cap \{x_2(t)=1\}} = - \gamma_2 < 0 \\
+      &\dot{y}_1(t)\vert_{\Omega \cap \{y_1(t)=0\}} = c_{11}(1-\kappa u_1(t)) x_1(t) + c_{12}(1-\kappa u_2(t)) x_2(t) \geq 0 \\
+      &\dot{y}_1(t)\vert_{\Omega \cap \{y_1(t)=1\}} = - \mu_1 < 0 \\
+      &\dot{y}_2(t)\vert_{\Omega \cap \{y_2(t)=0\}} = c_{21}(1-\kappa u_1(t)) x_1(t) + c_{22}(1-\kappa u_2(t)) x_2(t) \geq 0 \\
+      &\dot{y}_2(t)\vert_{\Omega \cap \{y_2(t)=1\}} = - \mu_2 < 0
+    \end{split}
+  \end{equation}
+\end{frame}
+
+\begin{frame}[t]{Кооперативност}
+  Якобианът за системата \ref{eq:TheDimensionlessProblem} може да се представи във вида:
+  \begin{equation}
+    \mathrm{D} \mathbf{f}(x_1, x_2, y_1, y_2)(t) =
+    \begin{pmatrix}
+      \pdv{f_{x_1}}{x_1} && \pdv{f_{x_1}}{x_2} && \pdv{f_{x_1}}{y_1} && \pdv{f_{x_1}}{y_2} \\
+      \pdv{f_{x_2}}{x_1} && \pdv{f_{x_2}}{x_2} && \pdv{f_{x_2}}{y_1} && \pdv{f_{x_2}}{y_2} \\
+      \pdv{f_{y_1}}{x_1} && \pdv{f_{y_1}}{x_2} && \pdv{f_{y_1}}{y_1} && \pdv{f_{y_1}}{y_2} \\
+      \pdv{f_{y_2}}{x_1} && \pdv{f_{y_2}}{x_2} && \pdv{f_{y_2}}{y_1} && \pdv{f_{y_2}}{y_2}
+    \end{pmatrix}
+  \end{equation}
+  \label{eq:JacobianElements}
+  \begin{equation}
+    \begin{split}
+      &\pdv{f_{x_1}}{x_1} = \pdv{\dot{x}_1}{x_1} = -(1-\kappa u_1(t)) \left(b_{11} y_1(t) + b_{12} y_2(t)\right) - \gamma_1 < 0 \\
+      &\pdv{f_{x_1}}{x_2} = \pdv{\dot{x}_1}{x_2} = 0 \\
+      &\pdv{f_{x_1}}{y_1} = \pdv{\dot{x}_1}{y_1} = (1-x_1(t)) (1-\kappa u_1(t)) b_{11} \geq 0 \\
+      &\pdv{f_{x_1}}{y_2} = \pdv{\dot{x}_1}{y_2} = (1-x_1(t)) (1-\kappa u_1(t)) b_{12} \geq 0 \\
+      %
+      &\pdv{f_{x_2}}{x_1} = \pdv{\dot{x}_2}{x_1} = 0 \\
+      &\pdv{f_{x_2}}{x_2} = \pdv{\dot{x}_2}{x_2} = -(1-\kappa u_2(t)) \left(b_{21} y_1(t) + b_{22} y_2(t)\right) - \gamma_2 < 0 \\
+      &\pdv{f_{x_2}}{y_1} = \pdv{\dot{x}_2}{y_1} = (1-x_2(t)) (1-\kappa u_2(t)) b_{21} \geq 0 \\
+      &\pdv{f_{x_2}}{y_2} = \pdv{\dot{x}_2}{y_2} = (1-x_2(t)) (1-\kappa u_2(t)) b_{22} \geq 0 \\
+      %
+      &\pdv{f_{y_1}}{x_1} = \pdv{\dot{y}_1}{x_1} = (1-y_1(t)) c_{11}(1-\kappa u_1(t)) \geq 0 \\
+      &\pdv{f_{y_1}}{x_2} = \pdv{\dot{y}_1}{x_2} = (1-y_1(t)) c_{12}(1-\kappa u_2(t)) \geq 0 \\
+      &\pdv{f_{y_1}}{y_1} = \pdv{\dot{y}_1}{y_1} = -\left(c_{11}(1-\kappa u_1(t)) x_1(t) + c_{12}(1-\kappa u_2(t)) x_2(t)\right) - \mu_1 < 0 \\
+      &\pdv{f_{y_1}}{y_2} = \pdv{\dot{y}_1}{y_2} = 0 \\
+      %
+      &\pdv{f_{y_2}}{x_1} = \pdv{\dot{y}_2}{x_1} = (1-y_2(t)) c_{21}(1-\kappa u_1(t)) \geq 0 \\
+      &\pdv{f_{y_2}}{x_2} = \pdv{\dot{y}_2}{x_2} = (1-y_2(t)) c_{22}(1-\kappa u_2(t)) \geq 0 \\
+      &\pdv{f_{y_12}}{y_1} = \pdv{\dot{y}_2}{y_1} = 0 \\
+      &\pdv{f_{y_2}}{y_2} = \pdv{\dot{y}_2}{y_2} = -\left(c_{21}(1-\kappa u_1(t)) x_1(t) + c_{22}(1-\kappa u_2(t)) x_2(t)\right) - \mu_1 < 0
+    \end{split}
+  \end{equation}
+  Извън главния диагонал има само неотрицателни елементи и така системата е кооперативна.
+
+\end{frame}
+
+\begin{frame}[t]{Силна вдлъбнатост}
+  Достатъчно условие за това е всяка компонента на Якобиана да е нерастяща функция по всички променливи, като за поне една от тях да е намаляваща. Това може да проверим с производни по различните променливи.
+  % \begin{align*}
+  %   &\pdv{f_{x_1}}{x_1}{x_1} = 0, \quad
+  %   \pdv{f_{x_1}}{x_1}{x_2} = 0, \quad
+  %   \pdv{f_{x_1}}{x_1}{y_1} = -(1-\kappa u_1(t)) b_{11} < 0, \quad
+  %   \pdv{f_{x_1}}{x_1}{y_2} = -(1-\kappa u_1(t)) b_{12} < 0 \\
+  %   %
+  %   &\pdv{f_{x_1}}{x_2}{x_1} = 0, \quad
+  %   \pdv{f_{x_1}}{x_2}{x_2} = 0, \quad
+  %   \pdv{f_{x_1}}{x_2}{y_1} = 0, \quad
+  %   \pdv{f_{x_1}}{x_2}{y_2} = 0 \\
+  %   %
+  %   &\pdv{f_{x_1}}{y_1}{x_1} = -(1-\kappa u_1(t)) b_{11} < 0, \quad
+  %   \pdv{f_{x_1}}{y_1}{x_2} = 0, \quad
+  %   \pdv{f_{x_1}}{y_1}{y_1} = 0, \quad
+  %   \pdv{f_{x_1}}{y_1}{y_2} = 0 \\
+  %   %
+  %   &\pdv{f_{x_1}}{y_2}{x_1} = -(1-\kappa u_1(t)) b_{12} < 0, \quad
+  %   \pdv{f_{x_1}}{y_2}{x_2} = 0, \quad
+  %   \pdv{f_{x_1}}{y_2}{y_1} = 0, \quad
+  %   \pdv{f_{x_1}}{y_2}{y_2} = 0 \\
+  % \end{align*}
+\end{frame}

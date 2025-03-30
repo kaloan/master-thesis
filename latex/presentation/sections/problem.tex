@@ -1,0 +1,43 @@
+\begin{frame}[t]{Задача}
+  Комбинираме моделите на Bichara и Rashkov.
+  Моделът подлежи на скалиране на променливите чрез смяната $(X_1, X_2, Y_1, Y_2) \rightarrow (\frac{X_1}{N_1}, \frac{X_2}{N_2}, \frac{Y_1}{M_1}, \frac{Y_2}{M_2}) = (x_1, x_2, y_1, y_2)$ и след полагания на коефициентите има вида:
+  \begin{equation}
+    \label{eq:TheDimensionlessProblem}
+    \begin{split}
+      &\dot{x}_1(t) = (1-x_1(t)) (1-\kappa u_1(t)) \left(b_{11} y_1(t) + b_{12} y_2(t)\right) - \gamma_1 x_1(t) \\
+      &\dot{x}_2(t) = (1-x_2(t)) (1-\kappa u_2(t))\left(b_{21} y_1(t) + b_{22} y_2(t)\right) - \gamma_2 x_2(t) \\
+      &\dot{y}_1(t) = (1-y_1(t)) \left(c_{11}(1-\kappa u_1(t)) x_1(t) + c_{12}(1-\kappa u_2(t)) x_2(t)\right) - \mu_1 y_1(t) \\
+      &\dot{y}_2(t) = (1-y_2(t)) \left(c_{21}(1-\kappa u_1(t)) x_1(t) + c_{22} (1-\kappa u_2(t)) x_2(t)\right) - \mu_2 y_2(t)
+    \end{split}
+  \end{equation}
+  Надолу \ref{eq:TheDimensionlessProblem} ще се записва и във векторен вид по следния начин:
+  \begin{equation}
+    \begin{pmatrix}
+      \dot{\mathbf{x}} \\
+      \dot{\mathbf{y}}
+    \end{pmatrix}
+    =
+    \mathbf{f}(\mathbf{x}, \mathbf{y}, \mathbf{u}), \quad
+    \mathbf{x} = (x_1, \cdots, x_n)^T, \quad \mathbf{y} = (y_1, \cdots y_n)^T
+  \end{equation}
+  Или пък във вида:
+  \begin{equation}
+    \dot{\mathbf{z}} = \mathbf{f}(\mathbf{z}, \mathbf{u}), \quad \mathbf{z} = (\mathbf{x}, \mathbf{y})^T
+  \end{equation}
+\end{frame}
+
+\begin{frame}[t]{Задача}
+  Бележим $\Omega = \{0 \leq x_1 \leq 1, 0 \leq y_1 \leq 1, 0 \leq x_2 \leq 1, 0 \leq y_2 \leq 1\} = \{\mathbf{z} \in [0, 1]^4\}$.
+
+  Нека $\bar{\mathbf{I}} = (\bar{I}_1, \bar{I}_2)^T, \bar{I}_1, \bar{I}_2 \in [0, 1]$ са константи, отговарящи за максималната част от населението в съответното местообитание, което може да получи адекватна здравна помощ при заразяване с малария. Ще бележим $\mathscr{I} = [0, \bar{I}_1] \times [0, \bar{I}_2]$.
+  Питаме се има ли такива управления $\mathbf{u}(t)$, за които във всеки момент всички заразени да имат възможност да получат помощ от здравната система, т.е. :
+  \begin{equation}
+    \label{eq:AllHospitalised}
+    \forall t>0 (x_1(t) \leq \bar{I}_1 \wedge x_2(t) \leq \bar{I}_2) \iff \forall t>0 (\mathbf{x}(t) \in \mathscr{I})
+  \end{equation}
+  Тъй като първоначалният брой заразени хора и комари влияят на развитието на системата ще търсим:
+  \begin{equation}
+    \label{eq:ViabilityKernel}
+    V(\bar{\mathbf{I}}, \bar{\mathbf{u}}) = \{\mathbf{z}_0  \text{ начално условие} \vert \exists \mathbf{u} (\eqref{eq:TheDimensionlessProblem} \text{ има решение} \wedge \eqref{eq:AllHospitalised} \text{ е изпълнено})\}
+  \end{equation}
+\end{frame}
