@@ -47,18 +47,16 @@ $\Omega$ е затворено и ограничено, а е крайномер
 \end{proposition}
 
 \begin{proof}
-  Ще се използват оценките \color{Red} REF SEC3 \color{Black}.
+  Ще се използват оценките от доказателството на \ref{prp:EU}.
   Понеже $\mathbf{f}(\mathbf{0}, \mathbf{u}) = \mathbf{0}$ за произволни $\mathbf{u} \in \mathscr{U}$, може да запишем:
-  \begin{equation}
-    \begin{split}
-      &\|\mathbf{f}(\mathbf{z}, \mathbf{u})\| = \|\mathbf{f}(\mathbf{z}, \mathbf{u}) - \mathbf{0}\| = \|\mathbf{f}(\mathbf{z}, \mathbf{u}) - \mathbf{f}(\mathbf{0})\| = \\
-      &b_{11} (2 (2 |y_1| + \kappa |u_1|) + |x_1|) + b_{12}(2  (2 |y_2| + \kappa |u_1|) +  |x_1|) + \gamma_1 |x_1| + \\
-      &b_{21} (2  (2|y_1| +  \kappa |u_1|) +  |x_1|) + b_{22} (2  (2|y_2| +  \kappa |u_1|) +  |x_1|) + \gamma_2 |x_2| + \\
-      &c_{11}(2  (2|x_1| +  \kappa |u_1|) +  |y_1|) + c_{12} (2  (2|x_2| +  \kappa |u_2|) +  |y_1|) + \mu_1 |y_1| + \\
-      &c_{21} (2  (2|x_1| +  \kappa |u_1|) +  |y_2|) + c_{22} (2  (2|x_2| +  \kappa |u_2|) +  |y_2|) + \mu_2 |y_2| \leq \\
-      &\tilde{C}_1|u_1| + \tilde{C}_2|u_2| + \tilde{C}_3 \|\mathbf{z}\| \leq \tilde{C}_1 + \tilde{C}_2 + \tilde{C}_3 \|\mathbf{z}\| \leq \tilde{C}(1 + \|\mathbf{z}\|)
-    \end{split}
-  \end{equation}
+  \begin{multline}
+    \|\mathbf{f}(\mathbf{z}, \mathbf{u})\| = \|\mathbf{f}(\mathbf{z}, \mathbf{u}) - \mathbf{0}\| = \|\mathbf{f}(\mathbf{z}, \mathbf{u}) - \mathbf{f}(\mathbf{0})\| = \\
+    b_{11} (2 (2 |y_1| + \kappa |u_1|) + |x_1|) + b_{12}(2  (2 |y_2| + \kappa |u_1|) +  |x_1|) + \gamma_1 |x_1| + \\
+    b_{21} (2  (2|y_1| +  \kappa |u_1|) +  |x_1|) + b_{22} (2  (2|y_2| +  \kappa |u_1|) +  |x_1|) + \gamma_2 |x_2| + \\
+    c_{11}(2  (2|x_1| +  \kappa |u_1|) +  |y_1|) + c_{12} (2  (2|x_2| +  \kappa |u_2|) +  |y_1|) + \mu_1 |y_1| + \\
+    c_{21} (2  (2|x_1| +  \kappa |u_1|) +  |y_2|) + c_{22} (2  (2|x_2| +  \kappa |u_2|) +  |y_2|) + \mu_2 |y_2| \leq \\
+    \tilde{C}_1|u_1| + \tilde{C}_2|u_2| + \tilde{C}_3 \|\mathbf{z}\| \leq \tilde{C}_1 + \tilde{C}_2 + \tilde{C}_3 \|\mathbf{z}\| \leq \tilde{C}(1 + \|\mathbf{z}\|)
+  \end{multline}
 
 \end{proof}
 
