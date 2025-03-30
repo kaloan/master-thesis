@@ -1,27 +1,77 @@
 \section{Ядро на слаба инвариантност}
+
+\subsection{Случаи без употреба и с максимална употреба на репелент}
+
+\begin{proposition}
+  Ако $\mathscr{R}_0(\bar{\mathbf{u}}) > 1$ и $\mathbf{E}^* = (E_1^*, E_2^*)^T$, като $E_1^* > \bar{I}_1$ или $E_2^* > \bar{I}_2$, то ядрото на слаба инвариантност е тривиалното, т.е. $V(\bar{\mathbf{I}}, \bar{\mathbf{u}}) = {\mathbf{0}}$.
+  % Във случая $\mathbf{u}(t) \equiv \bar{\mathbf{u}}$, то ако имаме ендемична точка $\mathbf{E}^*$ и $E_1^* > \bar{I}_1 \lor E_2^* > \bar{I}_2$, то търсената от нас задача няма решение.
+\end{proposition}
+
+\begin{proof}
+  Наистина, по определение $I_1, I_2 \geq 0$, а пък $\mathbf{0}$ е равновесна за системата \ref{eq:TheDimensionlessProblem}. Така $\mathbf{0} \in V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$.
+
+  Остава да забележим, че $\mathbf{f}(\mathbf{z}, \bar{\mathbf{u}}) \leq \mathbf{f}(\mathbf{z}, \mathbf{u})$ за всички $\mathbf{u} \in \mathscr{U}$.
+  Но така може да ползваме теоремата \ref{thm:Comparison} за сравнение на решения на кооперативни системи и така всяка друга система ще е с мажориращо решение за еднакви начални $\mathbf{z}_0$. Но понеже $\mathbf{E}^*$ е асимптотично устойчива и е изпълнено поне едно от неравенствата в това твърдение, то ще съществува $t > 0$, за което търсеното условие \ref{eq:AllHospitalised} не е изпълнено. Но тогава за $t$ от мажорирането ще следва, че не е изпълнено и за кое да е друго решение.
+\end{proof}
+
+Обратната посока не е ясна. В случая $\mathbf{u}(t)=\mathbf{0}$, то ако липсва ендемична точка, решението ще клони към $\mathbf{0}$, но не е ясно дали винаги се намира в желаното множество, или по някакъв начин се нгъва и клони излизайки от него. Аналогично ако имаме ендемична точка.
+
+Все пак може да получим някакво слабо твърдение за задачата.
+
+\begin{proposition}
+  Ако \ref{eq:AllHospitalised} е изпълнено за решението на система \ref{eq:TheDimensionlessProblem} с $\mathbf{u} \equiv \mathbf{0}$ и начално условие $\mathbf{z}_0 = (\xi_1, \xi_2, 1, 1)^T$, то $\Xi = [0, \xi_1] \times [0, \xi_2] \subseteq V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$.
+\end{proposition}
+
+\begin{proof}
+  Веднага се вижда, че $\mathbf{f}(\mathbf{z}, \mathbf{u}) \leq \mathbf{f}(\mathbf{z}, \mathbf{0})$ за всички $\mathbf{u} \in \mathscr{U}$.
+  Ползваме теоремата \ref{thm:Comparison} за сравнение на решения и така за всяко друго решение $\tilde{\mathbf{z}}$ с начално условие $\tilde{\mathbf{z}}_0 \in \Xi \times [0, 1]^2$, понеже $\tilde{\mathbf{z}}_0 \leq \mathbf{z}_0$, то е изпълнено $\tilde{z}_1(t) \leq z_1(t) \leq \bar{I}_1, \tilde{z}_2(t) \leq z_2(t) \leq \bar{I}_2$, тоест $\tilde{\mathbf{z}}_0 \in V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$.
+\end{proof}
+
+\begin{corollary}
+  Ако \ref{eq:AllHospitalised} е изпълнено за решението на система \ref{eq:TheDimensionlessProblem} с $\mathbf{u} \equiv \mathbf{0}$ и начално условие $\mathbf{z}_0 = (\bar{I}_1, \bar{I}_2, 1, 1)^T$, то ядрото на слаба инвариатност е възможно най-голямо, т.е. $V(\bar{\mathbf{I}}, \bar{\mathbf{u}}) = \mathscr{I}$.
+\end{corollary}
+
 \subsection{Система на Marchaud/Peano}
 За да има търсената задача решение, то трябва ядрото на допустимост $\eqref{eq:ViabilityKernel}$ да съществува и да не е празно. От \color{Red} ЦИТАТ!!!
-\color{Black} за съществуването е необходимо да покажем, че $\mathscr{F}(\mathbf{z}(t))=\mathbf{F}(\mathbf{z}(t), U)$ е изображение на Marchaud/Peano.
+\color{Black} за съществуването е необходимо да покажем, че $\mathscr{F}(\mathbf{z}(t))=\mathbf{F}(\mathbf{z}(t), \mathscr{U})$ е изображение на Marchaud/Peano.
 
 $\mathscr{F}$ e изображение на Marchaud/Peano, ако е нетривиално, отгоре полунепрекъснато, с компактни изпъкнали образи и с линейно нарастване.
 
 Стига параметрите ни да не са всички нулеви, то $\mathscr{F}$ е нетривиално. \\
 От факта, че $\mathbf{F}$ е непрекъснато по всяка компонента (а даже и диференцируемо), то е и отгоре полунепрекъснато, откъдето и $\mathscr{F}$ е. \\
-$\Omega$ е затворено и ограничено, а е крайномерно, съответно е компактно. Аналогично за $U$. Тогава и $\Omega \cross U$ е компактно. Директно от дефинициите на $\Omega$, $U$ те също така са изпъкнали, тоест $\Omega \cross U$ е изпъкнало. Вече видяхме, че $\Omega$ положително инвариантно за системата. Тогава образите на $\mathscr{F}$ ще са в $\Omega \cross U$, с други думи са компактни и изпъкнали. \\
+$\Omega$ е затворено и ограничено, а е крайномерно, съответно е компактно. Аналогично за $\mathscr{U}$. Тогава и $\Omega \cross \mathscr{U}$ е компактно. Директно от дефинициите на $\Omega$, $\mathscr{U}$ те също така са изпъкнали, тоест $\Omega \cross \mathscr{U}$ е изпъкнало. Вече видяхме, че $\Omega$ положително инвариантно за системата. Тогава образите на $\mathscr{F}$ ще са в $\Omega \cross \mathscr{U}$, с други думи са компактни и изпъкнали. \\
 
 \subsubsection{Линейно нарастване}
-За да покажем линейното нарастване, да забележим, че $\mathbf{F}(\mathbf{0}) = \mathbf{0}$. Тогава може да запишем:
-\begin{align*}
-  &\|\mathbf{F}(x_1, y_1, x_2, y_2, u_1, u_2)\| = \|\mathbf{F}(x_1, y_1, x_2, y_2, u_1, u_2) - \mathbf{0}\| = \|\mathbf{F}(x_1, y_1, x_2, y_2, u_1, u_2) - \mathbf{F}(\mathbf{0})\| = \\
-  &\frac{\beta_{vh} a_1 p_{11} e^{-\mu_1 \tau}}{p_{11} N_1 + p_{21} N_2} (2 N_1 (2 |y_1| + M_1 \kappa |u_1|) + M_1 |x_1|) + \\
-  &\frac{\beta_{vh} a_2 p_{12} e^{-\mu_2 \tau}}{p_{12} N_1 + p_{22} N_2}(2 N_1 (2 |y_2| + M_2 \kappa |u_1|) + M_1 |x_1|) + \gamma_1 |x_1| + \\
-  &\frac{\beta_{hv} a_1 p_{11}}{p_{11} N_1 + p_{21} N_2} (2 M_1 (2|x_1| + N_1 \kappa |u_1|) + N_1 |y_1|) + \\
-  &\frac{\beta_{hv} a_1 p_{21}}{p_{11} N_1 + p_{21} N_2} (2 M_1 (2|x_2| + N_2 \kappa |u_2|) + N_2 |y_1|) + \mu_1 |y_1| + \\
-  &\frac{\beta_{vh} a_1 p_{21} e^{-\mu_1 \tau}}{p_{11} N_1 + p_{21} N_2} (2 N_1 (2|y_1| + M_1 \kappa |u_1|) + M_1 |x_1|) + \\
-  &\frac{\beta_{vh} a_2 p_{22} e^{-\mu_2 \tau}}{p_{12} N_1 + p_{22} N_2}(2 N_1 (2|y_2| + M_2 \kappa |u_1|) + M_1 |x_1|) + \gamma_2 |x_2| + \\
-  &\frac{\beta_{hv} a_2 p_{12}}{p_{12} N_1 + p_{22} N_2} (2 M_2 (2|x_1| + N_1 \kappa |u_1|) + N_1 |y_2|) + \\
-  &\frac{\beta_{hv} a_2 p_{22}}{p_{12} N_1 + p_{22} N_2} (2 M_2 (2|x_2| + N_2 \kappa |u_2|) + N_2 |y_2|) + \mu_2 |y_2| \leq \\
-  &\tilde{C}_1|u_1| + \tilde{C}_2|u_2| + \tilde{C}_3 \|(x_1,y_1,x_2,y_2)\| \leq \tilde{C}_1 + \tilde{C}_2 + \tilde{C}_3 \|(x_1,y_1,x_2,y_2)\| \leq \tilde{C}(1 + \|(x_1,y_1,x_2,y_2)\|)
-\end{align*}
+\begin{proposition}
+  Системата \ref{eq:TheDimensionlessProblem} има линейно нарастване
+\end{proposition}
+
+\begin{proof}
+  Ще се използват оценките \color{Red} REF SEC3 \color{Black}.
+  Понеже $\mathbf{F}(\mathbf{0}, \mathbf{u}) = \mathbf{0}$ за произволни $\mathbf{u} \in \mathscr{U}$, може да запишем:
+  \begin{equation}
+    \begin{split}
+      &\|\mathbf{F}(\mathbf{z}, \mathbf{u})\| = \|\mathbf{F}(\mathbf{z}, \mathbf{u}) - \mathbf{0}\| = \|\mathbf{F}(\mathbf{z}, \mathbf{u}) - \mathbf{F}(\mathbf{0})\| = \\
+      &b_{11} (2 (2 |y_1| + \kappa |u_1|) + |x_1|) + b_{12}(2  (2 |y_2| + \kappa |u_1|) +  |x_1|) + \gamma_1 |x_1| + \\
+      &b_{21} (2  (2|y_1| +  \kappa |u_1|) +  |x_1|) + b_{22} (2  (2|y_2| +  \kappa |u_1|) +  |x_1|) + \gamma_2 |x_2| + \\
+      &c_{11}(2  (2|x_1| +  \kappa |u_1|) +  |y_1|) + c_{12} (2  (2|x_2| +  \kappa |u_2|) +  |y_1|) + \mu_1 |y_1| + \\
+      &c_{21} (2  (2|x_1| +  \kappa |u_1|) +  |y_2|) + c_{22} (2  (2|x_2| +  \kappa |u_2|) +  |y_2|) + \mu_2 |y_2| \leq \\
+      &\tilde{C}_1|u_1| + \tilde{C}_2|u_2| + \tilde{C}_3 \|\mathbf{z}\| \leq \tilde{C}_1 + \tilde{C}_2 + \tilde{C}_3 \|\mathbf{z}\| \leq \tilde{C}(1 + \|\mathbf{z}\|)
+    \end{split}
+  \end{equation}
+
+\end{proof}
+
+% &\|\mathbf{F}(\mathbf{z}, \mathbf{u})\| = \|\mathbf{F}(\mathbf{z}, \mathbf{u}) - \mathbf{0}\| = \|\mathbf{F}(\mathbf{z}, \mathbf{u}) - \mathbf{F}(\mathbf{0})\| = \\
+% &\frac{\beta_{vh} a_1 p_{11} e^{-\mu_1 \tau}}{p_{11} N_1 + p_{21} N_2} (2 N_1 (2 |y_1| + M_1 \kappa |u_1|) + M_1 |x_1|) + \\
+% &\frac{\beta_{vh} a_2 p_{12} e^{-\mu_2 \tau}}{p_{12} N_1 + p_{22} N_2}(2 N_1 (2 |y_2| + M_2 \kappa |u_1|) + M_1 |x_1|) + \gamma_1 |x_1| + \\
+% &\frac{\beta_{hv} a_1 p_{11}}{p_{11} N_1 + p_{21} N_2} (2 M_1 (2|x_1| + N_1 \kappa |u_1|) + N_1 |y_1|) + \\
+% &\frac{\beta_{hv} a_1 p_{21}}{p_{11} N_1 + p_{21} N_2} (2 M_1 (2|x_2| + N_2 \kappa |u_2|) + N_2 |y_1|) + \mu_1 |y_1| + \\
+% &\frac{\beta_{vh} a_1 p_{21} e^{-\mu_1 \tau}}{p_{11} N_1 + p_{21} N_2} (2 N_1 (2|y_1| + M_1 \kappa |u_1|) + M_1 |x_1|) + \\
+% &\frac{\beta_{vh} a_2 p_{22} e^{-\mu_2 \tau}}{p_{12} N_1 + p_{22} N_2}(2 N_1 (2|y_2| + M_2 \kappa |u_1|) + M_1 |x_1|) + \gamma_2 |x_2| + \\
+% &\frac{\beta_{hv} a_2 p_{12}}{p_{12} N_1 + p_{22} N_2} (2 M_2 (2|x_1| + N_1 \kappa |u_1|) + N_1 |y_2|) + \\
+% &\frac{\beta_{hv} a_2 p_{22}}{p_{12} N_1 + p_{22} N_2} (2 M_2 (2|x_2| + N_2 \kappa |u_2|) + N_2 |y_2|) + \mu_2 |y_2| \leq \\
+% &\tilde{C}_1|u_1| + \tilde{C}_2|u_2| + \tilde{C}_3 \|(x_1,y_1,x_2,y_2)\| \leq \tilde{C}_1 + \tilde{C}_2 + \tilde{C}_3 \|(x_1,y_1,x_2,y_2)\| \leq \tilde{C}(1 + \|(x_1,y_1,x_2,y_2)\|)
+
 
 Така $V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$ съществува. Веднага може да видим, че $V(\bar{\mathbf{I}}, \bar{\mathbf{u}}) \neq \emptyset$, понеже $\mathbf{0}$ е неподвижна точка за кое да е управление и следователно $\mathbf{0} \in V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$.
