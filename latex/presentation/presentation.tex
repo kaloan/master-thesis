@@ -1,34 +1,26 @@
-\documentclass[bulgarian]{beamer}
+\documentclass[bulgarian, compress]{beamer}
 \usepackage[svgnames]{xcolor}
 \usepackage{hyperref}
-\hypersetup{
-  colorlinks,
-  linktocpage,
-  citecolor=black,
-  filecolor=black,
-  linkcolor=black,
-  urlcolor=blue,
-  pdftitle={Малария с репелент},
-  pdfauthor={Калоян Стоилов},
-  pdfsubject={Изследване на ефектите на репелент срещу
-    комари в малариен модел на Ross-Macdonald
-  с две местообитания},
-  pdfcreator={Калоян Стоилов},
-  pdfproducer={Калоян Стоилов},
-  pdfkeywords={SIS, Ross-Macdonald, репелент, мобилност},
-}
+% \hypersetup{
+%   colorlinks,
+%   linktocpage,
+%   % citecolor=black,
+%   % filecolor=black,
+%   % linkcolor=black,
+%   urlcolor=blue,
+%   pdftitle={Малария с репелент},
+%   pdfauthor={Калоян Стоилов},
+%   pdfsubject={Изследване на ефектите на репелент срещу
+%     комари в малариен модел на Ross-Macdonald
+%   с две местообитания},
+%   pdfcreator={Калоян Стоилов},
+%   pdfproducer={Калоян Стоилов},
+%   pdfkeywords={SIS, Ross-Macdonald, репелент, мобилност},
+% }
 
 % Somehow prevents "Too many math alphabets used in version normal"
 \newcommand\hmmax{0}
 \newcommand\bmmax{0}
-
-% Fonts
-\usepackage[T2A]{fontenc}
-% \usepackage{tempora}
-\usepackage[utf8]{inputenc}
-% \usepackage{fontspec}
-% \usepackage{bm}
-\tracinglostchars=2
 
 % % Languages
 % \usepackage[base]{babel}
@@ -39,20 +31,21 @@
 %   \expandafter\let\expandafter\th\csname ltx@th\endcsname
 %   \let\ctg\relax\let\cth\relax\let\cosec\relax
 % }
-\usepackage[bulgarian, english]{babel}
+% \usepackage[bulgarian, english]{babel}
+\usepackage[bulgarian]{babel}
 \usepackage{hyphenat}
 
 % Indent first line in paragraph
 \usepackage{indentfirst}
 
 % Better math
-\usepackage{amsbsy}
-\usepackage{amssymb}
+% \usepackage{amsbsy}
+% \usepackage{amssymb}
 \usepackage[leqno]{mathtools}
 \usepackage{comment}
-\usepackage{mathptmx}
-\usepackage[makeroom]{cancel}
-\usepackage{mathrsfs}
+% \usepackage{mathptmx}
+% \usepackage[makeroom]{cancel}
+% \usepackage{mathrsfs}
 
 % Place tags on the left
 % \usepackage[leqno]{amsmath}
@@ -87,19 +80,58 @@
 % \usepackage{yfonts}
 % \usepackage{eurosym}
 % \usepackage{textcomp}
-% \usepackage{subcaption}
+\usepackage{subcaption}
 % \usepackage{tabto}
 
 % Fix original date
 \usepackage{datetime}
 
+% Fonts
+% !!! LOAD HERE BECAUSE SOMETHING ABOVE REPLACES T2A WITH T1 !!!
+\usepackage[T2A]{fontenc}
+% \usepackage{tempora}
+\usepackage[utf8]{inputenc}
+% \usepackage{fontspec}
+\usepackage{bm}
+\tracinglostchars=2
+
 \usetheme{Frankfurt}
-% \usetheme{Copenhagen}
-% \usetheme{Malmoe}
+\useoutertheme{}
+\setbeamertemplate{headline}{%
+  % \leavevmode%
+  % \begin{beamercolorbox}{section in head/foot}%
+  %   % \hbox to .5\paperwidth{\hfil\insertnavigation\hfil}
+  %   \vskip2pt\insertnavigation{\paperwidth}\vskip4pt
+  % \end{beamercolorbox}%
+
+  % \begin{beamercolorbox}[colsep=2pt]{upper separation line head}
+  % \end{beamercolorbox}
+  % \begin{beamercolorbox}{section in head/foot}
+  %   \vskip2pt\insertnavigation{\paperwidth}\vskip4pt
+  % \end{beamercolorbox}%
+  % \begin{beamercolorbox}[colsep=2pt]{lower separation line head}
+  % \end{beamercolorbox}
+}
 \usecolortheme[named=black]{structure}
+% \setbeamercolor*{palette primary}{use=structure,fg=white,bg=structure.fg}
+% \setbeamercolor*{palette secondary}{use=structure,fg=white,bg=structure.fg!75}
+% \setbeamercolor*{palette tertiary}{use=structure,fg=white,bg=black}
+% \setbeamercolor*{palette quaternary}{fg=white,bg=black}
 \beamertemplatenavigationsymbolsempty
 
 \DeclareFontShape{OT1}{cmss}{b}{n}{<->ssub * cmss/bx/n}{}
+
+% WHY IS THE TEXT BLACK???
+% \AtBeginSection[]{
+%   \begin{frame}
+%     \vfill
+%     \centering
+%     \begin{beamercolorbox}[sep=8pt,center,shadow=false,rounded=true]{title}
+%       \usebeamerfont{title}\insertsectionhead\par%
+%     \end{beamercolorbox}
+%     \vfill
+%   \end{frame}
+% }
 
 \title{Моделиране на малария}
 \subtitle{Въведение в епидемологията и кооперативните динамични системи}
