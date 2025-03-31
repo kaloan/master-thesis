@@ -14,31 +14,34 @@
   Надолу \ref{eq:TheDimensionlessProblem} ще се записва и във векторен вид по следния начин:
   \begin{equation}
     \begin{pmatrix}
-      \dot{\mathbf{x}} \\
-      \dot{\mathbf{y}}
+      \dot{\boldsymbol{x}} \\
+      \dot{\boldsymbol{y}}
     \end{pmatrix}
     =
-    \mathbf{f}(\mathbf{x}, \mathbf{y}, \mathbf{u}), \quad
-    \mathbf{x} = (x_1, \cdots, x_n)^T, \quad \mathbf{y} = (y_1, \cdots y_n)^T
+    \boldsymbol{f}(\boldsymbol{x}, \boldsymbol{y}, \boldsymbol{u}), \quad
+    \boldsymbol{x} = (x_1, \cdots, x_n)^T, \quad \boldsymbol{y} = (y_1, \cdots y_n)^T
   \end{equation}
   Или пък във вида:
   \begin{equation}
-    \dot{\mathbf{z}} = \mathbf{f}(\mathbf{z}, \mathbf{u}), \quad \mathbf{z} = (\mathbf{x}, \mathbf{y})^T
+    \dot{\boldsymbol{z}} = \boldsymbol{f}(\boldsymbol{z}, \boldsymbol{u}), \quad \boldsymbol{z} = (\boldsymbol{x}, \boldsymbol{y})^T
   \end{equation}
 \end{frame}
 
-\begin{frame}[t]{Задача}
-  Бележим $\Omega = \{0 \leq x_1 \leq 1, 0 \leq y_1 \leq 1, 0 \leq x_2 \leq 1, 0 \leq y_2 \leq 1\} = \{\mathbf{z} \in [0, 1]^4\}$.
+\begin{frame}{Задача}
+  Бележим $\Omega = \{0 \leq x_1 \leq 1, 0 \leq x_2 \leq 1, 0 \leq y_1 \leq 1, 0 \leq y_2 \leq 1\} = \{\boldsymbol{z} \in [0, 1]^4\}$.
 
-  Нека $\bar{\mathbf{I}} = (\bar{I}_1, \bar{I}_2)^T, \bar{I}_1, \bar{I}_2 \in [0, 1]$ са константи, отговарящи за максималната част от населението в съответното местообитание, което може да получи адекватна здравна помощ при заразяване с малария. Ще бележим $\mathscr{I} = [0, \bar{I}_1] \times [0, \bar{I}_2]$.
-  Питаме се има ли такива управления $\mathbf{u}(t)$, за които във всеки момент всички заразени да имат възможност да получат помощ от здравната система, т.е. :
+  Нека $\bar{\boldsymbol{I}} = (\bar{I}_1, \bar{I}_2)^T, \bar{I}_1, \bar{I}_2 \in [0, 1]$ са константи, отговарящи за максималната част от населението в съответното местообитание, което може да получи адекватна здравна помощ при заразяване с малария. Ще бележим $\mathscr{I} = [0, \bar{I}_1] \times [0, \bar{I}_2]$.
+\end{frame}
+
+\begin{frame}{Задача}
+  Питаме се има ли такива управления $\boldsymbol{u}(t)$, за които във всеки момент всички заразени да имат възможност да получат помощ от здравната система, т.е. :
   \begin{equation}
     \label{eq:AllHospitalised}
-    \forall t>0 (x_1(t) \leq \bar{I}_1 \wedge x_2(t) \leq \bar{I}_2) \iff \forall t>0 (\mathbf{x}(t) \in \mathscr{I})
+    \forall t>0 (x_1(t) \leq \bar{I}_1 \wedge x_2(t) \leq \bar{I}_2) \iff \forall t>0 (\boldsymbol{x}(t) \in \mathscr{I})
   \end{equation}
   Тъй като първоначалният брой заразени хора и комари влияят на развитието на системата ще търсим:
   \begin{equation}
     \label{eq:ViabilityKernel}
-    V(\bar{\mathbf{I}}, \bar{\mathbf{u}}) = \{\mathbf{z}_0  \text{ начално условие} \vert \exists \mathbf{u} (\eqref{eq:TheDimensionlessProblem} \text{ има решение} \wedge \eqref{eq:AllHospitalised} \text{ е изпълнено})\}
+    V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}}) = \{\boldsymbol{z}_0  \text{ начално условие} \vert \exists \boldsymbol{u} (\eqref{eq:TheDimensionlessProblem} \text{ има решение} \wedge \eqref{eq:AllHospitalised} \text{ е изпълнено})\}
   \end{equation}
 \end{frame}

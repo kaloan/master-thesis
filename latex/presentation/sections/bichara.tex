@@ -52,8 +52,17 @@
       &\dot{Y}_j(t) = \beta_{hv} a_j (M_j - Y(t)) \frac{\sum_{i=1}^n p_{ij} X_i(t)}{\sum_{i=1}^n p_{ij} N_i} - \mu_j Y_j(t), \quad j=\overline{1, m}
     \end{split}
   \end{equation}
+\end{frame}
 
-  Как да разберем дали има ендемични точки и колко са на брой?
+\begin{frame}[t]{Многомерен модел на Bichara. Ендемизъм}
+  С помощта на теорията на кооперативните системи може да се покаже:
+  \begin{proposition}
+    За системата \ref{MigrationProblem} е в сила точно едно от:
+    \begin{enumerate}
+      \item $\mathscr{R}_0 \leq 1$ и $\boldsymbol{0}$ е единствената равновесна точка и е глобално асимптотично устойчива.
+      \item $\mathscr{R}_0 > 1$ и $\boldsymbol{0}$ е неустойчива равновесна точка, като ако системата е неразложима, има единствена глобално асимптотично устойчива точка вътрешна за $\bigtimes_{i=1}^{n} [0, N_i] \times \bigtimes_{j=1}^{m} [0, M_j]$ (тоест маларията има ендемичен характер).
+    \end{enumerate}
+  \end{proposition}
 \end{frame}
 
 \begin{frame}[t]{Резултати на Bichara}

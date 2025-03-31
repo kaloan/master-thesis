@@ -1,31 +1,23 @@
 \section{Кооперативни системи}
-\begin{frame}[t]{Кооперативни системи}
-  \begin{definition}[Съкратено означение]
-    $\mathbb{H} = \mathbb{R}_{+}^n$
-  \end{definition}
-  \begin{definition}[Кооперативна система]
-    \label{def:Cooperative}
-    Системата:
-    \begin{equation}
-      \label{eq:Cooperative}
-      \dot{\mathbf{x}} = \mathbf{f}(t, \mathbf{x}),  \quad \mathbf{x} \in \mathbb{R}^n, \mathbf{f} \in C^1(J \times \mathbb{R}^n, \mathbb{R}^n), J \subset \mathbb{R} \text{ е интервал}
-      % \mathbb{R}^n \rightarrow \mathbb{R}^n, \quad f \in
+\begin{frame}[t]{Силновдлъбнати системи}
+  \begin{equation}
+    \label{eq:GenericSystem}
+    \dot{\boldsymbol{x}} = \boldsymbol{f}(t, \boldsymbol{x}),  \quad \boldsymbol{x} \in \mathbb{R}^n, \boldsymbol{f} \in C^1(J \times \mathbb{R}^n, \mathbb{R}^n), J \subset \mathbb{R} \text{ е интервал}
     \end{equation}
-    е кооперативна (или още квазимонотонна), ако
-    \begin{equation}
-      \forall{t \in J}\forall{\mathbf{x} \in \mathbb{H}}\forall{i,j \in \{\overline{1,n}\}}\left(i \neq j \implies \pdv{f_i}{x_j}(t, \mathbf{x}) \geq 0\right)
+
+\begin{definition}[Силна вдлъбнатост]
+  Ако системата \ref{eq:GenericSystem} е автономна, тя се нарича силно вдлъбната, ако
+  \begin{equation}
+    \boldsymbol{0} < \boldsymbol{x}_1 < \boldsymbol{x}_2 \implies \mathrm{D}\boldsymbol{F}(\boldsymbol{x}_2) < \mathrm{D}\boldsymbol{F}(\boldsymbol{x}_1)
     \end{equation}
   \end{definition}
 
+  \begin{nota-bene}
+    В презентацията всичките векторни/матрични (не-)равенства се разбират покомпоненто.
+  \end{nota-bene}
 \end{frame}
 
-\begin{frame}[t]{Кооперативни системи}
-  \begin{definition}[Квазимонотонна матрица]
-    Матрица $A=(a_{ij})_{n \times n}$ е квазимонотонна, ако
-    \begin{equation*}
-      \forall{i,j \in \{\overline{1,n}\}} \left(i \neq j \implies a_{ij} \geq 0\right)
-    \end{equation*}
-  \end{definition}
+\begin{frame}[t]{Неразложими системи}
   \begin{definition}[(Не-)разложима матрица]
     Матрицата $A=(a_{ij})_{n \times n}$ e разложима, ако съществува пермутационна матрица $P$, с която:
     \begin{equation*}
@@ -37,41 +29,45 @@
     \end{equation*}
     Матрици, които не са разложими се наричат неразложими.
   \end{definition}
+  \begin{theorem}[Perron-Frobenius]
+    Ако $A$ е неразложима, то доминантната ѝ собствена стойност $\mu$ е проста и на нея отговаря положителен собствен вектор $\boldsymbol{v} \in \mathbb{R}_{+}^n$.
+  \end{theorem}
+  \begin{definition}[(Не-)разложима система]
+    Система \ref{eq:GenericSystem} се нарича (не-)разложима, ако Якобианът на дясната страна $\mathrm{D}\boldsymbol{F}$ във всяка точка е (не-)разложим.
+  \end{definition}
+  
 \end{frame}
 
 \begin{frame}[t]{Кооперативни системи}
-  \begin{theorem}[Perron-Frobenius]
-    Ако $A$ е неразложима, то доминантната ѝ собствена стойност $\mu$ е проста и на нея отговаря положителен собствен вектор $\mathbf{v} \in \mathbb{H}$.
-  \end{theorem}
-
-  \begin{theorem}
-    Ако \ref{eq:Cooperative} е линейна (т.е. $\dot{\mathbf{x}} = A \mathbf{x}, A = (a_{ij})_{n \times n}$) система, то $\mathbb{H}$ е инвариантно. Допълнително, ако A е неразложима, то за кое да е $t > 0$ решението е във $\mathrm{int} \mathbb{H}$, стига началното решение да е ненулево, т.е. $\mathbf{x}_0 \neq \mathbf{0}$.
-  \end{theorem}
-
-  \begin{definition}[(Не-)разложима система]
-    Система \ref{eq:Cooperative} се нарича (не-)разложима, ако Якобианът на дясната страна $\mathrm{D}\mathbf{F}$ във всяка точка е (не-)разложим.
+  \begin{definition}[Квазимонотонна матрица]
+    Матрица $A=(a_{ij})_{n \times n}$ е квазимонотонна, ако
+    \begin{equation*}
+      \forall{i,j \in \{\overline{1,n}\}} \left(i \neq j \implies a_{ij} \geq 0\right)
+    \end{equation*}
   \end{definition}
+  
+  \begin{definition}[Кооперативна система]
+    \label{def:Cooperative}
+    Системата \ref{eq:GenericSystem} е кооперативна (или още квазимонотонна), ако
+    \begin{equation}
+      \forall{t \in J} \Hquad \forall{\boldsymbol{x} \in \mathbb{R}_{+}^n} \Hquad \forall{i,j \in \{\overline{1,n}\}} \Hquad \left(i \neq j \implies \pdv{f_i}{x_j}\left(t, \boldsymbol{x}\right) \geq 0\right)
+    \end{equation}
+  \end{definition}
+
+Тоест кооперативни са точно системите с квазимонотонен Якобиан.
+
+% \begin{theorem}
+%   Ако \ref{eq:GenericSystem} е линейна (т.е. $\dot{\boldsymbol{x}} = A \boldsymbol{x}, A = (a_{ij})_{n \times n}$) система, то $\mathbb{R}_{+}^n$ е инвариантно. Допълнително, ако A е неразложима, то за кое да е $t > 0$ решението е във $\mathrm{int} \mathbb{R}_{+}^n$, стига началното решение да е ненулево, т.е. $\boldsymbol{x}_0 \neq \boldsymbol{0}$.
+% \end{theorem}
 \end{frame}
 
 \begin{frame}[t]{Кооперативни системи}
   \begin{theorem}[Сравнение на решения]
     \label{thm:Comparison}
-    Нека $\mathbf{f}, \mathbf{g} \in C^1(\mathrm{int} \mathbb{H}, \mathbb{R}^n)$ са такива, че системите $\dot{\mathbf{x}}=\mathbf{f}(\mathbf{x})$, $\dot{\mathbf{y}}=\mathbf{g}(\mathbf{y})$ са кооперативни, $\mathbf{f} \leq \mathbf{g}$ и $\mathbf{x}_0 \leq \mathbf{y}_0$. Тогава $\forall{t>0}(\mathbf{x}(t) \leq \mathbf{y}(t))$.
+    Нека $\boldsymbol{f}, \boldsymbol{g} \in C^1(\mathrm{int} \mathbb{R}_{+}^n, \mathbb{R}^n)$ са такива, че системите $\dot{\boldsymbol{x}}=\boldsymbol{f}(\boldsymbol{x})$, $\dot{\boldsymbol{y}}=\boldsymbol{g}(\boldsymbol{y})$ са кооперативни, $\boldsymbol{f} \leq \boldsymbol{g}$ и $\boldsymbol{x}_0 \leq \boldsymbol{y}_0$. Тогава $\forall{t>0}(\boldsymbol{x}(t) \leq \boldsymbol{y}(t))$.
   \end{theorem}
-
-  \begin{definition}[Силна вдлъбнатост]
-    $\dot{\mathbf{x}} = \mathbf{F}(\mathbf{x})$ се нарича силно вдлъбната, ако $\mathbf{0} < \mathbf{x}_1 < \mathbf{x}_2 \implies \mathrm{D}\mathbf{F}(\mathbf{x}_2) < \mathrm{D}\mathbf{F}(\mathbf{x}_1)$
-  \end{definition}
 
   \begin{theorem}
     Система, която е кооперативна, неразложима и силно вдлъбната не може да има две различни неподвижни точки, които да не са тривиалната.
   \end{theorem}
-\end{frame}
-
-\begin{frame}[t]{Кооперативни системи}
-  С помощта на горните твърдения и техни следствия може да се покаже за модела на Bichara, че е изпълнено точно едно от:
-  \begin{itemize}
-    \item $\mathscr{R}_0 \leq 1$ и $\mathbf{0}$ е единствената равновесна точка и е глобално асимптотично устойчива.
-    \item $\mathscr{R}_0 > 1$ и $\mathbf{0}$ е неустойчива равновесна точка, като ако системата е неразложима, има единствена глобално асимптотично устойчива точка вътрешна за $\bigtimes_{i=1}^{n} [0, N_i] \times \bigtimes_{j=1}^{m} [0, M_j]$ (тоест маларията има ендемичен характер).
-  \end{itemize}
 \end{frame}

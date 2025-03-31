@@ -1,6 +1,19 @@
 \section{Свойства на задачата}
-\begin{frame}[t]{Съществуване на решение}
-  Трябва да покажем липшицовост по фазовите променливи.
+
+\begin{frame}[t]{Свойства на задачата \ref{eq:TheDimensionlessProblem}}
+  \begin{proposition}
+    За системата \ref{eq:TheDimensionlessProblem} са в сила:
+    \begin{enumerate}
+      \item Съществува единствено решение за произволни управления.
+      \item Решение с начално условие в $\Omega$ е ограничено в $\Omega$.
+      \item Системата е кооперативна.
+      \item Системата е силно вдлъбната.
+      \item Системата е неразложима.
+    \end{enumerate}
+  \end{proposition}
+\end{frame}
+
+\begin{frame}[t]{Кратка лема}
   \begin{lemma}
     \label{lemma:Modulus}
     Нека $z, z', s, s', C_z, C_s \in \mathbb{R}$, за които $z, z' < C_z$ и $s, s' < C_s$. Тогава след полагането $C = \max\{2 |C_z|, |C_s|\}$ е в сила $|(C_z - z) s - (C_z - z') s'| \leq C (|s-s'| + |z - z'|)$.
@@ -20,13 +33,15 @@
   \end{proof}
 \end{frame}
 
-\begin{frame}[t]{Съществуване на решение}
+\begin{frame}[t]{Съществуване на решение на \ref{eq:TheDimensionlessProblem}}
+  Трябва да покажем липшицовост по фазовите променливи.
+
   Първо от неравенството на триъгълника имаме, че:
   \begin{equation}
-    \|\mathbf{f}(\mathbf{z}, \mathbf{u}) - \mathbf{f}(\mathbf{z}', \mathbf{u}')\| \leq
-    |F_{x_1}(\mathbf{z}, \mathbf{u})| + |F_{x_2}(\mathbf{z}, \mathbf{u})| + |F_{y_1}(\mathbf{z}, \mathbf{u})| + |F_{y_2}(\mathbf{z}, \mathbf{u})|
+    \|\boldsymbol{f}(\boldsymbol{z}, \boldsymbol{u}) - \boldsymbol{f}(\boldsymbol{z}', \boldsymbol{u}')\| \leq
+    |F_{x_1}(\boldsymbol{z}, \boldsymbol{u})| + |F_{x_2}(\boldsymbol{z}, \boldsymbol{u})| + |F_{y_1}(\boldsymbol{z}, \boldsymbol{u})| + |F_{y_2}(\boldsymbol{z}, \boldsymbol{u})|
   \end{equation}
-  Сега може да ползваме неколкократно \ref{lemma:Modulus} за $F_{x_1}$:
+  Сега може да ползваме лемата \ref{lemma:Modulus} за $F_{x_1}$:
   \begin{multline}
     |(1-x_1) (1-\kappa u_1) \left(b_{11} y_1 + b_{12} y_2\right) - \gamma_1 x_1 - (1-x'_1) (1-\kappa u'_1) \left(b_{11} y'_1 + b_{12} y'_2\right) - \gamma_1 x'_1| \leq \\
     b_{11} \left|(1-x_1)[(1 - \kappa u_1) y_1] -  (1-x'_1)[(1 - \kappa u'_1) y'_1]\right| + \\
@@ -34,8 +49,8 @@
   \end{multline}
 \end{frame}
 
-\begin{frame}[t]{Съществуване на решение}
-  Имаме, че $x_1, x'_1 \leq 1, \quad (1-\kappa u_1)y_1, (1-\kappa u_1) y'_1 \leq 1, \quad (1-\kappa u_1)y_2, (1-\kappa u_1) y'_2 \leq 1$:
+\begin{frame}[t]{Съществуване на решение на \ref{eq:TheDimensionlessProblem}}
+  $x_1, x'_1 \leq 1, (1-\kappa u_1)y_1, (1-\kappa u_1) y'_1 \leq 1, (1-\kappa u_1)y_2, (1-\kappa u_1) y'_2 \leq 1$:
   \begin{multline}
     \left|(1-x_1) [(1-\kappa u_1) y_1] - (1-x'_1) [(1-\kappa u'_1) y'_1]\right| \leq \\
     2 |(1-\kappa u_1) y_1 - (1-\kappa u'_1) y'_1| + |x_1 - x'_1| \leq \\
@@ -50,10 +65,10 @@
   Тук също ползвахме $1-\kappa u_1, 1-\kappa u'_1 \leq 1, \quad y_1, y'_1 \leq 1, \quad y_2, y'_2 \leq 1$. Така получихе оценка отгоре за първото събираемо. Аналогично за другите. \\
 \end{frame}
 
-\begin{frame}[t]{Съществуване на решение}
-  За да проверим липшицовостта по фазовите променливи, то заместваме с $u_1 = 1'_1, u_2 = u'_2$ всичко и за цялата дясна страна е в сила:
+\begin{frame}[t]{Съществуване на решение на \ref{eq:TheDimensionlessProblem}}
+  За да проверим липшицовостта по фазовите променливи, то заместваме с $u_1 = u'_1, u_2 = u'_2$ всичко и за цялата дясна страна е в сила:
   \begin{multline}
-    \|\mathbf{f}(\mathbf{z}, \mathbf{u}) - \mathbf{f}(\mathbf{z}', \mathbf{u}')\| \leq \\
+    \|\boldsymbol{f}(\boldsymbol{z}, \boldsymbol{u}) - \boldsymbol{f}(\boldsymbol{z}', \boldsymbol{u}')\| \leq \\
     b_{11} (4 |y_1 - y'_1| + |x_1 - x'_1|) +
     b_{12} (4 |y_2 - y'_2| + |x_1 - x'_1|) + \gamma_1 |x_1-x'_1| + \\
     b_{21} (4 |y_1 - y'_1| + |x_1 - x'_1|) +
@@ -62,13 +77,13 @@
     c_{22} (4 |x_2 - x'_2| + |y_1 - y'_1|) + \mu_1 |y_1 - y'_1| + \\
     c_{21} (4 |x_1 - x'_1| + |y_2 - y'_2|) +
     c_{22} (4 |x_2 - x'_2| + |y_2 - y'_2|) + \mu_2 |y_2 - y'_2| \leq \\
-    L \|\mathbf{z} - \mathbf{z}'\|
+    L \|\boldsymbol{z} - \boldsymbol{z}'\|
   \end{multline}
-  Накрая се използват неравенства от вида $|x_1-x'_1| \leq \|(x_1, x_2, y_1, y_2) - (x'_1, x'_2, y'_1, y'_2)\| = \|\mathbf{z} - \mathbf{z}'\|$.
+  Накрая се използват неравенства от вида $|x_1-x'_1| \leq \|(x_1, x_2, y_1, y_2) - (x'_1, x'_2, y'_1, y'_2)\| = \|\boldsymbol{z} - \boldsymbol{z}'\|$.
 \end{frame}
 
-\begin{frame}[t]{Ограниченост на решението}
-  Трябва да се покаже, че $\mathbf{f}$ сочи към вътрешността на $\Omega$, ако решението се намира по границата $\partial \Omega$. Но това наистина е така, от:
+\begin{frame}[t]{Ограниченост на решението на \ref{eq:TheDimensionlessProblem}}
+  Трябва да се покаже, че $\boldsymbol{f}$ сочи към вътрешността на $\Omega$, ако решението се намира по границата $\partial \Omega$. Но това наистина е така, от:
   \begin{equation}
     \begin{split}
       &\dot{x}_1(t)\vert_{\Omega \cap \{x_1(t)=0\}} = (1-\kappa u_1(t))(b_{11} y_1(t) + b_{12} y_2(t)) \geq 0 \\
@@ -83,10 +98,10 @@
   \end{equation}
 \end{frame}
 
-\begin{frame}[t]{Кооперативност}
+\begin{frame}[t]{Кооперативност на \ref{eq:TheDimensionlessProblem}}
   Якобианът за системата \ref{eq:TheDimensionlessProblem} може да се представи във вида:
   \begin{equation*}
-    \mathrm{D} \mathbf{f}(x_1, x_2, y_1, y_2)(t) =
+    \mathrm{D} \boldsymbol{f}(x_1, x_2, y_1, y_2)(t) =
     \begin{pmatrix}
       \pdv{f_{x_1}}{x_1} && \pdv{f_{x_1}}{x_2} && \pdv{f_{x_1}}{y_1} && \pdv{f_{x_1}}{y_2} \\
       \pdv{f_{x_2}}{x_1} && \pdv{f_{x_2}}{x_2} && \pdv{f_{x_2}}{y_1} && \pdv{f_{x_2}}{y_2} \\
@@ -104,8 +119,8 @@
       \end{split}
       \end{equation*}
       \end{frame}
-      
-      \begin{frame}[t]{Силна вдлъбнатост}
+
+      \begin{frame}[t]{Силна вдлъбнатост на \ref{eq:TheDimensionlessProblem}}
       Достатъчно условие за това е всяка компонента на Якобиана да е нерастяща функция по всички променливи, като за поне една от тях да е намаляваща. Това може да проверим с производни по различните променливи.
       \begin{equation*}
       \begin{split}
@@ -124,15 +139,15 @@
     \end{split}
   \end{equation*}
   \end{frame}
-  
-  \begin{frame}[t]{Неразложимост}
+
+  \begin{frame}[t]{Неразложимост на \ref{eq:TheDimensionlessProblem}}
   % Използваме теорема 3.2.1 от \cite{Brualdi1991}, която гласи:
   \begin{theorem}
   \label{theorem:ConnectedIrreducability}
   Матрица $A=(a_{ij})$ е неразложима точно когато ориентираният граф $G=(V,E)$, с върхове $V=\{1, \cdots, n\}$ и ребра $E=\{(i,j) \vert a_{ij} \neq 0 \}$, е силно свързан.
   \end{theorem}
-  
-  Заместваме ненулевите елементи на $\mathrm{D} \mathbf{f}$ с 1 (тях знаем от \ref{eq:JacobianElements}). Така получаваме графа с матрица на съседство $\mathrm{D}$:
+
+  Заместваме ненулевите елементи на $\mathrm{D} \boldsymbol{f}$ с 1 (тях знаем от \ref{eq:JacobianElements}). Така получаваме графа с матрица на съседство $\mathrm{D}$:
   \begin{equation}
   \mathrm{D} =
   \begin{pmatrix}
@@ -159,12 +174,18 @@
 
 \begin{frame}[t]{Неподвижни точки}
   Тъй като системата е с управление, не може в общия случай да говорим за равновесни точки, понеже промени по него водят до промени по дясната страна.
+
   Да предположим, че сме фиксирали константно управление.
-  Тогава системата става автономна, но е силно нелинейна и с голяма размерност, откъдето не е възможно да бъдат изведени аналитични изрази за координатите на равновесните точки, различни от $\mathbf{0}$.
 
-  С помощта на теорията на кооперативните системи може обаче да получим техния брой, понеже доказахме кооперативност, силна вдлъбнатост и неразложимост.
+Тогава системата става автономна, но е силно нелинейна и с голяма размерност, откъдето не е възможно да бъдат изведени аналитични изрази за координатите на равновесните точки, различни от $\boldsymbol{0}$.
+\end{frame}
 
-  Нека $\mathscr{R}_0(\mathbf{u}) \leq 1$. Тогава от $\mathbf{0}$ е единствена устойчива равновесна точка.
-
-  Нека $\mathscr{R}_0(\mathbf{u}) > 1$. Тогава $\mathbf{0}$ е неустойчива равновесна точка и сме във втория случай от следствието на Smith. Вече доказахме, че решението е ограничено. Тогава е изпълнен подслучай съществува точно една друга устойчива равновесна точка $\mathbf{E}^*$.
+\begin{frame}[t]{Неподвижни точки}
+  \begin{proposition}
+    За система \ref{eq:TheDimensionlessProblem} са в сила точно едно от:
+    \begin{enumerate}
+      \item $\mathscr{R}_0(\boldsymbol{u}) \leq 1$ и $\boldsymbol{0}$ е единствена равновесна точка (асимптотично устойчива).
+      \item  $\mathscr{R}_0(\boldsymbol{u}) > 1$ и $\boldsymbol{0}$ е неустойчива равновесна точка и съществува точно една друга равновесна точка $\boldsymbol{E}^*$ (асимптотично устойчива).
+    \end{enumerate}
+  \end{proposition}
 \end{frame}

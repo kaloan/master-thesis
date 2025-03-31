@@ -121,6 +121,7 @@
 
 \DeclareFontShape{OT1}{cmss}{b}{n}{<->ssub * cmss/bx/n}{}
 
+
 % WHY IS THE TEXT BLACK???
 % \AtBeginSection[]{
 %   \begin{frame}
@@ -148,6 +149,9 @@
 % Since physics package uses physics <.|.> notation
 \renewcommand{\innerproduct}[2]{\langle #1, #2 \rangle}
 
+% Half-quad
+\newcommand{\Hquad}{\hspace{0.5em}}
+
 % For Roman numbers on sections
 % \renewcommand{\thesection}{\Roman{section}}
 % For new page after end of section
@@ -157,8 +161,9 @@
 % \newtheorem{theorem}{Теорема}[section]
 % \newtheorem{corollary}[theorem]{Следствие}
 % \newtheorem{lemma}[theorem]{Лема}
-% \newtheorem{proposition}[theorem]{Твърдение}
-% \newtheorem*{remark}{Забележка}
+\newtheorem{proposition}[theorem]{Твърдение}
+\newtheorem*{remark}{Забележка}
+\newtheorem*{nota-bene}{\textcolor{Red}{N.B!}}
 % \theoremstyle{definition}
 % \newtheorem{definition}{Дефиниция}[section]
 
@@ -183,12 +188,14 @@
 % \newpage
 % \setcounter{page}{1}
 \import{sections/}{introduction.tex}
+\import{sections/}{cooperative.tex}
+\import{sections/}{ross}
 \import{sections/}{endemics.tex}
 \import{sections/}{bichara.tex}
-\import{sections/}{cooperative.tex}
 \import{sections/}{repellent.tex}
 \import{sections/}{problem.tex}
 \import{sections/}{properties.tex}
+\import{sections/}{numeric-results.tex}
 
 % \nocite{*}
 % \begin{frame}[Източници]
@@ -198,16 +205,17 @@
 {
   \setbeamertemplate{headline}[default]
   \begin{frame}
-
     \begin{center}
-      \textbf{Благодаря за вниманието}
+      \begin{huge}
+        \textbf{Благодаря за вниманието}
+      \end{huge}
     \end{center}
-
   \end{frame}
 }
 
 % \listoffigures
 % \listoftables
+
 \end{document}
 
 % заразèн
