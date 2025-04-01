@@ -8,8 +8,10 @@
 \end{frame}
 
 \begin{frame}[t]{Базово число на възпроизводство $\mathscr{R}_0$}
-  $\mathscr{R}_0$ носи смисъла на брой вторични случаи на заразата, причинени от един първичен. За да може болестта да има ендемично състояние, то е необходимо $\mathscr{R}_0 > 1$.
-  Наистина, иначе броят заразени веднага щеше да намалее и съответно нямаше да има равновесна точка, различна от $\mathbf{0}$. За модела на Ross е:
+  $\mathscr{R}_0$ носи смисъла на брой вторични случаи на заразата, причинени от един първичен.
+  
+  Необходимо е $\mathscr{R}_0 > 1$ за ендемизъм,
+  иначе броят заразени веднага щеше да намалее и съответно нямаше да има равновесна точка, различна от $\boldsymbol{0}$. За модела на Ross е:
   \begin{equation}
     \mathscr{R}_0 = \frac{1}{\gamma} \times \beta_{hv} b \frac{M}{N} \times \frac{1}{\mu} \times \beta_{vh} b = \frac{b^2 \beta_{vh} \beta_{hv} M}{\gamma \mu N}
   \end{equation}
@@ -20,10 +22,13 @@
 \end{frame}
 
 \begin{frame}[t]{$\mathscr{R}_0$ в многомерни модели}
-  Нека имаме няколко категории хора, податливи на заразата, които сме разграничили и това са $\mathbf{z} = (z_1, \cdots, z_n)^T$.
+  Нека имаме няколко категории хора, податливи на заразата, които сме разграничили и това са $\boldsymbol{z} = (z_1, \cdots, z_n)^T$.
 
-  Нека системата се представя във вида $\dot{\mathbf{z}} = \mathbf{G}{\mathbf{z}} = \mathscr{F}(\mathbf{z}) - \mathscr{V}(\mathbf{z})$.
-  $\mathscr{F}$ определя новите заразени, а $\mathscr{V}(\mathbf{z}) = \mathscr{V}^-(\mathbf{z}) - \mathscr{V}^+(\mathbf{z})$ е мобилността, която сме разделили на прииждащи и заминащи за съответните групи.
+  Нека системата се представя във вида $\dot{\boldsymbol{z}} = \boldsymbol{G}{\boldsymbol{z}} = \mathscr{F}(\boldsymbol{z}) - \mathscr{V}(\boldsymbol{z})$.
+  
+  $\mathscr{F}$ определя новите заразени.
+  
+  $\mathscr{V} = \mathscr{V}^- - \mathscr{V}^+$ е мобилността, представена като прииждащи и заминащи за съответните групи.
 
   Може да се покаже, че е в сила следната теорема
 \end{frame}
@@ -32,13 +37,13 @@
   \begin{theorem}
     Нека са изпълнени следните условия:
     \begin{enumerate}
-      \item $\mathbf{z} \geq \mathbf{0} \implies \mathscr{V}(\mathbf{z}) \geq 0, \mathscr{V}^+(\mathbf{z}) \geq 0, \mathscr{V}^-(\mathbf{z}) \geq 0$
+      \item $\boldsymbol{z} \geq \boldsymbol{0} \implies \mathscr{V}(\boldsymbol{z}) \geq 0, \mathscr{V}^+(\boldsymbol{z}) \geq 0, \mathscr{V}^-(\boldsymbol{z}) \geq 0$
       \item $z_i = 0 \implies \mathscr{V}_{i}^- = 0$
-      \item $\mathscr{F}(\mathbf{0}) = \mathbf{0}, \mathscr{V}(\mathbf{0}) = \mathbf{0}$
-      \item $\mathscr{F}(\mathbf{z}) = \mathbf{0} \implies$ всички собствени стойности на $\mathrm{D}\mathbf{G}{\mathbf{0}}$ са с отрицателна реална част
+      \item $\mathscr{F}(\boldsymbol{0}) = \boldsymbol{0}$, $\mathscr{V}^+(\boldsymbol{0}) = \boldsymbol{0}$
+      \item Всички собствени стойности на $-\mathrm{D}\mathscr{V}{(\boldsymbol{0})}$ са с отрицателна реална част
     \end{enumerate}
-    и въведем означения $\mathscr{R}_0 = \rho(F V^{-1})$, където $\rho$ е спектралния радиус, а $F = D\mathscr{F}(\mathbf{0}), V = D\mathscr{V}(\mathbf{0})$, където $F \geq \mathscr{O}$, а $V$ е несингулярна M-матрица. \\
-    Тогава, $\mathbf{0}$ е локално асимптотично устойчива, ако $\mathscr{R}_0 \leq 1$ и неустойчива, ако $\mathscr{R}_0 > 1$.
+    и въведем означения $\mathscr{R}_0 = \rho(F V^{-1})$, където $\rho$ е спектралния радиус, а $F = D\mathscr{F}(\boldsymbol{0}), V = D\mathscr{V}(\boldsymbol{0})$, където $F \geq \mathscr{O}$, а $V$ е несингулярна M-матрица. \\
+    Тогава, $\boldsymbol{0}$ е локално асимптотично устойчива, ако $\mathscr{R}_0 \leq 1$ и неустойчива, ако $\mathscr{R}_0 > 1$.
   \end{theorem}
 \end{frame}
 

@@ -27,7 +27,7 @@
   Първо от неравенството на триъгълника имаме, че:
   \begin{equation}
     \|\mathbf{f}(\mathbf{z}, \mathbf{u}) - \mathbf{f}(\mathbf{z}', \mathbf{u}')\| \leq
-    |f_{x_1}(\mathbf{z}, \mathbf{u})| + |f_{x_2}(\mathbf{z}, \mathbf{u})| + |f_{y_1}(\mathbf{z}, \mathbf{u})| + |f_{y_2}(\mathbf{z}, \mathbf{u})|
+    |f_{x_1}(\boldsymbol{z}, \boldsymbol{u}) - f_{x_1}(\boldsymbol{z}', \boldsymbol{u}')| + |f_{x_2}(\boldsymbol{z}, \boldsymbol{u}) - f_{x_2}(\boldsymbol{z}', \boldsymbol{u}')| + |f_{y_1}(\boldsymbol{z}, \boldsymbol{u}) - f_{y_1}(\boldsymbol{z}', \boldsymbol{u}')| + |f_{y_2}(\boldsymbol{z}, \boldsymbol{u}) - f_{y_2}(\boldsymbol{z}', \boldsymbol{u}')|
   \end{equation}
   Сега може да ползваме неколкократно \ref{lemma:Modulus} за $f_{x_1}$:
   \begin{multline}
@@ -76,8 +76,8 @@
     \|\mathbf{f}(\mathbf{z}, \mathbf{u}) - \mathbf{f}(\mathbf{z}', \mathbf{u}')\| \leq \\
     b_{11} (4 |y_1 - y'_1| + |x_1 - x'_1|) +
     b_{12} (4 |y_2 - y'_2| + |x_1 - x'_1|) + \gamma_1 |x_1-x'_1| + \\
-    b_{21} (4 |y_1 - y'_1| + |x_1 - x'_1|) +
-    b_{22} (4 |y_2 - y'_2| + |x_1 - x'_1|) + \gamma_2 |x_2-x'_2| + \\
+    b_{21} (4 |y_1 - y'_1| + |x_2 - x'_2|) +
+    b_{22} (4 |y_2 - y'_2| + |x_2 - x'_2|) + \gamma_2 |x_2-x'_2| + \\
     c_{11} (4 |x_1 - x'_1| + |y_1 - y'_1|) +
     c_{22} (4 |x_2 - x'_2| + |y_1 - y'_1|) + \mu_1 |y_1 - y'_1| + \\
     c_{21} (4 |x_1 - x'_1| + |y_2 - y'_2|) +
@@ -99,14 +99,14 @@
   Трябва да се покаже, че $\mathbf{f}$ сочи към вътрешността на $\Omega$, ако решението се намира по границата $\partial \Omega$. Но това наистина е така, от:
   \begin{equation}
     \begin{split}
-      &\dot{x}_1(t)\vert_{\Omega \cap \{x_1(t)=0\}} = (1-\kappa u_1(t))(b_{11} y_1(t) + b_{12} y_2(t)) \geq 0 \\
-      &\dot{x}_1(t)\vert_{\Omega \cap \{x_1(t)=1\}} = - \gamma_1 < 0 \\
-      &\dot{x}_2(t)\vert_{\Omega \cap \{x_2(t)=0\}} = (1-\kappa u_2(t))(b_{21} y_1(t) + b_{22} y_2(t)) \geq 0 \\
-      &\dot{x}_2(t)\vert_{\Omega \cap \{x_2(t)=1\}} = - \gamma_2 < 0 \\
-      &\dot{y}_1(t)\vert_{\Omega \cap \{y_1(t)=0\}} = c_{11}(1-\kappa u_1(t)) x_1(t) + c_{12}(1-\kappa u_2(t)) x_2(t) \geq 0 \\
-      &\dot{y}_1(t)\vert_{\Omega \cap \{y_1(t)=1\}} = - \mu_1 < 0 \\
-      &\dot{y}_2(t)\vert_{\Omega \cap \{y_2(t)=0\}} = c_{21}(1-\kappa u_1(t)) x_1(t) + c_{22}(1-\kappa u_2(t)) x_2(t) \geq 0 \\
-      &\dot{y}_2(t)\vert_{\Omega \cap \{y_2(t)=1\}} = - \mu_2 < 0
+      &\dot{x}_1(t)\vert_{\Omega \cap \{x_1=0\}} = (1-\kappa u_1(t))(b_{11} y_1(t) + b_{12} y_2(t)) \geq 0 \\
+      &\dot{x}_1(t)\vert_{\Omega \cap \{x_1=1\}} = - \gamma_1 < 0 \\
+      &\dot{x}_2(t)\vert_{\Omega \cap \{x_2=0\}} = (1-\kappa u_2(t))(b_{21} y_1(t) + b_{22} y_2(t)) \geq 0 \\
+      &\dot{x}_2(t)\vert_{\Omega \cap \{x_2=1\}} = - \gamma_2 < 0 \\
+      &\dot{y}_1(t)\vert_{\Omega \cap \{y_1=0\}} = c_{11}(1-\kappa u_1(t)) x_1(t) + c_{12}(1-\kappa u_2(t)) x_2(t) \geq 0 \\
+      &\dot{y}_1(t)\vert_{\Omega \cap \{y_1=1\}} = - \mu_1 < 0 \\
+      &\dot{y}_2(t)\vert_{\Omega \cap \{y_2=0\}} = c_{21}(1-\kappa u_1(t)) x_1(t) + c_{22}(1-\kappa u_2(t)) x_2(t) \geq 0 \\
+      &\dot{y}_2(t)\vert_{\Omega \cap \{y_2=1\}} = - \mu_2 < 0
     \end{split}
   \end{equation}
 \end{proof}

@@ -39,30 +39,31 @@
   Първо от неравенството на триъгълника имаме, че:
   \begin{equation}
     \|\boldsymbol{f}(\boldsymbol{z}, \boldsymbol{u}) - \boldsymbol{f}(\boldsymbol{z}', \boldsymbol{u}')\| \leq
-    |F_{x_1}(\boldsymbol{z}, \boldsymbol{u})| + |F_{x_2}(\boldsymbol{z}, \boldsymbol{u})| + |F_{y_1}(\boldsymbol{z}, \boldsymbol{u})| + |F_{y_2}(\boldsymbol{z}, \boldsymbol{u})|
+    |f_{x_1}(\boldsymbol{z}, \boldsymbol{u}) - f_{x_1}(\boldsymbol{z}', \boldsymbol{u}')| + \cdots + |f_{y_2}(\boldsymbol{z}, \boldsymbol{u}) - f_{y_2}(\boldsymbol{z}', \boldsymbol{u}')|
   \end{equation}
-  Сега може да ползваме лемата \ref{lemma:Modulus} за $F_{x_1}$:
+
   \begin{multline}
-    |(1-x_1) (1-\kappa u_1) \left(b_{11} y_1 + b_{12} y_2\right) - \gamma_1 x_1 - (1-x'_1) (1-\kappa u'_1) \left(b_{11} y'_1 + b_{12} y'_2\right) - \gamma_1 x'_1| \leq \\
+    |f_{x_1}(\boldsymbol{z}, \boldsymbol{u}) - f_{x_1}(\boldsymbol{z}', \boldsymbol{u}')| \leq \\
     b_{11} \left|(1-x_1)[(1 - \kappa u_1) y_1] -  (1-x'_1)[(1 - \kappa u'_1) y'_1]\right| + \\
     b_{12} \left|(1-x_1)[(1 - \kappa u_1) y_2] -  (1-x'_1)[(1 - \kappa u'_2) y'_2]\right| + \gamma |x_1 - x'_1|
   \end{multline}
+  Сега може да ползваме лемата \ref{lemma:Modulus} за $f_{x_1}$ с:
+  \begin{equation*}
+    x_1, x'_1 \leq 1, (1-\kappa u_1)y_1, (1-\kappa u_1) y'_1 \leq 1, (1-\kappa u_1)y_2, (1-\kappa u_1) y'_2 \leq 1
+  \end{equation*}
 \end{frame}
 
 \begin{frame}[t]{Съществуване на решение на \ref{eq:TheDimensionlessProblem}}
-  $x_1, x'_1 \leq 1, (1-\kappa u_1)y_1, (1-\kappa u_1) y'_1 \leq 1, (1-\kappa u_1)y_2, (1-\kappa u_1) y'_2 \leq 1$:
   \begin{multline}
     \left|(1-x_1) [(1-\kappa u_1) y_1] - (1-x'_1) [(1-\kappa u'_1) y'_1]\right| \leq \\
     2 |(1-\kappa u_1) y_1 - (1-\kappa u'_1) y'_1| + |x_1 - x'_1| \leq \\
     2 (2|y_1 - y'_1| + \kappa |u_1 - u'_1|) + |x_1 - x'_1|
   \end{multline}
-  \begin{multline}
-    \left|(1-x_1) [(1-\kappa u_1) y_2] - (1-x'_1) [(1-\kappa u'_1) y'_2]\right| \leq \\
-    2 |(1-\kappa u_1) y_2 - (1-\kappa u'_1) y'_2| + |x_1 - x'_1| \leq \\
-    2 (2|y_2 - y'_2| + \kappa |u_1 - u'_1|) + |x_1 - x'_1|
-  \end{multline}
+  Аналогично за другия член.
 
-  Тук също ползвахме $1-\kappa u_1, 1-\kappa u'_1 \leq 1, \quad y_1, y'_1 \leq 1, \quad y_2, y'_2 \leq 1$. Така получихе оценка отгоре за първото събираемо. Аналогично за другите. \\
+  Тук също ползвахме $1-\kappa u_1, 1-\kappa u'_1 \leq 1, \quad y_1, y'_1 \leq 1, \quad y_2, y'_2 \leq 1$.
+  Така получихе оценка отгоре за първото събираемо.
+  Аналогично за другите. \\
 \end{frame}
 
 \begin{frame}[t]{Съществуване на решение на \ref{eq:TheDimensionlessProblem}}
@@ -71,8 +72,8 @@
     \|\boldsymbol{f}(\boldsymbol{z}, \boldsymbol{u}) - \boldsymbol{f}(\boldsymbol{z}', \boldsymbol{u}')\| \leq \\
     b_{11} (4 |y_1 - y'_1| + |x_1 - x'_1|) +
     b_{12} (4 |y_2 - y'_2| + |x_1 - x'_1|) + \gamma_1 |x_1-x'_1| + \\
-    b_{21} (4 |y_1 - y'_1| + |x_1 - x'_1|) +
-    b_{22} (4 |y_2 - y'_2| + |x_1 - x'_1|) + \gamma_2 |x_2-x'_2| + \\
+    b_{21} (4 |y_1 - y'_1| + |x_2 - x'_2|) +
+    b_{22} (4 |y_2 - y'_2| + |x_2 - x'_2|) + \gamma_2 |x_2-x'_2| + \\
     c_{11} (4 |x_1 - x'_1| + |y_1 - y'_1|) +
     c_{22} (4 |x_2 - x'_2| + |y_1 - y'_1|) + \mu_1 |y_1 - y'_1| + \\
     c_{21} (4 |x_1 - x'_1| + |y_2 - y'_2|) +
@@ -149,33 +150,33 @@
 
   Заместваме ненулевите елементи на $\mathrm{D} \boldsymbol{f}$ с 1 (тях знаем от \ref{eq:JacobianElements}). Така получаваме графа с матрица на съседство $\mathrm{D}$:
   \begin{equation}
-  \mathrm{D} =
-  \begin{pmatrix}
-    1 && 1 && 0 && 1 \\
-    1 && 1 && 1 && 0 \\
-    0 && 1 && 1 && 1 \\
-    1 && 0 && 1 && 1 \\
-  \end{pmatrix}
-  \implies
-  \mathrm{D}^3 =
-  \begin{pmatrix}
-    7 && 7 && 6 && 7 \\
-    7 && 7 && 7 && 6 \\
-    6 && 7 && 7 && 7 \\
-    7 && 6 && 7 && 7 \\
-  \end{pmatrix}
-  >
-  \mathscr{O}
+    \mathrm{D} =
+    \begin{pmatrix}
+      1 && 0 && 1 && 1 \\
+      0 && 1 && 1 && 1 \\
+      1 && 1 && 1 && 0 \\
+      1 && 1 && 0 && 1 \\
+    \end{pmatrix}
+    \implies
+    \mathrm{D}^3 =
+    \begin{pmatrix}
+      7 && 6 && 7 && 7 \\
+      6 && 7 && 7 && 7 \\
+      7 && 7 && 7 && 6 \\
+      7 && 7 && 6 && 7 \\
+    \end{pmatrix}
+    >
+    \mathscr{O}
   \end{equation}
-  Тъй графа има 4 върха, всеки прост път е с дължина не по-голяма от 3.
-  С матрицата на съседство повдигната на 3-та степен виждаме кои върхове са свързани помежду си и кои не.
-  Понеже има единствена свързана компонента, то графът е силно свързан.
+  Графа е с 4 върха, всеки прост път е с дължина не по-голяма от 3.
+  $\mathrm{D}^3(i,j)$ - колко пътя има от $i$ до $j$.
+  От всеки има път до всеки, тоест графът е силно свързан.
   \end{frame}
 
 \begin{frame}[t]{Неподвижни точки}
-  Тъй като системата е с управление, не може в общия случай да говорим за равновесни точки, понеже промени по него водят до промени по дясната страна.
+Тъй като системата е с управление, не може в общия случай да говорим за равновесни точки, понеже промени по него водят до промени по дясната страна.
 
-  Да предположим, че сме фиксирали константно управление.
+Да предположим, че сме фиксирали константно управление.
 
 Тогава системата става автономна, но е силно нелинейна и с голяма размерност, откъдето не е възможно да бъдат изведени аналитични изрази за координатите на равновесните точки, различни от $\boldsymbol{0}$.
 \end{frame}

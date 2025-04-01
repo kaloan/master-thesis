@@ -1,6 +1,8 @@
 \section{Модел с репелент}
 \begin{frame}[t]{Модел с репелент на Rashkov}
-  Модифицираме модела на Ross с $(1 - \kappa u(t))$ в закона за действие на масите, където $u(t)$ функция управление за пропорцията на хора предпазени с помощта на репелента, а $\kappa$ неговата ефективност.
+  $u(t)$ - функция управление ьа пропорцията на хора предпазени с репелент.
+  
+  $\kappa$ - ефективността на репелента.
 
   \begin{equation}
     \label{eq:RepelentProblem}
@@ -24,7 +26,7 @@
     \end{split}
   \end{equation}
   Надолу ще се пише и $\boldsymbol{z}=(x,y)$.
-  
+
   Възможно ли е всички заразени да бъдат хоспитализирани, т.е. да са под $\bar{I}$?
   Въвеждаме $\mathfrak{I}(\bar{I}) = [0, \bar{I}] \cross [0, 1]$.
 
@@ -33,7 +35,7 @@
 \end{frame}
 
 \begin{frame}[t]{Модел с репелент на Rashkov}
-  Ако заместим с $\bar{u}$ получаваме автономна система и да се намерят равновесните ѝ точки.
+  Ако заместим с $\bar{u}$ получаваме автономна система и могат да се намерят равновесните ѝ точки.
 
 \begin{proposition}
     Ако $E^* = (x^*, y^*)$ е ендемична с $x^* > \bar{I}$, то $V(\bar{I}, \bar{u}) = \emptyset$, понеже може да се докаже, че е асимптотично устойчива.
@@ -57,9 +59,9 @@
     \end{cases}
   \end{equation}
 
-  Фиксираме $l>L>0$ ($L$ - константата на Липшицц за системата) и въвеждаме функция на оценката $v$:
+  Фиксираме $\lambda>L>0$ ($L$ - константата на Липшицц за системата) и въвеждаме функция на Белман $v$:
   \begin{equation}
-    v(\boldsymbol{z}_0) = \inf_{u \in \mathscr{U}} \sup_{t \in (0, +\infty)} e^{-lt} \Gamma(\boldsymbol{z}(t; \boldsymbol{z}_0; u))
+    v(\boldsymbol{z}_0) = \inf_{u \in \mathscr{U}} \sup_{t \in (0, +\infty)} e^{-\lambda t} \Gamma(\boldsymbol{z}(t; \boldsymbol{z}_0; u))
   \end{equation}
 
   Ако започнем с $\boldsymbol{z}_0 \notin V(\bar{I}, \bar{u})$, то $v(\boldsymbol{z}_0) > 0$ и обратното.
@@ -72,18 +74,18 @@
 \begin{frame}[t]{Уравнение на Хамилтон-Якоби-Белман}
   Може да се покаже, че е изпълнено:
   \begin{equation}
-    v(\boldsymbol{z}_0) = \inf_{u \in \mathscr{U}} \max\{e^{-lt} v(\boldsymbol{z}_0), \sup_{s \in (0, t]} e^{-lt} \Gamma(\boldsymbol{z}(s; \boldsymbol{z}_0; u))\}
+    v(\boldsymbol{z}_0) = \inf_{u \in \mathscr{U}} \max\{e^{-\lambda t} v(\boldsymbol{z}_0), \sup_{s \in (0, t]} e^{-\lambda t} \Gamma(\boldsymbol{z}(s; \boldsymbol{z}_0; u))\}
   \end{equation}
   Може да се покаже, че $v$ е точно решението на:
   \begin{equation}
     \begin{split}
-      &\min\{l v(\boldsymbol{z}) + \max_{u \in \mathscr{U}} \mathcal{H}(\boldsymbol{z}, u, \grad{v}), v(\boldsymbol{z}) - \Gamma(\boldsymbol{z}) \} = 0, \quad \boldsymbol{z} \in \mathbb{R}^2 \\
+      &\min\{\lambda v(\boldsymbol{z}) + \max_{u \in \mathscr{U}} \mathcal{H}(\boldsymbol{z}, u, \grad{v}), v(\boldsymbol{z}) - \Gamma(\boldsymbol{z}) \} = 0, \quad \boldsymbol{z} \in \mathbb{R}^2 \\
       &\mathcal{H}(\boldsymbol{z}, u, \grad{v}) = \innerproduct{-f(\boldsymbol{z}, u)}{\grad{v}}
     \end{split}
   \end{equation}
   Диференциалното уравнение се разглежда като стационарно решение на диференцална задача с добавено числено време.
-  
-  За решаване на задачи от този вид има числени методи WENO (Weighted Essentially Non-Oscillatory), които са с голям ред на сходимост - $h^5$.
+
+  За решаване на задачи от този вид има числени методи WENO (Weighted Essentially Non-Oscillatory), които са $O(h^5)$.
 \end{frame}
 
 \begin{frame}[t]{Резултати на Rashkov}

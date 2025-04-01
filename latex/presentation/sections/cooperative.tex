@@ -6,9 +6,9 @@
     \end{equation}
 
 \begin{definition}[Силна вдлъбнатост]
-  Ако системата \ref{eq:GenericSystem} е автономна, тя се нарича силно вдлъбната, ако
+  Системата \ref{eq:GenericSystem} се нарича силно вдлъбната, ако при $\boldsymbol{0} < \boldsymbol{x}_1 < \boldsymbol{x}_2$:
   \begin{equation}
-    \boldsymbol{0} < \boldsymbol{x}_1 < \boldsymbol{x}_2 \implies \mathrm{D}\boldsymbol{F}(\boldsymbol{x}_2) < \mathrm{D}\boldsymbol{F}(\boldsymbol{x}_1)
+     \forall{t \in J} \left(\mathrm{D}_x\boldsymbol{F}(t, \boldsymbol{x}_2) \leq \mathrm{D}_x\boldsymbol{F}(t, \boldsymbol{x}_1) \wedge \mathrm{D}_x\boldsymbol{F}(t, \boldsymbol{x}_2) \neq \mathrm{D}_x\boldsymbol{F}(t, \boldsymbol{x}_1)\right)
     \end{equation}
   \end{definition}
 
@@ -29,13 +29,10 @@
     \end{equation*}
     Матрици, които не са разложими се наричат неразложими.
   \end{definition}
-  \begin{theorem}[Perron-Frobenius]
-    Ако $A$ е неразложима, то доминантната ѝ собствена стойност $\mu$ е проста и на нея отговаря положителен собствен вектор $\boldsymbol{v} \in \mathbb{R}_{+}^n$.
-  \end{theorem}
   \begin{definition}[(Не-)разложима система]
-    Система \ref{eq:GenericSystem} се нарича (не-)разложима, ако Якобианът на дясната страна $\mathrm{D}\boldsymbol{F}$ във всяка точка е (не-)разложим.
+    Система \ref{eq:GenericSystem} се нарича (не-)разложима, ако Якобианът на дясната страна $\mathrm{D}_x\boldsymbol{F}(t, \boldsymbol{x})$ във всяка точка е (не-)разложим.
   \end{definition}
-  
+
 \end{frame}
 
 \begin{frame}[t]{Кооперативни системи}
@@ -45,6 +42,10 @@
       \forall{i,j \in \{\overline{1,n}\}} \left(i \neq j \implies a_{ij} \geq 0\right)
     \end{equation*}
   \end{definition}
+
+  \begin{theorem}[Perron-Frobenius]
+    Ако $A$ е неразложима и квазимонотонна, то доминантната ѝ собствена стойност $\mu$ е проста и на нея отговаря положителен собствен вектор $\boldsymbol{v} \in \mathbb{R}_{+}^n$.
+  \end{theorem}
   
   \begin{definition}[Кооперативна система]
     \label{def:Cooperative}
@@ -53,8 +54,6 @@
       \forall{t \in J} \Hquad \forall{\boldsymbol{x} \in \mathbb{R}_{+}^n} \Hquad \forall{i,j \in \{\overline{1,n}\}} \Hquad \left(i \neq j \implies \pdv{f_i}{x_j}\left(t, \boldsymbol{x}\right) \geq 0\right)
     \end{equation}
   \end{definition}
-
-Тоест кооперативни са точно системите с квазимонотонен Якобиан.
 
 % \begin{theorem}
 %   Ако \ref{eq:GenericSystem} е линейна (т.е. $\dot{\boldsymbol{x}} = A \boldsymbol{x}, A = (a_{ij})_{n \times n}$) система, то $\mathbb{R}_{+}^n$ е инвариантно. Допълнително, ако A е неразложима, то за кое да е $t > 0$ решението е във $\mathrm{int} \mathbb{R}_{+}^n$, стига началното решение да е ненулево, т.е. $\boldsymbol{x}_0 \neq \boldsymbol{0}$.
@@ -68,6 +67,6 @@
   \end{theorem}
 
   \begin{theorem}
-    Система, която е кооперативна, неразложима и силно вдлъбната не може да има две различни неподвижни точки, които да не са тривиалната.
+    Система, която е кооперативна, неразложима и силно вдлъбната не може да има повече от една ненулева равновесна точка.
   \end{theorem}
 \end{frame}
