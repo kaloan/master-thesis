@@ -1,14 +1,14 @@
 \section{Модел с репелент}
 \begin{frame}[t]{Модел с репелент на Rashkov}
   $u(t)$ - функция управление ьа пропорцията на хора предпазени с репелент.
-  
+
   $\kappa$ - ефективността на репелента.
 
   \begin{equation}
     \label{eq:RepelentProblem}
     \begin{split}
       &\dot{X}(t) = \beta_{vh} e^{-\mu \tau} a (1-\kappa u(t)) \frac{N-X(t)}{N} Y(t) - \gamma X(t) \\
-      &\dot{Y}(t) = \beta_{hv} a (1-\kappa u(t)) X(t) (M-Y(t)) - \mu Y(t) \\
+      &\dot{Y}(t) = \beta_{hv} a (1-\kappa u(t)) \frac{X(t)}{N} (M-Y(t)) - \mu Y(t) \\
       &u(t) \in \mathscr{U} = \{u:\mathbb{R}_+ \rightarrow [0, \bar{u}] \vert u \text{- измерима}\}
     \end{split}
   \end{equation}
@@ -20,8 +20,8 @@
   Може да направим смяна от брой към пропорция на заразени. Така модела изглежда:
   \begin{equation}
     \begin{split}
-      &\dot{x}(t) = \beta_{vh} e^{-\mu \tau} a \frac{M}{N} (1-\kappa u(t)) y(t) - \gamma x(t) \\
-      &\dot{y}(t) = \beta_{hv} a (1-\kappa u(t)) x(t) (M-Y(t)) - \mu y(t) \\
+      &\dot{x}(t) = \beta_{vh} e^{-\mu \tau} a \frac{M}{N} (1-\kappa u(t)) (1 - x(t)) y(t) - \gamma x(t) \\
+      &\dot{y}(t) = \beta_{hv} a (1-\kappa u(t)) x(t) (1 - y(t)) - \mu y(t) \\
       &u(t) \in \mathscr{U} = \{u:\mathbb{R}_+ \rightarrow [0, \bar{u}] \vert u \text{- измерима}\}
     \end{split}
   \end{equation}
@@ -37,10 +37,12 @@
 \begin{frame}[t]{Модел с репелент на Rashkov}
   Ако заместим с $\bar{u}$ получаваме автономна система и могат да се намерят равновесните ѝ точки.
 
-\begin{proposition}
-    Ако $E^* = (x^*, y^*)$ е ендемична с $x^* > \bar{I}$, то $V(\bar{I}, \bar{u}) = \emptyset$, понеже може да се докаже, че е асимптотично устойчива.
+  От теоремата за сравнение на решения получаваме:
+  \begin{proposition}
+    Ако $E^* = (x^*, y^*)$ е ендемична с $x^* > \bar{I}$, то $V(\bar{I}, \bar{u}) = \emptyset$, понеже може да се докаже, че $E^*$ е асимптотично устойчива.
   \end{proposition}
 
+  Изразявайки градиента по дясната граница на $\mathfrak{I}(\bar{I})$ се получава:
   \begin{proposition}
     \begin{equation*}
       \bar{I} > \frac{(1-\kappa \bar{u}) \beta_{vh} e^{-\mu \tau} a \frac{M}{N}}{(1-\kappa \bar{u}) \beta_{vh} e^{-\mu \tau} a \frac{M}{N} + \gamma} \implies V(\bar{I}, \bar{u}) = \mathfrak{I}(\bar{I})
@@ -68,11 +70,13 @@
 
   Ако започнем с $\boldsymbol{z}_0 \in V(\bar{I}, \bar{u})$, то $v(\boldsymbol{z}_0) \leq 0$ и обратното.
 
-  Така $V(\bar{I}, \bar{u}) = \{\boldsymbol{z}_0 \in \Omega \vert v(\boldsymbol{z}) \leq 0\}$
+  $V(\bar{I}, \bar{u}) = \{\boldsymbol{z}_0 \in \Omega \vert v(\boldsymbol{z}_0) \leq 0\}$
+
+  $\partial V(\bar{I}, \bar{u}) = \{\boldsymbol{z}_0 \in \Omega \vert v(\boldsymbol{z}_0) = 0\}$
 \end{frame}
 
 \begin{frame}[t]{Уравнение на Хамилтон-Якоби-Белман}
-  Може да се покаже, че е изпълнено:
+  Може да се покаже, че е в сила принцип за динамично програмиране:
   \begin{equation}
     v(\boldsymbol{z}_0) = \inf_{u \in \mathscr{U}} \max\{e^{-\lambda t} v(\boldsymbol{z}_0), \sup_{s \in (0, t]} e^{-\lambda t} \Gamma(\boldsymbol{z}(s; \boldsymbol{z}_0; u))\}
   \end{equation}

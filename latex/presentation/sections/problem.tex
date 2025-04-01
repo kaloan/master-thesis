@@ -28,16 +28,18 @@
 \end{frame}
 
 \begin{frame}{Задача}
-  Бележим $\Omega = \{0 \leq x_1 \leq 1, 0 \leq x_2 \leq 1, 0 \leq y_1 \leq 1, 0 \leq y_2 \leq 1\} = \{\boldsymbol{z} \in [0, 1]^4\}$.
+  Задачата се разглежда в дефиниционното множество $\Omega = \{0 \leq x_1 \leq 1, 0 \leq x_2 \leq 1, 0 \leq y_1 \leq 1, 0 \leq y_2 \leq 1\} = \{\boldsymbol{z} \in [0, 1]^4\}$.
 
-  Нека $\bar{\boldsymbol{I}} = (\bar{I}_1, \bar{I}_2)^T, \bar{I}_1, \bar{I}_2 \in [0, 1]$ са константи, отговарящи за максималната част от населението в съответното местообитание, което може да получи адекватна здравна помощ при заразяване с малария. Ще бележим $\mathscr{I} = [0, \bar{I}_1] \times [0, \bar{I}_2]$.
+  Нека $\bar{\boldsymbol{I}} = (\bar{I}_1, \bar{I}_2)^T, \bar{I}_1, \bar{I}_2 \in [0, 1]$ са константи, отговарящи за максималната част от населението в съответното местообитание, което може да получи адекватна здравна помощ при заразяване с малария.
+  
+  Ще бележим $\mathscr{I}(\bar{\boldsymbol{I}}) = [0, \bar{I}_1] \times [0, \bar{I}_2]$.
 \end{frame}
 
 \begin{frame}{Задача}
   Питаме се има ли такива управления $\boldsymbol{u}(t)$, за които във всеки момент всички заразени да имат възможност да получат помощ от здравната система, т.е. :
   \begin{equation}
     \label{eq:AllHospitalised}
-    \forall t>0 (x_1(t) \leq \bar{I}_1 \wedge x_2(t) \leq \bar{I}_2) \iff \forall t>0 (\boldsymbol{x}(t) \in \mathscr{I})
+    \forall t>0 (x_1(t) \leq \bar{I}_1 \wedge x_2(t) \leq \bar{I}_2) \iff \forall t>0 (\boldsymbol{x}(t) \in \mathscr{I}(\bar{\boldsymbol{I}}))
   \end{equation}
   Тъй като първоначалният брой заразени хора и комари влияят на развитието на системата ще търсим:
   \begin{equation}

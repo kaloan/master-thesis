@@ -20,7 +20,7 @@
   \end{lemma}
 
   \begin{proof}
-    \begin{equation}
+    \begin{equation*}
       \begin{split}
         &|(C_z - z) s - (C_z - z') s'| =
         |C_z s - z s - C_z s' + z' s' + z s' - z s'| = \\
@@ -29,7 +29,7 @@
         2 |C_z| |s - s'|  + |C_s| |z - z'| \leq \\
         &\max\{2 |C_z|, |C_s|\} (|s-s'| + |z - z'|)
       \end{split}
-    \end{equation}
+    \end{equation*}
   \end{proof}
 \end{frame}
 
@@ -37,16 +37,16 @@
   Трябва да покажем липшицовост по фазовите променливи.
 
   Първо от неравенството на триъгълника имаме, че:
-  \begin{equation}
+  \begin{equation*}
     \|\boldsymbol{f}(\boldsymbol{z}, \boldsymbol{u}) - \boldsymbol{f}(\boldsymbol{z}', \boldsymbol{u}')\| \leq
     |f_{x_1}(\boldsymbol{z}, \boldsymbol{u}) - f_{x_1}(\boldsymbol{z}', \boldsymbol{u}')| + \cdots + |f_{y_2}(\boldsymbol{z}, \boldsymbol{u}) - f_{y_2}(\boldsymbol{z}', \boldsymbol{u}')|
-  \end{equation}
+  \end{equation*}
 
-  \begin{multline}
+  \begin{multline*}
     |f_{x_1}(\boldsymbol{z}, \boldsymbol{u}) - f_{x_1}(\boldsymbol{z}', \boldsymbol{u}')| \leq \\
     b_{11} \left|(1-x_1)[(1 - \kappa u_1) y_1] -  (1-x'_1)[(1 - \kappa u'_1) y'_1]\right| + \\
     b_{12} \left|(1-x_1)[(1 - \kappa u_1) y_2] -  (1-x'_1)[(1 - \kappa u'_2) y'_2]\right| + \gamma |x_1 - x'_1|
-  \end{multline}
+  \end{multline*}
   Сега може да ползваме лемата \ref{lemma:Modulus} за $f_{x_1}$ с:
   \begin{equation*}
     x_1, x'_1 \leq 1, (1-\kappa u_1)y_1, (1-\kappa u_1) y'_1 \leq 1, (1-\kappa u_1)y_2, (1-\kappa u_1) y'_2 \leq 1
@@ -54,11 +54,11 @@
 \end{frame}
 
 \begin{frame}[t]{Съществуване на решение на \ref{eq:TheDimensionlessProblem}}
-  \begin{multline}
+  \begin{multline*}
     \left|(1-x_1) [(1-\kappa u_1) y_1] - (1-x'_1) [(1-\kappa u'_1) y'_1]\right| \leq \\
     2 |(1-\kappa u_1) y_1 - (1-\kappa u'_1) y'_1| + |x_1 - x'_1| \leq \\
     2 (2|y_1 - y'_1| + \kappa |u_1 - u'_1|) + |x_1 - x'_1|
-  \end{multline}
+  \end{multline*}
   Аналогично за другия член.
 
   Тук също ползвахме $1-\kappa u_1, 1-\kappa u'_1 \leq 1, \quad y_1, y'_1 \leq 1, \quad y_2, y'_2 \leq 1$.
@@ -68,7 +68,7 @@
 
 \begin{frame}[t]{Съществуване на решение на \ref{eq:TheDimensionlessProblem}}
   За да проверим липшицовостта по фазовите променливи, то заместваме с $u_1 = u'_1, u_2 = u'_2$ всичко и за цялата дясна страна е в сила:
-  \begin{multline}
+  \begin{multline*}
     \|\boldsymbol{f}(\boldsymbol{z}, \boldsymbol{u}) - \boldsymbol{f}(\boldsymbol{z}', \boldsymbol{u}')\| \leq \\
     b_{11} (4 |y_1 - y'_1| + |x_1 - x'_1|) +
     b_{12} (4 |y_2 - y'_2| + |x_1 - x'_1|) + \gamma_1 |x_1-x'_1| + \\
@@ -79,13 +79,13 @@
     c_{21} (4 |x_1 - x'_1| + |y_2 - y'_2|) +
     c_{22} (4 |x_2 - x'_2| + |y_2 - y'_2|) + \mu_2 |y_2 - y'_2| \leq \\
     L \|\boldsymbol{z} - \boldsymbol{z}'\|
-  \end{multline}
+  \end{multline*}
   Накрая се използват неравенства от вида $|x_1-x'_1| \leq \|(x_1, x_2, y_1, y_2) - (x'_1, x'_2, y'_1, y'_2)\| = \|\boldsymbol{z} - \boldsymbol{z}'\|$.
 \end{frame}
 
 \begin{frame}[t]{Ограниченост на решението на \ref{eq:TheDimensionlessProblem}}
   Трябва да се покаже, че $\boldsymbol{f}$ сочи към вътрешността на $\Omega$, ако решението се намира по границата $\partial \Omega$. Но това наистина е така, от:
-  \begin{equation}
+  \begin{equation*}
     \begin{split}
       &\dot{x}_1(t)\vert_{\Omega \cap \{x_1(t)=0\}} = (1-\kappa u_1(t))(b_{11} y_1(t) + b_{12} y_2(t)) \geq 0 \\
       &\dot{x}_1(t)\vert_{\Omega \cap \{x_1(t)=1\}} = - \gamma_1 < 0 \\
@@ -96,7 +96,7 @@
       &\dot{y}_2(t)\vert_{\Omega \cap \{y_2(t)=0\}} = c_{21}(1-\kappa u_1(t)) x_1(t) + c_{22}(1-\kappa u_2(t)) x_2(t) \geq 0 \\
       &\dot{y}_2(t)\vert_{\Omega \cap \{y_2(t)=1\}} = - \mu_2 < 0
     \end{split}
-  \end{equation}
+  \end{equation*}
 \end{frame}
 
 \begin{frame}[t]{Кооперативност на \ref{eq:TheDimensionlessProblem}}
@@ -149,7 +149,7 @@
   \end{theorem}
 
   Заместваме ненулевите елементи на $\mathrm{D} \boldsymbol{f}$ с 1 (тях знаем от \ref{eq:JacobianElements}). Така получаваме графа с матрица на съседство $\mathrm{D}$:
-  \begin{equation}
+  \begin{equation*}
     \mathrm{D} =
     \begin{pmatrix}
       1 && 0 && 1 && 1 \\
@@ -167,7 +167,7 @@
     \end{pmatrix}
     >
     \mathscr{O}
-  \end{equation}
+  \end{equation*}
   Графа е с 4 върха, всеки прост път е с дължина не по-голяма от 3.
   $\mathrm{D}^3(i,j)$ - колко пътя има от $i$ до $j$.
   От всеки има път до всеки, тоест графът е силно свързан.

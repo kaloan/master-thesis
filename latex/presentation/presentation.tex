@@ -32,6 +32,15 @@
 %   \let\ctg\relax\let\cth\relax\let\cosec\relax
 % }
 % \usepackage[bulgarian, english]{babel}
+
+% !!! LOAD HERE BECAUSE SOMETHING ABOVE REPLACES T2A WITH T1 !!!
+\usepackage[T2A]{fontenc}
+% \usepackage{tempora}
+\usepackage[utf8]{inputenc}
+% \usepackage{fontspec}
+\usepackage{bm}
+\tracinglostchars=2
+
 \usepackage[bulgarian]{babel}
 \usepackage{hyphenat}
 
@@ -60,6 +69,7 @@
 \usepackage{physics}
 %\usepackage{derivative}
 
+
 \usepackage{blindtext}
 \usepackage{scrextend}
 \usepackage{graphicx}
@@ -68,13 +78,8 @@
 \usepackage{newtxmath}  % Times in math mode
 \usepackage{import}
 
-\usepackage{csquotes}
+% \usepackage{csquotes}
 % \usepackage{titlesec}
-
-% Bibliography using BibLaTeX
-% \usepackage[backend=biber, defernumbers=true, bibencoding=utf8]{biblatex}
-% \usepackage[nottoc,numbib]{tocbibind}
-% \addbibresource[bibencoding=utf8]{thesis.bib}
 
 % \usepackage{lmodern}
 % \usepackage{yfonts}
@@ -87,13 +92,11 @@
 \usepackage{datetime}
 
 % Fonts
-% !!! LOAD HERE BECAUSE SOMETHING ABOVE REPLACES T2A WITH T1 !!!
-\usepackage[T2A]{fontenc}
-% \usepackage{tempora}
-\usepackage[utf8]{inputenc}
-% \usepackage{fontspec}
-\usepackage{bm}
-\tracinglostchars=2
+
+% Bibliography using BibLaTeX
+% \usepackage[backend=biber, defernumbers=true, bibencoding=utf8]{biblatex}
+% % \usepackage[nottoc,numbib]{tocbibind}
+% \addbibresource[bibencoding=utf8]{thesis.bib}
 
 \usetheme{Frankfurt}
 \useoutertheme{}
@@ -212,6 +215,7 @@
     \end{center}
   \end{frame}
 }
+
 
 % \listoffigures
 % \listoftables
