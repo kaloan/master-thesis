@@ -3,11 +3,11 @@
 #include <chrono>
 // #include <cmath>
 #include <filesystem>
-// #include <format>
+#include <format>
 #include <fstream>
 #include <iomanip>
 #include <iostream>
-#include <iterator>
+// #include <iterator>
 #include <tuple>
 #include <vector>
 using namespace std;
@@ -42,9 +42,9 @@ constexpr auto Gamma1 = 1. / 14.;
 constexpr auto Gamma2 = 1. / 14.;
 constexpr auto BetaHV = 0.5;
 constexpr auto p11 = 0.5;
-constexpr auto p12 = 0.5;
-constexpr auto p21 = 0.5;
+constexpr auto p12 = 1 - p11;
 constexpr auto p22 = 0.5;
+constexpr auto p21 = 1 - p22;
 constexpr auto H1 = p11 * N1 + p21 * N2;
 constexpr auto H2 = p21 * N1 + p22 * N2;
 
@@ -72,8 +72,8 @@ constexpr auto c22 = BetaHV * p22 * a2 * N2 / H2;
 constexpr auto Imax1 = .1;
 constexpr auto Imax2 = .1;
 // set to reduce the size of the domain where the viability kernel lies
-constexpr auto ymax1 = .2;
-constexpr auto ymax2 = .2;
+constexpr auto ymax1 = .5;
+constexpr auto ymax2 = .5;
 
 // control
 constexpr auto k = .6;
@@ -92,7 +92,7 @@ constexpr auto errtol = 1e-10;
 // lambda - lipschitz constant for the system
 const auto Lexact = 3. * (b11 + b12 + b21 + b22 + c11 + c12 + c21 + c22) +
                     Gamma1 + Gamma2 + mu1 + mu2;
-const auto L = 1.02 * Lexact;
+const auto L = 1.05 * Lexact;
 
 // maximum of partial derivatives, Hamiltonian
 const array<double, 4> mpd = {
@@ -119,32 +119,34 @@ const auto dt =
     0.9 / max(mpd[0] / dx1 + mpd[1] / dx2 + mpd[2] / dy1 + mpd[3] / dy2, L);
 
 // x and y
-constexpr auto padX1 = 6;
-array<double, Nx1 + 2 * padX1> x1;
-constexpr auto padX2 = 6;
-array<double, Nx2 + 2 * padX2> x2;
-constexpr auto padY1 = 6;
-array<double, Ny1 + 2 * padY1> y1;
-constexpr auto padY2 = 6;
-array<double, Ny2 + 2 * padY2> y2;
-Array4D<x1.size(), x2.size(), y1.size(), y2.size()> hx1;
-Array4D<x1.size(), x2.size(), y1.size(), y2.size()> hx2;
-Array4D<x1.size(), x2.size(), y1.size(), y2.size()> hy1;
-Array4D<x1.size(), x2.size(), y1.size(), y2.size()> hy2;
-Array4D<x1.size(), x2.size(), y1.size(), y2.size()> mx1;
-Array4D<x1.size(), x2.size(), y1.size(), y2.size()> mx2;
-Array4D<x1.size(), x2.size(), y1.size(), y2.size()> my1;
-Array4D<x1.size(), x2.size(), y1.size(), y2.size()> my2;
-Array4D<x1.size(), x2.size(), y1.size(), y2.size()> wwx1;
-Array4D<x1.size(), x2.size(), y1.size(), y2.size()> wwx2;
-Array4D<x1.size(), x2.size(), y1.size(), y2.size()> wwy1;
-Array4D<x1.size(), x2.size(), y1.size(), y2.size()> wwy2;
-Array4D<x1.size(), x2.size(), y1.size(), y2.size()> ax1;
-Array4D<x1.size(), x2.size(), y1.size(), y2.size()> ax2;
-Array4D<x1.size(), x2.size(), y1.size(), y2.size()> ay1;
-Array4D<x1.size(), x2.size(), y1.size(), y2.size()> ay2;
-Array4D<x1.size(), x2.size(), y1.size(), y2.size()> distSgnd;
-Array4D<x1.size() + 6, x2.size() + 6, y1.size() + 6, y2.size() + 6> w;
+constexpr auto padX1 = 3;
+array<double, Nx1> x1;
+constexpr auto padX2 = 3;
+array<double, Nx2> x2;
+constexpr auto padY1 = 3;
+array<double, Ny1> y1;
+constexpr auto padY2 = 3;
+array<double, Ny2> y2;
+static Array4D<x1.size(), x2.size(), y1.size(), y2.size()> hx1;
+static Array4D<x1.size(), x2.size(), y1.size(), y2.size()> hx2;
+static Array4D<x1.size(), x2.size(), y1.size(), y2.size()> hy1;
+static Array4D<x1.size(), x2.size(), y1.size(), y2.size()> hy2;
+static Array4D<x1.size(), x2.size(), y1.size(), y2.size()> mx1;
+static Array4D<x1.size(), x2.size(), y1.size(), y2.size()> mx2;
+static Array4D<x1.size(), x2.size(), y1.size(), y2.size()> my1;
+static Array4D<x1.size(), x2.size(), y1.size(), y2.size()> my2;
+static Array4D<x1.size(), x2.size(), y1.size(), y2.size()> wwx1;
+static Array4D<x1.size(), x2.size(), y1.size(), y2.size()> wwx2;
+static Array4D<x1.size(), x2.size(), y1.size(), y2.size()> wwy1;
+static Array4D<x1.size(), x2.size(), y1.size(), y2.size()> wwy2;
+static Array4D<x1.size(), x2.size(), y1.size(), y2.size()> ax1;
+static Array4D<x1.size(), x2.size(), y1.size(), y2.size()> ax2;
+static Array4D<x1.size(), x2.size(), y1.size(), y2.size()> ay1;
+static Array4D<x1.size(), x2.size(), y1.size(), y2.size()> ay2;
+static Array4D<x1.size(), x2.size(), y1.size(), y2.size()> distSgnd;
+Array4D<x1.size() + 2 * padX1, x2.size() + 2 * padX2, y1.size() + 2 * padY1,
+        y2.size() + 2 * padY2>
+    w;
 
 template <size_t n1, size_t n2, size_t n3, size_t n4>
 Array4D<n1, n2, n3, n4> halfSum(const Array4D<n1, n2, n3, n4> &mat1,
@@ -167,12 +169,13 @@ template <size_t n1, size_t n2, size_t n3, size_t n4>
 void printSolution(const Array4D<n1, n2, n3, n4> &arr,
                    ostream &stream = std::cout,
                    const string &delim = ", ") noexcept {
-  for (size_t i1 = 0; i1 < n1; ++i1) {
-    for (size_t i2 = 0; i2 < n2; ++i2) {
-      for (size_t j1 = 0; j1 < n3; ++j1) {
-        for (size_t j2 = 0; j2 < n4; ++j2) {
+  for (size_t i1 = 0; i1 < Nx1; ++i1) {
+    for (size_t i2 = 0; i2 < Nx2; ++i2) {
+      for (size_t j1 = 0; j1 < Ny1; ++j1) {
+        for (size_t j2 = 0; j2 < Ny2; ++j2) {
           stream << x1[i1] << delim << x2[i2] << delim << y1[j1] << delim
-                 << y2[j2] << delim << arr[i1][i2][j1][j2] << "\n";
+                 << y2[j2] << delim
+                 << arr[i1 + padX1][i2 + padX2][j1 + padY1][j2 + padY2] << "\n";
         }
       }
     }
@@ -182,9 +185,9 @@ void printSolution(const Array4D<n1, n2, n3, n4> &arr,
 template <size_t n1, size_t n2, size_t n3, size_t n4>
 void matrixContinuation(Array4D<n1, n2, n3, n4> &mat) noexcept {
 
-  for (size_t i1 = 0; i1 < n1; ++i1) {
-    for (size_t i2 = 0; i2 < n2; ++i2) {
-      for (size_t i3 = 0; i3 < n3; ++i3) {
+  for (size_t i1 = 0; i1 < n1 - padX1; ++i1) {
+    for (size_t i2 = 0; i2 < n2 - padX2; ++i2) {
+      for (size_t i3 = 0; i3 < n3 - padY1; ++i3) {
         mat[i1 + 3][i2 + 3][i3 + 3][0] = mat[i1 + 3][i2 + 3][i3 + 3][1] =
             mat[i1 + 3][i2 + 3][i3 + 3][2] = mat[i1 + 3][i2 + 3][i3 + 3][3];
         mat[i1 + 3][i2 + 3][i3 + 3][n4 - 1] =
@@ -195,9 +198,9 @@ void matrixContinuation(Array4D<n1, n2, n3, n4> &mat) noexcept {
     }
   }
 
-  for (size_t i1 = 0; i1 < n1; ++i1) {
-    for (size_t i2 = 0; i2 < n2; ++i2) {
-      for (size_t i4 = 0; i4 < n4; ++i4) {
+  for (size_t i1 = 0; i1 < n1 - padX1; ++i1) {
+    for (size_t i2 = 0; i2 < n2 - padX2; ++i2) {
+      for (size_t i4 = 0; i4 < n4 - padY2; ++i4) {
         mat[i1 + 3][i2 + 3][0][i4 + 3] = mat[i1 + 3][i2 + 3][1][i4 + 3] =
             mat[i1 + 3][i2 + 3][2][i4 + 3] = mat[i1 + 3][i2 + 3][3][i4 + 3];
         mat[i1 + 3][i2 + 3][n3 - 1][i4 + 3] =
@@ -208,9 +211,9 @@ void matrixContinuation(Array4D<n1, n2, n3, n4> &mat) noexcept {
     }
   }
 
-  for (size_t i1 = 0; i1 < n1; ++i1) {
-    for (size_t i3 = 0; i3 < n3; ++i3) {
-      for (size_t i4 = 0; i4 < n4; ++i4) {
+  for (size_t i1 = 0; i1 < n1 - padX1; ++i1) {
+    for (size_t i3 = 0; i3 < n3 - padY1; ++i3) {
+      for (size_t i4 = 0; i4 < n4 - padY2; ++i4) {
         mat[i1 + 3][0][i3 + 3][i4 + 3] = mat[i1 + 3][1][i3 + 3][i4 + 3] =
             mat[i1 + 3][2][i3 + 3][i4 + 3] = mat[i1 + 3][3][i3 + 3][i4 + 3];
         mat[i1 + 3][n2 - 1][i3 + 3][i4 + 3] =
@@ -221,9 +224,9 @@ void matrixContinuation(Array4D<n1, n2, n3, n4> &mat) noexcept {
     }
   }
 
-  for (size_t i2 = 0; i2 < n2; ++i2) {
-    for (size_t i3 = 0; i3 < n3; ++i3) {
-      for (size_t i4 = 0; i4 < n4; ++i4) {
+  for (size_t i2 = 0; i2 < n2 - padX1; ++i2) {
+    for (size_t i3 = 0; i3 < n3 - padY1; ++i3) {
+      for (size_t i4 = 0; i4 < n4 - padY2; ++i4) {
         mat[0][i2 + 3][i3 + 3][i4 + 3] = mat[1][i2 + 3][i3 + 3][i4 + 3] =
             mat[2][i2 + 3][i3 + 3][i4 + 3] = mat[3][i2 + 3][i3 + 3][i4 + 3];
         mat[n1 - 1][i2 + 3][i3 + 3][i4 + 3] =
@@ -502,14 +505,14 @@ void performTimeStep(Array4D<n1, n2, n3, n4> &tp1Matrix,
                      const Array4D<n1, n2, n3, n4> &tMatrix) {
   auto approx = derf(tMatrix);
   auto hamilton = hamiltonian(approx);
-  for (size_t i1 = 0; i1 < n1; ++i1) {
-    for (size_t i2 = 0; i2 < n2; ++i2) {
-      for (size_t j1 = 0; j1 < n3; ++j1) {
-        for (size_t j2 = 0; j2 < n4; ++j2) {
+  for (size_t i1 = 0; i1 < n1 - padX1; ++i1) {
+    for (size_t i2 = 0; i2 < n2 - padX2; ++i2) {
+      for (size_t j1 = 0; j1 < n3 - padY1; ++j1) {
+        for (size_t j2 = 0; j2 < n4 - padY2; ++j2) {
           tp1Matrix[i1 + 3][i2 + 3][j1 + 3][j2 + 3] =
               max((1 - L * dt) * tMatrix[i1 + 3][i2 + 3][j1 + 3][j2 + 3] -
-                      hamilton[i1 + 3][i2 + 3][j1 + 3][j2 + 3] * dt,
-                  distSgnd[i1 + 3][i2 + 3][j1 + 3][j2 + 3]);
+                      hamilton[i1][i2][j1][j2] * dt,
+                  distSgnd[i1][i2][j1][j2]);
         }
       }
     }
@@ -518,22 +521,31 @@ void performTimeStep(Array4D<n1, n2, n3, n4> &tp1Matrix,
 }
 
 int main(int argc, char *argv[]) {
-  generate(x1.begin(), x1.end(),
-           [n = 0]() mutable { return (-padX1 + n++) * dx1; });
-  x1[padX1] = 0;
-  x1[padX1 + Nx1 - 1] = Imax1;
-  generate(y1.begin(), y1.end(),
-           [n = 0]() mutable { return (-padY1 + n++) * dy1; });
-  y1[padY1] = 0;
-  y1[padY1 + Ny1 - 1] = ymax1;
-  generate(x2.begin(), x2.end(),
-           [n = 0]() mutable { return (-padX2 + n++) * dx2; });
-  x2[padX2] = 0;
-  x2[padX2 + Nx2 - 1] = Imax2;
-  generate(y2.begin(), y2.end(),
-           [n = 0]() mutable { return (-padY2 + n++) * dy2; });
-  y2[padY2] = 0;
-  y2[padY2 + Ny2 - 1] = ymax2;
+  // generate(x1.begin(), x1.end(),
+  //          [n = 0]() mutable { return (-padX1 + n++) * dx1; });
+  // x1[padX1] = 0;
+  // x1[padX1 + Nx1 - 1] = Imax1;
+  // generate(y1.begin(), y1.end(),
+  //          [n = 0]() mutable { return (-padY1 + n++) * dy1; });
+  // y1[padY1] = 0;
+  // y1[padY1 + Ny1 - 1] = ymax1;
+  // generate(x2.begin(), x2.end(),
+  //          [n = 0]() mutable { return (-padX2 + n++) * dx2; });
+  // x2[padX2] = 0;
+  // x2[padX2 + Nx2 - 1] = Imax2;
+  // generate(y2.begin(), y2.end(),
+  //          [n = 0]() mutable { return (-padY2 + n++) * dy2; });
+  // y2[padY2] = 0;
+  // y2[padY2 + Ny2 - 1] = ymax2;
+
+  generate(x1.begin(), x1.end(), [n = 0]() mutable { return (n++) * dx1; });
+  x1[Nx1 - 1] = Imax1;
+  generate(x2.begin(), x2.end(), [n = 0]() mutable { return (n++) * dx2; });
+  x2[Nx2 - 1] = Imax2;
+  generate(y1.begin(), y1.end(), [n = 0]() mutable { return (n++) * dy1; });
+  y1[Ny1 - 1] = ymax1;
+  generate(y2.begin(), y2.end(), [n = 0]() mutable { return (n++) * dy2; });
+  y2[Ny2 - 1] = ymax2;
 
   // compute the partial derivatives
   for (size_t i1 = 0; i1 < x1.size(); ++i1) {
@@ -586,8 +598,9 @@ int main(int argc, char *argv[]) {
 
           // set signed distance
           distSgnd[i1][i2][j1][j2] =
-              -__builtin_sqrt((x1[i1] - Imax1) * (x1[i1] - Imax1) +
-                              (x2[i2] - Imax2) * (x2[i2] - Imax2));
+              -min(abs(x1[i1] - Imax1), abs(x2[i2] - Imax2));
+          // -__builtin_sqrt((x1[i1] - Imax1) * (x1[i1] - Imax1) +
+          //                 (x2[i2] - Imax2) * (x2[i2] - Imax2));
 
           // set initial approximation
           w[i1 + 3][i2 + 3][j1 + 3][j2 + 3] =
@@ -612,7 +625,7 @@ int main(int argc, char *argv[]) {
     // Heun's predictor-corrector method
     performTimeStep(wnew0, w);
     performTimeStep(wnew1, wnew0);
-    auto wnew = halfSum(w, wnew1);
+    const auto wnew = halfSum(w, wnew1);
 
     currentError = 0;
     for (size_t i1 = 0; i1 < x1.size(); ++i1) {
@@ -649,13 +662,17 @@ int main(int argc, char *argv[]) {
   cout << "Main calculation took: " << fixed << time_taken << setprecision(9)
        << " sec" << endl;
 
-  filesystem::path outputFile = "solution/finalSolution.csv";
+  // const auto now =
+  //     std::chrono::year_month_day(std::chrono::system_clock::now());
+  // filesystem::path outputFile = "solution/finalSolution.csv";;
+  filesystem::path outputFile =
+      format("solution/finalSolution-{}.csv", end).c_str();
   filesystem::create_directories(outputFile.parent_path());
   ofstream finalSolution(outputFile);
   printSolution(w, finalSolution);
 
   // system(format("cat {}", outputFile.c_str()).c_str());
-  ifstream finalSolutionReRead(outputFile);
-  cout << string((istreambuf_iterator<char>(finalSolutionReRead)),
-                 istreambuf_iterator<char>());
+  // ifstream finalSolutionReRead(outputFile);
+  // cout << string((istreambuf_iterator<char>(finalSolutionReRead)),
+  //                istreambuf_iterator<char>());
 }
