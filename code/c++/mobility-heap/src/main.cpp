@@ -39,9 +39,9 @@ constexpr auto N1 = 9.38e6;
 constexpr auto N2 = 4.47e6;
 constexpr auto Gamma1 = 0.063;
 constexpr auto Gamma2 = 0.058;
-constexpr auto p11 = 0.78;
+constexpr auto p11 = 0.75;
 constexpr auto p12 = 1 - p11;
-constexpr auto p22 = 0.7;
+constexpr auto p22 = 0.68;
 constexpr auto p21 = 1 - p22;
 
 constexpr auto H1 = p11 * N1 + p21 * N2;
@@ -80,16 +80,16 @@ constexpr auto c22 = BetaHV * p22 * a2 * N2 / H2;
 constexpr auto Imax1 = .15;
 constexpr auto Imax2 = .15;
 // set to reduce the size of the domain where the viability kernel lies
-constexpr auto ymax1 = .25;
-constexpr auto ymax2 = .25;
+constexpr auto ymax1 = .1;
+constexpr auto ymax2 = .1;
 
 // control
 // constexpr auto k = .6;
 // constexpr auto umax1 = .3;
 // constexpr auto umax2 = .4;
-constexpr auto k = .35;
+constexpr auto k = .4;
 constexpr auto umax1 = .20;
-constexpr auto umax2 = .12;
+constexpr auto umax2 = .14;
 
 // threshold for I at maximum control
 // const auto Is =
@@ -103,24 +103,24 @@ const auto Lexact = 3. * (b11 + b12 + b21 + b22 + c11 + c12 + c21 + c22) +
 const auto L = 1.05 * Lexact;
 
 // numerical space step
-constexpr auto Nx1 = 40;
+constexpr auto Nx1 = 25;
 constexpr auto dx1 = Imax1 / (Nx1 - 1);
-constexpr auto Nx2 = 40;
+constexpr auto Nx2 = 25;
 constexpr auto dx2 = Imax2 / (Nx2 - 1);
-constexpr auto Ny1 = 40;
+constexpr auto Ny1 = 25;
 constexpr auto dy1 = ymax1 / (Ny1 - 1);
-constexpr auto Ny2 = 40;
+constexpr auto Ny2 = 25;
 constexpr auto dy2 = ymax2 / (Ny2 - 1);
 
 // x and y
-constexpr auto padX1 = 3;
-array<double, Nx1> x1;
-constexpr auto padX2 = 3;
-array<double, Nx2> x2;
-constexpr auto padY1 = 3;
-array<double, Ny1> y1;
-constexpr auto padY2 = 3;
-array<double, Ny2> y2;
+constexpr auto padX1 = 4;
+array<double, Nx1 + 2 * padX1> x1;
+constexpr auto padX2 = 4;
+array<double, Nx2 + 2 * padX2> x2;
+constexpr auto padY1 = 4;
+array<double, Ny1 + 2 * padY1> y1;
+constexpr auto padY2 = 4;
+array<double, Ny2 + 2 * padY2> y2;
 unique_ptr<Array4D<x1.size(), x2.size(), y1.size(), y2.size()>> hx1(nullptr);
 unique_ptr<Array4D<x1.size(), x2.size(), y1.size(), y2.size()>> hx2(nullptr);
 unique_ptr<Array4D<x1.size(), x2.size(), y1.size(), y2.size()>> hy1(nullptr);
@@ -180,13 +180,35 @@ weightedSum(const unique_ptr<Array4D<n1, n2, n3, n4>> &res,
 }
 
 template <size_t n1, size_t n2, size_t n3, size_t n4>
-__always_inline void printSolution(const Array4D<n1, n2, n3, n4> &arr,
-                                   ostream &stream = std::cout,
-                                   const string &delim = ", ") noexcept {
+__always_inline void printSolutionOmega(const Array4D<n1, n2, n3, n4> &arr,
+                                        ostream &stream = std::cout,
+                                        const string &delim = ", ") noexcept {
   for (size_t i1 = 0; i1 < Nx1; ++i1) {
     for (size_t i2 = 0; i2 < Nx2; ++i2) {
       for (size_t j1 = 0; j1 < Ny1; ++j1) {
         for (size_t j2 = 0; j2 < Ny2; ++j2) {
+          stream << fixed << setprecision(8);
+          stream << x1[i1 + padX1] << delim << x2[i2 + padX2] << delim
+                 << y1[j1 + padY1] << delim << y2[j2 + padY2] << delim;
+          stream << scientific;
+          stream << arr[i1 + padX1 + 3][i2 + padX2 + 3][j1 + padY1 + 3]
+                       [j2 + padY2 + 3]
+                 << "\n";
+        }
+      }
+    }
+  }
+}
+
+template <size_t n1, size_t n2, size_t n3, size_t n4>
+__always_inline void
+printSolutionExtended(const Array4D<n1, n2, n3, n4> &arr,
+                      ostream &stream = std::cout,
+                      const string &delim = ", ") noexcept {
+  for (size_t i1 = 0; i1 < x1.size(); ++i1) {
+    for (size_t i2 = 0; i2 < x2.size(); ++i2) {
+      for (size_t j1 = 0; j1 < y1.size(); ++j1) {
+        for (size_t j2 = 0; j2 < y2.size(); ++j2) {
           stream << fixed << setprecision(8);
           stream << x1[i1] << delim << x2[i2] << delim << y1[j1] << delim
                  << y2[j2] << delim;
@@ -493,6 +515,7 @@ __always_inline double signed_distance(const double &x1, const double &x2) {
     if (x1 <= Imax1) {
       if (x2 <= Imax2) {
         return -min({abs(x1 - Imax1), abs(x2 - Imax2)});
+        // return -min({abs(x1 - Imax1), abs(x2 - Imax2), abs(x1), abs(x2)});
       } else {
         return abs(x2 - Imax2);
       }
@@ -554,31 +577,29 @@ __always_inline void initialize() {
   wy1 = make_unique<Array4D<x1.size(), x2.size(), y1.size() + 5, y2.size()>>();
   wy2 = make_unique<Array4D<x1.size(), x2.size(), y1.size(), y2.size() + 5>>();
 
-  // generate(x1.begin(), x1.end(),
-  //          [n = 0]() mutable { return (-padX1 + n++) * dx1; });
-  // x1[padX1] = 0;
-  // x1[padX1 + Nx1 - 1] = Imax1;
-  // generate(y1.begin(), y1.end(),
-  //          [n = 0]() mutable { return (-padY1 + n++) * dy1; });
-  // y1[padY1] = 0;
-  // y1[padY1 + Ny1 - 1] = ymax1;
-  // generate(x2.begin(), x2.end(),
-  //          [n = 0]() mutable { return (-padX2 + n++) * dx2; });
-  // x2[padX2] = 0;
-  // x2[padX2 + Nx2 - 1] = Imax2;
-  // generate(y2.begin(), y2.end(),
-  //          [n = 0]() mutable { return (-padY2 + n++) * dy2; });
-  // y2[padY2] = 0;
-  // y2[padY2 + Ny2 - 1] = ymax2;
+  generate(x1.begin(), x1.end(),
+           [n = 0]() mutable { return (-padX1 + n++) * dx1; });
+  x1[padX1] = 0;
+  x1[padX1 + Nx1 - 1] = Imax1;
+  generate(x2.begin(), x2.end(),
+           [n = 0]() mutable { return (-padX2 + n++) * dx2; });
+  x2[padX2] = 0;
+  x2[padX2 + Nx2 - 1] = Imax2;
+  generate(y1.begin(), y1.end(),
+           [n = 0]() mutable { return (-padY1 + n++) * dy1; });
+  y1[padY1] = 0;
+  y1[padY1 + Ny1 - 1] = ymax1;
+  generate(y2.begin(), y2.end(),
+           [n = 0]() mutable { return (-padY2 + n++) * dy2; });
+  y2[padY2] = 0;
+  y2[padY2 + Ny2 - 1] = ymax2;
 
-  generate(x1.begin(), x1.end(), [n = 0]() mutable { return (n++) * dx1; });
-  x1[Nx1 - 1] = Imax1;
-  generate(x2.begin(), x2.end(), [n = 0]() mutable { return (n++) * dx2; });
-  x2[Nx2 - 1] = Imax2;
-  generate(y1.begin(), y1.end(), [n = 0]() mutable { return (n++) * dy1; });
-  y1[Ny1 - 1] = ymax1;
-  generate(y2.begin(), y2.end(), [n = 0]() mutable { return (n++) * dy2; });
-  y2[Ny2 - 1] = ymax2;
+  // generate(x1.begin(), x1.end(), [n = 0]() mutable { return (n++) * dx1;
+  // }); x1[Nx1 - 1] = Imax1; generate(x2.begin(), x2.end(), [n = 0]() mutable
+  // { return (n++) * dx2; }); x2[Nx2 - 1] = Imax2; generate(y1.begin(),
+  // y1.end(), [n = 0]() mutable { return (n++) * dy1; }); y1[Ny1 - 1] =
+  // ymax1; generate(y2.begin(), y2.end(), [n = 0]() mutable { return (n++) *
+  // dy2; }); y2[Ny2 - 1] = ymax2;
 }
 
 template <size_t n1, size_t n2, size_t n3, size_t n4>
@@ -671,20 +692,12 @@ int main(int argc, char *argv[]) {
 
           // set signed distance
           (*distSgnd)[i1][i2][j1][j2] = signed_distance(x1[i1], x2[i2]);
-          // -min({abs(x1[i1] - Imax1), abs(x2[i2] - Imax2)});
-          // -min({abs(x1[i1]), abs(x2[i2]), abs(x1[i1] - Imax1),
-          //       abs(x2[i2] - Imax2)});
-          // -min({abs(x1[i1]), abs(x2[i2]), abs(y1[j1]), abs(y2[j2]),
-          //       abs(x1[i1] - Imax1), abs(x2[i2] - Imax2), abs(y1[j1] - 1),
-          //       abs(y2[j2] - 1)});
-          // -__builtin_sqrt((x1[i1] - Imax1) * (x1[i1] - Imax1) +
-          //                 (x2[i2] - Imax2) * (x2[i2] - Imax2));
 
           // set initial approximation
           (*w)[i1 + 3][i2 + 3][j1 + 3][j2 + 3] =
               (__builtin_sin((x1[i1] + x2[i2] + y1[j1] + y2[j2] - .5) * M_PI *
                              2.)) *
-                  1e-4 +
+                  1e-5 +
               (*distSgnd)[i1][i2][j1][j2];
 
           // Find maximum of derivarives
@@ -710,7 +723,7 @@ int main(int argc, char *argv[]) {
   auto wnew1 = make_unique<
       Array4D<x1.size() + 6, x2.size() + 6, y1.size() + 6, y2.size() + 6>>();
 
-  constexpr auto errtol = 1e-8;
+  constexpr auto errtol = 1e-10;
   auto currentError = errtol;
   vector<double> err;
   auto ncounter = 0;
@@ -766,7 +779,7 @@ int main(int argc, char *argv[]) {
       format("solution/finalSolution-{}.csv", end).c_str();
   filesystem::create_directories(outputFile.parent_path());
   ofstream finalSolution(outputFile);
-  printSolution((*w), finalSolution);
+  printSolutionExtended((*w), finalSolution);
 
   // system(format("cat {}", outputFile.c_str()).c_str());
   // ifstream finalSolutionReRead(outputFile);
