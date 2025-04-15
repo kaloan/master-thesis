@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <array>
+#include <bits/floatn-common.h>
 #include <chrono>
 // #include <cmath>
 #include <filesystem>
@@ -35,7 +36,7 @@ using Array4D = Array4DGeneric<double, n1, n2, n3, n4>;
 // constexpr auto p12 = 1 - p11;
 // constexpr auto p22 = 0.5;
 // constexpr auto p21 = 1 - p22;
-constexpr auto N1 = 9.38e6;
+constexpr auto N1 = 5.38e6;
 constexpr auto N2 = 4.47e6;
 constexpr auto Gamma1 = 0.063;
 constexpr auto Gamma2 = 0.058;
@@ -54,7 +55,7 @@ constexpr auto H2 = p21 * N1 + p22 * N2;
 // constexpr auto mu2 = 1. / 20.;
 // constexpr auto a1 = 1.;
 // constexpr auto a2 = 1.;
-constexpr auto M1 = 1.73e7;
+constexpr auto M1 = 2.73e7;
 constexpr auto M2 = 3e7;
 constexpr auto mu1 = 0.032;
 constexpr auto mu2 = 0.047;
@@ -113,13 +114,13 @@ constexpr auto Ny2 = 25;
 constexpr auto dy2 = ymax2 / (Ny2 - 1);
 
 // x and y
-constexpr auto padX1 = 4;
+constexpr auto padX1 = 3;
 array<double, Nx1 + 2 * padX1> x1;
-constexpr auto padX2 = 4;
+constexpr auto padX2 = 3;
 array<double, Nx2 + 2 * padX2> x2;
-constexpr auto padY1 = 4;
+constexpr auto padY1 = 3;
 array<double, Ny1 + 2 * padY1> y1;
-constexpr auto padY2 = 4;
+constexpr auto padY2 = 3;
 array<double, Ny2 + 2 * padY2> y2;
 unique_ptr<Array4D<x1.size(), x2.size(), y1.size(), y2.size()>> hx1(nullptr);
 unique_ptr<Array4D<x1.size(), x2.size(), y1.size(), y2.size()>> hx2(nullptr);
@@ -510,34 +511,43 @@ performTimeStep(const unique_ptr<Array4D<n1, n2, n3, n4>> &tp1Matrix,
   matrixContinuation(tp1Matrix);
 }
 
-__always_inline double signed_distance(const double &x1, const double &x2) {
-  if (x1 >= 0 && x2 >= 0) {
-    if (x1 <= Imax1) {
-      if (x2 <= Imax2) {
-        return -min({abs(x1 - Imax1), abs(x2 - Imax2)});
-        // return -min({abs(x1 - Imax1), abs(x2 - Imax2), abs(x1), abs(x2)});
-      } else {
-        return abs(x2 - Imax2);
-      }
-    } else if (x2 <= Imax2) {
-      return abs(x1 - Imax1);
-    } else
-      return __builtin_sqrt((x1 - Imax1) * (x1 - Imax1) +
-                            (x2 - Imax2) * (x2 - Imax2));
-  } else if (x1 < 0) {
-    if (x2 >= 0) {
-      if (x2 <= Imax2) {
-        return abs(x1);
+__always_inline double signed_distance(const double &x1, const double &x2,
+                                       const double &y1, const double &y2) {
+  if (y1 >= 0 && y2 >= 0) {
+    if (x1 >= 0 && x2 >= 0) {
+      if (x1 <= Imax1) {
+        if (x2 <= Imax2) {
+          return -min({abs(x1 - Imax1), abs(x2 - Imax2)});
+          // return -min({abs(x1 - Imax1), abs(x2 - Imax2), abs(x1), abs(x2)});
+        } else {
+          return abs(x2 - Imax2);
+        }
+      } else if (x2 <= Imax2) {
+        return abs(x1 - Imax1);
       } else
-        return __builtin_sqrt(x1 * x1 + (x2 - Imax2) * (x2 - Imax2));
+        return __builtin_sqrt((x1 - Imax1) * (x1 - Imax1) +
+                              (x2 - Imax2) * (x2 - Imax2));
+    } else if (x1 < 0) {
+      if (x2 >= 0) {
+        if (x2 <= Imax2) {
+          return abs(x1);
+        } else
+          return __builtin_sqrt(x1 * x1 + (x2 - Imax2) * (x2 - Imax2));
+      } else
+        return __builtin_sqrt(x1 * x1 + x2 * x2);
+    } else {
+      if (x1 <= Imax1) {
+        return abs(x2);
+      } else
+        return __builtin_sqrt((x1 - Imax1) * (x1 - Imax1) + x2 * x2);
+    }
+  } else if (y1 < 0) {
+    if (y2 >= 0) {
+      return abs(y1);
     } else
-      return __builtin_sqrt(x1 * x1 + x2 * x2);
-  } else {
-    if (x1 <= Imax1) {
-      return abs(x2);
-    } else
-      return __builtin_sqrt((x1 - Imax1) * (x1 - Imax1) + x2 * x2);
-  }
+      return __builtin_sqrt(y1 * y1 + y2 * y2);
+  } else
+    return abs(y2);
 }
 
 __always_inline void initialize() {
@@ -691,7 +701,8 @@ int main(int argc, char *argv[]) {
                   abs((*hy2)[i1][i2][j1][j2] + (*my2)[i1][i2][j1][j2]));
 
           // set signed distance
-          (*distSgnd)[i1][i2][j1][j2] = signed_distance(x1[i1], x2[i2]);
+          (*distSgnd)[i1][i2][j1][j2] =
+              signed_distance(x1[i1], x2[i2], y1[j1], y2[j2]);
 
           // set initial approximation
           (*w)[i1 + 3][i2 + 3][j1 + 3][j2 + 3] =
@@ -714,8 +725,10 @@ int main(int argc, char *argv[]) {
     }
   }
 
-  const auto dt =
-      0.9 / max(mpd[0] / dx1 + mpd[1] / dx2 + mpd[2] / dy1 + mpd[3] / dy2, L);
+  const auto dt = max(
+      0.7 / max(mpd[0] / dx1 + mpd[1] / dx2 + mpd[2] / dy1 + mpd[3] / dy2, L),
+      __builtin_pow(
+          __builtin_sqrt(dx1 * dx1 + dx2 * dx2 + dy1 * dy2 + dy2 * dy2), 1.5));
 
   matrixContinuation(w);
   auto wnew0 = make_unique<
