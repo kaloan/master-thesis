@@ -39,7 +39,6 @@ constexpr auto N1 = 9.38e6;
 constexpr auto N2 = 4.47e6;
 constexpr auto Gamma1 = 0.063;
 constexpr auto Gamma2 = 0.058;
-constexpr auto BetaHV = 0.5;
 constexpr auto p11 = 0.78;
 constexpr auto p12 = 1 - p11;
 constexpr auto p22 = 0.7;
@@ -62,9 +61,11 @@ constexpr auto mu2 = 0.047;
 constexpr auto a1 = 0.158;
 constexpr auto a2 = 0.160;
 
+constexpr auto BetaHV = 0.5;
 constexpr auto BetaVH = 0.1;
 constexpr auto tau = 10;
 
+// multipliers in normalized model
 const auto b11 = BetaVH * p11 * __builtin_exp(-mu1 * tau) * a1 * M1 / H1;
 const auto b12 = BetaVH * p12 * __builtin_exp(-mu2 * tau) * a2 * M2 / H2;
 const auto b21 = BetaVH * p21 * __builtin_exp(-mu1 * tau) * a1 * M1 / H1;
@@ -79,8 +80,8 @@ constexpr auto c22 = BetaHV * p22 * a2 * N2 / H2;
 constexpr auto Imax1 = .15;
 constexpr auto Imax2 = .15;
 // set to reduce the size of the domain where the viability kernel lies
-constexpr auto ymax1 = 1.;
-constexpr auto ymax2 = 1.;
+constexpr auto ymax1 = .25;
+constexpr auto ymax2 = .25;
 
 // control
 // constexpr auto k = .6;
@@ -102,23 +103,14 @@ const auto Lexact = 3. * (b11 + b12 + b21 + b22 + c11 + c12 + c21 + c22) +
 const auto L = 1.05 * Lexact;
 
 // numerical space step
-constexpr auto Nx1 = 25;
+constexpr auto Nx1 = 40;
 constexpr auto dx1 = Imax1 / (Nx1 - 1);
-constexpr auto Nx2 = 25;
+constexpr auto Nx2 = 40;
 constexpr auto dx2 = Imax2 / (Nx2 - 1);
-constexpr auto Ny1 = 25;
+constexpr auto Ny1 = 40;
 constexpr auto dy1 = ymax1 / (Ny1 - 1);
-constexpr auto Ny2 = 25;
+constexpr auto Ny2 = 40;
 constexpr auto dy2 = ymax2 / (Ny2 - 1);
-
-// maximum of partial derivatives, Hamiltonian
-// const array<double, 4> mpd = {
-//     Gamma1 + (b11 + b12) * (1 + k * umax1),
-//     Gamma2 + (b21 + b22) * (1 + k * umax2),
-//     mu1 + (c11 * (1 + k * umax1) + c12 * (1 + k * umax2)),
-//     mu2 + (c21 * (1 + k * umax1) + c22 * (1 + k * umax2))};
-// const auto dt =
-//     0.9 / max(mpd[0] / dx1 + mpd[1] / dx2 + mpd[2] / dy1 + mpd[3] / dy2, L);
 
 // x and y
 constexpr auto padX1 = 3;
@@ -157,13 +149,13 @@ unique_ptr<Array4D<x1.size(), x2.size(), y1.size(), y2.size()>> Fy1m(nullptr);
 unique_ptr<Array4D<x1.size(), x2.size(), y1.size(), y2.size()>> Fy2p(nullptr);
 unique_ptr<Array4D<x1.size(), x2.size(), y1.size(), y2.size()>> Fy2m(nullptr);
 
-unique_ptr<Array4D<x1.size() + 2 * padX1 - 1, x2.size(), y1.size(), y2.size()>>
+unique_ptr<Array4D<x1.size() + 5, x2.size(), y1.size(), y2.size()>>
     wx1(nullptr);
-unique_ptr<Array4D<x1.size(), x2.size() + 2 * padX2 - 1, y1.size(), y2.size()>>
+unique_ptr<Array4D<x1.size(), x2.size() + 5, y1.size(), y2.size()>>
     wx2(nullptr);
-unique_ptr<Array4D<x1.size(), x2.size(), y1.size() + 2 * padY1 - 1, y2.size()>>
+unique_ptr<Array4D<x1.size(), x2.size(), y1.size() + 5, y2.size()>>
     wy1(nullptr);
-unique_ptr<Array4D<x1.size(), x2.size(), y1.size(), y2.size() + 2 * padY2 - 1>>
+unique_ptr<Array4D<x1.size(), x2.size(), y1.size(), y2.size() + 5>>
     wy2(nullptr);
 
 unique_ptr<Array4D<x1.size(), x2.size(), y1.size(), y2.size()>>
@@ -199,7 +191,7 @@ __always_inline void printSolution(const Array4D<n1, n2, n3, n4> &arr,
           stream << x1[i1] << delim << x2[i2] << delim << y1[j1] << delim
                  << y2[j2] << delim;
           stream << scientific;
-          stream << arr[i1 + padX1][i2 + padX2][j1 + padY1][j2 + padY2] << "\n";
+          stream << arr[i1 + 3][i2 + 3][j1 + 3][j2 + 3] << "\n";
         }
       }
     }
@@ -210,9 +202,9 @@ template <size_t n1, size_t n2, size_t n3, size_t n4>
 __always_inline void
 matrixContinuation(const unique_ptr<Array4D<n1, n2, n3, n4>> &mat) noexcept {
 
-  for (size_t i1 = 0; i1 < n1 - padX1; ++i1) {
-    for (size_t i2 = 0; i2 < n2 - padX2; ++i2) {
-      for (size_t i3 = 0; i3 < n3 - padY1; ++i3) {
+  for (size_t i1 = 0; i1 < n1 - 3; ++i1) {
+    for (size_t i2 = 0; i2 < n2 - 3; ++i2) {
+      for (size_t i3 = 0; i3 < n3 - 3; ++i3) {
         (*mat)[i1 + 3][i2 + 3][i3 + 3][0] = (*mat)[i1 + 3][i2 + 3][i3 + 3][1] =
             (*mat)[i1 + 3][i2 + 3][i3 + 3][2] =
                 (*mat)[i1 + 3][i2 + 3][i3 + 3][3];
@@ -224,9 +216,9 @@ matrixContinuation(const unique_ptr<Array4D<n1, n2, n3, n4>> &mat) noexcept {
     }
   }
 
-  for (size_t i1 = 0; i1 < n1 - padX1; ++i1) {
-    for (size_t i2 = 0; i2 < n2 - padX2; ++i2) {
-      for (size_t i4 = 0; i4 < n4 - padY2; ++i4) {
+  for (size_t i1 = 0; i1 < n1 - 3; ++i1) {
+    for (size_t i2 = 0; i2 < n2 - 3; ++i2) {
+      for (size_t i4 = 0; i4 < n4 - 3; ++i4) {
         (*mat)[i1 + 3][i2 + 3][0][i4 + 3] = (*mat)[i1 + 3][i2 + 3][1][i4 + 3] =
             (*mat)[i1 + 3][i2 + 3][2][i4 + 3] =
                 (*mat)[i1 + 3][i2 + 3][3][i4 + 3];
@@ -238,9 +230,9 @@ matrixContinuation(const unique_ptr<Array4D<n1, n2, n3, n4>> &mat) noexcept {
     }
   }
 
-  for (size_t i1 = 0; i1 < n1 - padX1; ++i1) {
-    for (size_t i3 = 0; i3 < n3 - padY1; ++i3) {
-      for (size_t i4 = 0; i4 < n4 - padY2; ++i4) {
+  for (size_t i1 = 0; i1 < n1 - 3; ++i1) {
+    for (size_t i3 = 0; i3 < n3 - 3; ++i3) {
+      for (size_t i4 = 0; i4 < n4 - 3; ++i4) {
         (*mat)[i1 + 3][0][i3 + 3][i4 + 3] = (*mat)[i1 + 3][1][i3 + 3][i4 + 3] =
             (*mat)[i1 + 3][2][i3 + 3][i4 + 3] =
                 (*mat)[i1 + 3][3][i3 + 3][i4 + 3];
@@ -252,9 +244,9 @@ matrixContinuation(const unique_ptr<Array4D<n1, n2, n3, n4>> &mat) noexcept {
     }
   }
 
-  for (size_t i2 = 0; i2 < n2 - padX1; ++i2) {
-    for (size_t i3 = 0; i3 < n3 - padY1; ++i3) {
-      for (size_t i4 = 0; i4 < n4 - padY2; ++i4) {
+  for (size_t i2 = 0; i2 < n2 - 3; ++i2) {
+    for (size_t i3 = 0; i3 < n3 - 3; ++i3) {
+      for (size_t i4 = 0; i4 < n4 - 3; ++i4) {
         (*mat)[0][i2 + 3][i3 + 3][i4 + 3] = (*mat)[1][i2 + 3][i3 + 3][i4 + 3] =
             (*mat)[2][i2 + 3][i3 + 3][i4 + 3] =
                 (*mat)[3][i2 + 3][i3 + 3][i4 + 3];
@@ -307,8 +299,9 @@ matrixContinuation(const unique_ptr<Array4D<n1, n2, n3, n4>> &mat) noexcept {
   }
 }
 
-double derf(const double &v1, const double &v2, const double &v3,
-            const double &v4, const double &v5) noexcept {
+__always_inline double weno(const double &v1, const double &v2,
+                            const double &v3, const double &v4,
+                            const double &v5) noexcept {
   // smoothness of stencils
   const auto S1 = 13. / 12. * (v1 - 2. * v2 + v3) * (v1 - 2. * v2 + v3) +
                   1. / 4. * (v1 - 4. * v2 + 3. * v3) * (v1 - 4. * v2 + 3. * v3);
@@ -385,38 +378,38 @@ __always_inline void approximate_derivatives(
       for (size_t i3 = 0; i3 < n3 - 6; ++i3) {
         for (size_t i4 = 0; i4 < n4 - 6; ++i4) {
           (*Fx1m)[i1][i2][i3][i4] =
-              derf((*wx1)[i1][i2][i3][i4], (*wx1)[i1 + 1][i2][i3][i4],
+              weno((*wx1)[i1][i2][i3][i4], (*wx1)[i1 + 1][i2][i3][i4],
                    (*wx1)[i1 + 2][i2][i3][i4], (*wx1)[i1 + 3][i2][i3][i4],
                    (*wx1)[i1 + 4][i2][i3][i4]);
           (*Fx1p)[i1][i2][i3][i4] =
-              derf((*wx1)[i1 + 5][i2][i3][i4], (*wx1)[i1 + 4][i2][i3][i4],
+              weno((*wx1)[i1 + 5][i2][i3][i4], (*wx1)[i1 + 4][i2][i3][i4],
                    (*wx1)[i1 + 3][i2][i3][i4], (*wx1)[i1 + 2][i2][i3][i4],
                    (*wx1)[i1 + 1][i2][i3][i4]);
 
           (*Fx2m)[i1][i2][i3][i4] =
-              derf((*wx2)[i1][i2][i3][i4], (*wx2)[i1][i2 + 1][i3][i4],
+              weno((*wx2)[i1][i2][i3][i4], (*wx2)[i1][i2 + 1][i3][i4],
                    (*wx2)[i1][i2 + 2][i3][i4], (*wx2)[i1][i2 + 3][i3][i4],
                    (*wx2)[i1][i2 + 4][i3][i4]);
           (*Fx2p)[i1][i2][i3][i4] =
-              derf((*wx2)[i1][i2 + 5][i3][i4], (*wx2)[i1][i2 + 4][i3][i4],
+              weno((*wx2)[i1][i2 + 5][i3][i4], (*wx2)[i1][i2 + 4][i3][i4],
                    (*wx2)[i1][i2 + 3][i3][i4], (*wx2)[i1][i2 + 2][i3][i4],
                    (*wx2)[i1][i2 + 1][i3][i4]);
 
           (*Fy1m)[i1][i2][i3][i4] =
-              derf((*wy1)[i1][i2][i3][i4], (*wy1)[i1][i2][i3 + 1][i4],
+              weno((*wy1)[i1][i2][i3][i4], (*wy1)[i1][i2][i3 + 1][i4],
                    (*wy1)[i1][i2][i3 + 2][i4], (*wy1)[i1][i2][i3 + 3][i4],
                    (*wy1)[i1][i2][i3 + 4][i4]);
           (*Fy1p)[i1][i2][i3][i4] =
-              derf((*wy1)[i1][i2][i3 + 5][i4], (*wy1)[i1][i2][i3 + 4][i4],
+              weno((*wy1)[i1][i2][i3 + 5][i4], (*wy1)[i1][i2][i3 + 4][i4],
                    (*wy1)[i1][i2][i3 + 3][i4], (*wy1)[i1][i2][i3 + 2][i4],
                    (*wy1)[i1][i2][i3 + 1][i4]);
 
           (*Fy2m)[i1][i2][i3][i4] =
-              derf((*wy2)[i1][i2][i3][i4], (*wy2)[i1][i2][i3][i4 + 1],
+              weno((*wy2)[i1][i2][i3][i4], (*wy2)[i1][i2][i3][i4 + 1],
                    (*wy2)[i1][i2][i3][i4 + 2], (*wy2)[i1][i2][i3][i4 + 3],
                    (*wy2)[i1][i2][i3][i4 + 4]);
           (*Fy2p)[i1][i2][i3][i4] =
-              derf((*wy2)[i1][i2][i3][i4 + 5], (*wy2)[i1][i2][i3][i4 + 4],
+              weno((*wy2)[i1][i2][i3][i4 + 5], (*wy2)[i1][i2][i3][i4 + 4],
                    (*wy2)[i1][i2][i3][i4 + 3], (*wy2)[i1][i2][i3][i4 + 2],
                    (*wy2)[i1][i2][i3][i4 + 1]);
         }
@@ -425,76 +418,44 @@ __always_inline void approximate_derivatives(
   }
 }
 
-double hamiltonianInDirection(const double &fp, const double &fm,
-                              const double &changeInSign, const double &interm,
-                              const double &a) noexcept {
+__always_inline double hamiltonianInDirection(const double &fp,
+                                              const double &fm,
+                                              const double &ww, const double &h,
+                                              const double &m,
+                                              const double &a) noexcept {
   double res = 0;
+  const auto changeInSign = ww * (fp * fm < 1e-99);
+  const auto interm = h + (m * (fp + fm) / 2. > 1e-99) * m;
   res += (1 - changeInSign) *
          ((interm < 1e-99) * interm * fp + (interm > 1e-99) * interm * fm);
-  res += changeInSign * interm * (fp + fm) / 2.;
-  res -= changeInSign * a * (fp - fm) / 2.;
+  res += changeInSign * ((interm - a) * fp + (interm + a) * fm) / 2.;
   return res;
 }
 
 __always_inline void calcHamiltonian() noexcept {
 
-  for (size_t i1 = 0; i1 < Nx1; ++i1) {
-    for (size_t i2 = 0; i2 < Nx2; ++i2) {
-      for (size_t i3 = 0; i3 < Ny1; ++i3) {
-        for (size_t i4 = 0; i4 < Ny2; ++i4) {
+  for (size_t i1 = 0; i1 < x1.size(); ++i1) {
+    for (size_t i2 = 0; i2 < x2.size(); ++i2) {
+      for (size_t i3 = 0; i3 < y1.size(); ++i3) {
+        for (size_t i4 = 0; i4 < y2.size(); ++i4) {
           auto hamilt = 0.;
 
-          const auto fx1p = (*Fx1p)[i1][i2][i3][i4];
-          const auto fx1m = (*Fx1m)[i1][i2][i3][i4];
-          const auto chooseAx1 =
-              (*wwx1)[i1][i2][i3][i4] * (fx1p * fx1m < 1e-99);
-          const auto intermX1 =
-              (*hx1)[i1][i2][i3][i4] +
-              ((*mx1)[i1][i2][i3][i4] * (fx1p + fx1m) / 2. > 1e-99) *
-                  (*mx1)[i1][i2][i3][i4];
-          hamilt += (1 - chooseAx1) * ((intermX1 < 1e-99) * intermX1 * fx1p +
-                                       (intermX1 > 1e-99) * intermX1 * fx1m);
-          hamilt += chooseAx1 * intermX1 * (fx1p + fx1m) / 2.;
-          hamilt -= chooseAx1 * (*ax1)[i1][i2][i3][i4] * (fx1p - fx1m) / 2.;
-
-          const auto fx2p = (*Fx2p)[i1][i2][i3][i4];
-          const auto fx2m = (*Fx2m)[i1][i2][i3][i4];
-          const auto chooseAx2 =
-              (*wwx2)[i1][i2][i3][i4] * (fx2p * fx2m < 1e-99);
-          const auto intermX2 =
-              (*hx2)[i1][i2][i3][i4] +
-              ((*mx2)[i1][i2][i3][i4] * (fx2p + fx2m) / 2. > 1e-99) *
-                  (*mx2)[i1][i2][i3][i4];
-          hamilt += (1 - chooseAx2) * ((intermX2 < 1e-99) * intermX2 * fx2p +
-                                       (intermX2 > 1e-99) * intermX2 * fx2m);
-          hamilt += chooseAx2 * intermX2 * (fx2p + fx2m) / 2.;
-          hamilt -= chooseAx2 * (*ax2)[i1][i2][i3][i4] * (fx2p - fx2m) / 2.;
-
-          const auto fy1p = (*Fy1p)[i1][i2][i3][i4];
-          const auto fy1m = (*Fy1m)[i1][i2][i3][i4];
-          const auto chooseAy1 =
-              (*wwy1)[i1][i2][i3][i4] * (fy1p * fy1m < 1e-99);
-          const auto intermY1 =
-              (*hy1)[i1][i2][i3][i4] +
-              ((*my1)[i1][i2][i3][i4] * (fy1p + fy1m) / 2. > 1e-99) *
-                  (*my1)[i1][i2][i3][i4];
-          hamilt += (1 - chooseAy1) * ((intermY1 < 1e-99) * intermY1 * fy1p +
-                                       (intermY1 > 1e-99) * intermY1 * fy1m);
-          hamilt += chooseAy1 * intermY1 * (fy1p + fy1m) / 2.;
-          hamilt -= chooseAy1 * (*ay1)[i1][i2][i3][i4] * (fy1p - fy1m) / 2.;
-
-          const auto fy2p = (*Fy2p)[i1][i2][i3][i4];
-          const auto fy2m = (*Fy2m)[i1][i2][i3][i4];
-          const auto chooseAy2 =
-              (*wwy2)[i1][i2][i3][i4] * (fy2p * fy2m < 1e-99);
-          const auto intermY2 =
-              (*hy2)[i1][i2][i3][i4] +
-              ((*my2)[i1][i2][i3][i4] * (fy2p + fy2m) / 2. > 1e-99) *
-                  (*my2)[i1][i2][i3][i4];
-          hamilt += (1 - chooseAy2) * ((intermY2 < 1e-99) * intermY2 * fy2p +
-                                       (intermY2 > 1e-99) * intermY2 * fy2m);
-          hamilt += chooseAy2 * intermY2 * (fy2p + fy2m) / 2.;
-          hamilt -= chooseAy2 * (*ay2)[i1][i2][i3][i4] * (fy2p - fy2m) / 2.;
+          hamilt += hamiltonianInDirection(
+              (*Fx1p)[i1][i2][i3][i4], (*Fx1m)[i1][i2][i3][i4],
+              (*wwx1)[i1][i2][i3][i4], (*hx1)[i1][i2][i3][i4],
+              (*mx1)[i1][i2][i3][i4], (*ax1)[i1][i2][i3][i4]);
+          hamilt += hamiltonianInDirection(
+              (*Fx2p)[i1][i2][i3][i4], (*Fx2m)[i1][i2][i3][i4],
+              (*wwx2)[i1][i2][i3][i4], (*hx2)[i1][i2][i3][i4],
+              (*mx2)[i1][i2][i3][i4], (*ax2)[i1][i2][i3][i4]);
+          hamilt += hamiltonianInDirection(
+              (*Fy1p)[i1][i2][i3][i4], (*Fy1m)[i1][i2][i3][i4],
+              (*wwy1)[i1][i2][i3][i4], (*hy1)[i1][i2][i3][i4],
+              (*my1)[i1][i2][i3][i4], (*ay1)[i1][i2][i3][i4]);
+          hamilt += hamiltonianInDirection(
+              (*Fy2p)[i1][i2][i3][i4], (*Fy2m)[i1][i2][i3][i4],
+              (*wwy2)[i1][i2][i3][i4], (*hy2)[i1][i2][i3][i4],
+              (*my2)[i1][i2][i3][i4], (*ay2)[i1][i2][i3][i4]);
 
           (*hamiltonian)[i1][i2][i3][i4] = hamilt;
         }
@@ -511,13 +472,13 @@ performTimeStep(const unique_ptr<Array4D<n1, n2, n3, n4>> &tp1Matrix,
   approximate_derivatives(tMatrix);
   calcHamiltonian();
 
-  for (size_t i1 = 0; i1 < n1 - 2 * padX1; ++i1) {
-    for (size_t i2 = 0; i2 < n2 - 2 * padX2; ++i2) {
-      for (size_t j1 = 0; j1 < n3 - 2 * padY1; ++j1) {
-        for (size_t j2 = 0; j2 < n4 - 2 * padY2; ++j2) {
+  for (size_t i1 = 0; i1 < n1 - 6; ++i1) {
+    for (size_t i2 = 0; i2 < n2 - 6; ++i2) {
+      for (size_t j1 = 0; j1 < n3 - 6; ++j1) {
+        for (size_t j2 = 0; j2 < n4 - 6; ++j2) {
           (*tp1Matrix)[i1 + 3][i2 + 3][j1 + 3][j2 + 3] =
               max((1 - L * dt) * (*tMatrix)[i1 + 3][i2 + 3][j1 + 3][j2 + 3] -
-                      (*hamiltonian)[i1][i2][j1][j2] * dt,
+                      dt * (*hamiltonian)[i1][i2][j1][j2],
                   (*distSgnd)[i1][i2][j1][j2]);
         }
       }
@@ -527,7 +488,36 @@ performTimeStep(const unique_ptr<Array4D<n1, n2, n3, n4>> &tp1Matrix,
   matrixContinuation(tp1Matrix);
 }
 
-void initialize() {
+__always_inline double signed_distance(const double &x1, const double &x2) {
+  if (x1 >= 0 && x2 >= 0) {
+    if (x1 <= Imax1) {
+      if (x2 <= Imax2) {
+        return -min({abs(x1 - Imax1), abs(x2 - Imax2)});
+      } else {
+        return abs(x2 - Imax2);
+      }
+    } else if (x2 <= Imax2) {
+      return abs(x1 - Imax1);
+    } else
+      return __builtin_sqrt((x1 - Imax1) * (x1 - Imax1) +
+                            (x2 - Imax2) * (x2 - Imax2));
+  } else if (x1 < 0) {
+    if (x2 >= 0) {
+      if (x2 <= Imax2) {
+        return abs(x1);
+      } else
+        return __builtin_sqrt(x1 * x1 + (x2 - Imax2) * (x2 - Imax2));
+    } else
+      return __builtin_sqrt(x1 * x1 + x2 * x2);
+  } else {
+    if (x1 <= Imax1) {
+      return abs(x2);
+    } else
+      return __builtin_sqrt((x1 - Imax1) * (x1 - Imax1) + x2 * x2);
+  }
+}
+
+__always_inline void initialize() {
   hx1 = make_unique<Array4D<x1.size(), x2.size(), y1.size(), y2.size()>>();
   hx2 = make_unique<Array4D<x1.size(), x2.size(), y1.size(), y2.size()>>();
   hy1 = make_unique<Array4D<x1.size(), x2.size(), y1.size(), y2.size()>>();
@@ -559,6 +549,11 @@ void initialize() {
 
   distSgnd = make_unique<Array4D<x1.size(), x2.size(), y1.size(), y2.size()>>();
 
+  wx1 = make_unique<Array4D<x1.size() + 5, x2.size(), y1.size(), y2.size()>>();
+  wx2 = make_unique<Array4D<x1.size(), x2.size() + 5, y1.size(), y2.size()>>();
+  wy1 = make_unique<Array4D<x1.size(), x2.size(), y1.size() + 5, y2.size()>>();
+  wy2 = make_unique<Array4D<x1.size(), x2.size(), y1.size(), y2.size() + 5>>();
+
   // generate(x1.begin(), x1.end(),
   //          [n = 0]() mutable { return (-padX1 + n++) * dx1; });
   // x1[padX1] = 0;
@@ -587,8 +582,9 @@ void initialize() {
 }
 
 template <size_t n1, size_t n2, size_t n3, size_t n4>
-double max_abs_diff(const unique_ptr<Array4D<n1, n2, n3, n4>> &mat1,
-                    const unique_ptr<Array4D<n1, n2, n3, n4>> &mat2) {
+__always_inline double
+max_abs_diff(const unique_ptr<Array4D<n1, n2, n3, n4>> &mat1,
+             const unique_ptr<Array4D<n1, n2, n3, n4>> &mat2) {
   auto res = 0.;
   // auto solSize = 0.;
   for (size_t i1 = 0; i1 < x1.size(); ++i1) {
@@ -621,16 +617,8 @@ int main(int argc, char *argv[]) {
 
   array<double, 4> mpd = {0, 0, 0, 0};
 
-  auto w = make_unique<Array4D<x1.size() + 2 * padX1, x2.size() + 2 * padX2,
-                               y1.size() + 2 * padY1, y2.size() + 2 * padY2>>();
-  wx1 = make_unique<
-      Array4D<x1.size() + 2 * padX1 - 1, x2.size(), y1.size(), y2.size()>>();
-  wx2 = make_unique<
-      Array4D<x1.size(), x2.size() + 2 * padX2 - 1, y1.size(), y2.size()>>();
-  wy1 = make_unique<
-      Array4D<x1.size(), x2.size(), y1.size() + 2 * padY1 - 1, y2.size()>>();
-  wy2 = make_unique<
-      Array4D<x1.size(), x2.size(), y1.size(), y2.size() + 2 * padY2 - 1>>();
+  auto w = make_unique<
+      Array4D<x1.size() + 6, x2.size() + 6, y1.size() + 6, y2.size() + 6>>();
 
   // compute the partial derivatives
   for (size_t i1 = 0; i1 < x1.size(); ++i1) {
@@ -663,7 +651,7 @@ int main(int argc, char *argv[]) {
               max(abs((*hx1)[i1][i2][j1][j2]),
                   abs((*hx1)[i1][i2][j1][j2] + (*mx1)[i1][i2][j1][j2]));
           (*wwx2)[i1][i2][j1][j2] =
-              ((*hx1)[i1][i2][j1][j2] *
+              ((*hx2)[i1][i2][j1][j2] *
                ((*hx2)[i1][i2][j1][j2] + (*mx2)[i1][i2][j1][j2])) < 1e-99;
           (*ax2)[i1][i2][j1][j2] =
               max(abs((*hx2)[i1][i2][j1][j2]),
@@ -675,15 +663,15 @@ int main(int argc, char *argv[]) {
               max(abs((*hy1)[i1][i2][j1][j2]),
                   abs((*hy1)[i1][i2][j1][j2] + (*my1)[i1][i2][j1][j2]));
           (*wwy2)[i1][i2][j1][j2] =
-              ((*hy1)[i1][i2][j1][j2] *
-               ((*hy1)[i1][i2][j1][j2] + (*my1)[i1][i2][j1][j2])) < 1e-99;
+              ((*hy2)[i1][i2][j1][j2] *
+               ((*hy2)[i1][i2][j1][j2] + (*my2)[i1][i2][j1][j2])) < 1e-99;
           (*ay2)[i1][i2][j1][j2] =
               max(abs((*hy2)[i1][i2][j1][j2]),
                   abs((*hy2)[i1][i2][j1][j2] + (*my2)[i1][i2][j1][j2]));
 
           // set signed distance
-          (*distSgnd)[i1][i2][j1][j2] =
-              -min({abs(x1[i1] - Imax1), abs(x2[i2] - Imax2)});
+          (*distSgnd)[i1][i2][j1][j2] = signed_distance(x1[i1], x2[i2]);
+          // -min({abs(x1[i1] - Imax1), abs(x2[i2] - Imax2)});
           // -min({abs(x1[i1]), abs(x2[i2]), abs(x1[i1] - Imax1),
           //       abs(x2[i2] - Imax2)});
           // -min({abs(x1[i1]), abs(x2[i2]), abs(y1[j1]), abs(y2[j2]),
@@ -694,18 +682,20 @@ int main(int argc, char *argv[]) {
 
           // set initial approximation
           (*w)[i1 + 3][i2 + 3][j1 + 3][j2 + 3] =
-              (__builtin_sin((x1[i1] + x2[i2] - .5) * M_PI * 2.)) * 1e-6 +
+              (__builtin_sin((x1[i1] + x2[i2] + y1[j1] + y2[j2] - .5) * M_PI *
+                             2.)) *
+                  1e-4 +
               (*distSgnd)[i1][i2][j1][j2];
 
           // Find maximum of derivarives
           mpd[0] =
               max(mpd[0], abs((*hx1)[i1][i2][j1][j2] + (*mx1)[i1][i2][j1][j2]));
           mpd[1] =
-              max(mpd[0], abs((*hx2)[i1][i2][j1][j2] + (*mx2)[i1][i2][j1][j2]));
+              max(mpd[1], abs((*hx2)[i1][i2][j1][j2] + (*mx2)[i1][i2][j1][j2]));
           mpd[2] =
-              max(mpd[0], abs((*hy1)[i1][i2][j1][j2] + (*my1)[i1][i2][j1][j2]));
+              max(mpd[2], abs((*hy1)[i1][i2][j1][j2] + (*my1)[i1][i2][j1][j2]));
           mpd[3] =
-              max(mpd[0], abs((*hy2)[i1][i2][j1][j2] + (*my2)[i1][i2][j1][j2]));
+              max(mpd[3], abs((*hy2)[i1][i2][j1][j2] + (*my2)[i1][i2][j1][j2]));
         }
       }
     }
@@ -715,12 +705,10 @@ int main(int argc, char *argv[]) {
       0.9 / max(mpd[0] / dx1 + mpd[1] / dx2 + mpd[2] / dy1 + mpd[3] / dy2, L);
 
   matrixContinuation(w);
-  auto wnew0 =
-      make_unique<Array4D<x1.size() + 2 * padX1, x2.size() + 2 * padX2,
-                          y1.size() + 2 * padY1, y2.size() + 2 * padY2>>();
-  auto wnew1 =
-      make_unique<Array4D<x1.size() + 2 * padX1, x2.size() + 2 * padX2,
-                          y1.size() + 2 * padY1, y2.size() + 2 * padY2>>();
+  auto wnew0 = make_unique<
+      Array4D<x1.size() + 6, x2.size() + 6, y1.size() + 6, y2.size() + 6>>();
+  auto wnew1 = make_unique<
+      Array4D<x1.size() + 6, x2.size() + 6, y1.size() + 6, y2.size() + 6>>();
 
   constexpr auto errtol = 1e-8;
   auto currentError = errtol;
@@ -743,13 +731,13 @@ int main(int argc, char *argv[]) {
     weightedSum(wnew0, w, wnew1, 1. / 3., 2. / 3.);
 
     currentError = max_abs_diff(w, wnew0);
-    err.push_back(currentError);
     if (!err.empty() && currentError > err.back()) {
       cout << "AAAA" << "\n";
       cout << "Steps: " << ncounter << "\n";
       cout << "Error last: " << err.back() << "Current error: " << currentError
            << "\n";
     }
+    err.push_back(currentError);
     w.swap(wnew0);
     ncounter++;
     if (ncounter % 5 == 0) {
