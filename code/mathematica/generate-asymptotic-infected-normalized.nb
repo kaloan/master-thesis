@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     21859,        576]
-NotebookOptionsPosition[     21481,        561]
-NotebookOutlinePosition[     21903,        578]
-CellTagsIndexPosition[     21860,        575]
+NotebookDataLength[     21954,        577]
+NotebookOptionsPosition[     21576,        562]
+NotebookOutlinePosition[     21998,        579]
+CellTagsIndexPosition[     21955,        576]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -120,9 +120,9 @@ Cell[BoxData[{
         RowBox[{"0.15", ",", "0.25"}], "}"}], "]"}]}], ";", 
      "\[IndentingNewLine]", 
      RowBox[{
-      SubscriptBox["\[Beta]", "hv"], "=", "0.1"}], ";", "\[IndentingNewLine]", 
+      SubscriptBox["\[Beta]", "vh"], "=", "0.5"}], ";", "\[IndentingNewLine]", 
      RowBox[{
-      SubscriptBox["\[Beta]", "vh"], "=", "0.5"}], ";", "\[IndentingNewLine]",
+      SubscriptBox["\[Beta]", "hv"], "=", "0.1"}], ";", "\[IndentingNewLine]",
       "\[IndentingNewLine]", 
      RowBox[{"(*", " ", 
       RowBox[{"Control", " ", "parameters"}], " ", "*)"}], 
@@ -555,8 +555,9 @@ Cell[BoxData[{
    3.953683883823546*^9, 3.953683894254437*^9}, {3.953683948977151*^9, 
    3.95368395111196*^9}, {3.9536839953598967`*^9, 3.953684056751865*^9}, {
    3.953684148030498*^9, 3.953684151406945*^9}, {3.953684293342616*^9, 
-   3.953684314765607*^9}, {3.9536847665205107`*^9, 
-   3.953684796882113*^9}},ExpressionUUID->"ecdac1e4-8a40-4700-b733-\
+   3.953684314765607*^9}, {3.9536847665205107`*^9, 3.953684796882113*^9}, {
+   3.956563183312317*^9, 3.956563184112743*^9}, {3.95656396247967*^9, 
+   3.956563967662373*^9}},ExpressionUUID->"ecdac1e4-8a40-4700-b733-\
 998aad17661f"]
 },
 WindowSize->{1440, 786},
@@ -577,7 +578,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 20919, 539, 3008, "Input",ExpressionUUID->"ecdac1e4-8a40-4700-b733-998aad17661f"]
+Cell[558, 20, 21014, 540, 3008, "Input",ExpressionUUID->"ecdac1e4-8a40-4700-b733-998aad17661f"]
 }
 ]
 *)
