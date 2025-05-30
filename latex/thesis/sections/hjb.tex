@@ -1,25 +1,60 @@
 \section{Вариационна задача на Хамилтон-Якоби-Белман}
-За намиране на ядрото на допустимост $\eqref{eq:ViabilityKernel}$ се подхожда със задачата на Хамилтон-Якоби-Белман за минимизация на функционал, като $v$ е фунцкията на стойността. Опитваме се да решим:
+За намиране на ядрото на допустимост $\eqref{eq:ViabilityKernel}$ се подхожда по метода от \cite{Zidani2013}. Въвеждаме значна функция на разстоянието до границата на $\mathscr{I}$:
 \begin{equation}
-  \label{eq:HJB}
-  \min\{\lambda v(\mathbf{z}) + \mathcal{H}(\mathbf{z}, \grad{v}), v(\mathbf{z}) - \Gamma(\mathbf{z})\} = 0
-\end{equation}
-Хамилтонянът е дефиниран чрез производна по направлението $\grad{v}$, като:
-\begin{equation}
-  \label{eq:Hamiltonian}
-  \mathcal{H}(\mathbf{z}, \grad{v}) = - \max_{\mathbf{u} \in U} \innerproduct{\mathbf{f}(\mathbf{z}, \mathbf{u})}{\grad{v}}
+  \Gamma(\mathbf{z}) =
+  \begin{cases}
+    \min\limits_{\mathbf{z}' \in \mathscr{I}(\bar{I})} |\mathbf{z}-\mathbf{z}'|, \quad \mathbf{z} \in \Omega \setminus \mathscr{I}(\bar{I}) \\
+    -\min\limits_{\mathbf{z}' \in \Omega \setminus \mathfrak{I}(\bar{I})} |\mathbf{z}-\mathbf{z}'|, \quad \mathbf{z} \in \mathscr{I}(\bar{I})
+  \end{cases}
 \end{equation}
 
-Използвайки вида на $\mathbf{F}$, след групиране по части зависещи/независещи от управлението, получаваме:
+Нека сега $\lambda > L > 0$, където $L$ е константата на Липшиц (горна оценка за нея е получена в \eqref{eq:LipschitzContinuity}). Въвеждаме фунцкията на Белман $v$:
+\begin{equation}
+v(\mathbf{z}_0) = \inf_{\mathbf{u} \in \mathscr{U}} \sup_{t \in (0, +\infty)} e^{-\lambda t} \Gamma(\mathbf{z}(t; \mathbf{z}_0; \mathbf{u}))
+\end{equation}
+
+Тук с $\mathbf{z}(t; \mathbf{z}_0; \mathbf{u})$ е означено решението на \eqref{eq:TheDimensionlessProblem} в момент $t$ при начално условие $\mathbf{z}_0$ и управление $\mathbf{u}$. Така е в сила:
+\begin{equation}
+V(\bar{\mathbf{I}}, \bar{\mathbf{u}}) = \{\mathbf{z}_0 \in \Omega \vert v(\mathbf{z}_0) \leq 0 \}, \quad \partial V(\bar{\mathbf{I}}, \bar{\mathbf{u}}) = \{\mathbf{z}_0 \in \Omega \vert v(\mathbf{z}_0) = 0\}
+\end{equation}
+
+Изпълнен е принцип за динамично програмиране:
+\begin{equation}
+\forall{t>0} \left(v(\mathbf{z}_0) = \inf_{u \in \mathscr{U}} \max\{e^{-\lambda t} v(\mathbf{z}_0), \sup_{s \in (0, t]} e^{-\lambda t} \Gamma(\mathbf{z}(s; \mathbf{z}_0; \mathbf{u}))\}\right)
+\end{equation}
+
+$v$ e вискозното решение на уравнение на Хамилтон-Якоби-Белман за минимизация на функционал:
+\begin{equation}
+\label{eq:HJB}
+\begin{split}
+  &\min\left\{\lambda v(\mathbf{z}) + \mathcal{H}(\mathbf{z}, \grad{v}), v(\mathbf{z}) - \Gamma(\mathbf{z})\right\} = 0, \quad \mathbf{z} \in \mathbb{R}^4 \\
+  &\mathcal{H}(\mathbf{z}, \grad{v}) = \max_{\mathbf{u} \in \mathscr{U}} \innerproduct{-\mathbf{f}(\mathbf{z}, \mathbf{u})}{\grad{v}}
+\end{split}
+\end{equation}
+
+Използвайки вида на $\mathbf{f}$, след групиране по части зависещи/независещи от управлението, получаваме:
 \begin{multline}
-  \label{eq:HamiltonianFull}
-  \mathcal{H}(\mathbf{z}, \grad{v}) = \\
-  \left[\gamma_1 x_1(t) - (1-x_1(t)) \left(b_{11} y_1(t) + b_{12} y_2(t)\right) \right] \pdv{v}{x_1} +
-  \left[\gamma_2 x_2(t) - (1-x_2(t)) \left(b_{21} y_1(t) + b_{22} y_2(t)\right) \right] \pdv{v}{x_2} + \\
-  \left[\mu_1 y_1(t) - (1-y_1(t)) \left(c_{11} x_1(t) + c_{12} x_2(t)\right) x\right] \pdv{v}{y_1} +
-  \left[\mu_2 y_2(t) - (1-y_2(t)) \left(c_{21} x_1(t) + c_{22} x_2(t)\right)\right] \pdv{v}{y_2} + \\
-  \max_{\mathbf{u} \in U}\left\{0, (1-x_1(t)) \kappa u_1 \left(b_{11} y_1(t) + b_{12} y_2(t)\right) \pdv{v}{x_1}\right\} +
-  \max_{\mathbf{u} \in U}\left\{0, (1-x_2(t)) \kappa u_2 \left(b_{21} y_1(t) + b_{22} y_2(t)\right) \pdv{v}{x_2}\right\} + \\
-  \max_{\mathbf{u} \in U}\left\{0, (1-y_1(t)) \kappa \left(c_{11} x_1(t) u_1 + c_{12} x_2(t) u_2 \right) \pdv{v}{y_1}\right\} +
-  \max_{\mathbf{u} \in U}\left\{0, (1-y_2(t)) \kappa \left(c_{21} x_1(t) u_1 + c_{22} x_2(t) u_2 \right) \pdv{v}{y_2}\right\}
-  \end{multline}
+\label{eq:HamiltonianFull}
+\mathcal{H}(\mathbf{z}, \grad{v}) = \\
+\left[\gamma_1 x_1(t) - (1-x_1(t)) \left(b_{11} y_1(t) + b_{12} y_2(t)\right) \right] \pdv{v}{x_1} +
+\left[\gamma_2 x_2(t) - (1-x_2(t)) \left(b_{21} y_1(t) + b_{22} y_2(t)\right) \right] \pdv{v}{x_2} + \\
+\left[\mu_1 y_1(t) - (1-y_1(t)) \left(c_{11} x_1(t) + c_{12} x_2(t)\right) x\right] \pdv{v}{y_1} +
+\left[\mu_2 y_2(t) - (1-y_2(t)) \left(c_{21} x_1(t) + c_{22} x_2(t)\right)\right] \pdv{v}{y_2} + \\
+\max_{\mathbf{u} \in \mathscr{U}} \bigg\{\kappa u_1(1-x_1(t)) \left(b_{11} y_1(t) + b_{12} y_2(t)\right) \pdv{v}{x_1} +
+  \kappa u_2 (1-x_2(t)) \left(b_{21} y_1(t) + b_{22} y_2(t)\right) \pdv{v}{x_2} + \\
+  (1-y_1(t)) \kappa \left(c_{11} x_1(t) u_1 + c_{12} x_2(t) u_2 \right) \pdv{v}{y_1}+
+(1-y_2(t)) \kappa \left(c_{21} x_1(t) u_1 + c_{22} x_2(t) u_2 \right) \pdv{v}{y_2}\bigg\}
+\end{multline}
+
+В максимума има членове зависещи само от $u_1$ и $u_2$, така че може да разбием на сума от два максимума по всяко от управленията. Функциите са линейни спрямо управленията и съответно максимумите ще се достигат в един от двата края на допустимите интервали. Крайният вид е:
+\begin{multline}
+\label{eq:HamiltonianShort}
+\mathcal{H}(\mathbf{z}, \grad{v}) = \\
+\left[\gamma_1 x_1(t) - (1-x_1(t)) \left(b_{11} y_1(t) + b_{12} y_2(t)\right) \right] \pdv{v}{x_1} +
+\left[\gamma_2 x_2(t) - (1-x_2(t)) \left(b_{21} y_1(t) + b_{22} y_2(t)\right) \right] \pdv{v}{x_2} + \\
+\left[\mu_1 y_1(t) - (1-y_1(t)) \left(c_{11} x_1(t) + c_{12} x_2(t)\right) x\right] \pdv{v}{y_1} +
+\left[\mu_2 y_2(t) - (1-y_2(t)) \left(c_{21} x_1(t) + c_{22} x_2(t)\right)\right] \pdv{v}{y_2} + \\
+\max\bigg\{0, \kappa \bar{u}_1 (1-x_1(t)) \left(b_{11} y_1(t) + b_{12} y_2(t)\right) \pdv{v}{x_1} + c_{11} \kappa bar{u}_1 x_1(t) (1-y_1(t))\pdv{v}{y_1} + c_{21} \bar{u}_1 x_1(t) (1-y_2(t)) \pdv{v}{y_2}
+\bigg\} + \\
+\max\bigg\{0, \kappa \bar{u}_2 (1-x_2(t)) \left(b_{21} y_1(t) + b_{22} y_2(t)\right) \pdv{v}{x_2} + c_{12} \bar{u}_2 x_2(t) (1-y_1(t))\pdv{v}{y_1} + c_{22}  \bar{u}_2 x_2(t) (1-y_2(t))\pdv{v}{y_2} \bigg\}
+\end{multline}

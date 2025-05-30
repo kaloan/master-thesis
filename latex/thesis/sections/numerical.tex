@@ -1,11 +1,15 @@
 \section{Числено приближение на ядрото на допустимост}
-\subsection{Еквивалентна задача}
-\cite{Osher2003}
-\subsection{WENO}
-За численото пресмятане на задачата се използва дискретизация по пространството по метода Weighted Essentially Non-Oscillatory (WENO) за приближаване, което е от ред $O(h^5)$.
-\cite{Osher2003}
+\subsection{Числено решение на уравнението на Хамилтон-Якоби-Белман}
+Задачата \eqref{eq:HJB} решаваме с прибавено числено време.
+\begin{equation}
+  \label{eq:HJBTime}
+  \begin{split}
+    &\pdv{v}{t}(\mathbf{z}, t) \min\left\{\lambda v(\mathbf{z}, t) + \mathcal{H}(\mathbf{z}, \grad{v}), v(\mathbf{z}, t) - \Gamma(\mathbf{z})\right\} = 0, \quad \mathbf{z} \in \mathbb{R}^4 \\
+    &v(\mathbf{z}, 0) = \Gamma(\mathbf{z}), \quad \mathbf{z} \in \mathbb{R}^4 \\
+    &\mathcal{H}(\mathbf{z}, \grad{v}) = \max_{\mathbf{u} \in \mathscr{U}} \innerproduct{-\mathbf{f}(\mathbf{z}, \mathbf{u})}{\grad{v}}
+  \end{split}
+\end{equation}
+За численото пресмятане на задачата \eqref{eq:HJBTime} се решава само в околност на $\mathscr{I}$, използва се равномерна дискретизация по пространството и Weighted Essentially Non-Oscillatory (WENO) \cite[3.4]{Osher2003} апроксимация с числен хамилтониян от вида Lax-Friedrichs \cite[5.3]{Osher2003}
+. Следвайки \cite[3.5]{Osher2003}, се дискретизацията по времето е равномерна и по него се апроксимира с подобрения метод на Ойлер.
 
-\subsection{Дискретизация по времето}
-Отново по Osher, дискретизираме по времето с подобрения метод на Ойлер, който е добре известно е от ред $O(\tau^2)$.
-\cite{Osher2003}
 \subsection{Симулация}
