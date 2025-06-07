@@ -1,10 +1,10 @@
-\section{Числено приближение на ядрото на допустимост}
+\section{Числено приближение на ядрото на Белман}
 \subsection{Числено решение на уравнението на Хамилтон-Якоби-Белман}
 Задачата \eqref{eq:HJB} решаваме с прибавено числено време.
 \begin{equation}
   \label{eq:HJBTime}
   \begin{split}
-    &\pdv{v}{t}(\mathbf{z}, t) \min\left\{\lambda v(\mathbf{z}, t) + \mathcal{H}(\mathbf{z}, \grad{v}), v(\mathbf{z}, t) - \Gamma(\mathbf{z})\right\} = 0, \quad \mathbf{z} \in \mathbb{R}^4 \\
+    &\min\left\{\pdv{v}{t}\left(\mathbf{z}, t\right) + \lambda v(\mathbf{z}, t) + \mathcal{H}(\mathbf{z}, \grad{v}), v(\mathbf{z}, t) - \Gamma(\mathbf{z})\right\} = 0, \quad \mathbf{z} \in \mathbb{R}^4 \\
     &v(\mathbf{z}, 0) = \Gamma(\mathbf{z}), \quad \mathbf{z} \in \mathbb{R}^4 \\
     &\mathcal{H}(\mathbf{z}, \grad{v}) = \max_{\mathbf{u} \in \mathscr{U}} \innerproduct{-\mathbf{f}(\mathbf{z}, \mathbf{u})}{\grad{v}}
   \end{split}

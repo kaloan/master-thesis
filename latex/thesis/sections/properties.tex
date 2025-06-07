@@ -19,7 +19,7 @@
 \subsection{Съществуване на решение}
 \begin{proposition}
   \label{prp:EU}
-  Системата \ref{eq:TheDimensionlessProblem} има единствено решение.
+  Системата \eqref{eq:TheDimensionlessProblem} има единствено решение.
 \end{proposition}
 
 \begin{proof}
@@ -29,7 +29,7 @@
     \|\mathbf{f}(\mathbf{z}, \mathbf{u}) - \mathbf{f}(\mathbf{z}', \mathbf{u}')\| \leq
     |f_{x_1}(\boldsymbol{z}, \boldsymbol{u}) - f_{x_1}(\boldsymbol{z}', \boldsymbol{u}')| + |f_{x_2}(\boldsymbol{z}, \boldsymbol{u}) - f_{x_2}(\boldsymbol{z}', \boldsymbol{u}')| + |f_{y_1}(\boldsymbol{z}, \boldsymbol{u}) - f_{y_1}(\boldsymbol{z}', \boldsymbol{u}')| + |f_{y_2}(\boldsymbol{z}, \boldsymbol{u}) - f_{y_2}(\boldsymbol{z}', \boldsymbol{u}')|
   \end{equation}
-  Сега може да ползваме неколкократно \ref{lemma:Modulus} за $f_{x_1}$:
+  Сега може да ползваме неколкократно \eqref{lemma:Modulus} за $f_{x_1}$:
   \begin{multline}
     |(1-x_1) (1-\kappa u_1) \left(b_{11} y_1 + b_{12} y_2\right) - \gamma_1 x_1 - (1-x'_1) (1-\kappa u'_1) \left(b_{11} y'_1 + b_{12} y'_2\right) - \gamma_1 x'_1| \leq \\
     b_{11} \left|(1-x_1)[(1 - \kappa u_1) y_1] -  (1-x'_1)[(1 - \kappa u'_1) y'_1]\right| + \\
@@ -97,7 +97,7 @@
 \end{proposition}
 
 \begin{proof}
-  Началното условие е някъде в $\Omega$, тъй като популациите са неотрицателни, а заразените индивиди не са над общата популация за съответната категория.
+  % Началното условие е някъде в $\Omega$, тъй като популациите са неотрицателни, а заразените индивиди не са над общата популация за съответната категория.
   Трябва да се покаже, че $\mathbf{f}$ сочи към вътрешността на $\Omega$, ако решението се намира по границата $\partial \Omega$. Но това наистина е така, от:
   \begin{equation}
     \begin{split}
@@ -124,7 +124,7 @@
 % \end{align*}
 
 \subsection{Кооперативност (квазимонотонност)}
-% Доказваме квазимонотонността по дефиницията \ref{def:Cooperative}.
+% Доказваме квазимонотонността по дефиницията \eqref{def:Cooperative}.
 % Матрицата на Якоби $\mathrm{D} \mathbf{f}(x_1, x_2, y_1, y_2)(t)$ ще ни трябав и натам, затова нека я изведем изцяло:
 % \begin{align*}
 % &\mathrm{D} \mathbf{f}(x_1, x_2, y_1, y_2)(t) =
@@ -155,7 +155,7 @@
 % &\pdv{f_{y_2}}{y_2} = \pdv{\dot{y}_2}{y_2} = -\beta_{hv} a_2 \frac{p_{12} (1-\kappa u_1(t)) x_1(t) + p_{22} (1-\kappa u_2(t)) x_2(t)}{p_{12} N_1 + p_{22} N_2} - \mu_2 < 0
 % \end{align*}
 
-Якобианът за системата \ref{eq:TheDimensionlessProblem} може да се представи във вида:
+Якобианът за системата \eqref{eq:TheDimensionlessProblem} може да се представи във вида:
 \begin{equation}
   \mathrm{D} \mathbf{f}(x_1, x_2, y_1, y_2)(t) =
   \begin{pmatrix}
@@ -167,7 +167,8 @@
   \end{equation}
 
 \begin{proposition}
-  Система \ref{eq:TheDimensionlessProblem} е кооперативна.
+  \label{prop:Cooperative}
+  Система \eqref{eq:TheDimensionlessProblem} е кооперативна.
 \end{proposition}
 
 \begin{proof}
@@ -195,7 +196,7 @@
       &\pdv{f_{y_2}}{y_2} = \pdv{\dot{y}_2}{y_2} = -\left(c_{21}(1-\kappa u_1(t)) x_1(t) + c_{22}(1-\kappa u_2(t)) x_2(t)\right) - \mu_1 < 0
     \end{split}
     \end{equation}
-  Извън главния диагонал има само неотрицателни елементи и така системата е кооперативна.
+  Извън главния диагонал на $\mathrm{D} \mathbf{f}$ има само неотрицателни елементи и така системата е кооперативна.
 \end{proof}
 
 
@@ -225,12 +226,13 @@
 \end{theorem}
 
 \begin{proposition}
-  Якобианът на системата $\ref{eq:TheDimensionlessProblem}$ е неразложим.
+  \label{prop:Irreducable}
+  Якобианът на системата $\eqref{eq:TheDimensionlessProblem}$ е неразложим.
 \end{proposition}
 \begin{proof}
-  Заместваме ненулевите елементи на $\mathrm{D} \mathbf{f}$ с 1 (тях знаем от \ref{eq:JacobianElements}). Така получаваме графа с матрица на съседство $\mathrm{D}$:
+  Заместваме ненулевите елементи на $\mathrm{D} \mathbf{f}$ с 1 (тях знаем от \eqref{eq:JacobianElements}). Така получаваме графа с матрица на съседство $A$:
   \begin{equation}
-    \mathrm{D} =
+    A =
     \begin{pmatrix}
       1 && 0 && 1 && 1 \\
       0 && 1 && 1 && 1 \\
@@ -238,7 +240,7 @@
       1 && 1 && 0 && 1 \\
     \end{pmatrix}
     \implies
-    \mathrm{D}^3 =
+    A^3 =
     \begin{pmatrix}
       7 && 6 && 7 && 7 \\
       6 && 7 && 7 && 7 \\
@@ -248,15 +250,16 @@
     >
     \mathscr{O}
   \end{equation}
-  Тъй графа има 4 върха, всеки прост път е с дължина не по-голяма от 3.
+  Тъй като графът има 4 върха, всеки прост път е с дължина не по-голяма от 3.
   С матрицата на съседство повдигната на 3-та степен получаваме броя на пътищата между върховете.
   Така за да е силно свързан графа, трябва всеки елемент да е положително число (да има поне 1 път).
-  Спрямо $\ref{theorem:ConnectedIrreducability}$ откъдето $\mathrm{D}\mathbf{f}$ е неразложима.
+  Спрямо $\eqref{theorem:ConnectedIrreducability}$ откъдето $\mathrm{D}\mathbf{f}$ е неразложима.
   \end{proof}
 
 \subsection{Силна вдлъбнатост}
 \begin{proposition}
-  Системата е силно вдлъбната, т.е. $\mathbf{0} < \mathbf{z}_1 < \mathbf{z}_2 \implies \mathrm{D}\mathbf{f}(\mathbf{z}_2) < \mathrm{D}\mathbf{f}(\mathbf{z}_1)$
+  \label{prop:StronglyConcave}
+  Системата \eqref{eq:TheDimensionlessProblem} е силно вдлъбната, т.е. $\mathbf{0} < \mathbf{z}_1 < \mathbf{z}_2 \implies \mathrm{D}\mathbf{f}(\mathbf{z}_2) < \mathrm{D}\mathbf{f}(\mathbf{z}_1)$
 \end{proposition}
 
 \begin{proof}
@@ -362,15 +365,19 @@
 Тогава системата става автономна, но е силно нелинейна и с голяма размерност, откъдето не е възможно да бъдат изведени аналитични изрази за координатите на равновесните точки, различни от $\mathbf{0}$.
 С помощта на теорията на кооперативните системи може обаче да получим техния брой.
 
+\begin{definition}
+  С $\mathscr{R}_0(\mathbf{u})$ ще бележим базовото число на възпроизводство $\mathscr{R}_0$ на $\eqref{eq:TheDimensionlessProblem}$ при $\mathbf{u}(t)\equiv \mathbf{u}=const$.
+\end{definition}
+
 \begin{proposition}
-  Нека $\mathbf{u}(t)\equiv \mathbf{u}=const$. Тогава системата \ref{eq:TheDimensionlessProblem} има най-много една нетривиална равновесна точка (ендемична точка).
+  Нека $\mathbf{u}(t)\equiv \mathbf{u}=const$. Тогава системата \eqref{eq:TheDimensionlessProblem} има най-много една нетривиална равновесна точка (ендемична точка).
   Ако тя съществува е асимптотично устойчива.
 \end{proposition}
 
 \begin{proof}
-  Видя се, че системата е кооперативна, с неразложима матрица на Якоби и е силно вдлъбната. Тогава имаме всички условия от Следствие 3.2 от статията \cite{Smith1986} на Smith.
+  Вече е установено, че системата \eqref{eq:TheDimensionlessProblem} е кооперативна (\eqref{prop:Cooperative}), с неразложима матрица на Якоби (\eqref{prop:Irreducable}) и е силно вдлъбната (\eqref{prop:StronglyConcave}). Тогава са налични всички условия от Следствие 3.2 от статията \cite{Smith1986} на Smith.
 
-  Нека $\mathscr{R}_0(\mathbf{u}) \leq 1$. Тогава от \cite{Driessche2002} $\mathbf{0}$ е единствена устойчива равновесна точка.
+  Нека $\mathscr{R}_0(\mathbf{u}) \leq 1$. Тогава от \cite{Driessche2002}, $\mathbf{0}$ е единствена устойчива равновесна точка.
 
   Нека $\mathscr{R}_0(\mathbf{u}) > 1$. Тогава от \cite{Driessche2002}, $\mathbf{0}$ е неустойчива равновесна точка и сме във втория случай от следствието на Smith. Вече доказахме, че решението е ограничено. Тогава е изпълнен подслучай (b) и съществува точно една друга устойчива равновесна точка $\mathbf{E}^*$, която е асимптотично устойчива.
 \end{proof}
@@ -396,8 +403,12 @@
 % \color{Black}
 % и ползвайки Теорема 1 от същата статия с $\cap{A}=(\frac{A_{ij} N_i}{\gamma_i})$, то ако зададем $R_0^2=\rho(\cap{А}\cap{B})$,
 
-Ендемичната точка (когато съществува) може да бъде намерена приблизително по два начина.
-Първият е да се пусне числена симулация на системата и когато решението вече не се мени значително, то знаем, че сме в околност на епидемичната точка, откъдето може да я преближим с решението в съответния момент.
-Другият начин е да се реши числено нелинейната система, получена когато се занулят левите страни на $\ref{eq:TheProblem}$.
-Полученото решение ще е равновесна точка (но може да получим и $\mathbf{0}$).
+% Ендемичната точка (когато съществува) може да бъде намерена приблизително по два начина.
+% Първият е да се пусне числена симулация на системата и когато решението вече не се мени значително, то знаем, че сме в околност на епидемичната точка, откъдето може да я преближим с решението в съответния момент.
+% Другият начин е да се реши числено нелинейната система, получена когато се занулят левите страни на $\eqref{eq:TheProblem}$.
+% Полученото решение ще е равновесна точка (но може да получим и $\mathbf{0}$).
+% Варирайки първоначалното приближение, ще получим и приближение на ендемичната точка.
+
+Ендемичната точка (когато съществува) може да бъде намерена приблизително, като се реши числено нелинейната система, получена при занулят левите страни на $\eqref{eq:TheDimensionlessProblem}$.
+Полученото решение ще е равновесна точка, но може да получим и $\mathbf{0}$.
 Варирайки първоначалното приближение, ще получим и приближение на ендемичната точка.

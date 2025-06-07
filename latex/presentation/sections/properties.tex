@@ -1,8 +1,8 @@
 \section{Свойства на задачата}
 
-\begin{frame}[t]{Свойства на задачата \ref{eq:TheDimensionlessProblem}}
+\begin{frame}[t]{Свойства на задачата \eqref{eq:TheDimensionlessProblem}}
   \begin{proposition}
-    За системата \ref{eq:TheDimensionlessProblem} са в сила:
+    За системата \eqref{eq:TheDimensionlessProblem} са в сила:
     \begin{enumerate}
       \item Съществува единствено решение за произволни управления.
       \item Решение с начално условие в $\Omega$ е ограничено в $\Omega$.
@@ -33,7 +33,7 @@
   \end{proof}
 \end{frame}
 
-\begin{frame}[t]{Съществуване на решение на \ref{eq:TheDimensionlessProblem}}
+\begin{frame}[t]{Съществуване на решение на \eqref{eq:TheDimensionlessProblem}}
   Трябва да покажем липшицовост по фазовите променливи.
 
   Първо от неравенството на триъгълника имаме, че:
@@ -47,13 +47,13 @@
     b_{11} \left|(1-x_1)[(1 - \kappa u_1) y_1] -  (1-x'_1)[(1 - \kappa u'_1) y'_1]\right| + \\
     b_{12} \left|(1-x_1)[(1 - \kappa u_1) y_2] -  (1-x'_1)[(1 - \kappa u'_2) y'_2]\right| + \gamma |x_1 - x'_1|
   \end{multline*}
-  Сега може да ползваме лемата \ref{lemma:Modulus} за $f_{x_1}$ с:
+  Сега може да ползваме лемата \eqref{lemma:Modulus} за $f_{x_1}$ с:
   \begin{equation*}
     x_1, x'_1 \leq 1, (1-\kappa u_1)y_1, (1-\kappa u_1) y'_1 \leq 1, (1-\kappa u_1)y_2, (1-\kappa u_1) y'_2 \leq 1
   \end{equation*}
 \end{frame}
 
-\begin{frame}[t]{Съществуване на решение на \ref{eq:TheDimensionlessProblem}}
+\begin{frame}[t]{Съществуване на решение на \eqref{eq:TheDimensionlessProblem}}
   \begin{multline*}
     \left|(1-x_1) [(1-\kappa u_1) y_1] - (1-x'_1) [(1-\kappa u'_1) y'_1]\right| \leq \\
     2 |(1-\kappa u_1) y_1 - (1-\kappa u'_1) y'_1| + |x_1 - x'_1| \leq \\
@@ -66,7 +66,7 @@
   Аналогично за другите. \\
 \end{frame}
 
-\begin{frame}[t]{Съществуване на решение на \ref{eq:TheDimensionlessProblem}}
+\begin{frame}[t]{Съществуване на решение на \eqref{eq:TheDimensionlessProblem}}
   За да проверим липшицовостта по фазовите променливи, то заместваме с $u_1 = u'_1, u_2 = u'_2$ всичко и за цялата дясна страна е в сила:
   \begin{multline*}
     \|\boldsymbol{f}(\boldsymbol{z}, \boldsymbol{u}) - \boldsymbol{f}(\boldsymbol{z}', \boldsymbol{u}')\| \leq \\
@@ -83,7 +83,7 @@
   Накрая се използват неравенства от вида $|x_1-x'_1| \leq \|(x_1, x_2, y_1, y_2) - (x'_1, x'_2, y'_1, y'_2)\| = \|\boldsymbol{z} - \boldsymbol{z}'\|$.
 \end{frame}
 
-\begin{frame}[t]{Ограниченост на решението на \ref{eq:TheDimensionlessProblem}}
+\begin{frame}[t]{Ограниченост на решението на \eqref{eq:TheDimensionlessProblem}}
   Трябва да се покаже, че $\boldsymbol{f}$ сочи към вътрешността на $\Omega$, ако решението се намира по границата $\partial \Omega$. Но това наистина е така, от:
   \begin{equation*}
     \begin{split}
@@ -99,8 +99,8 @@
   \end{equation*}
 \end{frame}
 
-\begin{frame}[t]{Кооперативност на \ref{eq:TheDimensionlessProblem}}
-  Якобианът за системата \ref{eq:TheDimensionlessProblem} може да се представи във вида:
+\begin{frame}[t]{Кооперативност на \eqref{eq:TheDimensionlessProblem}}
+  Якобианът за системата \eqref{eq:TheDimensionlessProblem} може да се представи във вида:
   \begin{equation*}
     \mathrm{D} \boldsymbol{f}(x_1, x_2, y_1, y_2)(t) =
     \begin{pmatrix}
@@ -121,7 +121,7 @@
       \end{equation*}
       \end{frame}
 
-      \begin{frame}[t]{Силна вдлъбнатост на \ref{eq:TheDimensionlessProblem}}
+      \begin{frame}[t]{Силна вдлъбнатост на \eqref{eq:TheDimensionlessProblem}}
       Достатъчно условие за това е всяка компонента на Якобиана да е нерастяща функция по всички променливи, като за поне една от тях да е намаляваща. Това може да проверим с производни по различните променливи.
       \begin{equation*}
       \begin{split}
@@ -141,14 +141,14 @@
   \end{equation*}
   \end{frame}
 
-  \begin{frame}[t]{Неразложимост на \ref{eq:TheDimensionlessProblem}}
+  \begin{frame}[t]{Неразложимост на \eqref{eq:TheDimensionlessProblem}}
   % Използваме теорема 3.2.1 от \cite{Brualdi1991}, която гласи:
   \begin{theorem}
   \label{theorem:ConnectedIrreducability}
   Матрица $A=(a_{ij})$ е неразложима точно когато ориентираният граф $G=(V,E)$, с върхове $V=\{1, \cdots, n\}$ и ребра $E=\{(i,j) \vert a_{ij} \neq 0 \}$, е силно свързан.
   \end{theorem}
 
-  Заместваме ненулевите елементи на $\mathrm{D} \boldsymbol{f}$ с 1 (тях знаем от \ref{eq:JacobianElements}). Така получаваме графа с матрица на съседство $\mathrm{D}$:
+  Заместваме ненулевите елементи на $\mathrm{D} \boldsymbol{f}$ с 1 (тях знаем от \eqref{eq:JacobianElements}). Така получаваме графа с матрица на съседство $\mathrm{D}$:
   \begin{equation*}
     \mathrm{D} =
     \begin{pmatrix}
@@ -183,7 +183,7 @@
 
 \begin{frame}[t]{Неподвижни точки}
   \begin{proposition}
-    За система \ref{eq:TheDimensionlessProblem} са в сила точно едно от:
+    За система \eqref{eq:TheDimensionlessProblem} са в сила точно едно от:
     \begin{enumerate}
       \item $\mathscr{R}_0(\boldsymbol{u}) \leq 1$ и $\boldsymbol{0}$ е единствена равновесна точка (асимптотично устойчива).
       \item  $\mathscr{R}_0(\boldsymbol{u}) > 1$ и $\boldsymbol{0}$ е неустойчива равновесна точка и съществува точно една друга равновесна точка $\boldsymbol{E}^*$ (асимптотично устойчива).

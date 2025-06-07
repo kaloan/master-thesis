@@ -1,5 +1,5 @@
 \section{Вариационна задача на Хамилтон-Якоби-Белман}
-За намиране на ядрото на допустимост $\eqref{eq:ViabilityKernel}$ се подхожда по метода от \cite{Zidani2013}. Въвеждаме значна функция на разстоянието до границата на $\mathscr{I}$:
+За намиране на ядрото на Белман $\eqref{eq:ViabilityKernel}$ се подхожда по метода от \cite{Zidani2013}. Въвеждаме значна функция на разстоянието до границата на $\mathscr{I}$:
 \begin{equation}
   \Gamma(\mathbf{z}) =
   \begin{cases}
@@ -20,7 +20,7 @@ V(\bar{\mathbf{I}}, \bar{\mathbf{u}}) = \{\mathbf{z}_0 \in \Omega \vert v(\mathb
 
 Изпълнен е принцип за динамично програмиране:
 \begin{equation}
-\forall{t>0} \left(v(\mathbf{z}_0) = \inf_{u \in \mathscr{U}} \max\{e^{-\lambda t} v(\mathbf{z}_0), \sup_{s \in (0, t]} e^{-\lambda t} \Gamma(\mathbf{z}(s; \mathbf{z}_0; \mathbf{u}))\}\right)
+\forall{t>0} \left(v(\mathbf{z}_0) = \inf_{\mathbf{u} \in \mathscr{U}} \max\{e^{-\lambda t} v(\mathbf{z}_0), \sup_{s \in (0, t]} e^{-\lambda t} \Gamma(\mathbf{z}(s; \mathbf{z}_0; \mathbf{u}))\}\right)
 \end{equation}
 
 $v$ e вискозното решение на уравнение на Хамилтон-Якоби-Белман за минимизация на функционал:
@@ -54,7 +54,7 @@ $v$ e вискозното решение на уравнение на Хами�
 \left[\gamma_2 x_2(t) - (1-x_2(t)) \left(b_{21} y_1(t) + b_{22} y_2(t)\right) \right] \pdv{v}{x_2} + \\
 \left[\mu_1 y_1(t) - (1-y_1(t)) \left(c_{11} x_1(t) + c_{12} x_2(t)\right) x\right] \pdv{v}{y_1} +
 \left[\mu_2 y_2(t) - (1-y_2(t)) \left(c_{21} x_1(t) + c_{22} x_2(t)\right)\right] \pdv{v}{y_2} + \\
-\max\bigg\{0, \kappa \bar{u}_1 (1-x_1(t)) \left(b_{11} y_1(t) + b_{12} y_2(t)\right) \pdv{v}{x_1} + c_{11} \kappa bar{u}_1 x_1(t) (1-y_1(t))\pdv{v}{y_1} + c_{21} \bar{u}_1 x_1(t) (1-y_2(t)) \pdv{v}{y_2}
+\max\bigg\{0, \kappa \bar{u}_1 (1-x_1(t)) \left(b_{11} y_1(t) + b_{12} y_2(t)\right) \pdv{v}{x_1} + c_{11} \kappa \bar{u}_1 x_1(t) (1-y_1(t))\pdv{v}{y_1} + c_{21} \bar{u}_1 x_1(t) (1-y_2(t)) \pdv{v}{y_2}
 \bigg\} + \\
 \max\bigg\{0, \kappa \bar{u}_2 (1-x_2(t)) \left(b_{21} y_1(t) + b_{22} y_2(t)\right) \pdv{v}{x_2} + c_{12} \bar{u}_2 x_2(t) (1-y_1(t))\pdv{v}{y_1} + c_{22}  \bar{u}_2 x_2(t) (1-y_2(t))\pdv{v}{y_2} \bigg\}
 \end{multline}
