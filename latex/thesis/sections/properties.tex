@@ -18,8 +18,8 @@
     \end{proof}
 \subsection{Съществуване на решение}
 \begin{proposition}
-  \label{prp:EU}
-  Системата \eqref{eq:TheDimensionlessProblem} има единствено решение.
+  \label{prp:LipschitzContinuity}
+  Системата \eqref{eq:TheDimensionlessProblem} е липшицова по $\mathbf{z}$.
 \end{proposition}
 
 \begin{proof}
@@ -29,7 +29,7 @@
     \|\mathbf{f}(\mathbf{z}, \mathbf{u}) - \mathbf{f}(\mathbf{z}', \mathbf{u}')\| \leq
     |f_{x_1}(\boldsymbol{z}, \boldsymbol{u}) - f_{x_1}(\boldsymbol{z}', \boldsymbol{u}')| + |f_{x_2}(\boldsymbol{z}, \boldsymbol{u}) - f_{x_2}(\boldsymbol{z}', \boldsymbol{u}')| + |f_{y_1}(\boldsymbol{z}, \boldsymbol{u}) - f_{y_1}(\boldsymbol{z}', \boldsymbol{u}')| + |f_{y_2}(\boldsymbol{z}, \boldsymbol{u}) - f_{y_2}(\boldsymbol{z}', \boldsymbol{u}')|
   \end{equation}
-  Сега може да ползваме неколкократно \eqref{lemma:Modulus} за $f_{x_1}$:
+  Сега може да ползваме неколкократно лемата \eqref{lemma:Modulus} за $f_{x_1}$:
   \begin{multline}
     |(1-x_1) (1-\kappa u_1) \left(b_{11} y_1 + b_{12} y_2\right) - \gamma_1 x_1 - (1-x'_1) (1-\kappa u'_1) \left(b_{11} y'_1 + b_{12} y'_2\right) - \gamma_1 x'_1| \leq \\
     b_{11} \left|(1-x_1)[(1 - \kappa u_1) y_1] -  (1-x'_1)[(1 - \kappa u'_1) y'_1]\right| + \\
@@ -87,8 +87,16 @@
     C = 5 (b_{11} + b_{12} + b_{21} + b_{22} + c_{11} + c_{12} + c_{21} + c_{22}) + \gamma_1 + \gamma_2 + \mu_1 + \mu_2
   \end{multline}
   Накрая се използват неравенства от вида $|x_1-x'_1| \leq \|(x_1, x_2, y_1, y_2) - (x'_1, x'_2, y'_1, y'_2)\| = \|\mathbf{z} - \mathbf{z}'\|$.
-  Тогава, спрямо общата теория на диференциалните решения с управление, съществува единствено решение на $\eqref{eq:TheProblem}$ за произволни $t>0$.
-  \end{proof}
+\end{proof}
+
+\begin{corollary}
+\label{cor:ExistanceAndUniqueness}
+Задачата на Коши за системата \eqref{eq:TheDimensionlessProblem} с начално условие $\mathbf{z}_0$ има единствено решение за произволни $\mathbf{u} \in \mathscr{U}$.
+\end{corollary}
+
+\begin{proof}
+Спрямо общата теория на диференциалните уравнения с управление, съществува единствено решение на $\eqref{eq:TheProblem}$ за произволни $t>0$.
+\end{proof}
 
 \subsection{Ограниченост на решението}
 

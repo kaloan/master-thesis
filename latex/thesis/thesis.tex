@@ -81,6 +81,7 @@ margin = 1.5 cm]
 \usepackage{import}
 
 \usepackage[backend=biber]{biblatex}
+\addbibresource[bibencoding=utf8]{thesis.bib}
 \usepackage[nottoc,numbib]{tocbibind}
 \usepackage{csquotes}
 \usepackage{titlesec}
@@ -107,7 +108,6 @@ margin = 1.5 cm]
 
 % Fix original date
 % \usepackage{datetime}
-\addbibresource[bibencoding=utf8]{thesis.bib}
 \title{Изследване на ефектите на репелент срещу комари в малариен модел на Ross-Macdonald с две местообитания}
 \author{Калоян Стоилов}
 
@@ -127,6 +127,8 @@ margin = 1.5 cm]
 \import{sections/}{numerical.tex}
 \pagebreak
 \printbibliography[heading=bibintoc]
+% \bibliographystyle{plain}
+% \bibliography{thesis.bib}
 % \listoffigures
 % \listoftables
 \end{document}
