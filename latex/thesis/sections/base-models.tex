@@ -1,0 +1,286 @@
+\section{Модели от типа Ross-Macdonald}
+
+\subsection{SIS модел на Ross-Macdonald}
+
+Основни факти за живота на Ronald Ross може да се намерят в \cite[12]{Bacaer2011}, а за развитието на модела в \cite{Smith2012}.
+Ronald Ross е роден в Индия през 1857 г.
+Израства там, след което получава медицинско образование в Англия през 1888 г., а после започва изследване на маларията.
+През 1897 г. извършва експерименти върху птици.
+Намирайки паразита в слюнчестите жлези на комари от рода \textit{Anopheles}, доказва, че маларията се предава чрез тяхното ухапване.
+След кратко завръщане за преподаване в Англия, обикаля по много места с цел лансиране борбата срещу комарите. Идеята, че намаляването на популацията комари би могло да премахне маларията, била посрешната с недоверие.
+През 1902 г. става носител на Нобеловата награда за физиология или медицина.
+Понеже през младините си изучава в свободното си време математика, решава да създаде математически модел на маларията.
+Първоначалният модел от 1908 в "Report on the prevention of malaria in Mauritus" е диференчно уравнение, а през 1911 г. в допълнение към второто издание на книгата "The Prevention of Malaria" публикува представения тук модел с две диференциални уравнения.
+
+% \begin{figure}[h]
+%   \caption{Sir Ronald Ross, 1857-1932}
+%   \centering
+%   \includegraphics{ronald-ross-national-library-of-medicine.jpg}
+% \end{figure}
+
+% \begin{figure}[h]
+%   \caption{Dr George Macdonald, 1903-1967}
+%   \centering
+%   \includegraphics{george macdonald.jpg}
+% \end{figure}
+
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{.5\textwidth}
+    \caption{Dr George Macdonald, 1903-1967}
+    \centering
+    \includegraphics{george macdonald.jpg}
+    \label{fig:Ross}
+  \end{minipage}%
+  \begin{minipage}{.5\textwidth}
+    \caption{Sir Ronald Ross, 1857-1932}
+    \centering
+    \includegraphics{ronald-ross-national-library-of-medicine.jpg}
+    \label{fig:Macdonald}
+  \end{minipage}
+\end{figure}
+
+Моделът прави следните допускания, които се пренасят и в неговите по-сложнени варианти:
+\begin{enumerate}
+  \item Човешката популация и популацията комари е постоянна.
+  \item Хората и комарите са разпределени равномерно в средата.
+  \item Смъртността от заразата се пренебрегва, както при хората, така и при комарите.
+  \item Веднъж заразени, комарите не се възстановяват.
+  \item Само податливи се заразяват.
+  \item Хората не придобиват никакъв имунитет.
+\end{enumerate}
+
+Въвеждаме следните означения:
+\begin{itemize}
+  \item $X(t)$ е броя заразени с малария хора в момент $t$.
+  \item $Y(t)$ е броя заразени с малария комари в момент $t$.
+  \item $N$ е човешката популация.
+  \item $M$ е популацията от комари.
+  \item $\gamma$ е скоростта на оздравяване на хората, т.е. оздравяват след $\frac{1}{\gamma}$ времеви единици.
+  \item $\mu$ е скоростта на смъртност на комарите, т.е. умират след $\frac{1}{\mu}$ времеви единици.
+  \item $b$ е честотата на ухапване на комарите за единица време.
+  \item $\beta_{vh}$ е константна вероятност за заразяване на здрав човек с патогена, когато бъде ухапан от заразен комар, а $\beta_{hv}$ е константна вероятност за заразяване на здрав комар с патогена, когато ухапе заразен човек.
+\end{itemize}
+
+Моделът се основава на закона за действие на масите.
+За интервал $\delta t$, заразените хора ще се получат, като се вземат всички ухапвания на заразени комари за периода и се умножат по вероятността да са по незаразен човек, както и да се предаде патогена, т.е. $\beta_{vh} b Y(t) \frac{N-X(t)}{N} \delta t$, а оздравелите заразени ще са $\gamma X(t) \delta t$, откъдето $\delta X(t) = \beta_{vh} b Y(t) \frac{N-X(t)}{N} \delta t - \gamma X(t) \delta t$.
+За този интервал пък заразените комари ще се получат, като се вземат всички ухапвания от незаразени комари и се умножат по вероятнстта да са по заразен човек, както и да се предаде патогена, т.е. $\beta_{hv} b (M - Y(t)) \frac{X(t)}{N} \delta t$, а от тях ще умрат $\mu Y(t) \delta t$, откъдето $\delta Y(t) = \beta_{hv} b (M - Y(t)) \frac{X(t)}{N} \delta t - mu Y(t) \delta t$ След деление на $\delta t$ и граничен преход се достига до следния модел:
+
+\begin{equation}
+  \label{eq:BasicProblem}
+  \begin{split}
+    &\dot{X}(t) = \beta_{vh} b \frac{N-X(t)}{N} Y(t) - \gamma X(t) \\
+    &\dot{Y}(t) = \beta_{hv} b \frac{X(t)}{N} (M-Y(t)) - \mu Y(t) \\
+  \end{split}
+\end{equation}
+
+Изследвайки системата, веднага забелязва че една равновесна точка е $(0,0)$, а открива, че еднемична е:
+\begin{equation*}
+  E^* = (X^*, Y^*) = \left(N \frac{1 - \frac{\gamma \mu N}{b^2 \beta_{vh} \beta_{hv} M}}{1 + \frac{\gamma N}{b \beta_{vh} M}}, M \frac{1 - \frac{\gamma \mu N}{b^2 \beta_{vh} \beta_{hv} M}}{1 + \frac{\mu}{b \beta_{hv}}}\right)
+\end{equation*}.
+
+\begin{equation}
+  \label{eq:RossM}
+  M > M^* = \frac{\gamma \mu N}{b^2 \beta_{vh} \beta_{hv}}
+\end{equation}
+Така Ross показва, че не е необходимо да бъдат изтребени всички комари, за да се изкорени маларията, а само броят им да се сведе под $M^*$.
+
+% Прави заключението, че
+% \begin{displayquote}
+%   As a matter of fact all epidemiology, concerned as it is with the variation of disease from
+%   time to time or from place to place, must be considered mathematically, however many
+%   variables are implicated, if it is to be considered scientifically at all. To say that a disease
+%   depends upon certain factors is not to say much, until we can also form an estimate as to how
+%   largely each factor influences the whole result. And the mathematical method of treatment
+%   is really nothing but the application of careful reasoning to the problems at issue.
+% \end{displayquote}
+През следващата година публикува второ издание на "The Prevention of Malaria" и бива произведен в рицар. Ross почива през 1932 г.
+
+В модела на Ross не се взима предвид явно факта, че не всеки заразèн комар е зарàзен, това неявно участва в $\beta_{vh}$.
+$\tau$ е инкубационният период на комарите. Така математическото очакване заразèн комар да е станал зарàзен може да се изрази като $e^{-\frac{\tau}{\text{ср. продължителност на живот}}}$. Но средната продължителност на живот на комарите е точно $\frac{1}{\mu}$, откъдето $e^{-\mu\tau}Y$ е броя зарàзни комари.
+Така можеше да разложим $\beta_{vh} = \tilde{\beta}_{vh} e^{-\mu\tau}$, където $\tilde{\beta}_{vh}$ е същинската вероятност за заразяване на човек от комар. Това е направено в някои от по-нататъшните модели.
+
+\color{Red} ДА СЕ НАПИШЕ НЕЩО ЗА Macdonald
+\color{Black}
+
+\subsection{Базово число на възпроизводство $\mathscr{R}_0$}
+Подобно на популационните модели от демографията, може да се дефинира важен параметър $\mathscr{R}_0$, наричан базово число на възпроизводство, който носи смисъла на брой вторични случаи на заразата, причинени от един първичен в популация състояща се единствено от податливи индивиди.
+За да може болестта да има ендемично състояние, то е необходимо $\mathscr{R}_0 > 1$, иначе броят заразени веднага щеше да намалее и съответно нямаше да има равновесна точка, различна от $\mathbf{0}$.
+
+За модела на Ross, репродукционното число може да бъде изведено лесно.
+Човек остава заразèн (както и зарàзен) средно $\frac{1}{\gamma}$ време, а пък за единица време средно получава $\beta_{hv} b \frac{M}{N}$ ухапвания от комар, които предават патогена.
+Комар остава заразèн за средно $\frac{1}{\mu}$ време и хапе предавайки болестта $\beta_{vh} b$ пъти.
+Оттук достигаме до:
+\begin{equation}
+  \mathscr{R}_0 = \frac{1}{\gamma} \times \beta_{hv} b \frac{M}{N} \times \frac{1}{\mu} \times \beta_{vh} b = \frac{b^2 \beta_{vh} \beta_{hv} M}{\gamma \mu N}
+\end{equation}
+Но от тази оценка веднага получаваме, че:
+\begin{equation}
+  \mathscr{R}_0 > 1 \iff M > M^* = \frac{\gamma \mu N}{b^2 \beta_{vh} \beta_{hv}}
+\end{equation}
+Но това е точно оценката на Ross \eqref{eq:RossM}.
+
+За по-сложни модели може да се дефинира сходна константа, като ще подходим като van den Driessche и Watmough в \cite{Driessche2002}, основаваща се на идеите в \cite{Diekmann1990}. Нека имаме групи от заразени $\mathbf{z}$ и $\dot{\mathbf{z}} = \mathbf{G}{\mathbf{z}} = \mathscr{F}(\mathbf{z}) - \mathscr{V}(\mathbf{z})$, където $\mathscr{F}$ определя новите заразени, а $\mathscr{V}(\mathbf{z}) = \mathscr{V}^-(\mathbf{z}) - \mathscr{V}^+(\mathbf{z})$ е фунцкията на нетно изменение на популацията, която сме разделили на прииждащи и заминаващи за съответните групи.
+
+\begin{definition}[M-матрица]
+  $A = (a_{ij})$ е M-матрица, ако $a_{ij} \leq 0, i \neq j$ и собствените ѝ стойности имат неотрицателни реални части.
+\end{definition}
+\begin{theorem}
+  При изпълнени следните условия:
+  \begin{enumerate}
+    \item $\mathbf{z} \geq \mathbf{0} \implies \mathscr{V}(\mathbf{z}) \geq 0, \mathscr{V}^+(\mathbf{z}) \geq 0, \mathscr{V}^-(\mathbf{z}) \geq 0$
+    \item $z_i = 0 \implies \mathscr{V}_{i}^- = 0$
+    \item $\mathscr{F}(\mathbf{0}) = \mathbf{0}, \mathscr{V}(\mathbf{0}) = \mathbf{0}$
+    \item Всички собствени стойности на $-\mathrm{D}\mathscr{V}{(\boldsymbol{0})}$ са с отрицателна реална част
+  \end{enumerate}
+  в сила за репродукционното число е $\mathscr{R}_0 = \rho(F V^{-1})$, където $\rho$ е спектралния радиус, а $F = D\mathscr{F}(\mathbf{0}), V = D\mathscr{V}(\mathbf{0})$, където $F \geq \mathscr{O}$, а $V$ е несингулярна M-матрица. \\
+  Допълнително, $\mathbf{0}$ е локално асимптотично устойчива, ако $\mathscr{R}_0 < 1$ и неустойчива, ако $\mathscr{R}_0 > 1$.
+  % \begin{equation*}
+  %   D\mathscr{F}(\mathbf{0})=
+  %   \begin{pmatrix}
+  %     f & \mathscr{O} \\
+  %     mathscr{O} & mathscr{O}
+  %   \end{pmatrix}, \quad
+  %   D\mathscr{F}(\mathbf{0})=
+  %   \begin{pmatrix}
+  %     f & \mathscr{O} \\
+  %     mathscr{O} & mathscr{O}
+  %   \end{pmatrix}
+  % \end{equation*}
+\end{theorem}
+
+$F_{ij}$ е скоростта, с която индивид от група $j$ заразява индивиди от група $i$, а $V^{-1}_{jk}$ е средната продължителност на пребиваване на индивид от група $k$ сред индивидите от група $j$, съответно $(F V^-1)_{ik}$ са средния брой новозаразени от $i$ заради индивид от $k$.
+
+\subsection{Кооперативни(квазимонотонни) системи}
+Накратко ще се представят основите на кооперативните системи на Capasso \cite{Capasso2008}.
+
+\begin{definition}[Съкратено означение]
+  $\mathbb{H} = \mathbb{R}_{+}^n$
+\end{definition}
+
+\begin{definition}[$\leq$-сравнение на вектори]
+  Нека са дадени два вектора $\mathbf{v}, \mathbf{w} \in \mathbf{R}^n, \mathbf{v}=(v_1, \cdots, v_n), \mathbf{w}=(w_1, \cdots, w_n)$. Дефинираме релацията $\leq$ в $\mathbf{R}^n \times \mathbf{R}^n$ като:
+  \begin{equation*}
+    \mathbf{v} \leq \mathbf{w} \iff \forall{i \in \{\overline{1,n}\}}(v_i \leq w_i)
+  \end{equation*}
+\end{definition}
+
+\begin{definition}[Съкратено означение]
+  Нека $X, Y \subseteq \mathbb{R}^n$. Дефинираме релацията $\leq$ в $\{X \rightarrow Y\}^2$ по следния начин:
+  \begin{equation*}
+    \mathbf{f} \leq \mathbf{g} \iff \forall_{\mathbf{x} \in X} (\mathbf{f}(\mathbf{x}) \leq \mathbf{g}(\mathbf{x}))
+  \end{equation*}
+\end{definition}
+
+Нека е дадена динамичната система върху интервал от време:
+\begin{equation}
+  \label{eq:Cooperative}
+  \dot{\mathbf{x}} = \mathbf{f}(t, \mathbf{x}),  \quad \mathbf{x} \in \mathbb{R}^n, \mathbf{f} \in C^1(J \times \mathbb{R}^n, \mathbb{R}^n), J \subset \mathbb{R} \text{ е интервал}
+  % \mathbb{R}^n \rightarrow \mathbb{R}^n, \quad f \in
+\end{equation}
+
+\begin{definition}[Кооперативна система]
+  \label{def:Cooperative}
+  Системата \eqref{eq:Cooperative} е кооперативна (или още квазимонотонна), ако
+  \begin{equation}
+    \forall{t \in J}\forall{\mathbf{x} \in \mathbb{H}}\forall{i,j \in \{\overline{1,n}\}}\left(i \neq j \implies \pdv{f_i}{x_j}(t, \mathbf{x}) \geq 0\right)
+  \end{equation}
+\end{definition}
+Кооперативните системи са динамични системи, при които една променлива не може да доведе до понижаване на стойността на друга променлива. Името кооперативна произлиза от моделите за кооперативни междувидови отношения.
+
+\begin{definition}[Квазимонотонна матрица]
+  Матрица $A=(a_{ij})_{n \times n}$ е квазимонотонна, ако
+  \begin{equation*}
+    \forall{i,j \in \{\overline{1,n}\}} \left(i \neq j \implies a_{ij} \geq 0\right)
+  \end{equation*}
+\end{definition}
+
+\begin{theorem}
+  Ако $A$ е квазимонотонна, то винаги има доминантна реална собствена стойност, на която съответства неотрицателен собствен вектор.
+\end{theorem}
+
+\begin{definition}[(Не-)разложима матрица]
+  Матрицата $A=(a_{ij})_{n \times n}$ e разложима, ако съществува пермутационна матрица $P$, с която:
+  \begin{equation*}
+    PAP^T =
+    \begin{pmatrix}
+      B & C \\
+      \mathscr{O} & D
+    \end{pmatrix}, \quad B, D \text{ - квадратни}
+  \end{equation*}
+  Матрици, които не са разложими се наричат неразложими.
+\end{definition}
+
+\begin{theorem}[Perron-Frobenius]
+  Ако $A$ е неразложима, то доминантната ѝ собствена стойност $\mu$ е проста и на нея отговаря положителен собствен вектор $\mathbf{v} \in \mathbb{H}$.
+\end{theorem}
+
+\begin{theorem}
+  Ако \eqref{eq:Cooperative} е линейна (т.е. $\dot{\mathbf{x}} = A \mathbf{x}, A = (a_{ij})_{n \times n}$) система, то $\mathbb{H}$ е инвариантно. Допълнително, ако A е неразложима, то за кое да е $t > 0$ решението е във $\mathrm{int} \mathbb{H}$, стига началното решение да е ненулево, т.е. $\mathbf{x}_0 \neq \mathbf{0}$.
+\end{theorem}
+
+Всъщност тук видяхме причината кооперативните системи да се наричат квазимонотонни - линейните кооперативни системи са тези с квазимонотонни матрици.
+
+\begin{theorem}[Сравнение на решения]
+  \label{thm:Comparison}
+  Нека $\mathbf{f}, \mathbf{g} \in C^1(\mathrm{int} \mathbb{H}, \mathbb{R}^n)$ са такива, че системите $\dot{\mathbf{x}}=\mathbf{f}(\mathbf{x})$, $\dot{\mathbf{y}}=\mathbf{g}(\mathbf{y})$ са кооперативни, $\mathbf{f} \leq \mathbf{g}$ и $\mathbf{x}_0 \leq \mathbf{y}_0$. Тогава $\forall{t>0}(\mathbf{x}(t) \leq \mathbf{y}(t))$.
+\end{theorem}
+
+\begin{definition}[(Не-)разложима система]
+  Система \eqref{eq:Cooperative} се нарича (не-)разложима, ако Якобианът на дясната страна $\mathrm{D}\mathbf{f}$ във всяка точка е (не-)разложим.
+\end{definition}
+
+\begin{definition}[Силно вдлъбната система]
+  Система \eqref{eq:Cooperative} е силно вдлъбната, ако:
+  \begin{equation*}
+    \mathbf{0} < \mathbf{x}_1 < \mathbf{x}_2 \implies \mathrm{D}\mathbf{f}(\mathbf{x}_2) < \mathrm{D}\mathbf{f}(\mathbf{x}_1)
+  \end{equation*}
+\end{definition}
+
+\subsection{Модел на Ross-Macdonald с мобилност}
+Разглежда се вариант на модела, предложен от Bichara и Castillo-Chavez \cite{Bichara2016}. Дадени са $m$ местообитания с популации на комари и $n$ популации с хора, като всяка от тях е с постоянен размер. Всяка от популациите си има съответни $\mu_j$ смъртности (комари) и $\gamma_i$ скорости на оздравяване (хора). Комарите се приема, че не мигрират (което е разумно предположение с оглед \color{Red} ЦИТАТ ДВИЖЕНИЕ КОМАРИ!!!
+\color{Black}). Предполага се, че индивидите от всяка от популациите хора, пребивават в местообитанията на комарите за $p_{ij}$ част от времето, $\sum_{j=1}^m p_{ij} = 1$. \\
+Нека с $X_i(t)$ бележим броя заразени хора, а с $Y_j(t)$ - заразени комари. При направените допускания, в момент $t$, в местообитание $j$ съотношението на заразени към всички хора е:
+\begin{equation}
+  \frac{\sum_{i=1}^n p_{ij} X_i(t)}{\sum_{i=1}^n p_{ij} N_i}
+\end{equation}
+Ако $b_j$ е броят на ухапвания за човек за единица време, $a_j$ са ухапванията за комар за единица време, то като представим по два начина броя ухапвания в местообитание $j$:
+\begin{equation}
+  a_j M_j = b_j \sum_{i=1}^n p_{ij} N_i \iff b_j = \frac{a_j M_j}{\sum_{i=1}^n p_{ij} N_i}
+\end{equation}
+Mодел за разпространението на заразата е следния:
+\begin{enumerate}
+  \item В момент $t$ заразените хора $X_i$ се увеличават от ухапване на незаразен човек от $i$ заразени комари в различните местообитания $j$, а намаляват пропорционално на броя си с коефициента на оздравяване. Заразяването моделираме по закона за масите, като коефициентът за съответните местообитания ще бъде $b_j$. Тогава може да се изрази $\dot{X}_i(t) = \sum_{j=1}^{m} \beta_{vh} b_j p_{ij} (N_i - X_i(t)) \frac{Y_j(t)}{M_j} - \gamma_i X_i(t)$.
+  \item В момент $t$ заразените комари $Y_j$ се увеличават от ухапване на заразен човек от някое от различните местообитания $i$ от незаразен комар в местообитание $j$, а намаляват пропорционално на броя си с коефициента на смъртност. Заразяването моделираме по закона за масите, като коефициентът ще бъде $a_j$. Достига се до $\dot{Y}_j(t) = \beta_{hv} a_j (M_j - Y_j(t)) \frac{\sum_{i=1}^n p_{ij} X_i(t)}{\sum_{i=1}^n p_{ij} N_i} - \mu_j Y_j(t)$.
+\end{enumerate}
+След като се вземе предвид оценката за $b_j$, то системата има вида:
+\begin{equation}
+  \label{eq:MigrationProblem}
+  \begin{split}
+    &\dot{X}_i(t) = \beta_{vh} (N_i - X_i(t)) \sum_{j=1}^{m} \frac{p_{ij} a_j Y_j(t)}{\sum_{k=1}^n p_{kj} N_k} - \gamma_i X_i(t), \quad i=\overline{1, n} \\
+    &\dot{Y}_j(t) = \beta_{hv} a_j (M_j - Y_j(t)) \frac{\sum_{i=1}^n p_{ij} X_i(t)}{\sum_{i=1}^n p_{ij} N_i} - \mu_j Y_j(t), \quad j=\overline{1, m}
+  \end{split}
+\end{equation}
+В \cite{Bichara2016} с помощта на резултати за кооперативни системи на Smith (виж \cite{Smith1986}) се показва, че за системата е изпълнено точно едно от:
+\begin{itemize}
+  \item $\mathscr{R}_0 \leq 1$ и $\mathbf{0}$ е единствената равновесна точка и е глобално асимптотично устойчива.
+  \item $\mathscr{R}_0 > 1$ и $\mathbf{0}$ е неустойчива равновесна точка. Ако системата \eqref{eq:MigrationProblem} е неразложима, има друга равновесна глобално асимптотично устойчива точка.
+\end{itemize}
+
+Тъй като $\mathscr{R}_0$ не може да бъде получено в явен вид аналитично, останалата част от статията \cite{Bichara2016} разглежда различни аналитични оценки за $\mathscr{R}_0$ и няколко симулации.
+
+\subsection{Модел на Ross-Macdonald с използване на репелент}
+Разглежда се модела на Rashkov от \cite{Rashkov2022}. По същността си уравненията на модела са като на Ross-Macdonald \eqref{eq:BasicProblem}, но с усложнението, че може с помощта на репеленти (\cite{Grancaric2019}) да се намали честотата на ухапвания, тоест има множител $(1 - \kappa u(t))$ в закона за действие на масите, където $\kappa$ е ефективността на репелента, а пък $u(t)$ функция управление, задаващо пропорцията на хора предпазени с помощта на репелента.
+
+\begin{equation}
+  \label{eq:RepelentProblem}
+  \begin{split}
+    &\dot{X}(t) = \beta_{vh} e^{-\mu \tau} a (1-\kappa u(t)) \frac{N-X(t)}{N} Y(t) - \gamma X(t) \\
+    &\dot{Y}(t) = \beta_{hv} a (1-\kappa u(t)) \frac{X(t)}{N} (M-Y(t)) - \mu Y(t) \\
+    &u(t) \in \mathscr{U} = \{u:\mathbb{R}_+ \rightarrow [0, \bar{u}] \vert u \text{- измерима}\}
+  \end{split}
+\end{equation}
+
+Разглежда се следния казус - възможно ли е всички заразени да бъдат хоспитализирани, т.е. да са под $\bar{I}$?
+Дефинира се ядрото на слаба инвариантност на Белман:
+$V(\bar{I}, \bar{u}) = \{(X_0, Y_0) \vert \exists{u \in \mathscr{U}}\forall t>0 (X(t) < \bar{I})\}$
