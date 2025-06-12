@@ -505,19 +505,20 @@ __always_inline void calcHamiltonian() noexcept {
                             chooseUMax1 * (*my2u1)[i1][i2][i3][i4] +
                             chooseUMax2 * (*my2u2)[i1][i2][i3][i4];
 
+          const auto ax1 = max(abs((*hx1)[i1][i2][i3][i4]), abs(hx1a));
+          const auto ax2 = max(abs((*hx2)[i1][i2][i3][i4]), abs(hx2a));
+          const auto ay1 = max(abs((*hy1)[i1][i2][i3][i4]), abs(hy1a));
+          const auto ay2 = max(abs((*hy2)[i1][i2][i3][i4]), abs(hy2a));
+
           // Lax-Friedrichs step
-          hamilt +=
-              hamiltonianInDirection((*Fx1p)[i1][i2][i3][i4],
-                                     (*Fx1m)[i1][i2][i3][i4], hx1a, abs(hx1a));
-          hamilt +=
-              hamiltonianInDirection((*Fx2p)[i1][i2][i3][i4],
-                                     (*Fx2m)[i1][i2][i3][i4], hx2a, abs(hx2a));
-          hamilt +=
-              hamiltonianInDirection((*Fy1p)[i1][i2][i3][i4],
-                                     (*Fy1m)[i1][i2][i3][i4], hy1a, abs(hy1a));
-          hamilt +=
-              hamiltonianInDirection((*Fy2p)[i1][i2][i3][i4],
-                                     (*Fy2m)[i1][i2][i3][i4], hy2a, abs(hy2a));
+          hamilt += hamiltonianInDirection((*Fx1p)[i1][i2][i3][i4],
+                                           (*Fx1m)[i1][i2][i3][i4], hx1a, ax1);
+          hamilt += hamiltonianInDirection((*Fx2p)[i1][i2][i3][i4],
+                                           (*Fx2m)[i1][i2][i3][i4], hx2a, ax2);
+          hamilt += hamiltonianInDirection((*Fy1p)[i1][i2][i3][i4],
+                                           (*Fy1m)[i1][i2][i3][i4], hy1a, ay1);
+          hamilt += hamiltonianInDirection((*Fy2p)[i1][i2][i3][i4],
+                                           (*Fy2m)[i1][i2][i3][i4], hy2a, ay2);
 
           (*hamiltonian)[i1][i2][i3][i4] = hamilt;
         }
