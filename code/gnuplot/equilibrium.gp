@@ -33,15 +33,25 @@ if (!M || !N) {
     N = STATS_columns
 }
 
+#set cbtics autofreq
 
-# set xtics ("0.5" 0, "0.75" N/2., "1" N-1.)
-# set ytics ("0.5" 0, "0.75" M/2., "1" M-1.)
+# Plot to 1
+set xrange [0.8:1]
+show xrange
+set yrange [0.8:1]
+show yrange
+set xtics autofreq 0.8, 0.05, 1 out nomirror font ", 12pt"
+set ytics autofreq 0.8, 0.05, 1 out nomirror font ", 12pt"
 
-# Places image centered in a box with graduated x and y
-# The bos's min and max for x and y are slightly lesser/greater that the true values
-# set xrange [] writeback
-# set yrange [] writeback
+set output "equilibrium1.pdf"
+set multiplot layout 1,2
+set title "X_1^*"
+plot 'eq4.csv' skip 1 using 1:2:3 w image
+set title "X_2^*"
+plot 'eq4.csv' skip 1 using 1:2:4 w image
+unset multiplot
 
+# Plot to 0.98
 set xrange [0.8:0.98]
 show xrange
 set yrange [0.8:0.98]
@@ -49,57 +59,29 @@ show yrange
 set xtics autofreq 0.8, 0.06, 0.98 out nomirror font ", 12pt"
 set ytics autofreq 0.8, 0.06, 0.98 out nomirror font ", 12pt"
 
-# set output "equilibrium.tex"
 set output "equilibrium2.pdf"
 set multiplot layout 1,2
+set cbrange [0:0.0220246810603182]
 set title "X_1^*"
 plot 'eq4.csv' skip 1 using 1:2:3 w image
+set cbrange [0.00274363372857308:0.0697692196950718]
 set title "X_2^*"
 plot 'eq4.csv' skip 1 using 1:2:4 w image
-# plot 'eq.csv' skip 1 matrix u 1:2:3 w image
-# plot 'eq.csv' skip 1 matrix u 1:2:4 w image
+unset multiplot
 
-# unset output
+# Plot to 0.95
+set xrange [0.8:0.95]
+show xrange
+set yrange [0.8:0.95]
+show yrange
+set xtics autofreq 0.8, 0.05, 0.95 out nomirror font ", 12pt"
+set ytics autofreq 0.8, 0.05, 0.95 out nomirror font ", 12pt"
 
-# # for parameters for I1max, I2max
-# I1max = 25
-# I2max = 45
-
-# # # 2 plots, I1* < I1max, I2* < I2max:
-# # multiplot
-# #set output "ex2.tex"
-# set output "equilibrium2.pdf"
-# set multiplot layout 1,2
-
-# set title "$I_1^{\\ast} \\le \\hat I_1$"
-# set title "I_1^* <I_1"
-# plot 'exampleplot.csv' matrix u 1:2:($3<I1max) w image palette
-
-# set title "$I_2^{\\ast} \\le \\hat I_2$"
-# plot 'exampleplot.csv' matrix u 1:2:($3<I2max) w image palette
-
-# unset multiplot
-
-# unset output
-
-# # # 3 plots, I1* < I1max, I2* < I2max, I1* < I1max & I2* < I2max
-
-# array mtrx[M*N]
-# stats 'exampleplot.csv' matrix u (mtrx[int($2*N+$1+1)] = ($3<I1max) ) nooutput
-
-# set output "ex3.tex"#
-# set output "ex3.pdf"
-# set multiplot layout 1,3
-
-# set title "$I_1^{\\ast} \\le \\hat I_1$"
-# plot 'exampleplot.csv' matrix u 1:2:($3<I1max) w image
-
-# set title "$I_2^{\\ast} \\le \\hat I_2$"
-# plot 'exampleplot.csv' matrix u 1:2:($3<I2max) w image
-
-# set title "$I_1^{\\ast} \\le \\hat I_1\\wedge I_2^{\\ast} \\le \\hat I_2$"
-# plot 'exampleplot.csv' matrix u 1:2:(($3<I2max)&&mtrx[int($2*N+$1+1)]) w image
-
-# unset multiplot
-
-# unset output
+set output "equilibrium3.pdf"
+set multiplot layout 1,2
+set cbrange [0:0.0215238894548882]
+set title "X_1^*"
+plot 'eq4.csv' skip 1 using 1:2:3 w image
+set cbrange [0.00274363372857308:0.0566752985695734]
+set title "X_2^*"
+plot 'eq4.csv' skip 1 using 1:2:4 w image

@@ -9,9 +9,11 @@ unset key
 
 ## output size and type
 # set terminal epslatex color 10 size 5.2in,2.4in standalone
-set terminal pdfcairo color enhanced size 5.2in,2.4in font "Times, 12pt"
-#set size ratio 1
-set xlabel "time, [days]"
+#set terminal pdfcairo color enhanced size 5.2in,2.4in font ", 10pt"
+set terminal pdfcairo color enhanced size 5.4in,2in font ", 12pt"
+set rmargin 8
+set size ratio 0.75
+set xlabel "t, [days]"
 
 #unset colorbox ## for no colorbox
 
@@ -42,11 +44,10 @@ if (!M || !N) {
 set xrange [0:730]
 #set yrange #[] writeback
 #show yrange
-set y2tics
 #set y2range #[] writeback
 
-set xtics autofreq out nomirror font ", 12pt"
-set ytics autofreq out nomirror font ", 12pt"
+set xtics autofreq 0, 146, 730 out nomirror font ", 9pt"
+set ytics autofreq out nomirror font ", 9pt"
 #et y2tics
 
 set encoding utf8
@@ -58,19 +59,24 @@ set output "solution.pdf"
 # ymin1=0.95*ymin1
 # ymax1=ymax1*1.05
 ymin1=0
-ymax1=0.15
+ymax1=0.14
 
 set multiplot layout 1,2
 
-set ylabel "X_1"
+set ylabel "X_1(t)"
 I1bar = 0.1
 # set arrow 1 from 0,I1bar to GPVAL_DATA_X_MAX, I1bar nohead
 set arrow 1 from 0,I1bar to 730, I1bar nohead
 #set label 1 at 20, I1bar+0.01 '~I_1'
 set yrange [ymin1:ymax1]
+#set ytics autofreq 0, 146, 730 out nomirror font ", 9pt"
+#set ytics auto
+#set ytics in nomirror
+#set ytics autofreq 0, 146, 730 out nomirror font ", 9pt"
 set y2range [ymin1:ymax1]
-set y2tics add ("~I‾_{ 1}" I1bar)
-plot 'patch-dynamics-disjoint-1-1.csv' skip 1 using 1:2 w l dt 1 lw 2 lc rgb "red", 'patch-dynamics-irreducible-1.csv' skip 1 using 1:2 w l dt 1 lw 2 lc rgb "blue", 'patch-dynamics-disjoint-1-2.csv' skip 1 using 1:2 w l dt 2 lw 2 lc rgb "red", 'patch-dynamics-irreducible-2.csv' skip 1 using 1:2 w l dt 2 lw 2 lc rgb "blue"
+unset y2tics
+set y2tics -1,1.5,2 out nomirror add ("~I‾_{ 1}" I1bar)
+plot 'patch-dynamics-disjoint-1-1.csv' skip 1 using 1:2 w l dt 2 lw 2 lc rgb "red", 'patch-dynamics-irreducible-1.csv' skip 1 using 1:2 w l dt 2 lw 2 lc rgb "blue", 'patch-dynamics-disjoint-1-2.csv' skip 1 using 1:2 w l dt 1 lw 2 lc rgb "red", 'patch-dynamics-irreducible-2.csv' skip 1 using 1:2 w l dt 1 lw 2 lc rgb "blue"
 #unset label 1
 unset arrow 1
 
@@ -85,15 +91,16 @@ unset y2tics
 ymin2=0
 ymax2=0.25
 
-set ylabel "X_2"
+set ylabel "X_2(t)"
 I2bar = 0.14
 #set arrow 2 from 0,I2bar to GPVAL_DATA_X_MAX, I2bar nohead
 set arrow 2 from 0,I2bar to 730, I2bar nohead
 #set label 2 at (0, I2bar I2^*)
 set yrange [ymin2:ymax2]
+set ytics auto
 set y2range [ymin2:ymax2]
-set y2tics add ("~I‾_{ 2}" I2bar)
-plot 'patch-dynamics-disjoint-2-1.csv' skip 1 using 1:2 w l dt 1 lw 2 lc rgb "red", 'patch-dynamics-irreducible-1.csv' skip 1 using 1:3 w l dt 1 lw 2 lc rgb "blue", 'patch-dynamics-disjoint-2-2.csv' skip 1 using 1:2 w l dt 2 lw 2 lc rgb "red", 'patch-dynamics-irreducible-2.csv' skip 1 using 1:3 w l dt 2 lw 2 lc rgb "blue"
+set y2tics -1,1.5,2 out nomirror add ("~I‾_{ 2}" I2bar)
+plot 'patch-dynamics-disjoint-2-1.csv' skip 1 using 1:2 w l dt 2 lw 2 lc rgb "red", 'patch-dynamics-irreducible-1.csv' skip 1 using 1:3 w l dt 2 lw 2 lc rgb "blue", 'patch-dynamics-disjoint-2-2.csv' skip 1 using 1:2 w l dt 1 lw 2 lc rgb "red", 'patch-dynamics-irreducible-2.csv' skip 1 using 1:3 w l dt 1 lw 2 lc rgb "blue"
 #unset label 2
 unset arrow 2
 unset multiplot
