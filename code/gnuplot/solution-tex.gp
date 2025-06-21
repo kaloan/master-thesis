@@ -8,9 +8,9 @@ unset key
 # plot "< awk '(NR>2){print;}' datafile"
 
 ## output size and type
-# set terminal epslatex color 10 size 5.2in,2.4in standalone
-#set terminal pdfcairo color enhanced size 5.2in,2.4in font ", 10pt"
-set terminal pdfcairo color enhanced size 5.4in,2in font ", 12pt"
+set terminal epslatex color 10 size 5.2in,2.4in standalone
+# set terminal pdfcairo color enhanced size 5.2in,2.4in font ", 10pt"
+# set terminal pdfcairo color enhanced size 5.4in,2in font ", 12pt"
 set rmargin 8
 set size ratio 0.75
 set xlabel "t, [дни]"
@@ -51,7 +51,7 @@ set ytics autofreq out nomirror font ", 9pt"
 #et y2tics
 
 set encoding utf8
-set output "solution.pdf"
+set output "solution.tex"
 
 # stats 'patch-dynamics-disjoint-1-1.csv' u "x1" nooutput
 # ymax1 = STATS_max
@@ -63,7 +63,7 @@ ymax1=0.14
 
 set multiplot layout 1,2
 
-set ylabel "X_1(t)"
+set ylabel "$X_1(t)$"
 I1bar = 0.1
 # set arrow 1 from 0,I1bar to GPVAL_DATA_X_MAX, I1bar nohead
 set arrow 1 from 0,I1bar to 730, I1bar nohead
@@ -75,7 +75,7 @@ set yrange [ymin1:ymax1]
 #set ytics autofreq 0, 146, 730 out nomirror font ", 9pt"
 set y2range [ymin1:ymax1]
 unset y2tics
-set y2tics -1,1.5,2 out nomirror add ("~I‾_{ 1}" I1bar)
+set y2tics -1,1.5,2 out nomirror add ("$\bar{I}_1$" I1bar)
 plot 'patch-dynamics-disjoint-1-1.csv' skip 1 using 1:2 w l dt 2 lw 2 lc rgb "red", 'patch-dynamics-irreducible-1.csv' skip 1 using 1:2 w l dt 2 lw 2 lc rgb "blue", 'patch-dynamics-disjoint-1-2.csv' skip 1 using 1:2 w l dt 1 lw 2 lc rgb "red", 'patch-dynamics-irreducible-2.csv' skip 1 using 1:2 w l dt 1 lw 2 lc rgb "blue"
 #unset label 1
 unset arrow 1
@@ -91,7 +91,7 @@ unset y2tics
 ymin2=0
 ymax2=0.25
 
-set ylabel "X_2(t)"
+set ylabel "$X_2(t)$"
 I2bar = 0.14
 #set arrow 2 from 0,I2bar to GPVAL_DATA_X_MAX, I2bar nohead
 set arrow 2 from 0,I2bar to 730, I2bar nohead
@@ -99,7 +99,7 @@ set arrow 2 from 0,I2bar to 730, I2bar nohead
 set yrange [ymin2:ymax2]
 set ytics auto
 set y2range [ymin2:ymax2]
-set y2tics -1,1.5,2 out nomirror add ("~I‾_{ 2}" I2bar)
+set y2tics -1,1.5,2 out nomirror add ("$\bar{I}_2$" I2bar)
 plot 'patch-dynamics-disjoint-2-1.csv' skip 1 using 1:2 w l dt 2 lw 2 lc rgb "red", 'patch-dynamics-irreducible-1.csv' skip 1 using 1:3 w l dt 2 lw 2 lc rgb "blue", 'patch-dynamics-disjoint-2-2.csv' skip 1 using 1:2 w l dt 1 lw 2 lc rgb "red", 'patch-dynamics-irreducible-2.csv' skip 1 using 1:3 w l dt 1 lw 2 lc rgb "blue"
 #unset label 2
 unset arrow 2

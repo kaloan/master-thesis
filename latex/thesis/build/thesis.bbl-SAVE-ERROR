@@ -1,0 +1,860 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{Agusto2021}{incollection}{}{}
+      \name{author}{7}{}{%
+        {{hash=853d640e30f91cfa1e5f8c360b9b5d90}{%
+           family={Agusto},
+           familyi={A\bibinitperiod},
+           given={Folashade},
+           giveni={F\bibinitperiod}}}%
+        {{hash=13897178582faf2c9b2d023ebf8539fc}{%
+           family={Goldberg},
+           familyi={G\bibinitperiod},
+           given={Amy},
+           giveni={A\bibinitperiod}}}%
+        {{hash=098179337464eec759579845afe70003}{%
+           family={Ortega},
+           familyi={O\bibinitperiod},
+           given={Omayra},
+           giveni={O\bibinitperiod}}}%
+        {{hash=5f1dc513021b07a97119b753179757b3}{%
+           family={Ponce},
+           familyi={P\bibinitperiod},
+           given={Joan},
+           giveni={J\bibinitperiod}}}%
+        {{hash=e49f7e3bb3261cb450222a07e4c08b17}{%
+           family={Zaytseva},
+           familyi={Z\bibinitperiod},
+           given={Sofya},
+           giveni={S\bibinitperiod}}}%
+        {{hash=c334703e12ed638e40eced9034d6048e}{%
+           family={Sindi},
+           familyi={S\bibinitperiod},
+           given={Suzanne},
+           giveni={S\bibinitperiod}}}%
+        {{hash=10988184436e93c7ace794ca07a9d741}{%
+           family={Blower},
+           familyi={B\bibinitperiod},
+           given={Sally},
+           giveni={S\bibinitperiod}}}%
+      }
+      \name{editor}{3}{}{%
+        {{hash=b9e547a4a87827e8229291cdd0a17278}{%
+           family={Segal},
+           familyi={S\bibinitperiod},
+           given={Rebecca},
+           giveni={R\bibinitperiod}}}%
+        {{hash=8360934439be004f44dc4be8ce248fb5}{%
+           family={Shtylla},
+           familyi={S\bibinitperiod},
+           given={Blerta},
+           giveni={B\bibinitperiod}}}%
+        {{hash=c334703e12ed638e40eced9034d6048e}{%
+           family={Sindi},
+           familyi={S\bibinitperiod},
+           given={Suzanne},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Cham}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{1a8245693570b8d449b9a7e401c6b076}
+      \strng{fullhash}{8ea254a219df3cda0729d737ad0a6b5c}
+      \strng{fullhashraw}{8ea254a219df3cda0729d737ad0a6b5c}
+      \strng{bibnamehash}{1a8245693570b8d449b9a7e401c6b076}
+      \strng{authorbibnamehash}{1a8245693570b8d449b9a7e401c6b076}
+      \strng{authornamehash}{1a8245693570b8d449b9a7e401c6b076}
+      \strng{authorfullhash}{8ea254a219df3cda0729d737ad0a6b5c}
+      \strng{authorfullhashraw}{8ea254a219df3cda0729d737ad0a6b5c}
+      \strng{editorbibnamehash}{bd58afcc2016edac7480baacb9cbf7f9}
+      \strng{editornamehash}{bd58afcc2016edac7480baacb9cbf7f9}
+      \strng{editorfullhash}{bd58afcc2016edac7480baacb9cbf7f9}
+      \strng{editorfullhashraw}{bd58afcc2016edac7480baacb9cbf7f9}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Malaria is a vector-borne disease that is responsible for over 400,000 deaths per year. Although countries around the world have taken measures to decrease the incidence of malaria, many regions remain endemic. Indeed, progress towards elimination has stalled in multiple countries. While control efforts are largely focused at the national level, the movement of individuals between countries may complicate the efficacy of elimination efforts. Here, we consider the case of neighboring countries Botswana and Zimbabwe, connected by human mobility. Both have improved malaria rates in recent years with differing success. We use a two-patch Ross-MacDonald Model with Lagrangian human mobility to examine the coupled disease dynamics between these two countries. In particular, we are interested in the impact that interventions for controlling malaria applied in one country can have on the incidence of malaria in the other country. We find that dynamics and interventions in Zimbabwe can dramatically influence pathways to elimination in Botswana, largely driven by Zimbabwe{’}s population size and larger basic reproduction number.Competing Interest StatementThe authors have declared no competing interest.Funding StatementThis work was initiated at a workshop that was partially supported by NSF-HRD 1500481 {–} AWM ADVANCE grant; and by NSF award for SIAM Interdisciplinary Conferences in the Mathematical and Computational Sciences; number: 1757085, and UCLA IPAM. We acknowledge support from NIH R35GM133481 to AG, and from the Joint DMS/NIGMS Initiative to Support Research at the Interface of the Biological and Mathematical Sciences (R01-GM126548) to SS. The content is solely the responsibility of the authors and does not necessarily represent the official views of the National Institutes of Health or other funders.Author DeclarationsAll relevant ethical guidelines have been followed; any necessary IRB and/or ethics committee approvals have been obtained and details of the IRB/oversight body are included in the manuscript.YesAll necessary patient/participant consent has been obtained and the appropriate institutional forms have been archived.YesI understand that all clinical trials and any other prospective interventional studies must be registered with an ICMJE-approved registry, such as ClinicalTrials.gov. I confirm that any such study reported in the manuscript has been registered and the trial registration ID is provided (note: if posting a prospective study registered retrospectively, please provide a statement in the trial ID field explaining why the study was not registered in advance).YesI have followed all appropriate research reporting guidelines and uploaded the relevant EQUATOR Network research reporting checklist(s) and other pertinent material as supplementary files, if applicable.YesNo data was generated for this study. Data analyzed is public.}
+      \field{booktitle}{Using Mathematics to Understand Biological Complexity: From Cells to Populations}
+      \field{isbn}{978-3-030-57129-0}
+      \field{title}{How Do Interventions Impact Malaria Dynamics Between Neighboring Countries? A Case Study with Botswana and Zimbabwe}
+      \field{year}{2021}
+      \field{pages}{83\bibrangedash 109}
+      \range{pages}{27}
+      \verb{doi}
+      \verb 10.1007/978-3-030-57129-0_5
+      \endverb
+    \endentry
+    \entry{Zidani2013}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=aa8e39c30e6eddd71edf36713a787cef}{%
+           family={Altarovici},
+           familyi={A\bibinitperiod},
+           given={Albert},
+           giveni={A\bibinitperiod}}}%
+        {{hash=799919238fff18c7140b1c99fb13092d}{%
+           family={Bokanowski},
+           familyi={B\bibinitperiod},
+           given={Olivier},
+           giveni={O\bibinitperiod}}}%
+        {{hash=2b1bf74b771adce68f960f8d05f22d43}{%
+           family={Zidani},
+           familyi={Z\bibinitperiod},
+           given={Hasnaa},
+           giveni={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{f28c3e5b5ff93af2a32e9aa548c4bbd8}
+      \strng{fullhash}{f28c3e5b5ff93af2a32e9aa548c4bbd8}
+      \strng{fullhashraw}{f28c3e5b5ff93af2a32e9aa548c4bbd8}
+      \strng{bibnamehash}{f28c3e5b5ff93af2a32e9aa548c4bbd8}
+      \strng{authorbibnamehash}{f28c3e5b5ff93af2a32e9aa548c4bbd8}
+      \strng{authornamehash}{f28c3e5b5ff93af2a32e9aa548c4bbd8}
+      \strng{authorfullhash}{f28c3e5b5ff93af2a32e9aa548c4bbd8}
+      \strng{authorfullhashraw}{f28c3e5b5ff93af2a32e9aa548c4bbd8}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{ESAIM: COCV}
+      \field{number}{2}
+      \field{title}{A general Hamilton-Jacobi framework for non-linear state-constrained control problems}
+      \field{volume}{19}
+      \field{year}{2013}
+      \field{pages}{337\bibrangedash 357}
+      \range{pages}{21}
+      \verb{doi}
+      \verb 10.1051/cocv/2012011
+      \endverb
+    \endentry
+    \entry{Aubin2011}{book}{}{}
+      \name{author}{3}{}{%
+        {{hash=8d7b99825f254daaa5a8485ad9ffc25f}{%
+           family={Aubin},
+           familyi={A\bibinitperiod},
+           given={Jean-Pierre},
+           giveni={J\bibinithyphendelim P\bibinitperiod}}}%
+        {{hash=b294f0d3a2c6bab74ae96ed8c1a11b01}{%
+           family={Bayen},
+           familyi={B\bibinitperiod},
+           given={Alexandre},
+           giveni={A\bibinitperiod}}}%
+        {{hash=ec57564ba6211a75f778c6a8ee171887}{%
+           family={Saint-Pierre},
+           familyi={S\bibinithyphendelim P\bibinitperiod},
+           given={Patrick},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{191b771e8df2f0add95cf49be3e1cb12}
+      \strng{fullhash}{191b771e8df2f0add95cf49be3e1cb12}
+      \strng{fullhashraw}{191b771e8df2f0add95cf49be3e1cb12}
+      \strng{bibnamehash}{191b771e8df2f0add95cf49be3e1cb12}
+      \strng{authorbibnamehash}{191b771e8df2f0add95cf49be3e1cb12}
+      \strng{authornamehash}{191b771e8df2f0add95cf49be3e1cb12}
+      \strng{authorfullhash}{191b771e8df2f0add95cf49be3e1cb12}
+      \strng{authorfullhashraw}{191b771e8df2f0add95cf49be3e1cb12}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-3-642-16683-9}
+      \field{month}{01}
+      \field{title}{Viability Theory: New Directions}
+      \field{year}{2011}
+      \verb{doi}
+      \verb 10.1007/978-3-642-16684-6
+      \endverb
+    \endentry
+    \entry{Bacaer2011}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=5614bcbaca17a7a1ddb07a3da448a77c}{%
+           family={Bacaër},
+           familyi={B\bibinitperiod},
+           given={Nicolas},
+           giveni={N\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{5614bcbaca17a7a1ddb07a3da448a77c}
+      \strng{fullhash}{5614bcbaca17a7a1ddb07a3da448a77c}
+      \strng{fullhashraw}{5614bcbaca17a7a1ddb07a3da448a77c}
+      \strng{bibnamehash}{5614bcbaca17a7a1ddb07a3da448a77c}
+      \strng{authorbibnamehash}{5614bcbaca17a7a1ddb07a3da448a77c}
+      \strng{authornamehash}{5614bcbaca17a7a1ddb07a3da448a77c}
+      \strng{authorfullhash}{5614bcbaca17a7a1ddb07a3da448a77c}
+      \strng{authorfullhashraw}{5614bcbaca17a7a1ddb07a3da448a77c}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{1}
+      \field{isbn}{978-0-85729-114-1}
+      \field{langid}{english}
+      \field{title}{A short history of mathematical population dynamics}
+      \field{year}{2011}
+    \endentry
+    \entry{Bichara2016}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=5da039e5e4659bf1c8bd859a77582b02}{%
+           family={Bichara},
+           familyi={B\bibinitperiod},
+           given={Derdei},
+           giveni={D\bibinitperiod}}}%
+        {{hash=21767f5711474b994ee01f850a87202b}{%
+           family={Castillo-Chavez},
+           familyi={C\bibinithyphendelim C\bibinitperiod},
+           given={Carlos},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \strng{namehash}{c5136029b4979113be6daf36df26532a}
+      \strng{fullhash}{c5136029b4979113be6daf36df26532a}
+      \strng{fullhashraw}{c5136029b4979113be6daf36df26532a}
+      \strng{bibnamehash}{c5136029b4979113be6daf36df26532a}
+      \strng{authorbibnamehash}{c5136029b4979113be6daf36df26532a}
+      \strng{authornamehash}{c5136029b4979113be6daf36df26532a}
+      \strng{authorfullhash}{c5136029b4979113be6daf36df26532a}
+      \strng{authorfullhashraw}{c5136029b4979113be6daf36df26532a}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{10}
+      \field{journaltitle}{Mathematical Biosciences}
+      \field{langid}{english}
+      \field{month}{9}
+      \field{title}{Vector-borne diseases models with residence times – A Lagrangian perspective}
+      \field{year}{2016}
+      \field{dateera}{ce}
+    \endentry
+    \entry{Brualdi1991}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=bbcde3fc3a12a04d2fd64a1ba2bdc464}{%
+           family={Brualdi},
+           familyi={B\bibinitperiod},
+           given={Richard\bibnamedelima A.},
+           giveni={R\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=9c9aa2468970ad7b9541f932d1257a47}{%
+           family={Ryser},
+           familyi={R\bibinitperiod},
+           given={Herbert\bibnamedelima J.},
+           giveni={H\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{f41691b81c48bf0d036176ac859c753c}
+      \strng{fullhash}{f41691b81c48bf0d036176ac859c753c}
+      \strng{fullhashraw}{f41691b81c48bf0d036176ac859c753c}
+      \strng{bibnamehash}{f41691b81c48bf0d036176ac859c753c}
+      \strng{authorbibnamehash}{f41691b81c48bf0d036176ac859c753c}
+      \strng{authornamehash}{f41691b81c48bf0d036176ac859c753c}
+      \strng{authorfullhash}{f41691b81c48bf0d036176ac859c753c}
+      \strng{authorfullhashraw}{f41691b81c48bf0d036176ac859c753c}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{1}
+      \field{isbn}{978-0-521-32265-2}
+      \field{langid}{english}
+      \field{series}{Encyclopedia of Mathematics and its Applications №39}
+      \field{title}{Combinatorial Matrix Theory}
+      \field{year}{1991}
+    \endentry
+    \entry{Capasso2008}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=15740e5f3be20e560693ac922df86362}{%
+           family={Capasso},
+           familyi={C\bibinitperiod},
+           given={Vincenzo},
+           giveni={V\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{15740e5f3be20e560693ac922df86362}
+      \strng{fullhash}{15740e5f3be20e560693ac922df86362}
+      \strng{fullhashraw}{15740e5f3be20e560693ac922df86362}
+      \strng{bibnamehash}{15740e5f3be20e560693ac922df86362}
+      \strng{authorbibnamehash}{15740e5f3be20e560693ac922df86362}
+      \strng{authornamehash}{15740e5f3be20e560693ac922df86362}
+      \strng{authorfullhash}{15740e5f3be20e560693ac922df86362}
+      \strng{authorfullhashraw}{15740e5f3be20e560693ac922df86362}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{2}
+      \field{isbn}{978-3-540-56526-0}
+      \field{langid}{english}
+      \field{title}{Mathematical Structures of Epidemic Systems}
+      \field{year}{2008}
+      \field{pages}{16\bibrangessep 27\bibrangedash 30\bibrangessep 115\bibrangessep 229\bibrangedash 235}
+      \range{pages}{13}
+    \endentry
+    \entry{Cosner2009}{article}{}{}
+      \name{author}{8}{}{%
+        {{hash=1c194dffe3e220ba429877c6baacc78c}{%
+           family={Cosner},
+           familyi={C\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod}}}%
+        {{hash=88df1cecbdb34f184bbcece24d93f96e}{%
+           family={Beier},
+           familyi={B\bibinitperiod},
+           given={J.C.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=099c514a49b53f7651e9f24ea6e00e9c}{%
+           family={Cantrell},
+           familyi={C\bibinitperiod},
+           given={R.S.},
+           giveni={R\bibinitperiod}}}%
+        {{hash=58618992d935c9e2ca6fcec067153600}{%
+           family={Impoinvil},
+           familyi={I\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=e97c6d862b4512b1b3f6b3080d1a250d}{%
+           family={Kapitanski},
+           familyi={K\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod}}}%
+        {{hash=6b9acf650dc02492a9824f062eea46a8}{%
+           family={Potts},
+           familyi={P\bibinitperiod},
+           given={M.D.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=f711c1b3155a62a0871ac7418da1957e}{%
+           family={Troyo},
+           familyi={T\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=6b201a7960bc77c35ed70c4a70d03ba8}{%
+           family={Ruan},
+           familyi={R\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{f4b395200d12a5981e5d594b0c57f118}
+      \strng{fullhash}{825faafc4a74ba301f1f54f6786db4ae}
+      \strng{fullhashraw}{825faafc4a74ba301f1f54f6786db4ae}
+      \strng{bibnamehash}{f4b395200d12a5981e5d594b0c57f118}
+      \strng{authorbibnamehash}{f4b395200d12a5981e5d594b0c57f118}
+      \strng{authornamehash}{f4b395200d12a5981e5d594b0c57f118}
+      \strng{authorfullhash}{825faafc4a74ba301f1f54f6786db4ae}
+      \strng{authorfullhashraw}{825faafc4a74ba301f1f54f6786db4ae}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{With the recent resurgence of vector-borne diseases due to urbanization and development there is an urgent need to understand the dynamics of vector-borne diseases in rapidly changing urban environments. For example, many empirical studies have produced the disturbing finding that diseases continue to persist in modern city centers with zero or low rates of transmission. We develop spatial models of vector-borne disease dynamics on a network of patches to examine how the movement of humans in heterogeneous environments affects transmission. We show that the movement of humans between patches is sufficient to maintain disease persistence in patches with zero transmission. We construct two classes of models using different approaches: (i) Lagrangian models that mimic human commuting behavior and (ii) Eulerian models that mimic human migration. We determine the basic reproduction number R0 for both modeling approaches. We show that for both approaches that if the disease-free equilibrium is stable (R0<1) then it is globally stable and if the disease-free equilibrium is unstable (R0>1) then there exists a unique positive (endemic) equilibrium that is globally stable among positive solutions. Finally, we prove in general that Lagrangian and Eulerian modeling approaches are not equivalent. The modeling approaches presented provide a framework to explore spatial vector-borne disease dynamics and control in heterogeneous environments. As an example, we consider two patches in which the disease dies out in both patches when there is no movement between them. Numerical simulations demonstrate that the disease becomes endemic in both patches when humans move between the two patches.}
+      \field{issn}{0022-5193}
+      \field{journaltitle}{Journal of Theoretical Biology}
+      \field{number}{4}
+      \field{title}{The effects of human movement on the persistence of vector-borne diseases}
+      \field{volume}{258}
+      \field{year}{2009}
+      \field{pages}{550\bibrangedash 560}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1016/j.jtbi.2009.02.016
+      \endverb
+      \keyw{Vector-borne disease,Human movement,Discrete diffusion,Basic reproduction number,Disease-free and endemic equilibria,Stability}
+    \endentry
+    \entry{DeLara2016}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=41300aec2eb138395e2a734b3e3f3dd9}{%
+           family={{De Lara}},
+           familyi={D\bibinitperiod},
+           given={Michel},
+           giveni={M\bibinitperiod}}}%
+        {{hash=91711cb9b007f05f8c2ced4839278ec1}{%
+           family={Salcedo},
+           familyi={S\bibinitperiod},
+           given={Lilian\bibnamedelimb Sofia\bibnamedelima Sepulveda},
+           giveni={L\bibinitperiod\bibinitdelim S\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \strng{namehash}{7fb93776b3414d20a51bd8ca29b836c6}
+      \strng{fullhash}{7fb93776b3414d20a51bd8ca29b836c6}
+      \strng{fullhashraw}{7fb93776b3414d20a51bd8ca29b836c6}
+      \strng{bibnamehash}{7fb93776b3414d20a51bd8ca29b836c6}
+      \strng{authorbibnamehash}{7fb93776b3414d20a51bd8ca29b836c6}
+      \strng{authornamehash}{7fb93776b3414d20a51bd8ca29b836c6}
+      \strng{authorfullhash}{7fb93776b3414d20a51bd8ca29b836c6}
+      \strng{authorfullhashraw}{7fb93776b3414d20a51bd8ca29b836c6}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In mathematical epidemiology, epidemic control often aims at driving the number of infected humans to zero, asymptotically. However, during the transitory phase, the number of infected individuals can peak at high values. Can we limit the number of infected humans at the peak? This is the question we address. More precisely, we consider a controlled version of the Ross-Macdonald epidemiological dynamical model: proportions of infected individuals and proportions of infected mosquitoes (vector) are state variables, and vector mortality is the control variable. We say that a state is viable if there exists at least one admissible control trajectory – time-dependent mosquito mortality rates bounded by control capacity – such that, starting from this state, the resulting proportion of infected individuals remains below a given infection cap for all times. The so-called viability kernel is the set of viable states. We obtain three different expressions of the viability kernel, depending on the couple control capacity-infection cap. In the comfortable case, the infection cap is high, the viability kernel is maximal and all admissible control trajectories are viable. In the desperate case, both control capacity and infection cap are too low and the viability kernel is the zero equilibrium without infection. In the remaining viable case, the viability kernel is neither zero nor maximal and not all admissible control trajectories are viable. We provide a numerical application in the case of the dengue outbreak in 2013 in Cali, Colombia.}
+      \field{issn}{0025-5564}
+      \field{journaltitle}{Mathematical Biosciences}
+      \field{title}{Viable control of an epidemiological model}
+      \field{volume}{280}
+      \field{year}{2016}
+      \field{pages}{24\bibrangedash 37}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.1016/j.mbs.2016.07.010
+      \endverb
+      \keyw{Epidemiology,Control theory,Viability theory,Ross-Macdonald model,Dengue}
+    \endentry
+    \entry{Diekmann1990}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=666edd8d62f07902a61ff562796e9b8b}{%
+           family={Diekmann},
+           familyi={D\bibinitperiod},
+           given={Odo},
+           giveni={O\bibinitperiod}}}%
+        {{hash=45ae1e36c1579760276ddb1f4e094300}{%
+           family={Heesterbeek},
+           familyi={H\bibinitperiod},
+           given={J.\bibnamedelimi A.\bibnamedelimi P.},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=7e19760499539c969a441a824d348892}{%
+           family={Metz},
+           familyi={M\bibinitperiod},
+           given={J.\bibnamedelimi A.\bibnamedelimi J.},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{52a2c73fc2a54dec7b4bbc7d10e29ef4}
+      \strng{fullhash}{52a2c73fc2a54dec7b4bbc7d10e29ef4}
+      \strng{fullhashraw}{52a2c73fc2a54dec7b4bbc7d10e29ef4}
+      \strng{bibnamehash}{52a2c73fc2a54dec7b4bbc7d10e29ef4}
+      \strng{authorbibnamehash}{52a2c73fc2a54dec7b4bbc7d10e29ef4}
+      \strng{authornamehash}{52a2c73fc2a54dec7b4bbc7d10e29ef4}
+      \strng{authorfullhash}{52a2c73fc2a54dec7b4bbc7d10e29ef4}
+      \strng{authorfullhashraw}{52a2c73fc2a54dec7b4bbc7d10e29ef4}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The expected number of secondary cases produced by a typical infected individual during its entire period of infectiousness in a completely susceptible population is mathematically defined as the dominant eigenvalue of a positive linear operator. It is shown that in certain special cases one can easily compute or estimate this eigenvalue. Several examples involving various structuring variables like age, sexual disposition and activity are presented.}
+      \field{issn}{1432-1416}
+      \field{journaltitle}{Journal of Mathematical Biology}
+      \field{month}{07}
+      \field{number}{4}
+      \field{title}{On the definition and the computation of the basic reproduction ratio R0 in models for infectious diseases in heterogeneous populations}
+      \field{volume}{28}
+      \field{year}{1990}
+      \field{pages}{365\bibrangedash 382}
+      \range{pages}{18}
+      \verb{doi}
+      \verb 10.1007/BF00178324
+      \endverb
+    \endentry
+    \entry{Driessche2002}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=86796f8945249a33ddaed496b29410fa}{%
+           family={Driessche\bibnamedelimb \& James\bibnamedelima Watmough},
+           familyi={D\bibinitperiod\bibinitdelim \\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim W\bibinitperiod},
+           given={Pauline},
+           giveni={P\bibinitperiod},
+           prefix={van\bibnamedelima den},
+           prefixi={v\bibinitperiod\bibinitdelim d\bibinitperiod}}}%
+      }
+      \strng{namehash}{86796f8945249a33ddaed496b29410fa}
+      \strng{fullhash}{86796f8945249a33ddaed496b29410fa}
+      \strng{fullhashraw}{86796f8945249a33ddaed496b29410fa}
+      \strng{bibnamehash}{86796f8945249a33ddaed496b29410fa}
+      \strng{authorbibnamehash}{86796f8945249a33ddaed496b29410fa}
+      \strng{authornamehash}{86796f8945249a33ddaed496b29410fa}
+      \strng{authorfullhash}{86796f8945249a33ddaed496b29410fa}
+      \strng{authorfullhashraw}{86796f8945249a33ddaed496b29410fa}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A precise definition of the basic reproduction number, R0, is presented for a general compartmental disease transmission model based on a system of ordinary differential equations. It is shown that, if R0<1, then the disease free equilibrium is locally asymptotically stable; whereas if R0>1, then it is unstable. Thus, R0 is a threshold parameter for the model. An analysis of the local centre manifold yields a simple criterion for the existence and stability of super- and sub-threshold endemic equilibria for R0 near one. This criterion, together with the definition of R0, is illustrated by treatment, multigroup, staged progression, multistrain and vector–host models and can be applied to more complex models. The results are significant for disease control.}
+      \field{issn}{0025-5564}
+      \field{journaltitle}{Mathematical Biosciences}
+      \field{number}{1}
+      \field{title}{Reproduction numbers and sub-threshold endemic equilibria for compartmental models of disease transmission}
+      \field{volume}{180}
+      \field{year}{2002}
+      \field{pages}{29\bibrangedash 48}
+      \range{pages}{20}
+      \verb{doi}
+      \verb 10.1016/S0025-5564(02)00108-6
+      \endverb
+      \keyw{Basic reproduction number,Sub-threshold equilibrium,Disease transmission model,Disease control}
+    \endentry
+    \entry{Elbers2015}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=39ea2e0f9ed82a9326b125ffd3bd0124}{%
+           family={Elbers},
+           familyi={E\bibinitperiod},
+           given={Armin\bibnamedelimb R.\bibnamedelimi W.},
+           giveni={A\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=b7abb055e5d31f4481594c16e4f9f53f}{%
+           family={Koenraadt},
+           familyi={K\bibinitperiod},
+           given={C.\bibnamedelimi J.\bibnamedelimi M.},
+           giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=2a9777de5a9707533362cf5a8c1a871b}{%
+           family={Meiswinkel},
+           familyi={M\bibinitperiod},
+           given={Rudy},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{location}{1}{%
+        {France}%
+      }
+      \strng{namehash}{1cdf7b29937dae0cd0e33884849e41fc}
+      \strng{fullhash}{1cdf7b29937dae0cd0e33884849e41fc}
+      \strng{fullhashraw}{1cdf7b29937dae0cd0e33884849e41fc}
+      \strng{bibnamehash}{1cdf7b29937dae0cd0e33884849e41fc}
+      \strng{authorbibnamehash}{1cdf7b29937dae0cd0e33884849e41fc}
+      \strng{authornamehash}{1cdf7b29937dae0cd0e33884849e41fc}
+      \strng{authorfullhash}{1cdf7b29937dae0cd0e33884849e41fc}
+      \strng{authorfullhashraw}{1cdf7b29937dae0cd0e33884849e41fc}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Vector-borne animal diseases pose a continuous and substantial threat to livestock economies around the globe. Increasing international travel, the globalisation of trade, and climate change are likely to play a progressively more important role in the introduction, establishment and spread of arthropod-borne pathogens worldwide. A review of the literature reveals that many climatic variables, functioning singly or in combination, exert varying effects on the distribution and range of Culicoides vector midges and mosquitoes. For example, higher temperatures may be associated with increased insect abundance--thereby amplifying the risk of disease transmission--but there are no indications yet of dramatic shifts occurring in the geographic range of Culicoides midges. However, the same cannot be said for mosquitoes: over the last few decades, multiple Asian species have established themselves in Europe, spread and are unlikely to ever be eradicated. Research on how insects respond to changes in climate is still in its infancy. The authors argue that we need to grasp how other annectant changes, such as extremes in precipitation (drought and flooding), may affect the dispersal capability of mosquitoes. Models are useful for assessing the interplay between mosquito vectors expanding their range and the native flora and fauna; however, ecological studies employing classical mark-release-recapture techniques remain essential for addressing fundamental questions about the survival and dispersal of mosquito species, with the resulting parameters fed directly into new-generation disease transmission models. Studies on the eventual impact of mosquitoes on animal and human health should be tackled through large-scale integrated research programmes. Such an approach calls for more collaborative efforts, along the lines of the One Health Initiative.}
+      \field{journaltitle}{Rev Sci Tech}
+      \field{month}{04}
+      \field{number}{1}
+      \field{title}{Mosquitoes and Culicoides biting midges: vector range and the influence of climate change}
+      \field{volume}{34}
+      \field{year}{2015}
+      \field{pages}{123\bibrangedash 137}
+      \range{pages}{15}
+    \endentry
+    \entry{Grancaric2019}{inproceedings}{}{}
+      \name{author}{3}{}{%
+        {{hash=5fc2c9ed1abdb56213fc18888403eee8}{%
+           family={Grancarić},
+           familyi={G\bibinitperiod},
+           given={Ana\bibnamedelima Marija},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=d1c77d0a1dc07ac678c2926d3971b46a}{%
+           family={Botteri},
+           familyi={B\bibinitperiod},
+           given={Lea},
+           giveni={L\bibinitperiod}}}%
+        {{hash=2970ddd7b35f8ec28ce11f1babbaf04e}{%
+           family={Ghaffari},
+           familyi={G\bibinitperiod},
+           given={Peyman},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \list{location}{1}{%
+        {Ghent, Belgium}%
+      }
+      \strng{namehash}{3f0c352df024a17da34d7b321d9d0fa9}
+      \strng{fullhash}{3f0c352df024a17da34d7b321d9d0fa9}
+      \strng{fullhashraw}{3f0c352df024a17da34d7b321d9d0fa9}
+      \strng{bibnamehash}{3f0c352df024a17da34d7b321d9d0fa9}
+      \strng{authorbibnamehash}{3f0c352df024a17da34d7b321d9d0fa9}
+      \strng{authornamehash}{3f0c352df024a17da34d7b321d9d0fa9}
+      \strng{authorfullhash}{3f0c352df024a17da34d7b321d9d0fa9}
+      \strng{authorfullhashraw}{3f0c352df024a17da34d7b321d9d0fa9}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Present paper discusses about mosquito repellents on textile and paints as one of attempt for protecting people against invasive mosquitoes which transmit arboviruses such as Zika, dengue and chikungunya virus, West Nile fever, Malaria, etc. For this purpose, the cotton fabric has been treated with selected repellents (Immortelle oil, Waterglass and Vibroactivated zeolites) for textiles and paints. For paints, Immortelle oil repellent was applied by coating special paper with paint layers between 80-160μm, and dry on the air. This paper will discuss the repellents efficacy, the changes of some textile structure parameters with fabric density, the amount of adsorbed repellents, by using gravimetric method, air permeability tester, pore dimensions Bubble Point measurements device and SEM image analyser.}
+      \field{booktitle}{AUTEX2019 World Textile Conference on Textiles at the Crossroads}
+      \field{month}{06}
+      \field{title}{Combating invasive mosquitoes by textiles and paints}
+      \field{volume}{19}
+      \field{year}{2019}
+      \keyw{invasive mosquitoes,repellents,cotton fabric,paints}
+    \endentry
+    \entry{Osher2003}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=d4ee7c8daf846ee1eddbbe56e4d658d9}{%
+           family={Osher},
+           familyi={O\bibinitperiod},
+           given={Stanley},
+           giveni={S\bibinitperiod}}}%
+        {{hash=73fcba443bcb76d103964120ede9df59}{%
+           family={Fedkiw},
+           familyi={F\bibinitperiod},
+           given={Ronald},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{998f16479d3a7db97043bb8b1e0ef754}
+      \strng{fullhash}{998f16479d3a7db97043bb8b1e0ef754}
+      \strng{fullhashraw}{998f16479d3a7db97043bb8b1e0ef754}
+      \strng{bibnamehash}{998f16479d3a7db97043bb8b1e0ef754}
+      \strng{authorbibnamehash}{998f16479d3a7db97043bb8b1e0ef754}
+      \strng{authornamehash}{998f16479d3a7db97043bb8b1e0ef754}
+      \strng{authorfullhash}{998f16479d3a7db97043bb8b1e0ef754}
+      \strng{authorfullhashraw}{998f16479d3a7db97043bb8b1e0ef754}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{1}
+      \field{isbn}{978-0-387-95482-1}
+      \field{langid}{english}
+      \field{title}{Level Set Methods and Dynamic Implicit Surfaces}
+      \field{year}{2003}
+    \endentry
+    \entry{Rashkov2021}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=94ace89e91a7a26759a7af8ff23307ea}{%
+           family={Rashkov},
+           familyi={R\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{94ace89e91a7a26759a7af8ff23307ea}
+      \strng{fullhash}{94ace89e91a7a26759a7af8ff23307ea}
+      \strng{fullhashraw}{94ace89e91a7a26759a7af8ff23307ea}
+      \strng{bibnamehash}{94ace89e91a7a26759a7af8ff23307ea}
+      \strng{authorbibnamehash}{94ace89e91a7a26759a7af8ff23307ea}
+      \strng{authornamehash}{94ace89e91a7a26759a7af8ff23307ea}
+      \strng{authorfullhash}{94ace89e91a7a26759a7af8ff23307ea}
+      \strng{authorfullhashraw}{94ace89e91a7a26759a7af8ff23307ea}
+      \field{extraname}{1}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We investigate a model for a vector-borne disease of susceptible-infected-removed type for the hosts in the presence of control measures and state constraints. The control is based on the use of textiles and household items treated with mosquito repellents which alter the mosquitos' host seeking behaviour. We perform a viability analysis of the model, which amounts to finding a viability kernel, or a set of initial conditions such that the proportion of infected individuals in the controlled system remains below a target infection cap for all future times. The viability kernel is characterised by a variational formulation. It is computed numerically from the sub-zero level-set of a value function that solves a Hamilton-Jacobi-Bellman equation.}
+      \field{issn}{0022-247X}
+      \field{journaltitle}{Journal of Mathematical Analysis and Applications}
+      \field{number}{1}
+      \field{title}{A model for a vector-borne disease with control based on mosquito repellents: A viability analysis}
+      \field{volume}{498}
+      \field{year}{2021}
+      \field{pages}{124958}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1016/j.jmaa.2021.124958
+      \endverb
+      \keyw{Vector-borne diseases,Mosquito repellents,Control theory,Viability}
+    \endentry
+    \entry{Rashkov2022}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=94ace89e91a7a26759a7af8ff23307ea}{%
+           family={Rashkov},
+           familyi={R\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \strng{namehash}{94ace89e91a7a26759a7af8ff23307ea}
+      \strng{fullhash}{94ace89e91a7a26759a7af8ff23307ea}
+      \strng{fullhashraw}{94ace89e91a7a26759a7af8ff23307ea}
+      \strng{bibnamehash}{94ace89e91a7a26759a7af8ff23307ea}
+      \strng{authorbibnamehash}{94ace89e91a7a26759a7af8ff23307ea}
+      \strng{authornamehash}{94ace89e91a7a26759a7af8ff23307ea}
+      \strng{authorfullhash}{94ace89e91a7a26759a7af8ff23307ea}
+      \strng{authorfullhashraw}{94ace89e91a7a26759a7af8ff23307ea}
+      \field{extraname}{2}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We study a simple model for a vector-borne disease with control intervention based on clothes and household items treated with mosquito repellents, which has constraints on the extent (population coverage) and on the time duration reflecting technological and physical properties. We compute first, the viability kernel of initial data of the model for which exists an optimal control that maintains the infected host population below a given cap for all future times. Second, we use the viability kernel to compute the set of initial data of the model for which exists an optimal control that brings this population below the cap in a time period not exceeding the intervention's duration. We discuss applications of this framework in predicting and evaluating the performance of control interventions under the given type of constraints.}
+      \field{issn}{1547-1063}
+      \field{journaltitle}{Mathematical biosciences and engineering : MBE}
+      \field{langid}{english}
+      \field{month}{02}
+      \field{number}{4}
+      \field{title}{Modeling repellent-based interventions for control of vector-borne diseases with constraints on extent and duration}
+      \field{volume}{19}
+      \field{year}{2022}
+      \field{pages}{4038\bibrangedash 4061}
+      \range{pages}{24}
+      \verb{doi}
+      \verb 10.3934/mbe.2022185
+      \endverb
+    \endentry
+    \entry{Ruktanonchai2016}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=750955d3d0db2260d9d3173637355695}{%
+           family={Ruktanonchai},
+           familyi={R\bibinitperiod},
+           given={Nick\bibnamedelima W.},
+           giveni={N\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=8e6d2fb37e8e697bc7f7e2a4b78f4be1}{%
+           family={Smith},
+           familyi={S\bibinitperiod},
+           given={David\bibnamedelima L.},
+           giveni={D\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=77adbf333365e3b5647c8fc99a2b66dc}{%
+           family={{De Leenheer}},
+           familyi={D\bibinitperiod},
+           given={Patrick},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{9201bc51958fae40fd0e3f6e39ff9d49}
+      \strng{fullhash}{9201bc51958fae40fd0e3f6e39ff9d49}
+      \strng{fullhashraw}{9201bc51958fae40fd0e3f6e39ff9d49}
+      \strng{bibnamehash}{9201bc51958fae40fd0e3f6e39ff9d49}
+      \strng{authorbibnamehash}{9201bc51958fae40fd0e3f6e39ff9d49}
+      \strng{authornamehash}{9201bc51958fae40fd0e3f6e39ff9d49}
+      \strng{authorfullhash}{9201bc51958fae40fd0e3f6e39ff9d49}
+      \strng{authorfullhashraw}{9201bc51958fae40fd0e3f6e39ff9d49}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We consider the dynamics of a mosquito-transmitted pathogen in a multi-patch Ross–Macdonald malaria model with mobile human hosts, mobile vectors, and a heterogeneous environment. We show the existence of a globally stable steady state, and a threshold that determines whether a pathogen is either absent from all patches, or endemic and present at some level in all patches. Each patch is characterized by a local basic reproduction number, whose value predicts whether the disease is cleared or not when the patch is isolated: patches are known as “demographic sinks” if they have a local basic reproduction number less than one, and hence would clear the disease if isolated; patches with a basic reproduction number above one would sustain endemic infection in isolation, and become “demographic sources” of parasites when connected to other patches. Sources are also considered focal areas of transmission for the larger landscape, as they export excess parasites to other areas and can sustain parasite populations. We show how to determine the various basic reproduction numbers from steady state estimates in the patched network and knowledge of additional model parameters, hereby identifying parasite sources in the process. This is useful in the context of control of the infection on natural landscapes, because a commonly suggested strategy is to target focal areas, in order to make their corresponding basic reproduction numbers less than one, effectively turning them into sinks. We show that this is indeed a successful control strategy—albeit a conservative and possibly expensive one—in case either the human host, or the vector does not move. However, we also show that when both humans and vectors move, this strategy may fail, depending on the specific movement patterns exhibited by hosts and vectors.}
+      \field{issn}{0025-5564}
+      \field{journaltitle}{Mathematical Biosciences}
+      \field{title}{Parasite sources and sinks in a patched Ross–Macdonald malaria model with human and mosquito movement: Implications for control}
+      \field{volume}{279}
+      \field{year}{2016}
+      \field{pages}{90\bibrangedash 101}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1016/j.mbs.2016.06.012
+      \endverb
+      \keyw{Malaria transmission,Patched model,Monotone systems,Basic reproduction number,Control}
+    \endentry
+    \entry{Smith2012}{article}{}{}
+      \name{author}{6}{}{%
+        {{hash=8e6d2fb37e8e697bc7f7e2a4b78f4be1}{%
+           family={Smith},
+           familyi={S\bibinitperiod},
+           given={David\bibnamedelima L.},
+           giveni={D\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=2325c3674edbf26b89b85d6ff3774e11}{%
+           family={Battle},
+           familyi={B\bibinitperiod},
+           given={Katherine\bibnamedelima E.},
+           giveni={K\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=fd610c8afe891528a8628d6ccb932fa8}{%
+           family={Hay},
+           familyi={H\bibinitperiod},
+           given={Simon\bibnamedelima I.},
+           giveni={S\bibinitperiod\bibinitdelim I\bibinitperiod}}}%
+        {{hash=1e22d4b00c9ada21426d9cf033f1b650}{%
+           family={Barker},
+           familyi={B\bibinitperiod},
+           given={Christopher\bibnamedelima M.},
+           giveni={C\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=459fc95c4098f2dec4c9f740f0334326}{%
+           family={Scott},
+           familyi={S\bibinitperiod},
+           given={Thomas\bibnamedelima W.},
+           giveni={T\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=c29499610283fc160ef8322a7cae4ae2}{%
+           family={McKenzie},
+           familyi={M\bibinitperiod},
+           given={F.\bibnamedelimi Ellis},
+           giveni={F\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{location}{1}{%
+        {United States}%
+      }
+      \strng{namehash}{a2b6e524d621bd940634d84a802a8753}
+      \strng{fullhash}{b270628c337a471ccd5c1c2a8b9bf09b}
+      \strng{fullhashraw}{b270628c337a471ccd5c1c2a8b9bf09b}
+      \strng{bibnamehash}{a2b6e524d621bd940634d84a802a8753}
+      \strng{authorbibnamehash}{a2b6e524d621bd940634d84a802a8753}
+      \strng{authornamehash}{a2b6e524d621bd940634d84a802a8753}
+      \strng{authorfullhash}{b270628c337a471ccd5c1c2a8b9bf09b}
+      \strng{authorfullhashraw}{b270628c337a471ccd5c1c2a8b9bf09b}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Ronald Ross and George Macdonald are credited with developing a mathematical model of mosquito-borne pathogen transmission. A systematic historical review suggests that several mathematicians and scientists contributed to development of the Ross-Macdonald model over a period of 70 years. Ross developed two different mathematical models, Macdonald a third, and various ''Ross-Macdonald'' mathematical models exist. Ross-Macdonald models are best defined by a consensus set of assumptions. The mathematical model is just one part of a theory for the dynamics and control of mosquito-transmitted pathogens that also includes epidemiological and entomological concepts and metrics for measuring transmission. All the basic elements of the theory had fallen into place by the end of the Global Malaria Eradication Programme (GMEP, 1955-1969) with the concept of vectorial capacity, methods for measuring key components of transmission by mosquitoes, and a quantitative theory of vector control. The Ross-Macdonald theory has since played a central role in development of research on mosquito-borne pathogen transmission and the development of strategies for mosquito-borne disease prevention.}
+      \field{journaltitle}{PLoS Pathog}
+      \field{month}{04}
+      \field{number}{4}
+      \field{title}{Ross, Macdonald, and a theory for the dynamics and control of mosquito-transmitted pathogens}
+      \field{volume}{8}
+      \field{year}{2012}
+      \field{pages}{e1002588}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1371/journal.ppat.1002588
+      \endverb
+    \endentry
+    \entry{Smith1986}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=59bc72cbdb39863da7ce348c0a579f35}{%
+           family={Smith},
+           familyi={S\bibinitperiod},
+           given={Hal\bibnamedelima L.},
+           giveni={H\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \strng{namehash}{59bc72cbdb39863da7ce348c0a579f35}
+      \strng{fullhash}{59bc72cbdb39863da7ce348c0a579f35}
+      \strng{fullhashraw}{59bc72cbdb39863da7ce348c0a579f35}
+      \strng{bibnamehash}{59bc72cbdb39863da7ce348c0a579f35}
+      \strng{authorbibnamehash}{59bc72cbdb39863da7ce348c0a579f35}
+      \strng{authornamehash}{59bc72cbdb39863da7ce348c0a579f35}
+      \strng{authorfullhash}{59bc72cbdb39863da7ce348c0a579f35}
+      \strng{authorfullhashraw}{59bc72cbdb39863da7ce348c0a579f35}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0362-546X}
+      \field{journaltitle}{Nonlinear Analysis, Theory, Methods \& Applications}
+      \field{number}{10}
+      \field{title}{Cooperative Systems of Differential Equations with Concave Nonlinearities}
+      \field{volume}{18}
+      \field{year}{1986}
+      \field{pages}{1037\bibrangedash 1052}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.1016/0362-546X(86)90087-8
+      \endverb
+      \keyw{Periodic,cooperative (quasimonotone) systems,concave nonlinearities,discrete dynamics of monotone,concave maps}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
