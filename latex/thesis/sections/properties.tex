@@ -365,7 +365,7 @@
 \end{proof}
 
 
-\subsection{Неподвижни точки}
+\subsection{Равновесни точки}
 
 Тъй като системата е с управление, не може в общия случай да говорим за равновесни точки, понеже промени по него водят до промени по дясната страна.
 Да предположим, че сме фиксирали константно управление.
@@ -377,8 +377,9 @@
 \end{definition}
 
 \begin{proposition}
-  Нека $\mathbf{u}(t)\equiv \mathbf{u}=const$. Тогава системата \eqref{eq:TheDimensionlessProblem} има най-много една нетривиална равновесна точка (ендемична точка).
-  Ако тя съществува е асимптотично устойчива.
+  Нека $\mathbf{u}(t)\equiv \mathbf{u}=const$.
+  Тогава системата \eqref{eq:TheDimensionlessProblem} има най-много една нетривиална равновесна точка (ендемична точка) $\mathbf{E}^*=(x_1^*, x_2^*, y_1^*, y_2^*)^T$.
+  Ако $\mathbf{E}^*$ съществува, то е асимптотично устойчива.
 \end{proposition}
 
 \begin{proof}
@@ -416,26 +417,62 @@
 % Полученото решение ще е равновесна точка (но може да получим и $\mathbf{0}$).
 % Варирайки първоначалното приближение, ще получим и приближение на ендемичната точка.
 
-Ендемичната точка (когато съществува) може да бъде намерена приблизително, като се реши числено нелинейната система, получена при занулят левите страни на $\eqref{eq:TheDimensionlessProblem}$.
+Ендемичната точка (когато съществува) може да бъде намерена приблизително, като се реши числено нелинейната система, получена при зануляването на левите страни на $\eqref{eq:TheDimensionlessProblem}$.
 Полученото решение ще е равновесна точка, но може да получим и $\mathbf{0}$.
 Варирайки първоначалното приближение, ще получим и приближение на ендемичната точка.
 
 След направени редица числени експерименти чрез произволен набор (но рамките на физически значимите) от параметри се забеляза, че ендемичните точки са често силно променливи спрямо мобилността и то (в общия случай) по нелинеен начин.
-Възможно е едното местообитание да липсва ендемизъм при всевъзможните мобилности, но в другото поне за някои от тях да има.
-Често в областта на малки мобилности $p_{11}, p_{22} \approxeq 1$ има силно изменение в пропорцията заразени в ендемичното състояние.
+Възможно е в двете местообитания да липсва ендемизъм за произволен избор на мобилности.
+% Възможно е в едното местообитание да липсва ендемизъм при всевъзможните мобилности, но в другото поне за някои от тях да има.
+Често в областта на малки мобилности $p_{11}, p_{22} \approx 1$ има силно изменение в пропорцията заразени в ендемичното състояние.
 Долу са поместени някои от резултатите.
 
 \begin{figure}[h]
   \centering
-  \includegraphics{equilibrium1.pdf}
-  \caption{Равновесните точки на \eqref{eq:TheDimensionlessProblem}} с параметрите от таблица \ref{tbl:Parameters}
-  \label{fig:EquilibriumPoints}
+  \includegraphics{equilibrium-poster.pdf}
+  \caption{Равновесните точки на \eqref{eq:TheDimensionlessProblem}} с параметрите от набор 1 от таблица \ref{tbl:ParameterValues}
+  \label{fig:EquilibriumPoints-poster}
+  \end{figure}
+  % \include{images/epslatex/equilibrium1}
+  
+  \begin{figure}[h]
+  \centering
+  \includegraphics{solution-poster.pdf}
+  \caption{Решението на \eqref{eq:TheDimensionlessProblem} с параметрите от набор 1 таблица \ref{tbl:ParameterValues} и $\mathbf{z}_0=(0.0572, 0.048, 0.052, 0.044)^T$.\\
+    Пунктирано: без употреба на репелент ($\mathbf{u}(t) \equiv \mathbf{0}$), плътно: максимална употреба на репелент ($\mathbf{u}(t) \equiv \bar{\mathbf{u}}$).\\
+  Червено: без мобилност ($p_{11}=p_{22}=1$), синьо: с мобилност ($p_{11}=p_{22}=0.85$)}
+  \label{fig:Solution-poster}
+  \end{figure}
+  
+  \begin{figure}[h]
+  \centering
+  \includegraphics{equilibrium-03-19-16-12-04.pdf}
+  \caption{Равновесните точки на \eqref{eq:TheDimensionlessProblem}} с параметрите от набор 2 от таблица \ref{tbl:ParameterValues}
+  \label{fig:EquilibriumPoints-03-19-16-12-04}
 \end{figure}
 % \include{images/epslatex/equilibrium1}
 
 \begin{figure}[h]
-  \centering
-  \includegraphics{solution.pdf}
-  \caption{Решението на \eqref{eq:TheDimensionlessProblem} с параметрите от таблица \ref{tbl:Parameters} и $\mathbf{z}_0=(0.0572, 0.048, 0.052, 0.044)^T$.\\ Пунктирано: без употреба на репелент ($\mathbf{u}(t) \equiv \mathbf{0}$), плътно: максимална употреба на репелент ($\mathbf{u}(t) \equiv \bar{\mathbf{u}}$).\\ Червено: без мобилност ($p_{11}=p_{22}=1$), синьо: с мобилност ($p_{11}=p_{22}=0.85$)}
-  \label{fig:Solution}
+\centering
+\includegraphics{solution-03-19-16-12-04.pdf}
+\caption{Решението на \eqref{eq:TheDimensionlessProblem} с параметрите от набор 2 от таблица \ref{tbl:ParameterValues} и $\mathbf{z}_0=(0.0572, 0.048, 0.052, 0.044)^T$.\\
+  Пунктирано: без употреба на репелент ($\mathbf{u}(t) \equiv \mathbf{0}$), плътно: максимална употреба на репелент ($\mathbf{u}(t) \equiv \bar{\mathbf{u}}$).\\
+Червено: без мобилност ($p_{11}=p_{22}=1$), синьо: с мобилност ($p_{11}=0.99, p_{22}=0.9$).}
+\label{fig:Solution-03-19-16-12-04}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics{equilibrium-03-19-16-58-19.pdf}
+\caption{Равновесните точки на \eqref{eq:TheDimensionlessProblem}} с параметрите от набор 3 от таблица \ref{tbl:ParameterValues}
+\label{fig:EquilibriumPoints-03-19-16-58-19}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics{solution-03-19-16-58-19.pdf}
+\caption{Решението на \eqref{eq:TheDimensionlessProblem} с параметрите от набор 3 от таблица \ref{tbl:ParameterValues} и $\mathbf{z}_0=(0.02, 0.015, 0.04, 0.03)^T$, максимална употреба на репелент ($\mathbf{u}(t) \equiv \bar{\mathbf{u}}$).
+  За четирите криви е фиксирано $p_{11}=0.93$, а $p_{22}$ е различно.\\
+Зелено: много висока мобилност ($p_{22}=0.85$), синьо: висока мобилност ($p_{22}=0.88$), лилаво: средна мобилност ($p_{22}=0.92$), кафяво: ниска мобилност ($p_{22}=0.97$).}
+\label{fig:Solution-03-19-16-58-19}
 \end{figure}

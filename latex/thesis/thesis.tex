@@ -88,6 +88,12 @@ margin = 1.5 cm]
 \usepackage{titlesec}
 \usepackage{cleveref} % For smart referencing
 
+% Better tables
+\usepackage{hhline, multirow}
+
+% For drawing
+% \usepackage{tikz}
+
 % Since physics package uses physics <.|.> notation
 \renewcommand{\innerproduct}[2]{\langle #1, #2 \rangle}
 
@@ -115,6 +121,22 @@ margin = 1.5 cm]
 
 \begin{document}
 \selectlanguage{bulgarian}
+
+% \usetikzlibrary{shapes,fit}
+% \tikzset{>=latex}
+% \usetikzlibrary{shapes.geometric, arrows.meta}
+
+% \tikzstyle{host} = [rectangle, rounded corners, minimum width=24mm, minimum height=10mm,text centered, draw=black, fill=red!30,font=\small ]
+% \tikzstyle{vector} = [rectangle, minimum width=20mm, minimum height=10mm, text centered, draw=black, fill=orange!30,font=\small ]
+
+% \tikzstyle{arrow} = [thick,->,>=stealth]
+% \tikzstyle{arrow2} = [dashed,thick,->,>=stealth]
+% \tikzstyle{arrow3} = [blue,dotted,thick,<->,>=stealth]
+% % for patch model
+
+% \tikzstyle{hostp} = [rectangle, rounded corners, minimum width=5mm, minimum height=10mm,text centered, draw=black, fill=red!30,font=\small ]
+% \tikzstyle{vectorp} = [rectangle, minimum width=5mm, minimum height=10mm, text centered, draw=black, fill=orange!30,font=\small ]
+
 \import{sections/}{titlepage.tex}
 % \maketitle
 \tableofcontents
@@ -127,13 +149,13 @@ margin = 1.5 cm]
 \import{sections/}{properties.tex}
 \import{sections/}{viability.tex}
 \import{sections/}{numerical.tex}
+\import{sections/}{tables.tex}
 \pagebreak
 \printbibliography[heading=bibintoc]
 % \bibliographystyle{plain}
 % \bibliography{thesis.bib}
 % \listoffigures
 % \listoftables
-
 \end{document}
 
 % заразèн
