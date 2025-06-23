@@ -89,16 +89,38 @@ margin = 1.5 cm]
 \usepackage{cleveref} % For smart referencing
 
 % Better tables
-\usepackage{hhline, multirow}
+\usepackage{hhline, multirow, diagbox}
 
 % For drawing
-% \usepackage{tikz}
+\usepackage{tikz}
+
+%Better captions
+\usepackage{caption}
+
+% \usepackage{tocbasic}
+% \usepackage{eqparbox}
+% \usepackage{titletoc}
+\usepackage[titles]{tocloft}
+\usepackage{calc}
 
 % Since physics package uses physics <.|.> notation
 \renewcommand{\innerproduct}[2]{\langle #1, #2 \rangle}
 
 % For Roman numbers on sections
+% \RedeclareSectionCommand[tocnumwidth=2.3em]{chapter}
+% \RedeclareSectionCommand[tocindent=2.3em,tocnumwidth=3.2em]{section}
+% \DeclareTOCStyleEntry[numwidth=2.6em]{tocline}{chapter}
+% \DeclareTOCStyleEntry[indent=2.6em,numwidth=3.2em]{tocline}{section}
+
+% \titlecontents{chapter}[0em]{\vspace{.25\baselineskip}}
+% {\eqparbox{ch}{\bfseries\thecontentslabel}\enspace}{}
+% {\hspace{.5em}\hfill\bfseries\contentspage}
+
+% \titlecontents{section}[0em]{\vspace{.25\baselineskip}}
+% {\hskip\eqboxwidth{ch}{}\enspace\eqparbox{sec}{\bfseries\thecontentslabel}\enspace}{}
+% {\hspace{.5em}\titlerule*[10pt]{$\cdot$}\bfseries\contentspage}
 \renewcommand{\thesection}{\Roman{section}}
+% \setlength{\cftsecnumwidth}{\widthof{\large\bfseries{}VIII}}
 % For new page after end of section
 \newcommand{\sectionbreak}{\clearpage}
 
@@ -122,20 +144,20 @@ margin = 1.5 cm]
 \begin{document}
 \selectlanguage{bulgarian}
 
-% \usetikzlibrary{shapes,fit}
-% \tikzset{>=latex}
-% \usetikzlibrary{shapes.geometric, arrows.meta}
+\usetikzlibrary{shapes,fit}
+\tikzset{>=latex}
+\usetikzlibrary{shapes.geometric, arrows.meta}
 
-% \tikzstyle{host} = [rectangle, rounded corners, minimum width=24mm, minimum height=10mm,text centered, draw=black, fill=red!30,font=\small ]
-% \tikzstyle{vector} = [rectangle, minimum width=20mm, minimum height=10mm, text centered, draw=black, fill=orange!30,font=\small ]
+\tikzstyle{host} = [rectangle, rounded corners, minimum width=24mm, minimum height=10mm,text centered, draw=black, fill=red!30,font=\small ]
+\tikzstyle{vector} = [rectangle, minimum width=20mm, minimum height=10mm, text centered, draw=black, fill=orange!30,font=\small ]
 
-% \tikzstyle{arrow} = [thick,->,>=stealth]
-% \tikzstyle{arrow2} = [dashed,thick,->,>=stealth]
-% \tikzstyle{arrow3} = [blue,dotted,thick,<->,>=stealth]
-% % for patch model
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{arrow2} = [dashed,thick,->,>=stealth]
+\tikzstyle{arrow3} = [blue,dotted,thick,<->,>=stealth]
+% for patch model
 
-% \tikzstyle{hostp} = [rectangle, rounded corners, minimum width=5mm, minimum height=10mm,text centered, draw=black, fill=red!30,font=\small ]
-% \tikzstyle{vectorp} = [rectangle, minimum width=5mm, minimum height=10mm, text centered, draw=black, fill=orange!30,font=\small ]
+\tikzstyle{hostp} = [rectangle, rounded corners, minimum width=5mm, minimum height=10mm,text centered, draw=black, fill=red!30,font=\small ]
+\tikzstyle{vectorp} = [rectangle, minimum width=5mm, minimum height=10mm, text centered, draw=black, fill=orange!30,font=\small ]
 
 \import{sections/}{titlepage.tex}
 % \maketitle
@@ -149,6 +171,7 @@ margin = 1.5 cm]
 \import{sections/}{properties.tex}
 \import{sections/}{viability.tex}
 \import{sections/}{numerical.tex}
+\import{sections/}{conclusions.tex}
 \import{sections/}{tables.tex}
 \pagebreak
 \printbibliography[heading=bibintoc]
@@ -159,4 +182,4 @@ margin = 1.5 cm]
 \end{document}
 
 % заразèн
-% зарàзнен
+% зарàзен

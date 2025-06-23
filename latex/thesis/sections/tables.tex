@@ -1,6 +1,6 @@
-\section{Таблици с параметри}
+\section{\hspace{1em} Таблици с параметри}
 
-\begin{table}[h]
+\begin{table}[ht]
   \centering
   \begin{tabular}{ |c c| }
     \hline
@@ -20,37 +20,38 @@
     $\bar{I}_i$ & Максимална част на заразени хора\\
     \hline
   \end{tabular}
-  \caption{Таблица с параметри на модела
-    % (таблична форма на деф. \ref{def:Parameters})}
-    \label{tbl:ParameterDefinitions}
-  \end{table}
+  \caption{Таблица с параметри на модела}
+  \label{tbl:ParameterDefinitions}
+  % (таблична форма на деф. \ref{def:Parameters})}
+\end{table}
 
-  \begin{table}[h]
-    \centering
-    \begin{tabular}{ |c ||c c c c c c|  }
-      % \hhline{~------}
-      \hline
-      \multirow{2}{*}{Параметър}& \multicolumn{2}{c}{Набор 1}& \multicolumn{2}{c}{Набор 2} & \multicolumn{2}{c|}{Набор 3}\\
-      & М. 1 & М. 2 & М. 1 & М. 2 & М. 1 & М. 2\\
-      \hline
-      % \hhline{~------}
-      $\beta_{vh}$ & \multicolumn{2}{c}{$0.5$} & \multicolumn{2}{c}{$0.5$}  & \multicolumn{2}{c|}{$0.5$}\\
-      $\beta_{hv}$ & \multicolumn{2}{c}{$0.1$} & \multicolumn{2}{c}{$0.1$} & \multicolumn{2}{c|}{$0.1$}\\
-      $a_i$ & $0.12$ & $0.18$ & $0.158$ & $0.159$ & $0.15$ & $0.24$\\
-      $M_i$ & $6 \times 10^7$ & $1.6 \times 10^8$ & $7320950$ & $4695340$ & $7320950$ & $4695340$\\
-      $\mu_i$ & $\frac{1}{21}$ & $\frac{1}{15}$ & $0.032$ & $0.046$ & $0.0397$ & $0.0335$\\
-      $\tau$ & \multicolumn{2}{c}{$10$} & \multicolumn{2}{c}{$10$} & \multicolumn{2}{c|}{$10$}\\
-      $N_i$ & $8 \times 10^6$ & $2 \times 10^7$ & $9377980$ & $4467650$ & $755440$ & $3945290$\\
-      $\gamma_i$ & \multicolumn{2}{c}{$\frac{1}{14}$} & $0.0627$ & $0.0576$ & $0.0735$ & $0.0622$\\
-      $p_{ij}$ & \multicolumn{6}{c|}{различни ($p_{i1}+p_{i2}=1$)}\\
-      $\kappa$ & \multicolumn{2}{c}{$0.44$} & \multicolumn{2}{c}{$0.37$} & \multicolumn{2}{c|}{$0.38$}\\
-      $\bar{u}_i$ & $0.15$ & $0.3$ & $0.39$ & $0.12$ & $0.35$ & $0.3$\\
-      $\bar{I}_i$ & $0.1$ & $0.14$ & $0.065$ & $0.12$ & $0.09$ & $0.09$\\
-      \hline
-    \end{tabular}
-    \caption{Таблица със стойностите на параметрите от таблица \ref{tbl:ParameterDefinitions} за числени симулации}
-    \label{tbl:ParameterValues}
-  \end{table}
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{ |c ||c c c c c c|  }
+    % \hhline{~------}
+    \hline
+    \multirow{2}{*}{Параметър}& \multicolumn{2}{c}{Набор 1}& \multicolumn{2}{c}{Набор 2} & \multicolumn{2}{c|}{Набор 3}\\
+    & М. 1 & М. 2 & М. 1 & М. 2 & М. 1 & М. 2\\
+    \hline
+    % \hhline{~------}
+    $\beta_{vh}$ & \multicolumn{2}{c}{$0.5$} & \multicolumn{2}{c}{$0.5$}  & \multicolumn{2}{c|}{$0.5$}\\
+    $\beta_{hv}$ & \multicolumn{2}{c}{$0.1$} & \multicolumn{2}{c}{$0.1$} & \multicolumn{2}{c|}{$0.1$}\\
+    $a_i$ & $0.12$ & $0.18$ & $0.158$ & $0.159$ & $0.15$ & $0.24$\\
+    $M_i$ & $6 \times 10^7$ & $1.6 \times 10^8$ & $7320950$ & $4695340$ & $7320950$ & $4695340$\\
+    $\mu_i$ & $\frac{1}{21}$ & $\frac{1}{15}$ & $0.032$ & $0.046$ & $0.0397$ & $0.0335$\\
+    $\tau$ & \multicolumn{2}{c}{$10$} & \multicolumn{2}{c}{$10$} & \multicolumn{2}{c|}{$10$}\\
+    $N_i$ & $8 \times 10^6$ & $2 \times 10^7$ & $9377980$ & $4467650$ & $755440$ & $3945290$\\
+    $\gamma_i$ & \multicolumn{2}{c}{$\frac{1}{14}$} & $0.0627$ & $0.0576$ & $0.0735$ & $0.0622$\\
+    $p_{ij}$ & \multicolumn{6}{c|}{различни ($p_{i1}+p_{i2}=1$)}\\
+    $\kappa$ & \multicolumn{2}{c}{$0.44$} & \multicolumn{2}{c}{$0.37$} & \multicolumn{2}{c|}{$0.38$}\\
+    $\bar{u}_i$ & $0.15$ & $0.3$ & $0.39$ & $0.12$ & $0.35$ & $0.3$\\
+    $\bar{I}_i$ & $0.1$ & $0.14$ & $0.065$ & $0.12$ & $0.09$ & $0.09$\\
+    \hline
+  \end{tabular}
+  \caption{Таблица със стойностите на параметрите от таблица \ref{tbl:ParameterDefinitions} за числени симулации}
+  \label{tbl:ParameterValues}
+\end{table}
+
 
   % \begin{table}[h]
   %   \centering
