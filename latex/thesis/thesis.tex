@@ -103,6 +103,9 @@ margin = 1.5 cm]
 \usepackage[titles]{tocloft}
 \usepackage{calc}
 
+% MAKE THE FLOAT STAY WHERE IT BELONGS
+\usepackage{float}
+
 % Since physics package uses physics <.|.> notation
 \renewcommand{\innerproduct}[2]{\langle #1, #2 \rangle}
 
@@ -172,7 +175,6 @@ margin = 1.5 cm]
 \import{sections/}{viability.tex}
 \import{sections/}{numerical.tex}
 \import{sections/}{conclusions.tex}
-\import{sections/}{tables.tex}
 \pagebreak
 \printbibliography[heading=bibintoc]
 % \bibliographystyle{plain}

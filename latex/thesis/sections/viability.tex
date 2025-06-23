@@ -114,3 +114,23 @@
   От горното твърдение, то може да приложим $\cdots$.
   Веднага може да видим, че $V(\bar{\mathbf{I}}, \bar{\mathbf{u}}) \neq \varnothing$, понеже $\mathbf{0}$ е равновесна точка за кое да е управление и следователно $\mathbf{0} \in V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$, т.е. винаги е непразно.
 \end{proof}
+
+\subsection{Числено решение на уравнението на Хамилтон-Якоби-Белман}
+Задачата \eqref{eq:HJB} може да се реши с прибавено числено време.
+\begin{equation}
+  \label{eq:HJBTime}
+  \begin{split}
+    &\min\left\{\pdv{v}{t}\left(\mathbf{z}, t\right) + \lambda v(\mathbf{z}, t) + \mathcal{H}(\mathbf{z}, \grad{v}), v(\mathbf{z}, t) - \Gamma(\mathbf{z})\right\} = 0, \quad \mathbf{z} \in \mathbb{R}^4 \\
+    &v(\mathbf{z}, 0) = \Gamma(\mathbf{z}), \quad \mathbf{z} \in \mathbb{R}^4 \\
+    &\mathcal{H}(\mathbf{z}, \grad{v}) = \max_{\mathbf{u} \in \mathscr{U}} \innerproduct{-\mathbf{f}(\mathbf{z}, \mathbf{u})}{\grad{v}}
+  \end{split}
+\end{equation}
+За численото пресмятане задачата \eqref{eq:HJBTime} се решава само в крайна област подмножество на $\mathbb{R}^4$, която ще включва $V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$.
+Всъщност от факта, че $\mathbf{z} \in \Omega \setminus \mathscr{I} \implies \mathbf{z} \notin V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$, то може да бъде решена \eqref{eq:HJBTime} не за $\Omega$, а само в околност на $\mathscr{I}$.
+След направени симулации с по-груба мрежа, може да се получи грубо приближение на $V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$ и с по-фина мрежа вече да се решава в околност на грубото приближение.
+Използвани са равномерна дискретизация по пространството и Weighted Essentially Non-Oscillatory (WENO) \cite[глава~3.4]{Osher2003} апроксимация с числен Хамилтониян от вида Lax-Friedrichs \cite[глава~5.3]{Osher2003}.
+Следвайки \cite[глава~3.5]{Osher2003}, използваната дискретизацията по времето е равномерна и по него се апроксимира с подобрения метод на Ойлер.
+
+\begin{remark}
+  В литературата могат да се намерят и задачи за управление на други системи, чрез чрез решаване на уравнението на Хамилтон-Якоби-Белман, като например самолет \cite{Assellaou2016, Assellaou2018}, както и такива за рак \cite{Carrere2020}.
+\end{remark}
