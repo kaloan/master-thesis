@@ -34,7 +34,18 @@
 \end{corollary}
 
 \subsection{Система на Marchaud/Peano}
-Питаме се, кога ядрото на слаба инвариантност на Белман $\eqref{eq:ViabilityKernel}$ съществува и не е празно. От \cite{Aubin2011} за съществуването е необходимо да покажем, че $\mathscr{f}(\mathbf{z}(t))=\mathbf{f}(\mathbf{z}(t), \mathscr{U})$ е изображение на Marchaud/Peano.
+Веднага може да видим, че $V(\bar{\mathbf{I}}, \bar{\mathbf{u}}) \neq \varnothing$, понеже $\mathbf{0}$ е равновесна точка за кое да е управление и следователно $\mathbf{0} \in V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$, т.е. винаги е непразно.
+Накратко ще бъде представено приложение на общата теория от \cite{Aubin1991} за съществуване на ядрото на слаба инвариантност. Тъй като тя е основана на диференциални включвания, нека въведем означението:
+\begin{equation}
+  \begin{split}
+    &\mathscr{f}:\Omega \rightarrow \mathscr{P}(\mathbb{R}^4)\\
+    &\mathscr{f}(\mathbf{z})=\mathbf{f}(\mathbf{z}, U)
+  \end{split}
+\end{equation}
+Тогава диференциалното уравнение \eqref{eq:TheDimensionlessProblem} може да се запише като
+\begin{equation}
+  \dot{\mathbf{z}}(t) = \mathscr{f}(\mathbf{z}(t))
+\end{equation}
 
 % \begin{definition}[изображение на Marchaud/Peano]
 %   $\mathscr{f}$ e изображение на Marchaud/Peano, ако е нетривиално, отгоре полунепрекъснато, с компактни изпъкнали образи и с линейно нарастване.
@@ -44,18 +55,47 @@
 %   $\mathscr{f}$ e изображение на Marchaud/Peano, ако е нетривиално, отгоре полунепрекъснато, с компактни изпъкнали образи и с линейно нарастване.
 % \end{definition}
 
-\begin{definition}[изображение на Marchaud/Peano]
-  Многозначното изображение $F:X \rightarrow Y$, $Y \subseteq \mathscr{P}(Z)$, $X, Z$ - Банахови, e изображение на Marchaud/Peano, ако:
+\begin{definition}[графика на многозначно изображение] \cite[стр~6]{Aubin1991}
+  Графика на многозначното изображение $F:X \rightarrow Y$, $Y \subseteq \mathscr{P}(Z)$ се нарича множеството $Gr F = \{(x, y) \vert y \in F(x)\}$.
+\end{definition}
+
+\begin{definition}[изображение на Marchaud/Peano] \cite[дефиниция~2.2.4, следствие~2.2.5]{Aubin1991}
+  \label{def:Marchaud-Peano}
+  Многозначното изображение $F:X \rightarrow Y$, $Y \subseteq \mathscr{P}(Z)$, $X, Z$ - крайномерни, e изображение на Marchaud/Peano, ако:
   \begin{enumerate}
-    \item $F$ е с непразни и затворени графика и домейн.
+    \item $F$ е с непразни и затворени домейн и графика.
     \item Образите на $F$ са изпъкнали.
     \item $F$ има линейно нарастване, т.е. $\exists{c>0}\forall{x \in X}(\sup_{v \in F(x)} \|v\| \leq c(\|x\|+1))$
   \end{enumerate}
   % е нетривиално, отгоре полунепрекъснато, с компактни изпъкнали образи и с линейно нарастване.
 \end{definition}
 
+\begin{lemma}
+  \label{lm:LinearGrowth}
+  $\mathscr{f}$ има линейно нарастване.
+  % Системата \eqref{eq:TheDimensionlessProblem} има линейно нарастване.
+\end{lemma}
+
+\begin{proof}
+  Ще се използват оценките от доказателството на \eqref{cor:ExistanceAndUniqueness}.
+  Понеже $\mathbf{f}(\mathbf{0}, \mathbf{u}) = \mathbf{0}$ за произволни $\mathbf{u} \in U$, може да запишем:
+  \begin{multline}
+    \|\mathbf{f}(\mathbf{z}, \mathbf{u})\| = \|\mathbf{f}(\mathbf{z}, \mathbf{u}) - \mathbf{0}\| = \|\mathbf{f}(\mathbf{z}, \mathbf{u}) - \mathbf{f}(\mathbf{0})\| = \\
+    b_{11} (2 (2 |y_1| + \kappa |u_1|) + |x_1|) + b_{12}(2  (2 |y_2| + \kappa |u_1|) +  |x_1|) + \gamma_1 |x_1| + \\
+    b_{21} (2 (2|y_1| + \kappa |u_2|) + |x_2|) + b_{22} (2 (2|y_2| + \kappa |u_2|) + |x_2|) + \gamma_2 |x_2| + \\
+    c_{11}(2  (2|x_1| +  \kappa |u_1|) +  |y_1|) + c_{12} (2 (2|x_2| + \kappa |u_2|) + |y_1|) + \mu_1 |y_1| + \\
+    c_{21} (2  (2|x_1| + \kappa |u_1|) + |y_2|) + c_{22} (2 (2|x_2| + \kappa |u_2|) + |y_2|) + \mu_2 |y_2| \leq \\
+    \tilde{C}_1|u_1| + \tilde{C}_2|u_2| + \tilde{C}_3 \|\mathbf{z}\| \leq \tilde{C}_1 + \tilde{C}_2 + \tilde{C}_3 \|\mathbf{z}\| \leq \tilde{C}_3(1 + \|\mathbf{z}\|) \\
+    \tilde{C}_1 = 2 \kappa (b_{11} + b_{12} + c_{11} + c_{21}) \\
+    \tilde{C}_2 = 2 \kappa (b_{21} + b_{22} + c_{12} + c_{22}) \\
+    \tilde{C}_3 = 5 (b_{11} + b_{12} + b_{21} + b_{22} + c_{11} + c_{12} + c_{21} + c_{22}) + \gamma_1 + \gamma_2 + \mu_1 + \mu_2 \\
+    \kappa \in [0, 1] \implies \tilde{C}_3 \geq \tilde{C}_1 + \tilde{C}_2
+  \end{multline}
+\end{proof}
+
 \begin{proposition}
-За системата \eqref{eq:TheDimensionlessProblem}, $\mathscr{f}(\mathbf{z}(t))=\mathbf{f}(\mathbf{z}(t), \mathscr{U})$ е изображение на Marchaud/Peano.
+  \label{prop:Marchaud-Peano}
+  $\mathscr{f}$ е изображение на Marchaud/Peano.
 \end{proposition}
 
 % \begin{corollary}
@@ -67,34 +107,26 @@
   % От факта, че $\mathbf{f}$ е непрекъснато по всяка компонента (а даже и диференцируемо), то е и отгоре полунепрекъснато, откъдето и $\mathscr{f}$ е. \\
   % $\Omega$ е затворено и ограничено, а е крайномерно, съответно е компактно. Аналогично за $U$. Тогава и $\Omega \cross U$ е компактно. Директно от дефинициите на $\Omega$, $U$ те също така са изпъкнали, тоест $\Omega \cross U$ е изпъкнало. Вече видяхме, че $\Omega$ положително инвариантно за системата. Тогава образите на $\mathscr{f}$ ще са в $\Omega \cross U$, с други думи са компактни и изпъкнали. \\
 
-  Стига параметрите да не са всички нулеви, то $\mathscr{f}$ е нетривиално. \\
-  От факта, че $\mathbf{f}$ е непрекъснато по всяка компонента (а даже и диференцируемо), то е и отгоре полунепрекъснато, откъдето и $\mathscr{f}$ е. \\
-  $\Omega$ е затворено и ограничено, а е крайномерно, съответно е компактно. Аналогично за $U$. Тогава и $\Omega \cross U$ е компактно. Директно от дефинициите на $\Omega$, $U$ те също така са изпъкнали, тоест $\Omega \cross U$ е изпъкнало. Вече видяхме, че $\Omega$ положително инвариантно за системата. Тогава образите на $\mathscr{f}$ ще са в $\Omega \cross U$, с други думи са компактни и изпъкнали. \\
+  % Стига параметрите да не са всички нулеви, то $\mathscr{f}$ е нетривиално. \\
+  % От факта, че $\mathbf{f}$ е непрекъснато по всяка компонента (а даже и диференцируемо), то е и отгоре полунепрекъснато, откъдето и $\mathscr{f}$ е. \\
+  % $\Omega$ е затворено и ограничено, а е крайномерно, съответно е компактно. Аналогично за $U$. Тогава и $\Omega \cross U$ е компактно. Директно от дефинициите на $\Omega$, $U$ те също така са изпъкнали, тоест $\Omega \cross U$ е изпъкнало. Вече видяхме, че $\Omega$ положително инвариантно за системата. Тогава образите на $\mathscr{f}$ ще са в $\Omega \cross U$, с други думи са компактни и изпъкнали. \\
+  Домейнът на $\mathscr{f}$ е $\Omega$, което е непразно и затворено множество. $\mathbf{f}$ е непрекъснато и изобразява компакта $\Omega \cross U$ в компакт. \\
+  За затвореността може да се ползва обща теорема за затвореност на графиката на многозначни изображения от \cite[теорема~17.11]{Aliprantis2006}.
+  В този случай може да се докаже и иначе.
+  Нека $(\mathbf{z}_n, \mathbf{f}(\mathbf{z}_n, u_n)) \rightarrow (\mathbf{z}, \tilde{f})$ е сходяща, като $(\mathbf{z}_n, \mathbf{f}(\mathbf{z}_n, u_n)) \in Gr \mathscr{f}$.
+  Тогава от затвореността на $\Omega$, то първия елемент на наредената двойка е изпълнено $\mathbf{z} \in \Omega$.
+  Тъй като $\mathbf{f}(\mathbf(z), \cdot)$ е непрекъснато, то изобразява компакта $U$ в компакт, откъдето и $\tilde{f} \in \mathbf{f}(\mathbf(z), U)$. \\
+  Нека фиксираме $\mathbf{z} \in \Omega$ и два елемента $\mathbf{f}(\mathbf{z}, \mathbf{u}_1), \mathbf{f}(\mathbf{z}, \mathbf{u}_2) \in \mathscr{f}(\mathbf{z})$, които са представени за някакви $\mathbf{u}_1, \mathbf{u}_2 \in U$.
+  От това, че $U$ е декартово произведение на изпъкнали множества, то е изпъкнало, т.е. $\mathbf{u}_{\lambda} = \lambda \mathbf{u}_1 + (1-\lambda) \mathbf{u}_2 \in U,~ \lambda \in [0, 1]$.
+  От това, че $\mathbf{f}$ е афинна спрямо $\mathbf{u}$, може да запишем:
+  \begin{equation*}
+    \lambda \mathbf{f}(\mathbf{z}, \mathbf{u}_1) + (1-\lambda)\mathbf{f}(\mathbf{z}, \mathbf{u}_2) = \mathbf{f}(\mathbf{z}, \lambda \mathbf{u}_1 + (1-\lambda)\mathbf{u}_2) = \mathbf{f}(\mathbf{z}, \mathbf{u}_{\lambda}) \in \mathbf{f}(\mathbf{z}, U) = \mathscr{f}(\mathbf{z})
+  \end{equation*}
+  Така е доказана и изпъкналостта на образите на $\mathscr{f}$. \\
+  От лемата \ref{lm:LinearGrowth} е изпълнено и последното условие от дефиниция \ref{def:Marchaud-Peano}.
 \end{proof}
 
 % \subsubsection{Линейно нарастване}
-\begin{proposition}
-  Системата \eqref{eq:TheDimensionlessProblem} има линейно нарастване
-\end{proposition}
-
-\begin{proof}
-  Ще се използват оценките от доказателството на \eqref{cor:ExistanceAndUniqueness}.
-  Понеже $\mathbf{f}(\mathbf{0}, \mathbf{u}) = \mathbf{0}$ за произволни $\mathbf{u} \in \mathscr{U}$, може да запишем:
-  \begin{multline}
-    \|\mathbf{f}(\mathbf{z}, \mathbf{u})\| = \|\mathbf{f}(\mathbf{z}, \mathbf{u}) - \mathbf{0}\| = \|\mathbf{f}(\mathbf{z}, \mathbf{u}) - \mathbf{f}(\mathbf{0})\| = \\
-    b_{11} (2 (2 |y_1| + \kappa |u_1|) + |x_1|) + b_{12}(2  (2 |y_2| + \kappa |u_1|) +  |x_1|) + \gamma_1 |x_1| + \\
-    b_{21} (2 (2|y_1| + \kappa |u_2|) + |x_2|) + b_{22} (2 (2|y_2| + \kappa |u_2|) + |x_2|) + \gamma_2 |x_2| + \\
-    c_{11}(2  (2|x_1| +  \kappa |u_1|) +  |y_1|) + c_{12} (2 (2|x_2| + \kappa |u_2|) + |y_1|) + \mu_1 |y_1| + \\
-    c_{21} (2  (2|x_1| + \kappa |u_1|) + |y_2|) + c_{22} (2 (2|x_2| + \kappa |u_2|) + |y_2|) + \mu_2 |y_2| \leq \\
-    \tilde{C}_1|u_1| + \tilde{C}_2|u_2| + \tilde{C}_3 \|\mathbf{z}\| \leq \tilde{C}_1 + \tilde{C}_2 + \tilde{C}_3 \|\mathbf{z}\| \leq \tilde{C}_3(1 + \|\mathbf{z}\|) \\
-    \tilde{C}_1 = 2 \kappa (b_{11} + b_{12} + c_{11} + c_{21}) \\
-    \tilde{C}_2 = 2 \kappa (b_{21} + b_{22} + c_{12} + c_{22}) \\
-    \tilde{C}_3 = 5 (b_{11} + b_{12} + b_{21} + b_{22} + c_{11} + c_{12} + c_{21} + c_{22}) + \gamma_1 + \gamma_2 + \mu_1 + \mu_2 \\
-    \kappa < 1 \implies \tilde{C}_3 \geq \tilde{C}_1 + \tilde{C}_2
-  \end{multline}
-
-\end{proof}
-
 % &\|\mathbf{f}(\mathbf{z}, \mathbf{u})\| = \|\mathbf{f}(\mathbf{z}, \mathbf{u}) - \mathbf{0}\| = \|\mathbf{f}(\mathbf{z}, \mathbf{u}) - \mathbf{f}(\mathbf{0})\| = \\
 % &\frac{\beta_{vh} a_1 p_{11} e^{-\mu_1 \tau}}{p_{11} N_1 + p_{21} N_2} (2 N_1 (2 |y_1| + M_1 \kappa |u_1|) + M_1 |x_1|) + \\
 % &\frac{\beta_{vh} a_2 p_{12} e^{-\mu_2 \tau}}{p_{12} N_1 + p_{22} N_2}(2 N_1 (2 |y_2| + M_2 \kappa |u_1|) + M_1 |x_1|) + \gamma_1 |x_1| + \\
@@ -107,12 +139,12 @@
 % &\tilde{C}_1|u_1| + \tilde{C}_2|u_2| + \tilde{C}_3 \|(x_1,y_1,x_2,y_2)\| \leq \tilde{C}_1 + \tilde{C}_2 + \tilde{C}_3 \|(x_1,y_1,x_2,y_2)\| \leq \tilde{C}(1 + \|(x_1,y_1,x_2,y_2)\|)
 
 \begin{corollary}
-  $V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$ винаги съществува и е непразно
+  $V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$ винаги съществува и е непразно.
 \end{corollary}
 
 \begin{proof}
-  От горното твърдение, то може да приложим $\cdots$.
-  Веднага може да видим, че $V(\bar{\mathbf{I}}, \bar{\mathbf{u}}) \neq \varnothing$, понеже $\mathbf{0}$ е равновесна точка за кое да е управление и следователно $\mathbf{0} \in V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$, т.е. винаги е непразно.
+  От твърдение \ref{prop:Marchaud-Peano}, то може да приложим \cite[теорема~4.1.2]{Aubin1991}, откъдето следва съществуването на $V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$.
+  Вече беше показано, че $V(\bar{\mathbf{I}}, \bar{\mathbf{u}}) \neq \varnothing$.
 \end{proof}
 
 \subsection{Числено решение на уравнението на Хамилтон-Якоби-Белман}
@@ -132,5 +164,5 @@
 Следвайки \cite[глава~3.5]{Osher2003}, използваната дискретизацията по времето е равномерна и по него се апроксимира с подобрения метод на Ойлер.
 
 \begin{remark}
-  В литературата могат да се намерят и задачи за управление на други системи, чрез чрез решаване на уравнението на Хамилтон-Якоби-Белман, като например самолет \cite{Assellaou2016, Assellaou2018}, както и такива за рак \cite{Carrere2020}.
+  В литературата могат да се намерят и задачи за управление на други системи, чрез чрез решаване на уравнението на Хамилтон-Якоби-Белман, като например самолет \cite{Assellaou2016, Assellaou2018}, както и in vitro модел на тумурни клетки \cite{Carrere2020}.
 \end{remark}
