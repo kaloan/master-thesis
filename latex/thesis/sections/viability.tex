@@ -3,13 +3,12 @@
 \subsection{Случаи без употреба и с максимална употреба на репелент}
 
 \begin{proposition}
-  Ако $\mathscr{R}_0(\bar{\mathbf{u}}) > 1$ и $\mathbf{E}^* = (E_1^*, E_2^*)^T$, като $E_1^* > \bar{I}_1$ или $E_2^* > \bar{I}_2$, то ядрото на слаба инвариантност е тривиалното, т.е. $V(\bar{\mathbf{I}}, \bar{\mathbf{u}}) = {\mathbf{0}}$.
+  Ако $\mathscr{R}_0(\bar{\mathbf{u}}) > 1$ и $\mathbf{E}^* = (x_1^*, x_2^*, y_1^*, y_2^*)^T$, като $x_1^* > \bar{I}_1$ или $x_2^* > \bar{I}_2$, то ядрото на слаба инвариантност е тривиалното, т.е. $V(\bar{\mathbf{I}}, \bar{\mathbf{u}}) = \{\mathbf{0}\}$.
   % Във случая $\mathbf{u}(t) \equiv \bar{\mathbf{u}}$, то ако имаме ендемична точка $\mathbf{E}^*$ и $E_1^* > \bar{I}_1 \lor E_2^* > \bar{I}_2$, то търсената от нас задача няма решение.
 \end{proposition}
 
 \begin{proof}
   Наистина, по определение $I_1, I_2 \geq 0$, а пък $\mathbf{0}$ е равновесна за системата \eqref{eq:TheDimensionlessProblem}. Така $\mathbf{0} \in V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$.
-
   Остава да забележим, че $\mathbf{f}(\mathbf{z}, \bar{\mathbf{u}}) \leq \mathbf{f}(\mathbf{z}, \mathbf{u})$ за всички $\mathbf{u} \in \mathscr{U}$.
   Така може да ползваме теоремата \eqref{thm:Comparison} за сравнение на решения на кооперативни системи и така всяка друга система ще е с мажориращо решение за еднакви начални $\mathbf{z}_0$.
   Понеже $\mathbf{E}^*$ е асимптотично устойчива и е изпълнено поне едно от неравенствата в това твърдение, то ще съществува $t > 0$, за което търсеното условие \eqref{eq:AllHospitalised} не е изпълнено.
@@ -34,8 +33,9 @@
 \end{corollary}
 
 \subsection{Система на Marchaud/Peano}
-Веднага може да видим, че $V(\bar{\mathbf{I}}, \bar{\mathbf{u}}) \neq \varnothing$, понеже $\mathbf{0}$ е равновесна точка за кое да е управление и следователно $\mathbf{0} \in V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$, т.е. винаги е непразно.
-Накратко ще бъде представено приложение на общата теория от \cite{Aubin1991} за съществуване на ядрото на слаба инвариантност. Тъй като тя е основана на диференциални включвания, нека въведем означението:
+Видя се, че $\mathbf{0} \in V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$ със съображението, че $\mathbf{0}$ е равновесна.
+Съществуването на ядрото на слаба инвариантност може да бъде получено и с приложение на общата теория от \cite{Aubin1991}.
+Тъй като тя е основана на диференциални включвания, нека въведем означението:
 \begin{equation}
   \begin{split}
     &\mathscr{f}:\Omega \rightarrow \mathscr{P}(\mathbb{R}^4)\\
@@ -121,6 +121,7 @@
   От това, че $\mathbf{f}$ е афинна спрямо $\mathbf{u}$, може да запишем:
   \begin{equation*}
     \lambda \mathbf{f}(\mathbf{z}, \mathbf{u}_1) + (1-\lambda)\mathbf{f}(\mathbf{z}, \mathbf{u}_2) = \mathbf{f}(\mathbf{z}, \lambda \mathbf{u}_1 + (1-\lambda)\mathbf{u}_2) = \mathbf{f}(\mathbf{z}, \mathbf{u}_{\lambda}) \in \mathbf{f}(\mathbf{z}, U) = \mathscr{f}(\mathbf{z})
+    % \lambda \mathbf{f}(\mathbf{z}, \mathbf{u}_1) + (1-\lambda)\mathbf{f}(\mathbf{z}, \mathbf{u}_2) = \mathbf{f}(\mathbf{z}, \lambda \mathbf{u}_1) + \mathbf{f}(\mathbf{z}, (1-\lambda)\mathbf{u}_2) = \mathbf{f}(\mathbf{z}, \lambda \mathbf{u}_1 + (1-\lambda)\mathbf{u}_2) = \mathbf{f}(\mathbf{z}, \mathbf{u}_{\lambda}) \in \mathbf{f}(\mathbf{z}, U) = \mathscr{f}(\mathbf{z})
   \end{equation*}
   Така е доказана и изпъкналостта на образите на $\mathscr{f}$. \\
   От лемата \ref{lm:LinearGrowth} е изпълнено и последното условие от дефиниция \ref{def:Marchaud-Peano}.
