@@ -114,7 +114,7 @@
 \begin{proof}
   От твърдение \ref{prop:Marchaud-Peano}, то може да приложим \cite[теорема~4.1.2]{Aubin1991}, откъдето следва съществуването на $V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$.
   % Вече беше показано, че $V(\bar{\mathbf{I}}, \bar{\mathbf{u}}) \neq \varnothing$.
-  Вижда се, че $V(\bar{\mathbf{I}}, \bar{\mathbf{u}}) \neq \varnothing$, понеже равновесната точка $\mathbf{0}$ изпълнява условията на задачата.
+  Вижда се, че $V(\bar{\mathbf{I}}, \bar{\mathbf{u}}) \neq \varnothing$, понеже равновесната точка $\mathbf{0}$ изпълнява условието \eqref{eq:AllHospitalised} за произволно $\mathbf{u}$.
 \end{proof}
 
 \subsection{Случаи без употреба и с максимална употреба на репелент}
@@ -125,8 +125,8 @@
 \end{proposition}
 
 \begin{proof}
-  Наистина, по определение $I_1, I_2 \geq 0$, а пък $\mathbf{0}$ е равновесна за системата \eqref{eq:TheDimensionlessProblem}. Така $\mathbf{0} \in V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$.
-  Остава да забележим, че $\mathbf{f}(\mathbf{z}, \bar{\mathbf{u}}) \leq \mathbf{f}(\mathbf{z}, \mathbf{u})$ за всички $\mathbf{u} \in \mathscr{U}$.
+  % Наистина, по определение $I_1, I_2 \geq 0$, а пък $\mathbf{0}$ е равновесна за системата \eqref{eq:TheDimensionlessProblem}. Така $\mathbf{0} \in V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$.
+  Да забележим, че $\mathbf{f}(\mathbf{z}, \bar{\mathbf{u}}) \leq \mathbf{f}(\mathbf{z}, \mathbf{u})$ за всички $\mathbf{u} \in \mathscr{U}$.
   Така може да ползваме теоремата \eqref{thm:Comparison} за сравнение на решения на кооперативни системи и така всяка друга система ще е с мажориращо решение за еднакви начални $\mathbf{z}_0$.
   Понеже $\mathbf{E}^*$ е глобално асимптотично устойчива и е изпълнено поне едно от неравенствата в това твърдение, то ще съществува $t > 0$, за което търсеното условие \eqref{eq:AllHospitalised} не е изпълнено.
   Но тогава за $t$ от мажорирането ще следва, че не е изпълнено и за кое да е друго решение.
@@ -151,20 +151,38 @@
 
 \subsection{Числено решение на уравнението на Хамилтон-Якоби-Белман}
 Задачата \eqref{eq:HJB} може да се реши с прибавено числено време, тъй като в \cite{Zidani2013} е показано, че \eqref{eq:HJB} има единствено непрекъснато визкозно решение.
-При подходящо избрано начално условие за \eqref{eq:HJBTime} приближеното решение се намира чрез постигане на сходимост при желаната от нас точност.
+При подходящо избрано начално условие за \eqref{eq:HJBTime} приближеното решение $v_0$ се намира чрез постигане на сходимост при желаната от нас точност.
 \begin{equation}
   \label{eq:HJBTime}
   \begin{split}
     &\min\left\{\pdv{v}{t}\left(\mathbf{z}, t\right) + \lambda v(\mathbf{z}, t) + \mathcal{H}(\mathbf{z}, \grad{v}), v(\mathbf{z}, t) - \Gamma(\mathbf{z})\right\} = 0, \quad \mathbf{z} \in \mathbb{R}^4 \\
-    &v(\mathbf{z}, 0) = \Gamma(\mathbf{z}), \quad \mathbf{z} \in \mathbb{R}^4 \\
-    &\mathcal{H}(\mathbf{z}, \grad{v}) = \max_{\mathbf{u} \in \mathscr{U}} \innerproduct{-\mathbf{f}(\mathbf{z}, \mathbf{u})}{\grad{v}}
+    &v(\mathbf{z}, 0) = v_0(\mathbf{z}), \quad \mathbf{z} \in \mathbb{R}^4 \\
+    &\mathcal{H}(\mathbf{z}, \mathbf{w}) = \max_{\mathbf{u} \in \mathscr{U}} \innerproduct{-\mathbf{f}(\mathbf{z}, \mathbf{u})}{\mathbf{w}}
   \end{split}
 \end{equation}
-За численото пресмятане задачата \eqref{eq:HJBTime} се решава само в крайна област подмножество на $\mathbb{R}^4$, която ще включва $V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$.
+За численото пресмятане задачата \eqref{eq:HJBTime} се решава само в крайна област подмножество на $\mathbb{R}^4$, която ще включва $\mathscr{I}$.
 Всъщност от факта, че $\mathbf{z} \in \Omega \setminus \mathscr{I} \implies \mathbf{z} \notin V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$, то може да бъде решена \eqref{eq:HJBTime} не за $\Omega$, а само в околност на $\mathscr{I}$.
 След направени симулации с по-груба мрежа, може да се получи грубо приближение на $V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$ и с по-фина мрежа вече да се решава в околност на грубото приближение.
-Използвани са равномерна дискретизация по пространството и Weighted Essentially Non-Oscillatory (WENO) \cite[глава~3.4]{Osher2003} апроксимация с числен Хамилтониян от вида Lax-Friedrichs \cite[глава~5.3]{Osher2003}.
+Използвани са равномерна дискретизация по пространството и Weighted Essentially Non-Oscillatory (WENO) \cite[глава~3.4]{Osher2003} апроксимация с числен Хамилтониян от вида Lax-Friedrichs \cite[глава~5.3]{Osher2003}, а за начално предположение $v_0 = \Gamma$.
+
+Чрез WENO метода се получават по-точни приближения за разлика напред и назад $v_{\eta}^{\pm}$ на $\pdv{v}{\eta}$, $\eta = x_1, x_2, y_1, y_2$.
+Ако $\mathbf{z}_{i,j,k,l}=(x_1^i, x_2^j, y_1^k, y_2^l)$ е $(i,j,k,l)$-тата точка от схемата по пространство, то численият хамилтонян в нея $\hat{\mathcal{H}}$ е взет:
+\begin{multline}
+  \hat{\mathcal{H}} = \mathcal{H}\left(\mathbf{z}_{ijkl}, \frac{(v_{x_1}^+)_{ijkl}+(v_{x_1}^-)_{ijkl}}{2}, \frac{(v_{x_2}^+)_{ijkl}+(v_{x_2}^-)_{ijkl}}{2}, \frac{(v_{y_1}^+)_{ijkl}+(v_{y_1}^-)_{ijkl}}{2}, \frac{(v_{y_2}^+)_{ijkl}+(v_{y_2}^-)_{ijkl}}{2}\right) \\ - \sum_{\eta = x_1, x_2, y_1, y_2} \alpha^{\eta} \frac{(v_{\eta}^+)_{ijkl}-(v_{\eta}^-)_{ijkl}}{2}
+\end{multline}
+Множителите $\alpha^{\eta}$ са от вида:
+\begin{equation}
+  \alpha^{x_1} = \max \abs{\pdv{\mathcal{H}}{w_1}\left(\mathbf{z}, \grad{v}\right)},~
+  \alpha^{x_2} = \max \abs{\pdv{\mathcal{H}}{w_2}\left(\mathbf{z}, \grad{v}\right)},~
+  \alpha^{y_1} = \max \abs{\pdv{\mathcal{H}}{w_3}\left(\mathbf{z}, \grad{v}\right)},~
+  \alpha^{y_2} = \max \abs{\pdv{\mathcal{H}}{w_4}\left(\mathbf{z}, \grad{v}\right)}
+\end{equation}
 Следвайки \cite[глава~3.5]{Osher2003}, използваната дискретизацията по времето е равномерна и по него се апроксимира с подобрения метод на Ойлер.
+Стъпката по времето трябва да изпълнява условието на Courant-Friedrichs-Lewy:
+\begin{equation}
+  \Delta t \max \left(\frac{\abs{\pdv{\mathcal{H}}{w_1}}}{h_{x_1}} + \frac{\abs{\pdv{\mathcal{H}}{w_2}}}{h_{x_2}} + \frac{\abs{\pdv{\mathcal{H}}{w_3}}}{h_{y_1}} + \frac{\abs{\pdv{\mathcal{H}}{w_4}}}{h_{y_2}}\right) < 1
+\end{equation}
+Тук с $h_{x_1}, h_{x_2}, h_{y_1}, h_{y_2}$ са означени стъпките по съответните направления.
 
 \begin{remark}
   С помощта на същия числен подход са решени задачи за управление на други системи, като например насочване на ракети \cite{Assellaou2016, Assellaou2018}, както и in vitro модел на терапия на тумурни клетки \cite{Carrere2020}.
