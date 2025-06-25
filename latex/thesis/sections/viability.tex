@@ -178,9 +178,9 @@
   \alpha^{y_2} = \max \abs{\pdv{\mathcal{H}}{w_4}\left(\mathbf{z}, \grad{v}\right)}
 \end{equation}
 Следвайки \cite[глава~3.5]{Osher2003}, използваната дискретизацията по времето е равномерна и по него се апроксимира с подобрения метод на Ойлер.
-Стъпката по времето трябва да изпълнява условието на Courant-Friedrichs-Lewy:
+Стъпката по времето $\tau$ трябва да изпълнява условието на Courant-Friedrichs-Lewy:
 \begin{equation}
-  \Delta t \max \left(\frac{\abs{\pdv{\mathcal{H}}{w_1}}}{h_{x_1}} + \frac{\abs{\pdv{\mathcal{H}}{w_2}}}{h_{x_2}} + \frac{\abs{\pdv{\mathcal{H}}{w_3}}}{h_{y_1}} + \frac{\abs{\pdv{\mathcal{H}}{w_4}}}{h_{y_2}}\right) < 1
+  \tau \max \left(\frac{\abs{\pdv{\mathcal{H}}{w_1}}}{h_{x_1}} + \frac{\abs{\pdv{\mathcal{H}}{w_2}}}{h_{x_2}} + \frac{\abs{\pdv{\mathcal{H}}{w_3}}}{h_{y_1}} + \frac{\abs{\pdv{\mathcal{H}}{w_4}}}{h_{y_2}}\right) < 1
 \end{equation}
 Тук с $h_{x_1}, h_{x_2}, h_{y_1}, h_{y_2}$ са означени стъпките по съответните направления.
 
