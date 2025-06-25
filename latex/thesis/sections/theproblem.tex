@@ -7,11 +7,12 @@
     &\dot{X}_2(t) = \beta_{vh} (N_2-X_2(t)) \left(\frac{p_{21} e^{-\mu_1 \tau} a_1 (1-\kappa u_2(t)) Y_1(t)}{p_{11} N_1 + p_{21} N_2} + \frac{p_{22} e^{-\mu_2 \tau} a_2 (1-\kappa u_2(t)) Y_2(t)}{p_{12} N_1 + p_{22} N_2}\right) - \gamma_2 X_2(t) \\
     &\dot{Y}_1(t) = \beta_{hv} a_1 (M_1-Y_1(t)) \frac{p_{11} (1-\kappa u_1(t)) X_1(t) + p_{21} (1-\kappa u_2(t)) X_2(t)}{p_{11} N_1 + p_{21} N_2} - \mu_1 Y_1(t) \\
     &\dot{Y}_2(t) = \beta_{hv} a_2 (M_2-Y_2(t)) \frac{p_{12} (1-\kappa u_1(t)) X_1(t) + p_{22} (1-\kappa u_2(t)) X_2(t)}{p_{12} N_1 + p_{22} N_2} - \mu_2 Y_2(t) \\
-    &u_i(t) \in \mathscr{U}_i = \{u_i:\mathbb{R}_+ \rightarrow [0, \bar{u}_i] \vert u_i \text{- измерима}\}, i=1,2, \quad \mathscr{U} = \mathscr{U}_1 \cross \mathscr{U}_2
+    &u_i(t) \in \mathscr{U}_i = \{u_i:\mathbb{R}_+ \rightarrow [0, \bar{u}_i] \vert u_i \text{- измерима}\}, i=1,2, \quad U = [0, \bar{u}_1] \cross [0, \bar{u}_2], \quad \mathscr{U} = \mathscr{U}_1 \cross \mathscr{U}_2
   \end{split}
 \end{equation}
-
-Това е модел обединение на моделите за мобилност \eqref{eq:MigrationProblem} и за репелент против комари \eqref{eq:RepellentProblem} и отново се запазват означенията от дефиниция \ref{def:Parameters}, както на другите въведени в тези модели.
+По същността си уравненията на модела са като на \eqref{eq:MigrationProblem}, но с идеята, че може с помощта на репеленти да се намали честотата на ухавания.
+Това се моделира с помощта на множител $(1 - \kappa u_i(t))$ в закона за действие на масите, където $\kappa$ е ефективността на репелента, а пък $u_i(t)$ са функции управления, задаващи пропорцията на жители на съответното местообитание, предпазени с помощта на репелента \cite{Rashkov2022}.
+Отново се запазват означенията от дефиниция \ref{def:Parameters} и извеждането на \eqref{eq:MigrationProblem}.
 Таблична форма на всичките параметри е поставена долу в таблица \ref{tbl:ParameterDefinitions}. \\
 Трябва да се отбележи, че в модела \eqref{eq:TheProblem} се допуска, че хората са лично защитени от репелента (например носят дрехи с него), затова са предпазени от репелента спрямо местообитанието, чиито жители са.
 Този тип моделиране е съобразен с нетрайния характер на пребиваване характерен за Лагранжевите модели.
@@ -115,7 +116,7 @@
     &\dot{x}_2(t) = (1-x_2(t)) (1-\kappa u_2(t))\left(b_{21} y_1(t) + b_{22} y_2(t)\right) - \gamma_2 x_2(t) \\
     &\dot{y}_1(t) = (1-y_1(t)) \left(c_{11}(1-\kappa u_1(t)) x_1(t) + c_{12}(1-\kappa u_2(t)) x_2(t)\right) - \mu_1 y_1(t) \\
     &\dot{y}_2(t) = (1-y_2(t)) \left(c_{21}(1-\kappa u_1(t)) x_1(t) + c_{22} (1-\kappa u_2(t)) x_2(t)\right) - \mu_2 y_2(t) \\
-    &u_i(t) \in \mathscr{U}_i = \{u_i:\mathbb{R}_+ \rightarrow [0, \bar{u}_i] \vert u_i \text{- измерима}\}, i=1,2, \quad \mathscr{U} = \mathscr{U}_1 \cross \mathscr{U}_2
+    &u_i(t) \in \mathscr{U}_i = \{u_i:\mathbb{R}_+ \rightarrow [0, \bar{u}_i] \vert u_i \text{- измерима}\}, i=1,2, \quad U = [0, \bar{u}_1] \cross [0, \bar{u}_2], \quad \mathscr{U} = \mathscr{U}_1 \cross \mathscr{U}_2
   \end{split}
 \end{equation}
 
