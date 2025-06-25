@@ -1,39 +1,7 @@
 \section{\hspace{1em} Ядро на слаба инвариантност}
 
-\subsection{Случаи без употреба и с максимална употреба на репелент}
-
-\begin{proposition}
-  Ако $\mathscr{R}_0(\bar{\mathbf{u}}) > 1$ и $\mathbf{E}^* = (x_1^*, x_2^*, y_1^*, y_2^*)^T$, като $x_1^* > \bar{I}_1$ или $x_2^* > \bar{I}_2$, то ядрото на слаба инвариантност е тривиалното, т.е. $V(\bar{\mathbf{I}}, \bar{\mathbf{u}}) = \{\mathbf{0}\}$.
-  % Във случая $\mathbf{u}(t) \equiv \bar{\mathbf{u}}$, то ако имаме ендемична точка $\mathbf{E}^*$ и $E_1^* > \bar{I}_1 \lor E_2^* > \bar{I}_2$, то търсената от нас задача няма решение.
-\end{proposition}
-
-\begin{proof}
-  Наистина, по определение $I_1, I_2 \geq 0$, а пък $\mathbf{0}$ е равновесна за системата \eqref{eq:TheDimensionlessProblem}. Така $\mathbf{0} \in V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$.
-  Остава да забележим, че $\mathbf{f}(\mathbf{z}, \bar{\mathbf{u}}) \leq \mathbf{f}(\mathbf{z}, \mathbf{u})$ за всички $\mathbf{u} \in \mathscr{U}$.
-  Така може да ползваме теоремата \eqref{thm:Comparison} за сравнение на решения на кооперативни системи и така всяка друга система ще е с мажориращо решение за еднакви начални $\mathbf{z}_0$.
-  Понеже $\mathbf{E}^*$ е асимптотично устойчива и е изпълнено поне едно от неравенствата в това твърдение, то ще съществува $t > 0$, за което търсеното условие \eqref{eq:AllHospitalised} не е изпълнено.
-  Но тогава за $t$ от мажорирането ще следва, че не е изпълнено и за кое да е друго решение.
-\end{proof}
-
-Обратната посока не е ясна. В случая $\mathbf{u}(t)=\mathbf{0}$, то ако липсва ендемична точка, решението ще клони към $\mathbf{0}$, но не е ясно дали винаги се намира в желаното множество, или излиза от него. Аналогично ако имаме ендемична точка.
-
-Все пак може да се получи някакво слабо твърдение за задачата.
-
-\begin{proposition}
-  Ако \eqref{eq:AllHospitalised} е изпълнено за решението на система \eqref{eq:TheDimensionlessProblem} с $\mathbf{u} \equiv \mathbf{0}$ и начално условие $\mathbf{z}_0 = (\xi_1, \xi_2, 1, 1)^T$, то $\Xi = [0, \xi_1] \times [0, \xi_2] \times [0, 1] \times [0, 1] \subseteq V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$.
-\end{proposition}
-
-\begin{proof}
-  Веднага се вижда, че $\mathbf{f}(\mathbf{z}, \mathbf{u}) \leq \mathbf{f}(\mathbf{z}, \mathbf{0})$ за всички $\mathbf{u} \in \mathscr{U}$.
-  Ползваме теоремата \eqref{thm:Comparison} за сравнение на решения и така за всяко друго решение $\tilde{\mathbf{z}}$ с начално условие $\tilde{\mathbf{z}}_0 \in \Xi$, понеже $\tilde{\mathbf{z}}_0 \leq \mathbf{z}_0$, то е изпълнено $\tilde{z}_1(t) \leq z_1(t) \leq \bar{I}_1, \tilde{z}_2(t) \leq z_2(t) \leq \bar{I}_2$, тоест $\tilde{\mathbf{z}}_0 \in V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$.
-\end{proof}
-
-\begin{corollary}
-  Ако \eqref{eq:AllHospitalised} е изпълнено за решението на система \eqref{eq:TheDimensionlessProblem} с $\mathbf{u} \equiv \mathbf{0}$ и начално условие $\mathbf{z}_0 = (\bar{I}_1, \bar{I}_2, 1, 1)^T$, то ядрото на слаба инвариатност е възможно най-голямо, т.е. $V(\bar{\mathbf{I}}, \bar{\mathbf{u}}) = \mathscr{I}$.
-\end{corollary}
-
 \subsection{Система на Marchaud/Peano}
-Видя се, че $\mathbf{0} \in V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$ със съображението, че $\mathbf{0}$ е равновесна.
+% Видя се, че $\mathbf{0} \in V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$ със съображението, че $\mathbf{0}$ е равновесна.
 Съществуването на ядрото на слаба инвариантност може да бъде получено и с приложение на общата теория от \cite{Aubin1991}.
 Тъй като тя е основана на диференциални включвания, нека въведем означението:
 \begin{equation}
@@ -145,11 +113,45 @@
 
 \begin{proof}
   От твърдение \ref{prop:Marchaud-Peano}, то може да приложим \cite[теорема~4.1.2]{Aubin1991}, откъдето следва съществуването на $V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$.
-  Вече беше показано, че $V(\bar{\mathbf{I}}, \bar{\mathbf{u}}) \neq \varnothing$.
+  % Вече беше показано, че $V(\bar{\mathbf{I}}, \bar{\mathbf{u}}) \neq \varnothing$.
+  Вижда се, че $V(\bar{\mathbf{I}}, \bar{\mathbf{u}}) \neq \varnothing$, понеже равновесната точка $\mathbf{0}$ изпълнява условията на задачата.
 \end{proof}
 
+\subsection{Случаи без употреба и с максимална употреба на репелент}
+
+\begin{proposition}
+  Ако $\mathscr{R}_0(\bar{\mathbf{u}}) > 1$ и $\mathbf{E}^* = (x_1^*, x_2^*, y_1^*, y_2^*)^T$, като $x_1^* > \bar{I}_1$ или $x_2^* > \bar{I}_2$, то ядрото на слаба инвариантност е тривиалното, т.е. $V(\bar{\mathbf{I}}, \bar{\mathbf{u}}) = \{\mathbf{0}\}$.
+  % Във случая $\mathbf{u}(t) \equiv \bar{\mathbf{u}}$, то ако имаме ендемична точка $\mathbf{E}^*$ и $E_1^* > \bar{I}_1 \lor E_2^* > \bar{I}_2$, то търсената от нас задача няма решение.
+\end{proposition}
+
+\begin{proof}
+  Наистина, по определение $I_1, I_2 \geq 0$, а пък $\mathbf{0}$ е равновесна за системата \eqref{eq:TheDimensionlessProblem}. Така $\mathbf{0} \in V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$.
+  Остава да забележим, че $\mathbf{f}(\mathbf{z}, \bar{\mathbf{u}}) \leq \mathbf{f}(\mathbf{z}, \mathbf{u})$ за всички $\mathbf{u} \in \mathscr{U}$.
+  Така може да ползваме теоремата \eqref{thm:Comparison} за сравнение на решения на кооперативни системи и така всяка друга система ще е с мажориращо решение за еднакви начални $\mathbf{z}_0$.
+  Понеже $\mathbf{E}^*$ е глобално асимптотично устойчива и е изпълнено поне едно от неравенствата в това твърдение, то ще съществува $t > 0$, за което търсеното условие \eqref{eq:AllHospitalised} не е изпълнено.
+  Но тогава за $t$ от мажорирането ще следва, че не е изпълнено и за кое да е друго решение.
+\end{proof}
+
+Обратната посока не е ясна. В случая $\mathbf{u}(t)=\mathbf{0}$, то ако липсва ендемична точка, решението ще клони към $\mathbf{0}$, но не е ясно дали винаги се намира в желаното множество, или излиза от него. Аналогично ако имаме ендемична точка.
+
+Все пак може да се получи някакво слабо твърдение за задачата.
+
+\begin{proposition}
+  Ако \eqref{eq:AllHospitalised} е изпълнено за решението на система \eqref{eq:TheDimensionlessProblem} с $\mathbf{u} \equiv \mathbf{0}$ и начално условие $\mathbf{z}_0 = (\xi_1, \xi_2, 1, 1)^T$, то $\Xi = [0, \xi_1] \times [0, \xi_2] \times [0, 1] \times [0, 1] \subseteq V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$.
+\end{proposition}
+
+\begin{proof}
+  Веднага се вижда, че $\mathbf{f}(\mathbf{z}, \mathbf{u}) \leq \mathbf{f}(\mathbf{z}, \mathbf{0})$ за всички $\mathbf{u} \in \mathscr{U}$.
+  Ползваме теоремата \eqref{thm:Comparison} за сравнение на решения и така за всяко друго решение $\tilde{\mathbf{z}}$ с начално условие $\tilde{\mathbf{z}}_0 \in \Xi$, понеже $\tilde{\mathbf{z}}_0 \leq \mathbf{z}_0$, то е изпълнено $\tilde{z}_1(t) \leq z_1(t) \leq \bar{I}_1, \tilde{z}_2(t) \leq z_2(t) \leq \bar{I}_2$, тоест $\tilde{\mathbf{z}}_0 \in V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$.
+\end{proof}
+
+\begin{corollary}
+  Ако \eqref{eq:AllHospitalised} е изпълнено за решението на система \eqref{eq:TheDimensionlessProblem} с $\mathbf{u} \equiv \mathbf{0}$ и начално условие $\mathbf{z}_0 = (\bar{I}_1, \bar{I}_2, 1, 1)^T$, то ядрото на слаба инвариатност е възможно най-голямо, т.е. $V(\bar{\mathbf{I}}, \bar{\mathbf{u}}) = \mathscr{I}$.
+\end{corollary}
+
 \subsection{Числено решение на уравнението на Хамилтон-Якоби-Белман}
-Задачата \eqref{eq:HJB} може да се реши с прибавено числено време.
+Задачата \eqref{eq:HJB} може да се реши с прибавено числено време, тъй като в \cite{Zidani2013} е показано, че \eqref{eq:HJB} има единствено непрекъснато визкозно решение.
+При подходящо избрано начално условие за \eqref{eq:HJBTime} приближеното решение се намира чрез постигане на сходимост при желаната от нас точност.
 \begin{equation}
   \label{eq:HJBTime}
   \begin{split}
@@ -165,5 +167,5 @@
 Следвайки \cite[глава~3.5]{Osher2003}, използваната дискретизацията по времето е равномерна и по него се апроксимира с подобрения метод на Ойлер.
 
 \begin{remark}
-  В литературата могат да се намерят и задачи за управление на други системи, чрез чрез решаване на уравнението на Хамилтон-Якоби-Белман, като например самолет \cite{Assellaou2016, Assellaou2018}, както и in vitro модел на тумурни клетки \cite{Carrere2020}.
+  С помощта на същия числен подход са решени задачи за управление на други системи, като например насочване на ракети \cite{Assellaou2016, Assellaou2018}, както и in vitro модел на терапия на тумурни клетки \cite{Carrere2020}.
 \end{remark}

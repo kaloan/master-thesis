@@ -143,7 +143,7 @@
   \label{eq:AllHospitalised}
   \forall t \geq 0 (x_1(t) \leq \bar{I}_1 \wedge x_2(t) \leq \bar{I}_2) \iff \forall t \geq 0 (\mathbf{x}(t) \in [0, \bar{I}_1] \times [0, \bar{I}_2]) \iff \forall t \geq 0 (\mathbf{z}(t) \in \mathscr{I})
 \end{equation}
-Тъй като първоначалният брой заразени хора и комари влияят на развитието на системата ще търсим множеството на начални условия, за които всички траектории на \eqref{eq:TheDimensionlessProblem}:
+Тъй като първоначалният брой заразени хора и комари влияят на развитието на системата ще търсим множеството на начални условия, за които всички траектории на \eqref{eq:TheDimensionlessProblem} излълняват \eqref{eq:AllHospitalised}:
 \begin{equation}
   \label{eq:ViabilityKernel}
   V(\bar{\mathbf{I}}, \bar{\mathbf{u}}) = \{\mathbf{z}_0 \text{ начално условие} \vert \exists \mathbf{u} (\eqref{eq:TheDimensionlessProblem} \text{ има решение} \wedge \eqref{eq:AllHospitalised} \text{ е изпълнено})\}
@@ -175,7 +175,7 @@ $V(\bar{\mathbf{I}}, \bar{\mathbf{u}})$ се нарича ядро на слаб
   \forall{t>0} \left(v(\mathbf{z}_0) = \inf_{\mathbf{u} \in \mathscr{U}} \max\{e^{-\lambda t} v(\mathbf{z}_0), \sup_{s \in (0, t]} e^{-\lambda t} \Gamma(\mathbf{z}(s; \mathbf{z}_0; \mathbf{u}))\}\right)
 \end{equation}
 
-$v$ e вискозното решение на уравнение на Хамилтон-Якоби-Белман за минимизация на функционал:
+Използвайки стандартни аргументи от \cite{Bardi1997} се установявва, че $v$ e вискозното решение на уравнение на Хамилтон-Якоби-Белман за минимизация на функционал:
 \begin{equation}
   \label{eq:HJB}
   \begin{split}
