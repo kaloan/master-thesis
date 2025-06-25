@@ -81,8 +81,11 @@ margin = 1.5 cm]
 \usepackage{newtxmath}  % Times in math mode
 \usepackage{import}
 
-\usepackage[backend=biber]{biblatex}
-\addbibresource[bibencoding=utf8]{thesis-biblatex.bib} % BibLaTeX way of adding resources
+% \usepackage[backend=biber]{biblatex}
+% \addbibresource[bibencoding=utf8]{thesis-biblatex.bib} % BibLaTeX way of adding resources
+\usepackage[numbers]{natbib} % natbib works only with bibtex!
+\usepackage{doi}
+
 \usepackage[nottoc,numbib]{tocbibind}
 \usepackage{csquotes}
 \usepackage{titlesec}
@@ -183,9 +186,11 @@ margin = 1.5 cm]
 \import{sections/}{numerical.tex}
 \import{sections/}{conclusions.tex}
 \pagebreak
-\printbibliography[heading=bibintoc]
-% \bibliographystyle{plain}
-% \bibliography{thesis-bibtex.bib}
+% \printbibliography[heading=bibintoc]
+\nocite{*}
+\renewcommand{\bibname}{\hspace{1em} Библиография} % Due to roman numerals
+\bibliographystyle{plainnat.bst}
+\bibliography{thesis-bibtex-shortened.bib}
 % \listoffigures
 % \listoftables
 \end{document}
