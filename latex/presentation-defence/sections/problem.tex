@@ -1,0 +1,112 @@
+\section{\hspace{1em}Модел}
+\begin{frame}[t]{Допускания}
+  % В дипломната работа се разглежда модел на Ross-Macdonald с две местообитания и репелент. Той носи следните допускания:
+  \begin{small}
+    \begin{enumerate}
+      \item Човешката популация и популацията комари е постоянна, като са разпределени равномерно в местообитанията.
+      \item Смъртността от заразата се пренебрегва, както при хората, така и при комарите.
+      \item Веднъж заразени, комарите не се възстановяват.
+      \item Само податливи се заразяват (няма свръхзаразяване).
+      \item Хората не придобиват никакъв имунитет.
+      \item Смъртността на комарите е независима от възрастта им и съответно продължителността им на живот е експоненциално разпределена.
+      \item Разглежда се само предаването на патогена между хора и комари.
+      \item Латентният период при комарите е константен.
+      \item Мобилността на хората между местообитанията е константна.
+      \item Репелентът има линеен ефект върху честотата на ухапванията върху предпазените с него и не увеличава тази върху непредпазените.
+    \end{enumerate}
+  \end{small}
+\end{frame}
+
+\begin{frame}[t]{Означения}
+  \vspace{-1em}
+  \begin{table}
+    \begin{small}
+      \begin{table}[h]
+        \centering
+        \begin{tabular}{ |c||c| }
+          \hline
+          Променлива & Описание\\
+          \hline
+          $t$ & Време [$\text{ден}$]\\
+          $X_i$ & Брой заразени жители\\
+          $Y_i$ & Брой заразени комари \\
+          $u_i$ & Пропорция защитени с репелент жители \\
+          \hline
+          \hline
+          Параметър & Описание\\
+          \hline
+          $\beta_{vh}$ & Вероятност на прехвърляне на патогена от комар на човек \\
+          $\beta_{hv}$ & Вероятност на прехвърляне на патогена от човек на комар \\
+          $a_i$ & Честота на ухапвания [$\text{ден}^{-1}$]\\
+          $M_i$ & Популация на женски комари\\
+          $\mu_i$ & Смъртност на комари [$\text{ден}^{-1}$]\\
+          $\tau$ & Инкубационен период при комарите [$\text{ден}$]\\
+          $N_i$ & Човешка популация (население) \\
+          $\gamma_i$ & Скорост на оздравяване на хора [$\text{ден}^{-1}$]\\
+          $p_{ij}$ & Мобилност на хора от местообитание i в j\\
+          $\kappa$ & Ефективност на репелент\\
+          $\bar{u}_i$ & Максимална възможна предпазена част жители с репелент\\
+          $\bar{I}_i$ & Максимална част на заразени хора\\
+          \hline
+        \end{tabular}
+      \end{table}
+    \end{small}
+    \caption{Таблица с променливи и параметри}
+    \label{tbl:Definitions}
+  \end{table}
+\end{frame}
+
+\begin{frame}[t]{Първа форма на модела}
+  \begin{footnotesize}
+    \begin{equation}
+      \label{eq:TheProblem}
+      \begin{split}
+        &\dot{X}_1 = \beta_{vh} (N_1-X_1) (1-\kappa u_1) \left(\frac{p_{11} e^{-\mu_1 \tau} a_1 Y_1}{p_{11} N_1 + p_{21} N_2} + \frac{p_{12} e^{-\mu_2 \tau} a_2  Y_2}{p_{12} N_1 + p_{22} N_2}\right) - \gamma_1 X_1 \\
+        &\dot{X}_2 = \beta_{vh} (N_2-X_2) (1-\kappa u_2) \left(\frac{p_{21} e^{-\mu_1 \tau} a_1 Y_1}{p_{11} N_1 + p_{21} N_2} + \frac{p_{22} e^{-\mu_2 \tau} a_2 Y_2}{p_{12} N_1 + p_{22} N_2}\right) - \gamma_2 X_2 \\
+        &\dot{Y}_1 = \beta_{hv} a_1 (M_1-Y_1) \frac{p_{11} (1-\kappa u_1) X_1 + p_{21} (1-\kappa u_2) X_2}{p_{11} N_1 + p_{21} N_2} - \mu_1 Y_1 \\
+        &\dot{Y}_2 = \beta_{hv} a_2 (M_2-Y_2) \frac{p_{12} (1-\kappa u_1) X_1 + p_{22} (1-\kappa u_2) X_2}{p_{12} N_1 + p_{22} N_2} - \mu_2 Y_2 \\
+        &u_i \in \mathscr{U}_i = \{u_i:\mathbb{R}_+ \rightarrow [0, \bar{u}_i] \vert u_i \text{- измерима}\}
+      \end{split}
+    \end{equation}
+  \end{footnotesize}
+  Моделът е развитие на тези на Bichara \cite{Bichara2016} (мобилност) и Rashkov \cite{Rashkov2022} (репелент).
+\end{frame}
+
+\begin{frame}[t]{Скалирана форма на модела}
+  Моделът подлежи на скалиране на променливите чрез смяната $(X_1, X_2, Y_1, Y_2) \rightarrow (\frac{X_1}{N_1}, \frac{X_2}{N_2}, \frac{Y_1}{M_1}, \frac{Y_2}{M_2}) = (x_1, x_2, y_1, y_2)$ и след полагания на коефициентите има вида:
+  \begin{equation}
+    \label{eq:TheDimensionlessProblem}
+    \begin{split}
+      &\dot{x}_1 = (1-x_1) (1-\kappa u_1) \left(b_{11} y_1 + b_{12} y_2\right) - \gamma_1 x_1 \\
+      &\dot{x}_2 = (1-x_2) (1-\kappa u_2)\left(b_{21} y_1 + b_{22} y_2\right) - \gamma_2 x_2 \\
+      &\dot{y}_1 = (1-y_1) \left(c_{11}(1-\kappa u_1) x_1 + c_{12}(1-\kappa u_2) x_2\right) - \mu_1 y_1 \\
+      &\dot{y}_2 = (1-y_2) \left(c_{21}(1-\kappa u_1) x_1 + c_{22} (1-\kappa u_2) x_2\right) - \mu_2 y_2 \\
+    \end{split}
+  \end{equation}
+  Надолу \eqref{eq:TheDimensionlessProblem} ще се записва и във векторен вид по следния начин:
+  \begin{equation}
+    \begin{pmatrix}
+      \dot{\boldsymbol{x}} \\
+      \dot{\boldsymbol{y}}
+    \end{pmatrix}
+    =
+    \boldsymbol{f}(\boldsymbol{x}, \boldsymbol{y}, \boldsymbol{u}), \Hquad
+    \boldsymbol{x} = (x_1, x_2)^T, \Hquad \boldsymbol{y} = (y_1, y_2)^T, \Hquad \mathbf{f}=(f_{x_1}, f_{x_2}, f_{y_1}, f_{y_2})^T
+  \end{equation}
+  Или пък във вида:
+  \begin{equation}
+    \dot{\boldsymbol{z}} = \boldsymbol{f}(\boldsymbol{z}, \boldsymbol{u}), \Hquad \boldsymbol{z} = (\boldsymbol{x}, \boldsymbol{y})^T, \Hquad \boldsymbol{z}(0) = \boldsymbol{z}_0 = (x_1^0, x_2^0, y_1^0, y_2^0)^T
+  \end{equation}
+\end{frame}
+
+\begin{frame}{Допълнителни означения}
+  Задачата се разглежда в $\Omega = \{x_i \in [0, 1], y_i \in [0, 1]\} = \{\boldsymbol{z} \in [0, 1]^4\}$.
+  Означаваме $U = [0, \bar{u}_1] \cross [0, \bar{u}_2], \Hquad \mathscr{U} = \mathscr{U}_1 \cross \mathscr{U}_2$.
+
+  Нека $\bar{I}_i \in [0, 1]$ - максималната част от населението в съответното местообитание, което може да получи адекватна здравна помощ при заразяване с малария. \\
+  Означаваме $\bar{\boldsymbol{I}} = (\bar{I}_1, \bar{I}_2)^T \quad \mathscr{I} = [0, \bar{I}_1] \times [0, \bar{I}_2] \times [0, 1] \times [0, 1]$.
+
+  % \begin{nota-bene}
+  %   Всичките векторни/матрични неравенства се разбират покомпоненто.
+  % \end{nota-bene}
+\end{frame}

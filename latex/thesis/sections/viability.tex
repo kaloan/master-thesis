@@ -166,7 +166,7 @@
 Използвани са равномерна дискретизация по пространството и Weighted Essentially Non-Oscillatory (WENO) \cite[глава~3.4]{Osher2003} апроксимация с числен Хамилтониян от вида Lax-Friedrichs \cite[глава~5.3]{Osher2003}, а за начално предположение $v_0 = \Gamma$.
 
 Чрез WENO метода се получават по-точни приближения за разлика напред и назад $v_{\eta}^{\pm}$ на $\pdv{v}{\eta}$, $\eta = x_1, x_2, y_1, y_2$.
-Ако $\mathbf{z}_{i,j,k,l}=(x_1^i, x_2^j, y_1^k, y_2^l)$ е $(i,j,k,l)$-тата точка от схемата по пространство, то численият хамилтонян в нея $\hat{\mathcal{H}}$ е взет:
+Ако $\mathbf{z}_{i,j,k,l}=(x_1^i, x_2^j, y_1^k, y_2^l)$ е $(i,j,k,l)$-тата точка от схемата по пространство, то численият Хамилтонян в нея $\hat{\mathcal{H}}$ е взет:
 \begin{multline}
   \hat{\mathcal{H}} = \mathcal{H}\left(\mathbf{z}_{ijkl}, \frac{(v_{x_1}^+)_{ijkl}+(v_{x_1}^-)_{ijkl}}{2}, \frac{(v_{x_2}^+)_{ijkl}+(v_{x_2}^-)_{ijkl}}{2}, \frac{(v_{y_1}^+)_{ijkl}+(v_{y_1}^-)_{ijkl}}{2}, \frac{(v_{y_2}^+)_{ijkl}+(v_{y_2}^-)_{ijkl}}{2}\right) \\ - \sum_{\eta = x_1, x_2, y_1, y_2} \alpha^{\eta} \frac{(v_{\eta}^+)_{ijkl}-(v_{\eta}^-)_{ijkl}}{2}
 \end{multline}
