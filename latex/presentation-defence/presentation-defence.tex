@@ -101,9 +101,16 @@
 % \usepackage[nottoc,numbib]{tocbibind}
 % \addbibresource[bibencoding=utf8]{presentation-defence.bib}
 
+\usepackage[natbib=true, backend=biber]{biblatex}
+% \usepackage[nottoc,numbib]{tocbibind}
+\addbibresource[bibencoding=utf8]{presentation-defence.bib}
+
+\usepackage{csquotes}
+
 %  Bibliography with natbib
 % \usepackage[numbers]{natbib} % natbib works only with bibtex!
 % \usepackage{doi}
+% \newcommand{\newblock}{} % To make natbib work with beamer
 
 \usetheme{Frankfurt}
 \useoutertheme{}
@@ -204,12 +211,12 @@
 \import{sections/}{viability.tex}
 \import{sections/}{numerical.tex}
 
-% \nocite{*}
-% \begin{frame}[Източници]
-%   \bibliographystyle{plainnat.bst}
-%   \bibliography{presentation-defence.bib}
-%   % \printbibliography
-% \end{frame}
+\nocite{*}
+\begin{frame}[allowframebreaks]{Източници}
+  % \bibliographystyle{plainnat.bst}
+  % \bibliography{presentation-defence.bib}
+  \printbibliography
+\end{frame}
 
 {
   \setbeamertemplate{headline}[default]
