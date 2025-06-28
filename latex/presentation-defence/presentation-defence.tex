@@ -42,7 +42,7 @@
 \usepackage{bm}
 \tracinglostchars=2
 
-\usepackage[bulgarian]{babel}
+\usepackage[bulgarian, english]{babel}
 \usepackage{hyphenat}
 
 % Indent first line in paragraph
@@ -105,7 +105,10 @@
 % \usepackage[nottoc,numbib]{tocbibind}
 \addbibresource[bibencoding=utf8]{presentation-defence.bib}
 
-\usepackage{csquotes}
+% \usepackage[nottoc,numbib]{tocbibind}
+% \usepackage{csquotes}
+% \usepackage{titlesec}
+% \usepackage{cleveref} % For smart referencing
 
 %  Bibliography with natbib
 % \usepackage[numbers]{natbib} % natbib works only with bibtex!
@@ -215,11 +218,13 @@
 \begin{frame}[allowframebreaks]{Източници}
   % \bibliographystyle{plainnat.bst}
   % \bibliography{presentation-defence.bib}
+  \selectlanguage{english}
   \printbibliography
 \end{frame}
 
 {
   \setbeamertemplate{headline}[default]
+  \selectlanguage{bulgarian}
   \begin{frame}
     \begin{center}
       \begin{huge}
