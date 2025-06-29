@@ -3,12 +3,12 @@
   Питаме се има ли такива управления $\boldsymbol{u}$, за които във всеки момент всички заразени да имат възможност да получат помощ от здравната система, т.е. :
   \begin{equation}
     \label{eq:AllHospitalised}
-    \forall t \geq 0 (x_1(t) \leq \bar{I}_1 \wedge x_2(t) \leq \bar{I}_2) \iff \forall t \geq 0 (\boldsymbol{x}(t) \in \mathscr{I})
+    \forall t \geq 0 (x_1(t) \leq \bar{I}_1 \wedge x_2(t) \leq \bar{I}_2) \iff \forall t \geq 0 (\boldsymbol{z}(t) \in \mathscr{I})
   \end{equation}
   Тъй като първоначалният брой заразени хора и комари влияят на развитието на системата ще търсим \textbf{ядрото на слаба инвариантност на Белман}:
   \begin{equation}
     \label{eq:ViabilityKernel}
-    V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}}) = \{\boldsymbol{z}_0  \text{ начално условие} \vert \exists \boldsymbol{u} (\eqref{eq:TheDimensionlessProblem} \text{ има решение} \wedge \eqref{eq:AllHospitalised} \text{ е изпълнено})\}
+    V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}}) = \{\boldsymbol{z}_0  \text{ начално условие} \vert \exists \boldsymbol{u} (\eqref{eq:AllHospitalised} \text{ е изпълнено})\}
   \end{equation}
   $\pmb{0}$ е равновесна за \eqref{eq:TheDimensionlessProblem} - за нея винаги е изпълнено \eqref{eq:AllHospitalised}, т.е.
   $\pmb{0} \in V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}})$.
@@ -17,7 +17,7 @@
 
 \begin{frame}[t]{Тривиални случаи за $V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}})$}
   \begin{proposition}
-    Ако съществува $\boldsymbol{E}^* = (x_1^*, x_2^*, y_1^*, y_2^*)^T$ за $\boldsymbol{u}(t) \equiv \bar{\boldsymbol{u}}$, като $x_1^* > \bar{I}_1$ или $x_2^* > \bar{I}_2$, то ядрото на слаба инвариантност на Белман е тривиалното, т.е. $V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}}) = \{\mathbf{0}\}$.
+    Ако съществува $\boldsymbol{E}^* = (x_1^*, x_2^*, y_1^*, y_2^*)^T$ за $\boldsymbol{u}(t) \equiv \bar{\boldsymbol{u}}$, като $x_1^* > \bar{I}_1$ или $x_2^* > \bar{I}_2$, то ядрото на слаба инвариантност на Белман е тривиалното, т.е. $V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}}) = \{\pmb{0}\}$.
   \end{proposition}
 
   Доказва се с кооперативността и непрекъснатостта на решението на \eqref{eq:TheDimensionlessProblem}.
@@ -42,7 +42,7 @@
 
   Фиксираме $\lambda>L>0$ ($L$ - константата на Липшиц за \eqref{eq:TheDimensionlessProblem}) и въвеждаме функция на Белман $v$:
   \begin{equation}
-    v(\boldsymbol{z}_0) = \inf_{u \in \mathscr{U}} \sup_{t \in (0, +\infty)} e^{-\lambda t} \Gamma(\boldsymbol{z}(t; \boldsymbol{z}_0; u))
+    v(\boldsymbol{z}_0) = \inf_{\boldsymbol{u} \in \mathscr{U}} \sup_{t \in (0, +\infty)} e^{-\lambda t} \Gamma(\boldsymbol{z}(t; \boldsymbol{z}_0; u))
   \end{equation}
 
   Ако започнем с $\boldsymbol{z}_0 \notin V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}})$, то $v(\boldsymbol{z}_0) > 0$ и обратното.
@@ -56,7 +56,7 @@
 \begin{frame}[t]{Уравнение на Хамилтон-Якоби-Белман}
   В сила е принцип за динамично програмиране:
   \begin{equation}
-    v(\boldsymbol{z}_0) = \inf_{u \in \mathscr{U}} \max\{e^{-\lambda t} v(\boldsymbol{z}_0), \sup_{s \in (0, t]} e^{-\lambda t} \Gamma(\boldsymbol{z}(s; \boldsymbol{z}_0; u))\}
+    v(\boldsymbol{z}_0) = \inf_{\boldsymbol{u} \in \mathscr{U}} \max\{e^{-\lambda t} v(\boldsymbol{z}_0), \sup_{s \in (0, t]} e^{-\lambda t} \Gamma(\boldsymbol{z}(s; \boldsymbol{z}_0; u))\}
   \end{equation}
   Може да се покаже, че $v$ е вискозното решение на \textbf{уравнението на Хамилтон-Якоби–Белман}:
   \begin{equation}

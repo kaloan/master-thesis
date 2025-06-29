@@ -101,7 +101,8 @@
 % \usepackage[nottoc,numbib]{tocbibind}
 % \addbibresource[bibencoding=utf8]{presentation-defence.bib}
 
-\usepackage[natbib=true, backend=biber]{biblatex}
+\usepackage[backend=biber, style=trad-plain]{biblatex}
+% \usepackage{biblatex-trad}
 % \usepackage[nottoc,numbib]{tocbibind}
 \addbibresource[bibencoding=utf8]{presentation-defence.bib}
 
@@ -139,6 +140,7 @@
 % \setbeamercolor*{palette quaternary}{fg=white,bg=black}
 \beamertemplatenavigationsymbolsempty
 \setbeamertemplate{caption}[numbered] % For proper table and figure numbering
+\setbeamertemplate{bibliography item}{\insertbiblabel} % For bibliography entries keeping the label instead of receiving a document image
 
 \DeclareFontShape{OT1}{cmss}{b}{n}{<->ssub * cmss/bx/n}{}
 
@@ -216,9 +218,10 @@
 
 \nocite{*}
 \begin{frame}[allowframebreaks]{Източници}
-  % \bibliographystyle{plainnat.bst}
-  % \bibliography{presentation-defence.bib}
   \selectlanguage{english}
+  % \bibliographystyle{plainnat.bst}
+  % \bibliographystyle{plainnat}
+  % \bibliography{presentation-defence.bib}
   \printbibliography
 \end{frame}
 
