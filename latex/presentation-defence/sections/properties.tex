@@ -15,73 +15,73 @@
 
 \begin{frame}[t]{Свойства на модела}
   \begin{proposition}
-    Съществува единствено решение на \eqref{eq:TheDimensionlessProblem}.
+    За всяко $\boldsymbol{u} \in \mathscr{U}$ задачата на Коши за \eqref{eq:TheDimensionlessProblem} има единствено решение.
   \end{proposition}
 
-  Доказва се с Липшицовост на $\boldsymbol{f}$ по $\boldsymbol{z}$.
-  Сметката се основава на свойства на нормата (хомогенност и неравенсто на триъгълника) и  е дълга, затова тук се пропуска.
+  % Доказва се с Липшицовост на $\boldsymbol{f}$ по $\boldsymbol{z}$.
+  % Сметката се основава на свойства на нормата (хомогенност и неравенсто на триъгълника) и  е дълга, затова тук се пропуска.
 
   \begin{proposition}
     $\Omega$ е положително инвариантно за \eqref{eq:TheDimensionlessProblem}.
   \end{proposition}
 
-  Доказва се с теоремата на Nagumo, че $\boldsymbol{f} \vert_{\partial \Omega}$ е насочен към $\Omega$.
-  \begin{equation*}
-    \begin{split}
-      &f_{x_1}\vert_{\Omega \cap \{x_1=0\}} = (1-\kappa u_1)(b_{11} y_1 + b_{12} y_2) \geq 0, \Hquad f_{x_1}\vert_{\Omega \cap \{x_1=1\}} = - \gamma_1 < 0 \\
-      &f_{x_2}\vert_{\Omega \cap \{x_2=0\}} = (1-\kappa u_2)(b_{21} y_1 + b_{22} y_2) \geq 0, \Hquad f_{x_2}\vert_{\Omega \cap \{x_2=1\}} = - \gamma_2 < 0 \\
-      &f_{y_1}\vert_{\Omega \cap \{y_1=0\}} = c_{11}(1-\kappa u_1) x_1 + c_{12}(1-\kappa u_2) x_2 \geq 0 \Hquad f_{y_1}\vert_{\Omega \cap \{y_1=1\}} = - \mu_1 < 0 \\
-      &f_{y_2}\vert_{\Omega \cap \{y_2=0\}} = c_{21}(1-\kappa u_1) x_1 + c_{22}(1-\kappa u_2) x_2 \geq 0 \Hquad f_{y_2}\vert_{\Omega \cap \{y_2=1\}} = - \mu_2 < 0
-    \end{split}
-  \end{equation*}
+  % Доказва се с теоремата на Nagumo, че $\boldsymbol{f} \vert_{\partial \Omega}$ е насочен към $\Omega$.
+  % \begin{equation*}
+  %   \begin{split}
+  %     &f_{x_1}\vert_{\Omega \cap \{x_1=0\}} = (1-\kappa u_1)(b_{11} y_1 + b_{12} y_2) \geq 0, \Hquad f_{x_1}\vert_{\Omega \cap \{x_1=1\}} = - \gamma_1 < 0 \\
+  %     &f_{x_2}\vert_{\Omega \cap \{x_2=0\}} = (1-\kappa u_2)(b_{21} y_1 + b_{22} y_2) \geq 0, \Hquad f_{x_2}\vert_{\Omega \cap \{x_2=1\}} = - \gamma_2 < 0 \\
+  %     &f_{y_1}\vert_{\Omega \cap \{y_1=0\}} = c_{11}(1-\kappa u_1) x_1 + c_{12}(1-\kappa u_2) x_2 \geq 0 \Hquad f_{y_1}\vert_{\Omega \cap \{y_1=1\}} = - \mu_1 < 0 \\
+  %     &f_{y_2}\vert_{\Omega \cap \{y_2=0\}} = c_{21}(1-\kappa u_1) x_1 + c_{22}(1-\kappa u_2) x_2 \geq 0 \Hquad f_{y_2}\vert_{\Omega \cap \{y_2=1\}} = - \mu_2 < 0
+  %   \end{split}
+  % \end{equation*}
 \end{frame}
 
 \begin{frame}[t]{Свойства на модела}
   \begin{proposition}
-    Системата \eqref{eq:TheDimensionlessProblem} е кооперативна, т.е. Якобианът ѝ има неотрицателни компоненти извън главния диагонал.
+    Системата \eqref{eq:TheDimensionlessProblem} е \underline{кооперативна}, т.е. Якобианът ѝ има неотрицателни компоненти извън главния диагонал.
   \end{proposition}
 
   \begin{proposition}
-    Системата \eqref{eq:TheDimensionlessProblem} е силно вдлъбната, т.е. за Якобианът $\mathrm{D}\boldsymbol{f}$ е в сила $\pmb{0} < \boldsymbol{z}_1 < \boldsymbol{z}_2 \implies \mathrm{D}\boldsymbol{f}(\boldsymbol{z}_2) < \mathrm{D}\boldsymbol{f}(\boldsymbol{z}_1)$.
+    Системата \eqref{eq:TheDimensionlessProblem} е \underline{силно вдлъбната}, т.е. за Якобиана ѝ $\mathrm{D}\boldsymbol{f}$ е в сила $\pmb{0} < \boldsymbol{z}_1 < \boldsymbol{z}_2 \implies \mathrm{D}\boldsymbol{f}(\boldsymbol{z}_2) < \mathrm{D}\boldsymbol{f}(\boldsymbol{z}_1)$.
     % т.е. Якобианът ѝ е с компоненти, които са намаляващи функции на координатите на точката, в която е взет.
     % т.е. Якобианът ѝ действа като покомпонентно вдлъбнато изображение.
   \end{proposition}
 
   \begin{proposition}
-    Системата \eqref{eq:TheDimensionlessProblem} е неразложима, т.е. ненулевите компоненти на Якобиана образуват матрица на съседство на силно свързан ориентиран граф.
+    Системата \eqref{eq:TheDimensionlessProblem} е \underline{неразложима} при $p_{ij} \notin \{0, 1\}$, т.е. ненулевите компоненти на Якобиана ѝ образуват матрица на съседство на силно свързан ориентиран граф.
   \end{proposition}
 \end{frame}
 
-\begin{frame}[t]{Якобиан на \eqref{eq:TheDimensionlessProblem}}
-  Якобианът за системата \eqref{eq:TheDimensionlessProblem} може да се представи във вида:
-  \begin{equation*}
-    \mathrm{D} \boldsymbol{f}(x_1, x_2, y_1, y_2) =
-    \begin{pmatrix}
-      \pdv{f_{x_1}}{x_1} && \pdv{f_{x_1}}{x_2} && \pdv{f_{x_1}}{y_1} && \pdv{f_{x_1}}{y_2} \\
-      \pdv{f_{x_2}}{x_1} && \pdv{f_{x_2}}{x_2} && \pdv{f_{x_2}}{y_1} && \pdv{f_{x_2}}{y_2} \\
-      \pdv{f_{y_1}}{x_1} && \pdv{f_{y_1}}{x_2} && \pdv{f_{y_1}}{y_1} && \pdv{f_{y_1}}{y_2} \\
-      \pdv{f_{y_2}}{x_1} && \pdv{f_{y_2}}{x_2} && \pdv{f_{y_2}}{y_1} && \pdv{f_{y_2}}{y_2}
-    \end{pmatrix}
-  \end{equation*}
-  \label{eq:JacobianElements}
-  \begin{equation*}
-    \begin{split}
-      &\pdv{f_{x_1}}{x_1} = -(1-\kappa u_1) \left(b_{11} y_1 + b_{12} y_2\right) - \gamma_1 < 0, \Hquad
-      \pdv{f_{x_1}}{x_2} = 0 \\
-      &\pdv{f_{x_1}}{y_1} = (1-x_1) (1-\kappa u_1) b_{11} \geq 0, \Hquad
-      \pdv{f_{x_1}}{y_2} = (1-x_1) (1-\kappa u_1) b_{12} \geq 0\\
-      &\vdots
-    \end{split}
-  \end{equation*}
-\end{frame}
+% \begin{frame}[t]{Якобиан на \eqref{eq:TheDimensionlessProblem}}
+%   Якобианът за системата \eqref{eq:TheDimensionlessProblem} може да се представи във вида:
+%   \begin{equation*}
+%     \mathrm{D} \boldsymbol{f}(x_1, x_2, y_1, y_2) =
+%     \begin{pmatrix}
+%       \pdv{f_{x_1}}{x_1} && \pdv{f_{x_1}}{x_2} && \pdv{f_{x_1}}{y_1} && \pdv{f_{x_1}}{y_2} \\
+%       \pdv{f_{x_2}}{x_1} && \pdv{f_{x_2}}{x_2} && \pdv{f_{x_2}}{y_1} && \pdv{f_{x_2}}{y_2} \\
+%       \pdv{f_{y_1}}{x_1} && \pdv{f_{y_1}}{x_2} && \pdv{f_{y_1}}{y_1} && \pdv{f_{y_1}}{y_2} \\
+%       \pdv{f_{y_2}}{x_1} && \pdv{f_{y_2}}{x_2} && \pdv{f_{y_2}}{y_1} && \pdv{f_{y_2}}{y_2}
+%     \end{pmatrix}
+%   \end{equation*}
+%   \label{eq:JacobianElements}
+%   \begin{equation*}
+%     \begin{split}
+%       &\pdv{f_{x_1}}{x_1} = -(1-\kappa u_1) \left(b_{11} y_1 + b_{12} y_2\right) - \gamma_1 < 0, \Hquad
+%       \pdv{f_{x_1}}{x_2} = 0 \\
+%       &\pdv{f_{x_1}}{y_1} = (1-x_1) (1-\kappa u_1) b_{11} \geq 0, \Hquad
+%       \pdv{f_{x_1}}{y_2} = (1-x_1) (1-\kappa u_1) b_{12} \geq 0\\
+%       &\vdots
+%     \end{split}
+%   \end{equation*}
+% \end{frame}
 
 \begin{frame}[t]{Равновесни точки}
   \begin{proposition}
     За система \eqref{eq:TheDimensionlessProblem} при фиксирано $\boldsymbol{u}(t) \equiv \boldsymbol{u} = const$ е в сила точно едно от:
     \begin{enumerate}
       \item $\pmb{0}$ е единствена равновесна точка (глобално асимптотично устойчива).
-      \item $\pmb{0}$ е неустойчива равновесна точка и съществува точно една друга равновесна точка $\boldsymbol{E}^* = (x_1^*, x_2^*, y_1^*, y_2^*)$ (глобално асимптотично устойчива).
+      \item $\pmb{0}$ е неустойчива равновесна точка и съществува точно една друга ендемична равновесна точка $\boldsymbol{E}^* = (x_1^*, x_2^*, y_1^*, y_2^*)$ (глобално асимптотично устойчива).
     \end{enumerate}
   \end{proposition}
-  Твърдението се доказва с помощта на изведените свойства на \eqref{eq:TheDimensionlessProblem}.
+  Твърдението се доказва с помощта на изведените свойства на \eqref{eq:TheDimensionlessProblem} и теорема на Smith \cite{Smith1986}.
 \end{frame}

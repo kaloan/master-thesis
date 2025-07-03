@@ -1,4 +1,77 @@
 \section{\hspace{1em}Модел}
+
+\begin{frame}[t]{Схема на модела}
+  \begin{figure}{}
+    \centering
+    % \hspace{-1em}
+    \begin{tikzpicture}[node distance=15mm]
+      % \begin{pgfinterruptboundingbox}
+      %   \begin{axis}[ ymin=0, xlabel = variáveis aleatórias, ylabel = frequência]
+
+      \node[label={[xshift=-9mm]\small\it хора}] (sh1) [hostp,text width=18mm] {податливи};
+
+      \node (ih1) [hostp, below of=sh1, text width=18mm] {заразени ($X_1$)};
+
+      \node[label={[xshift=-5mm] \small\it комари}] (sv1) [vectorp, left of=sh1, xshift=-10mm, text width=18mm] {податливи};
+
+      \node (iv1) [vectorp, below of=sv1, text width=18mm] {заразени ($Y_1$)};
+
+      \draw [arrow2] (sh1) -- (ih1);
+
+      \draw [arrow2] (ih1) -- (sh1);
+
+      \draw [arrow] (iv1) -- (sh1) ;
+
+      \draw [arrow] (ih1) -- (sv1) ;
+
+      \draw [arrow2] (sv1) -- (iv1);
+
+      \node[label={[label distance=3mm]-90: местообитание 1},draw=black, fit=(sh1)(iv1),inner sep=5mm, rounded corners](FIt1) {};
+
+      % patch 2
+
+      \node[label={[xshift=-7mm]\small\it хора}] (sh2) [hostp, right of=sh1,xshift=17mm,text width=18mm] {податливи};
+
+      % right
+      \node (ih2) [hostp, below of=sh2, text width=18mm] {заразени ($X_2$)};
+
+      \node[label={[xshift=-5mm] \small\it комари}] (sv2) [vectorp, right of=sh2, xshift=10mm, text width=18mm] {податливи};
+
+      \node (iv2) [vectorp, below of=sv2, text width=18mm] {заразени ($Y_2$)};
+
+      \draw [arrow2] (sh2) -- (ih2);
+
+      \draw [arrow2] (ih2) -- (sh2);
+
+      \draw [arrow] (iv2) -- (sh2) ;
+
+      \draw [arrow] (ih2) -- (sv2) ;
+
+      \draw [arrow2] (sv2) -- (iv2);
+
+      \node[label={[label distance=3mm]-90: местообитание 2},draw=black, fit=(sh2)(iv2),inner sep=5mm, rounded corners](FIt2) {};
+
+      % arrows between patches
+      \draw [arrow3] (sh1) to (sh2) ;
+      \draw [arrow3] (ih1) to (ih2) ;
+
+      % \end{axis}
+      % \end{pgfinterruptboundingbox}
+      % \path[use as bounding box] ([yshift=-8mm]current axis.south west) rectangle (current axis.north east);
+    \end{tikzpicture}
+    \centering
+    % \captionof{figure}{Диаграма на модела \eqref{eq:MigrationProblem}. \\
+    % Черна пунктирана линия: възможен преход на индивид от класа в началото в класа в края.\\
+    % Черна непрекъсната линия: индивид от началото може да зарази индивид от края.\\
+    % Синя линия: мобилност}
+    % Using caption doesn't result in centered text ???
+    \caption{Черна пунктирана линия: възможен преход на индивид от класа в началото в класа в края.\\
+      Черна непрекъсната линия: индивид от началото може да зарази индивид от края.\\
+    Синя линия: мобилност}
+    \label{fig:TwoPatchModel}
+  \end{figure}
+\end{frame}
+
 \begin{frame}[t]{Допускания}
   % В дипломната работа се разглежда модел на Ross-Macdonald с две местообитания и репелент. Той носи следните допускания:
   \begin{small}
@@ -28,9 +101,9 @@
           Променлива & Описание\\
           \hline
           $t$ & Време [$\text{ден}$]\\
-          $X_i$ & Брой заразени жители\\
-          $Y_i$ & Брой заразени комари \\
-          $u_i$ & Пропорция защитени с репелент жители \\
+          $X_i(t)$ & Брой заразени жители\\
+          $Y_i(t)$ & Брой заразени комари \\
+          $u_i(t)$ & Пропорция защитени с репелент жители \\
           \hline
           \hline
           Параметър & Описание\\
@@ -61,15 +134,15 @@
     \begin{equation}
       \label{eq:TheProblem}
       \begin{split}
-        &\dot{X}_1 = \beta_{vh} (N_1-X_1) (1-\kappa u_1) \left(\frac{p_{11} e^{-\mu_1 \tau} a_1 Y_1}{p_{11} N_1 + p_{21} N_2} + \frac{p_{12} e^{-\mu_2 \tau} a_2  Y_2}{p_{12} N_1 + p_{22} N_2}\right) - \gamma_1 X_1 \\
-        &\dot{X}_2 = \beta_{vh} (N_2-X_2) (1-\kappa u_2) \left(\frac{p_{21} e^{-\mu_1 \tau} a_1 Y_1}{p_{11} N_1 + p_{21} N_2} + \frac{p_{22} e^{-\mu_2 \tau} a_2 Y_2}{p_{12} N_1 + p_{22} N_2}\right) - \gamma_2 X_2 \\
-        &\dot{Y}_1 = \beta_{hv} a_1 (M_1-Y_1) \frac{p_{11} (1-\kappa u_1) X_1 + p_{21} (1-\kappa u_2) X_2}{p_{11} N_1 + p_{21} N_2} - \mu_1 Y_1 \\
-        &\dot{Y}_2 = \beta_{hv} a_2 (M_2-Y_2) \frac{p_{12} (1-\kappa u_1) X_1 + p_{22} (1-\kappa u_2) X_2}{p_{12} N_1 + p_{22} N_2} - \mu_2 Y_2 \\
+        &\dot{X}_1 = \beta_{vh} (N_1-X_1) \mathcolor{red}{(1-\kappa u_1)} \left(\frac{p_{11} e^{-\mu_1 \tau} a_1 Y_1}{p_{11} N_1 + p_{21} N_2} + \frac{p_{12} e^{-\mu_2 \tau} a_2  Y_2}{p_{12} N_1 + p_{22} N_2}\right) - \gamma_1 X_1 \\
+        &\dot{X}_2 = \beta_{vh} (N_2-X_2) \mathcolor{red}{(1-\kappa u_2)} \left(\frac{p_{21} e^{-\mu_1 \tau} a_1 Y_1}{p_{11} N_1 + p_{21} N_2} + \frac{p_{22} e^{-\mu_2 \tau} a_2 Y_2}{p_{12} N_1 + p_{22} N_2}\right) - \gamma_2 X_2 \\
+        &\dot{Y}_1 = \beta_{hv} a_1 (M_1-Y_1) \frac{p_{11} \mathcolor{red}{(1-\kappa u_1)} X_1 + p_{21} \mathcolor{red}{(1-\kappa u_2)} X_2}{p_{11} N_1 + p_{21} N_2} - \mu_1 Y_1 \\
+        &\dot{Y}_2 = \beta_{hv} a_2 (M_2-Y_2) \frac{p_{12} \mathcolor{red}{(1-\kappa u_1)} X_1 + p_{22} \mathcolor{red}{(1-\kappa u_2)} X_2}{p_{12} N_1 + p_{22} N_2} - \mu_2 Y_2 \\
         &u_i \in \mathscr{U}_i = \{u_i:\mathbb{R}_+ \rightarrow [0, \bar{u}_i] \vert u_i \text{- измерима}\}
       \end{split}
     \end{equation}
   \end{footnotesize}
-  Моделът е развитие на тези на Bichara \cite{Bichara2016} (мобилност) и Rashkov \cite{Rashkov2022} (репелент).
+  Моделът се основава на Bichara \cite{Bichara2016} с добавена употреба на репелент \cite{Rashkov2022}.
 \end{frame}
 
 \begin{frame}[t]{Скалирана форма на модела}
@@ -83,8 +156,11 @@
       &\dot{y}_2 = (1-y_2) \left(c_{21}(1-\kappa u_1) x_1 + c_{22} (1-\kappa u_2) x_2\right) - \mu_2 y_2 \\
     \end{split}
   \end{equation}
+\end{frame}
+
+\begin{frame}{Допълнителни означения}
   Надолу \eqref{eq:TheDimensionlessProblem} ще се записва и във векторен вид по следния начин:
-  \begin{equation}
+  \begin{equation*}
     \begin{pmatrix}
       \dot{\boldsymbol{x}} \\
       \dot{\boldsymbol{y}}
@@ -92,21 +168,34 @@
     =
     \boldsymbol{f}(\boldsymbol{x}, \boldsymbol{y}, \boldsymbol{u}), \Hquad
     \boldsymbol{x} = (x_1, x_2)^T, \Hquad \boldsymbol{y} = (y_1, y_2)^T, \Hquad \mathbf{f}=(f_{x_1}, f_{x_2}, f_{y_1}, f_{y_2})^T
-  \end{equation}
+  \end{equation*}
   Или пък във вида:
-  \begin{equation}
+  \begin{equation*}
     \dot{\boldsymbol{z}} = \boldsymbol{f}(\boldsymbol{z}, \boldsymbol{u}), \Hquad \boldsymbol{z} = (\boldsymbol{x}, \boldsymbol{y})^T, \Hquad \boldsymbol{z}(0) = \boldsymbol{z}_0 = (x_1^0, x_2^0, y_1^0, y_2^0)^T
-  \end{equation}
-\end{frame}
+  \end{equation*}
 
-\begin{frame}{Допълнителни означения}
   Задачата се разглежда в $\Omega = \{x_i \in [0, 1], y_i \in [0, 1]\} = \{\boldsymbol{z} \in [0, 1]^4\}$.
   Означаваме $U = [0, \bar{u}_1] \cross [0, \bar{u}_2], \Hquad \mathscr{U} = \mathscr{U}_1 \cross \mathscr{U}_2$.
-
-  Нека $\bar{I}_i \in [0, 1]$ - максималната част от населението в съответното местообитание, което може да получи адекватна здравна помощ при заразяване с малария. \\
-  Означаваме $\bar{\boldsymbol{I}} = (\bar{I}_1, \bar{I}_2)^T \quad \mathscr{I} = [0, \bar{I}_1] \times [0, \bar{I}_2] \times [0, 1] \times [0, 1]$.
 
   % \begin{nota-bene}
   %   Всичките векторни/матрични неравенства се разбират покомпоненто.
   % \end{nota-bene}
+\end{frame}
+
+\begin{frame}{Задача за здравна политика}
+  $\bar{I}_i \in [0, 1]$ - максималната част от населението в съответното местообитание, което може да получи адекватна здравна помощ при заразяване с малария.
+  \begin{equation*}
+    \bar{\boldsymbol{I}} = (\bar{I}_1, \bar{I}_2)^T, \quad \mathscr{I} = [0, \bar{I}_1] \times [0, \bar{I}_2] \times [0, 1]^2.
+  \end{equation*}
+
+  Питаме се има ли такива управления $\boldsymbol{u}$, за които във всеки момент всички заразени да имат възможност да получат помощ от здравната система, т.е. :
+  \begin{equation}
+    \label{eq:AllHospitalised}
+    \forall t \geq 0 (x_1(t) \leq \bar{I}_1 \wedge x_2(t) \leq \bar{I}_2) \iff \forall t \geq 0 (\boldsymbol{z}(t) \in \mathscr{I})
+  \end{equation}
+  Тъй като първоначалният брой заразени хора и комари влияят на развитието на системата ще търсим \textbf{ядрото на слаба инвариантност на Белман}:
+  \begin{equation}
+    \label{eq:ViabilityKernel}
+    V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}}) = \{\boldsymbol{z}_0  \text{ начално условие} \vert \exists \boldsymbol{u} (\eqref{eq:AllHospitalised} \text{ е изпълнено})\}
+  \end{equation}
 \end{frame}

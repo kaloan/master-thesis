@@ -94,7 +94,10 @@
 % Better tables
 \usepackage{hhline, multirow, diagbox}
 
-% Fonts
+% For drawing
+\usepackage{tikz}
+
+\usepackage{xcolor}
 
 % Bibliography using BibLaTeX
 % \usepackage[backend=biber, defernumbers=true, bibencoding=utf8]{biblatex}
@@ -196,6 +199,21 @@
 % \defaultfontfeatures{Ligatures=TeX, Scale=MatchLowercase }
 \selectlanguage{bulgarian}
 
+\usetikzlibrary{shapes,fit}
+\tikzset{>=latex}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+
+\tikzstyle{host} = [rectangle, rounded corners, minimum width=24mm, minimum height=10mm,text centered, draw=black, fill=red!30,font=\small ]
+\tikzstyle{vector} = [rectangle, minimum width=20mm, minimum height=10mm, text centered, draw=black, fill=orange!30,font=\small ]
+
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{arrow2} = [dashed,thick,->,>=stealth]
+\tikzstyle{arrow3} = [blue,dotted,thick,<->,>=stealth]
+% for patch model
+
+\tikzstyle{hostp} = [rectangle, rounded corners, minimum width=5mm, minimum height=10mm,text centered, draw=black, fill=red!30,font=\small]
+\tikzstyle{vectorp} = [rectangle, minimum width=5mm, minimum height=10mm, text centered, draw=black, fill=orange!30,font=\small]
+
 {
   \setbeamertemplate{headline}[default]
 
@@ -204,19 +222,19 @@
   \end{frame}
 }
 
-\begin{frame}[t]{Съдържание}
-  \tableofcontents
-\end{frame}
+% \begin{frame}[t]{Съдържание}
+%   \tableofcontents
+% \end{frame}
 % \thispagestyle{empty}
 % \newpage
 % \setcounter{page}{1}
-\import{sections/}{introduction.tex}
+% \import{sections/}{introduction.tex}
 \import{sections/}{problem.tex}
 \import{sections/}{properties.tex}
 \import{sections/}{viability.tex}
 \import{sections/}{numerical.tex}
 
-\nocite{*}
+% \nocite{*}
 \begin{frame}[allowframebreaks]{Източници}
   \selectlanguage{english}
   % \bibliographystyle{plainnat.bst}
