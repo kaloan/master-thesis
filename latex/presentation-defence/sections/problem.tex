@@ -72,23 +72,23 @@
   \end{figure}
 \end{frame}
 
-\begin{frame}[t]{Допускания}
-  % В дипломната работа се разглежда модел на Ross-Macdonald с две местообитания и репелент. Той носи следните допускания:
-  \begin{small}
-    \begin{enumerate}
-      \item Човешката популация и популацията комари е постоянна, като са разпределени равномерно в местообитанията.
-      \item Смъртността от заразата се пренебрегва, както при хората, така и при комарите.
-      \item Веднъж заразени, комарите не се възстановяват.
-      \item Само податливи се заразяват (няма свръхзаразяване).
-      \item Хората не придобиват никакъв имунитет.
-      \item Смъртността на комарите е независима от възрастта им и съответно продължителността им на живот е експоненциално разпределена.
-      \item Разглежда се само предаването на патогена между хора и комари.
-      \item Латентният период при комарите е константен.
-      \item Мобилността на хората между местообитанията е константна.
-      \item Репелентът има линеен ефект върху честотата на ухапванията върху предпазените с него и не увеличава тази върху непредпазените.
-    \end{enumerate}
-  \end{small}
-\end{frame}
+% \begin{frame}[t]{Допускания}
+%   % В дипломната работа се разглежда модел на Ross-Macdonald с две местообитания и репелент. Той носи следните допускания:
+%   \begin{small}
+%     \begin{enumerate}
+%       \item Човешката популация и популацията комари е постоянна, като са разпределени равномерно в местообитанията.
+%       \item Смъртността от заразата се пренебрегва, както при хората, така и при комарите.
+%       \item Веднъж заразени, комарите не се възстановяват.
+%       \item Само податливи се заразяват (няма свръхзаразяване).
+%       \item Хората не придобиват никакъв имунитет.
+%       \item Смъртността на комарите е независима от възрастта им и съответно продължителността им на живот е експоненциално разпределена.
+%       \item Разглежда се само предаването на патогена между хора и комари.
+%       \item Латентният период при комарите е константен.
+%       \item Мобилността на хората между местообитанията е константна.
+%       \item Репелентът има линеен ефект върху честотата на ухапванията върху предпазените с него и не увеличава тази върху непредпазените.
+%     \end{enumerate}
+%   \end{small}
+% \end{frame}
 
 \begin{frame}[t]{Означения}
   \vspace{-1em}
@@ -129,7 +129,7 @@
   \end{table}
 \end{frame}
 
-\begin{frame}[t]{Първа форма на модела}
+\begin{frame}[t]{Уравнения на модела}
   \begin{footnotesize}
     \begin{equation}
       \label{eq:TheProblem}
@@ -146,7 +146,11 @@
 \end{frame}
 
 \begin{frame}[t]{Скалирана форма на модела}
-  Моделът подлежи на скалиране на променливите чрез смяната $(X_1, X_2, Y_1, Y_2) \rightarrow (\frac{X_1}{N_1}, \frac{X_2}{N_2}, \frac{Y_1}{M_1}, \frac{Y_2}{M_2}) = (x_1, x_2, y_1, y_2)$ и след полагания на коефициентите има вида:
+  Моделът подлежи на скалиране на променливите чрез смяната:
+  \begin{equation*}
+    (X_1, X_2, Y_1, Y_2)^T \rightarrow \left(\frac{X_1}{N_1}, \frac{X_2}{N_2}, \frac{Y_1}{M_1}, \frac{Y_2}{M_2}\right)^T = (x_1, x_2, y_1, y_2)^T
+  \end{equation*}
+  След полагания на коефициентите има вида:
   \begin{equation}
     \label{eq:TheDimensionlessProblem}
     \begin{split}
@@ -159,23 +163,33 @@
 \end{frame}
 
 \begin{frame}{Допълнителни означения}
-  Надолу \eqref{eq:TheDimensionlessProblem} ще се записва и във векторен вид по следния начин:
-  \begin{equation*}
-    \begin{pmatrix}
-      \dot{\boldsymbol{x}} \\
-      \dot{\boldsymbol{y}}
-    \end{pmatrix}
-    =
-    \boldsymbol{f}(\boldsymbol{x}, \boldsymbol{y}, \boldsymbol{u}), \Hquad
-    \boldsymbol{x} = (x_1, x_2)^T, \Hquad \boldsymbol{y} = (y_1, y_2)^T, \Hquad \mathbf{f}=(f_{x_1}, f_{x_2}, f_{y_1}, f_{y_2})^T
-  \end{equation*}
-  Или пък във вида:
+  % \eqref{eq:TheDimensionlessProblem} ще се записва и във векторен вид по следния начин:
+  % \begin{equation*}
+  %   \begin{pmatrix}
+  %     \dot{\boldsymbol{x}} \\
+  %     \dot{\boldsymbol{y}}
+  %   \end{pmatrix}
+  %   =
+  %   \boldsymbol{f}(\boldsymbol{x}, \boldsymbol{y}, \boldsymbol{u}), \Hquad
+  %   \boldsymbol{x} = (x_1, x_2)^T, \Hquad \boldsymbol{y} = (y_1, y_2)^T, \Hquad \boldsymbol{f}=(f_{x_1}, f_{x_2}, f_{y_1}, f_{y_2})^T
+  % \end{equation*}
+  \eqref{eq:TheDimensionlessProblem} ще се записва във векторен вид по следния начин:
   \begin{equation*}
     \dot{\boldsymbol{z}} = \boldsymbol{f}(\boldsymbol{z}, \boldsymbol{u}), \Hquad \boldsymbol{z} = (\boldsymbol{x}, \boldsymbol{y})^T, \Hquad \boldsymbol{z}(0) = \boldsymbol{z}_0 = (x_1^0, x_2^0, y_1^0, y_2^0)^T
   \end{equation*}
 
-  Задачата се разглежда в $\Omega = \{x_i \in [0, 1], y_i \in [0, 1]\} = \{\boldsymbol{z} \in [0, 1]^4\}$.
-  Означаваме $U = [0, \bar{u}_1] \cross [0, \bar{u}_2], \Hquad \mathscr{U} = \mathscr{U}_1 \cross \mathscr{U}_2$.
+Задачата се разглежда в:
+  \begin{equation*}
+    \Omega = \{x_i \in [0, 1], y_i \in [0, 1]\} = \{\boldsymbol{z} \in [0, 1]^4\}
+    \end{equation*}
+
+  Означаваме:
+  \begin{equation*}
+    \begin{split}
+      &U = [0, \bar{u}_1] \cross [0, \bar{u}_2] \\
+      &\mathscr{U} = \mathscr{U}_1 \cross \mathscr{U}_2
+    \end{split}
+  \end{equation*}
 
   % \begin{nota-bene}
   %   Всичките векторни/матрични неравенства се разбират покомпоненто.

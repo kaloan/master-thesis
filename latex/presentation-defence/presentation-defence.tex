@@ -104,7 +104,7 @@
 % \usepackage[nottoc,numbib]{tocbibind}
 % \addbibresource[bibencoding=utf8]{presentation-defence.bib}
 
-\usepackage[backend=biber, style=trad-plain]{biblatex}
+\usepackage[backend=biber, style=trad-plain, doi=false, isbn=false, url=false, eprint=false]{biblatex}
 % \usepackage{biblatex-trad}
 % \usepackage[nottoc,numbib]{tocbibind}
 \addbibresource[bibencoding=utf8]{presentation-defence.bib}
@@ -240,7 +240,9 @@
   % \bibliographystyle{plainnat.bst}
   % \bibliographystyle{plainnat}
   % \bibliography{presentation-defence.bib}
-  \printbibliography
+  \begin{small}
+    \printbibliography
+  \end{small}
 \end{frame}
 
 {
@@ -254,6 +256,8 @@
     \end{center}
   \end{frame}
 }
+
+\import{sections/}{introduction.tex}
 
 \end{document}
 
