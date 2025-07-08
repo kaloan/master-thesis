@@ -1,5 +1,5 @@
 \documentclass[bulgarian, compress]{beamer}
-\usepackage[svgnames]{xcolor}
+\usepackage[x11names]{xcolor}
 \usepackage{hyperref}
 % \usepackage{unicode-math}
 % \hypersetup{
@@ -94,6 +94,9 @@
 % Better tables
 \usepackage{hhline, multirow, diagbox}
 
+% Better underlining
+\usepackage[normalem]{ulem} % [normalem] prevents the package from changing the default behavior of `\emph` to underline.
+
 % For drawing
 \usepackage{tikz}
 
@@ -108,6 +111,16 @@
 % \usepackage{biblatex-trad}
 % \usepackage[nottoc,numbib]{tocbibind}
 \addbibresource[bibencoding=utf8]{presentation-defence.bib}
+
+\DeclareBibliographyCategory{skipbibliography}
+\DeclareCiteCommand{\myfootcite}[\mkbibfootnote]
+{\usebibmacro{prenote}}
+{\addtocategory{skipbibliography}{\thefield{entrykey}}%
+  \usedriver
+  {\DeclareNameAlias{sortname}{default}}
+{\thefield{entrytype}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
 
 % \usepackage[nottoc,numbib]{tocbibind}
 % \usepackage{csquotes}
@@ -195,6 +208,13 @@
 \renewcommand\qedsymbol{$\blacksquare$}
 
 \setbeamersize{text margin left=5mm,text margin right=5mm}
+
+% Define colors
+\definecolor{DarkChartreuse}{RGB}{64, 128, 0}
+\definecolor{MidnightBlue}{RGB}{25, 25, 112}
+\definecolor{Orchid4}{RGB}{128, 64, 128}
+\definecolor{Sienna4}{RGB}{128, 64, 20}
+
 \begin{document}
 % \defaultfontfeatures{Ligatures=TeX, Scale=MatchLowercase }
 \selectlanguage{bulgarian}
@@ -233,17 +253,18 @@
 \import{sections/}{properties.tex}
 \import{sections/}{viability.tex}
 \import{sections/}{numerical.tex}
+\import{sections/}{conclusion.tex}
 
 % \nocite{*}
-\begin{frame}[allowframebreaks]{Източници}
-  \selectlanguage{english}
-  % \bibliographystyle{plainnat.bst}
-  % \bibliographystyle{plainnat}
-  % \bibliography{presentation-defence.bib}
-  \begin{small}
-    \printbibliography
-  \end{small}
-\end{frame}
+% \begin{frame}{Източници}
+%   \selectlanguage{english}
+%   % \bibliographystyle{plainnat.bst}
+%   % \bibliographystyle{plainnat}
+%   % \bibliography{presentation-defence.bib}
+%   \begin{small}
+%     \printbibliography
+%   \end{small}
+% \end{frame}
 
 {
   \setbeamertemplate{headline}[default]
@@ -257,7 +278,7 @@
   \end{frame}
 }
 
-\import{sections/}{introduction.tex}
+\import{sections/}{additional.tex}
 
 \end{document}
 

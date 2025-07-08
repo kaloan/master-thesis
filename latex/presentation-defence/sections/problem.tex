@@ -65,9 +65,9 @@
     % Черна непрекъсната линия: индивид от началото може да зарази индивид от края.\\
     % Синя линия: мобилност}
     % Using caption doesn't result in centered text ???
-    \caption{Черна пунктирана линия: възможен преход на индивид от класа в началото в класа в края.\\
-      Черна непрекъсната линия: индивид от началото може да зарази индивид от края.\\
-    Синя линия: мобилност}
+    \caption{\dashuline{Черна пунктирана линия}: възможен преход на индивид от класа в началото в класа в края.\\
+      \underline{Черна непрекъсната линия}: индивид от началото може да зарази индивид от края.\\
+    \textcolor{blue}{\dotuline{Синя линия}}: мобилност}
     \label{fig:TwoPatchModel}
   \end{figure}
 \end{frame}
@@ -138,11 +138,11 @@
         &\dot{X}_2 = \beta_{vh} (N_2-X_2) \mathcolor{red}{(1-\kappa u_2)} \left(\frac{p_{21} e^{-\mu_1 \tau} a_1 Y_1}{p_{11} N_1 + p_{21} N_2} + \frac{p_{22} e^{-\mu_2 \tau} a_2 Y_2}{p_{12} N_1 + p_{22} N_2}\right) - \gamma_2 X_2 \\
         &\dot{Y}_1 = \beta_{hv} a_1 (M_1-Y_1) \frac{p_{11} \mathcolor{red}{(1-\kappa u_1)} X_1 + p_{21} \mathcolor{red}{(1-\kappa u_2)} X_2}{p_{11} N_1 + p_{21} N_2} - \mu_1 Y_1 \\
         &\dot{Y}_2 = \beta_{hv} a_2 (M_2-Y_2) \frac{p_{12} \mathcolor{red}{(1-\kappa u_1)} X_1 + p_{22} \mathcolor{red}{(1-\kappa u_2)} X_2}{p_{12} N_1 + p_{22} N_2} - \mu_2 Y_2 \\
-        &u_i \in \mathscr{U}_i = \{u_i:\mathbb{R}_+ \rightarrow [0, \bar{u}_i] \vert u_i \text{- измерима}\}
+        &u_i \in \mathcal{U}_i = \{u_i:\mathbb{R}_+ \rightarrow [0, \bar{u}_i] \vert u_i \text{- измерима по Лебег}\}
       \end{split}
     \end{equation}
   \end{footnotesize}
-  Моделът се основава на Bichara \cite{Bichara2016} с добавена употреба на репелент \cite{Rashkov2022}.
+  Моделът включва мобилност \myfootcite{Bichara2016} с добавена \textcolor{red}{употреба на репелент} \myfootcite{Rashkov2022}.
 \end{frame}
 
 \begin{frame}[t]{Скалирана форма на модела}
@@ -151,15 +151,15 @@
     (X_1, X_2, Y_1, Y_2)^T \rightarrow \left(\frac{X_1}{N_1}, \frac{X_2}{N_2}, \frac{Y_1}{M_1}, \frac{Y_2}{M_2}\right)^T = (x_1, x_2, y_1, y_2)^T
   \end{equation*}
   След полагания на коефициентите има вида:
-  \begin{equation}
-    \label{eq:TheDimensionlessProblem}
+  \begin{equation*}
+    % \label{eq:TheDimensionlessProblem}
     \begin{split}
       &\dot{x}_1 = (1-x_1) (1-\kappa u_1) \left(b_{11} y_1 + b_{12} y_2\right) - \gamma_1 x_1 \\
       &\dot{x}_2 = (1-x_2) (1-\kappa u_2)\left(b_{21} y_1 + b_{22} y_2\right) - \gamma_2 x_2 \\
       &\dot{y}_1 = (1-y_1) \left(c_{11}(1-\kappa u_1) x_1 + c_{12}(1-\kappa u_2) x_2\right) - \mu_1 y_1 \\
       &\dot{y}_2 = (1-y_2) \left(c_{21}(1-\kappa u_1) x_1 + c_{22} (1-\kappa u_2) x_2\right) - \mu_2 y_2 \\
     \end{split}
-  \end{equation}
+  \end{equation*}
 \end{frame}
 
 \begin{frame}{Допълнителни означения}
@@ -173,7 +173,7 @@
   %   \boldsymbol{f}(\boldsymbol{x}, \boldsymbol{y}, \boldsymbol{u}), \Hquad
   %   \boldsymbol{x} = (x_1, x_2)^T, \Hquad \boldsymbol{y} = (y_1, y_2)^T, \Hquad \boldsymbol{f}=(f_{x_1}, f_{x_2}, f_{y_1}, f_{y_2})^T
   % \end{equation*}
-  \eqref{eq:TheDimensionlessProblem} ще се записва във векторен вид по следния начин:
+  Ще се записва във векторен вид по следния начин:
   \begin{equation*}
     \dot{\boldsymbol{z}} = \boldsymbol{f}(\boldsymbol{z}, \boldsymbol{u}), \Hquad \boldsymbol{z} = (\boldsymbol{x}, \boldsymbol{y})^T, \Hquad \boldsymbol{z}(0) = \boldsymbol{z}_0 = (x_1^0, x_2^0, y_1^0, y_2^0)^T
   \end{equation*}
@@ -187,7 +187,7 @@
   \begin{equation*}
     \begin{split}
       &U = [0, \bar{u}_1] \cross [0, \bar{u}_2] \\
-      &\mathscr{U} = \mathscr{U}_1 \cross \mathscr{U}_2
+      &\mathcal{U} = \mathcal{U}_1 \cross \mathcal{U}_2
     \end{split}
   \end{equation*}
 
@@ -199,13 +199,13 @@
 \begin{frame}{Задача за здравна политика}
   $\bar{I}_i \in [0, 1]$ - максималната част от населението в съответното местообитание, което може да получи адекватна здравна помощ при заразяване с малария.
   \begin{equation*}
-    \bar{\boldsymbol{I}} = (\bar{I}_1, \bar{I}_2)^T, \quad \mathscr{I} = [0, \bar{I}_1] \times [0, \bar{I}_2] \times [0, 1]^2.
+    \bar{\boldsymbol{I}} = (\bar{I}_1, \bar{I}_2)^T, \quad \mathcal{I} = [0, \bar{I}_1] \times [0, \bar{I}_2] \times [0, 1]^2.
   \end{equation*}
 
   Питаме се има ли такива управления $\boldsymbol{u}$, за които във всеки момент всички заразени да имат възможност да получат помощ от здравната система, т.е. :
   \begin{equation}
     \label{eq:AllHospitalised}
-    \forall t \geq 0 (x_1(t) \leq \bar{I}_1 \wedge x_2(t) \leq \bar{I}_2) \iff \forall t \geq 0 (\boldsymbol{z}(t) \in \mathscr{I})
+    \forall t \geq 0 (x_1(t) \leq \bar{I}_1 \wedge x_2(t) \leq \bar{I}_2) \iff \forall t \geq 0 (\boldsymbol{z}(t) \in \mathcal{I})
   \end{equation}
   Тъй като първоначалният брой заразени хора и комари влияят на развитието на системата ще търсим \textbf{ядрото на слаба инвариантност на Белман}:
   \begin{equation}

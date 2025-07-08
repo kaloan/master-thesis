@@ -1,49 +1,57 @@
 \section{\hspace{1em}Задача за здравна политика}
 
-\begin{frame}[t]{Свойства на $V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}})$}
+\begin{frame}[t]{Екстремални свойства на $V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}})$}
   % $\pmb{0}$ е равновесна за \eqref{eq:TheDimensionlessProblem} - за нея винаги е изпълнено \eqref{eq:AllHospitalised}, т.е.
   % $\pmb{0} \in V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}})$.
-  % Ако $\boldsymbol{z}_0 \notin \mathscr{I}$, то \eqref{eq:AllHospitalised} не е изпълнено и съответно $\boldsymbol{z}_0 \notin V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}})$, т.е. $V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}}) \subseteq \mathscr{I}$.
+  % Ако $\boldsymbol{z}_0 \notin \mathcal{I}$, то \eqref{eq:AllHospitalised} не е изпълнено и съответно $\boldsymbol{z}_0 \notin V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}})$, т.е. $V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}}) \subseteq \mathcal{I}$.
 
-  $\pmb{0}$ е равновесна за \eqref{eq:TheDimensionlessProblem} $\implies \pmb{0} \in V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}})$. \\
-  $\boldsymbol{z}_0 \notin \mathscr{I} \implies \boldsymbol{z}_0 \notin V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}})$, т.е. $V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}}) \subseteq \mathscr{I}$.
+  $\pmb{0}$ е равновесна за \eqref{eq:TheDimensionlessProblem} $\implies \pmb{0} \in V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}})$, т.е.  $ \{\pmb{0}\} \subseteq V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}})$. \\
+  $\boldsymbol{z}_0 \notin \mathcal{I} \implies \boldsymbol{z}_0 \notin V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}})$, т.е. $V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}}) \subseteq \mathcal{I}$.
 
   \begin{proposition}
-    Ако съществува $\boldsymbol{E}^* = (x_1^*, x_2^*, y_1^*, y_2^*)^T$ за $\boldsymbol{u}(t) \equiv \bar{\boldsymbol{u}}$, като $x_1^* > \bar{I}_1$ или $x_2^* > \bar{I}_2$, то ядрото на слаба инвариантност на Белман е тривиалното, т.е. $V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}}) = \{\pmb{0}\}$.
+    Ако съществува $\boldsymbol{E}^* = (x_1^*, x_2^*, y_1^*, y_2^*)^T$ за $\boldsymbol{u}(t) \equiv \bar{\boldsymbol{u}}$, като $x_1^* > \bar{I}_1$ или $x_2^* > \bar{I}_2$, то $V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}}) = \{\pmb{0}\}$.
   \end{proposition}
 
   % Доказва се с кооперативността и непрекъснатостта на решението на \eqref{eq:TheDimensionlessProblem}.
 
+  % \begin{proposition}
+  %   Ако \eqref{eq:AllHospitalised} е изпълнено за решението на система \eqref{eq:TheDimensionlessProblem} с $\boldsymbol{u} \equiv \pmb{0}$ и начално условие $\boldsymbol{z}_0 = (\xi_1, \xi_2, 1, 1)^T$, то $\Xi = [0, \xi_1] \times [0, \xi_2] \times [0, 1]^2 \subseteq V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}})$.
+  %   Ако е изпълнено за $\xi_i = \bar{I}_i$, то $V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}}) = \mathcal{I}$.
+  % \end{proposition}
+  
   \begin{proposition}
-    Ако \eqref{eq:AllHospitalised} е изпълнено за решението на система \eqref{eq:TheDimensionlessProblem} с $\boldsymbol{u} \equiv \pmb{0}$ и начално условие $\boldsymbol{z}_0 = (\xi_1, \xi_2, 1, 1)^T$, то $\Xi = [0, \xi_1] \times [0, \xi_2] \times [0, 1]^2 \subseteq V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}})$.
-    Ако е изпълнено за $\xi_i = \bar{I}_i$, то ядрото на слаба инвариантност на Белман е максималното, т.е. $V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}}) = \mathscr{I}$.
+    Ако \eqref{eq:AllHospitalised} е изпълнено за решението на система \eqref{eq:TheDimensionlessProblem} с $\boldsymbol{u} \equiv \pmb{0}$ и начално условие $\boldsymbol{z}_0 = (\bar{I}_1, \bar{I}_2, 1, 1)^T$, то $V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}}) = \mathcal{I}$.
   \end{proposition}
 
   % Доказва се с кооперативността на \eqref{eq:TheDimensionlessProblem}.
 \end{frame}
 
 \begin{frame}[c]{Вариационен подход за намиране на $V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}})$}
-  Дефинираме значна функция на разстоянието $\Gamma$ до $\partial \mathscr{I}$:
+  Дефинираме значна функция на разстоянието $\Gamma$ до $\partial \mathcal{I}$:
   \begin{equation*}
     \Gamma(\boldsymbol{z}) =
     \begin{cases}
-      \inf_{\boldsymbol{z}' \in \mathscr{I}} \|\boldsymbol{z}-\boldsymbol{z}'\|, \quad \boldsymbol{z} \in \Omega \setminus \mathscr{I} \\
-      -\inf_{\boldsymbol{z}' \in \Omega \setminus \mathscr{I}} \|\boldsymbol{z}-\boldsymbol{z}'\|, \quad \boldsymbol{z} \in \mathscr{I}
+      \displaystyle\inf_{\boldsymbol{z}' \in \mathcal{I}} \|\boldsymbol{z}-\boldsymbol{z}'\|, \quad \boldsymbol{z} \in \Omega \setminus \mathcal{I} \\
+      -\displaystyle\inf_{\boldsymbol{z}' \in \Omega \setminus \mathcal{I}} \|\boldsymbol{z}-\boldsymbol{z}'\|, \quad \boldsymbol{z} \in \mathcal{I}
     \end{cases}
   \end{equation*}
 
-  Фиксираме $\lambda>L>0$ ($L$ - константата на Липшиц за \eqref{eq:TheDimensionlessProblem}) и въвеждаме функция на Белман $v$ \cite{Zidani2013}:
+  Фиксираме $\lambda>L>0$ ($L$ - константата на Липшиц за \eqref{eq:TheDimensionlessProblem}) и въвеждаме \textbf{функция на Белман} $v$:
   \begin{equation*}
-    v(\boldsymbol{z}_0) = \inf_{\boldsymbol{u} \in \mathscr{U}} \sup_{t \in (0, +\infty)} e^{-\lambda t} \Gamma(\boldsymbol{z}(t; \boldsymbol{z}_0; \boldsymbol{u}))
+    v(\boldsymbol{z}_0) = \inf_{\boldsymbol{u} \in \mathcal{U}} \sup_{t \in (0, +\infty)} e^{-\lambda t} \Gamma(\boldsymbol{z}(t; \boldsymbol{z}_0; \boldsymbol{u}))
   \end{equation*}
 
 \end{frame}
 
 \begin{frame}[c]{Вариационен подход за намиране на $V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}})$}
-  Ако започнем с $\boldsymbol{z}_0 \notin V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}})$, то $v(\boldsymbol{z}_0) > 0$ и обратното.
+  % Ако започнем с $\boldsymbol{z}_0 \notin V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}})$, то $v(\boldsymbol{z}_0) > 0$ и обратното.
 
-  Ако започнем с $\boldsymbol{z}_0 \in V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}})$, то $v(\boldsymbol{z}_0) \leq 0$ и обратното.
+  Въвеждаме $v$, защото така намирането на множеството $V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}})$ може да се разгледа като задача за намиране на неположителните линии на ниво на функция, понеже:
+  \begin{equation*}
+    \boldsymbol{z}_0 \in V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}}) \iff v(\boldsymbol{z}_0) \leq 0
+  \end{equation*}
 
+  С други думи:
   \begin{equation*}
     \begin{split}
       V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}}) = \{\boldsymbol{z}_0 \in \Omega \vert v(\boldsymbol{z}_0) \leq 0\}\\ \quad \partial V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}}) = \{\boldsymbol{z}_0 \in \Omega \vert v(\boldsymbol{z}_0) = 0\}
@@ -53,11 +61,11 @@
 
 
 \begin{frame}[c]{Уравнение на Хамилтон-Якоби-Белман}
-  В сила е принцип за динамично програмиране \cite{Zidani2013}:
+  В сила е принцип за динамично програмиране:
   \begin{equation*}
-    v(\boldsymbol{z}_0) = \inf_{\boldsymbol{u} \in \mathscr{U}} \max\{e^{-\lambda t} v(\boldsymbol{z}_0), \sup_{s \in (0, t]} e^{-\lambda t} \Gamma(\boldsymbol{z}(s; \boldsymbol{z}_0; \boldsymbol{u}))\}
+    v(\boldsymbol{z}_0) = \inf_{\boldsymbol{u} \in \mathcal{U}} \max\{e^{-\lambda t} v(\boldsymbol{z}_0), \sup_{s \in (0, t]} e^{-\lambda t} \Gamma(\boldsymbol{z}(s; \boldsymbol{z}_0; \boldsymbol{u}))\}
   \end{equation*}
-  $v$ е единственото непрекъснато вискозно решение на \textbf{уравнението от типа на Хамилтон-Якоби–Белман} \cite{Zidani2013}:
+  $v$ е единственото непрекъснато вискозно решение на \textbf{уравнението от типа на Хамилтон-Якоби–Белман} \myfootcite{Zidani2013}:
   \begin{equation}
     \begin{split}
       \label{eq:HJB}
@@ -67,32 +75,15 @@
   \end{equation}
 \end{frame}
 
-\begin{frame}[t]{Уравнение на Хамилтон-Якоби-Белман}
-\begin{footnotesize}
-  \begin{multline*}
-    \label{eq:HamiltonianShort}
-    \mathcal{H}(\boldsymbol{z}, \grad{v}) = \\
-    \left[\gamma_1 x_1 - (1-x_1) \left(b_{11} y_1 + b_{12} y_2\right) \right] \pdv{v}{x_1} +
-    \left[\gamma_2 x_2 - (1-x_2) \left(b_{21} y_1 + b_{22} y_2\right) \right] \pdv{v}{x_2} + \\
-    \left[\mu_1 y_1 - (1-y_1) \left(c_{11} x_1 + c_{12} x_2\right) \right] \pdv{v}{y_1} +
-    \left[\mu_2 y_2 - (1-y_2) \left(c_{21} x_1 + c_{22} x_2\right)\right] \pdv{v}{y_2} + \\
-    \max\bigg\{0, \kappa \bar{u}_1 (1-x_1) \left(b_{11} y_1 + b_{12} y_2\right) \pdv{v}{x_1} + c_{11} \kappa \bar{u}_1 x_1 (1-y_1)\pdv{v}{y_1} + c_{21} \bar{u}_1 x_1 (1-y_2) \pdv{v}{y_2}
-    \bigg\} + \\
-    \max\bigg\{0, \kappa \bar{u}_2 (1-x_2) \left(b_{21} y_1 + b_{22} y_2\right) \pdv{v}{x_2} + c_{12} \bar{u}_2 x_2 (1-y_1)\pdv{v}{y_1} + c_{22}  \bar{u}_2 x_2 (1-y_2)\pdv{v}{y_2} \bigg\}
-  \end{multline*}
-
-  \end{footnotesize}
-\end{frame}
-
 \begin{frame}[c]{Числено решение на уравнението на Х-Я-Б}
   % \vspace{-1em}
-  Решението на \eqref{eq:HJB} може да се разгледа като стационарно решение на ЧДУ с добавено числено време:
+  Решението на \eqref{eq:HJB} може да се разгледа като стационарно решение на ЧДУ, където $v$ зависи от времето:
   \begin{equation}
     \label{eq:HJBTime}
     \begin{split}
       &\min\left\{\pdv{v}{t}\left(\boldsymbol{z}, t\right) + \lambda v(\boldsymbol{z}, t) + \mathcal{H}(\boldsymbol{z}, \grad{v}), v(\boldsymbol{z}, t) - \Gamma(\boldsymbol{z})\right\} = 0, \Hquad \boldsymbol{z} \in \mathbb{R}^4,~ t>0 \\
       &v(\boldsymbol{z}, 0) = v_0(\boldsymbol{z}), \quad \boldsymbol{z} \in \mathbb{R}^4 \\
-      % &\mathcal{H}(\boldsymbol{z}, \boldsymbol{w}) = \max_{\boldsymbol{u} \in \mathscr{U}} \innerproduct{-\boldsymbol{f}(\boldsymbol{z}, \boldsymbol{u})}{\boldsymbol{w}}
+      % &\mathcal{H}(\boldsymbol{z}, \boldsymbol{w}) = \max_{\boldsymbol{u} \in \mathcal{U}} \innerproduct{-\boldsymbol{f}(\boldsymbol{z}, \boldsymbol{u})}{\boldsymbol{w}}
     \end{split}
   \end{equation}
   % Началното условие взимаме $v_0 = \Gamma$.
@@ -103,9 +94,9 @@
 
 Използваната дискретизация по пространството е равномерна със стъпки $h_{x_1}, h_{x_2}, h_{y_1}, h_{y_2}$.
 
-Чрез метода WENO (Weighted Essentially Non-Oscillatory) се получават по-точни приближения за разлика напред и назад $v_{\eta}^{\pm}$ на производните $\pdv{v}{\eta},~ \eta = x_1, x_2, y_1, y_2$ \cite{Osher2003}.
+Чрез метода WENO (Weighted Essentially Non-Oscillatory) се получават по-точни приближения за разлика напред и назад $v_{\eta}^{\pm}$ на производните $\pdv{v}{\eta},~ \eta = x_1, x_2, y_1, y_2$.
 
-  Численият Хамилтониян от вида Lax-Friedrichs $\hat{\mathcal{H}}$ е \cite{Osher2003}:
+  Численият Хамилтониян от вида Lax-Friedrichs $\hat{\mathcal{H}}$ е \myfootcite{Osher2003}:
   \begin{small}
     \begin{equation*}
       \hat{\mathcal{H}} = \mathcal{H}\left(\boldsymbol{z}, \frac{v_{x_1}^++v_{x_1}^-}{2}, \frac{v_{x_2}^++v_{x_2}^-}{2}, \frac{v_{y_1}^++v_{y_1}^-}{2}, \frac{v_{y_2}^++v_{y_2}^-}{2}\right) - \sum_{\eta = x_1, x_2, y_1, y_2} \alpha^{\eta} \frac{v_{\eta}^+-v_{\eta}^-}{2}
@@ -127,8 +118,8 @@
 \begin{frame}[c]{Числено решение на уравнението на Х-Я-Б}
   Използваната дискретизация по времето е равномерна със стъпка $\tau$ и по него се апроксимира с подобрения метод на Ойлер.
 
-  За да може методът да е TVD, трябва да е изпълнено условието на Courant-Friedrichs-Lewy \cite{Osher2003}:
+  За да може методът да е TVD, трябва да е изпълнено условието на Courant-Friedrichs-Lewy:
   \begin{equation*}
-    \tau \max_{ijkl} \left(\frac{\abs{\pdv{\mathcal{H}}{w_1}}}{h_{x_1}} + \frac{\abs{\pdv{\mathcal{H}}{w_2}}}{h_{x_2}} + \frac{\abs{\pdv{\mathcal{H}}{w_3}}}{h_{y_1}} + \frac{\abs{\pdv{\mathcal{H}}{w_4}}}{h_{y_2}}\right) < 1
+    \tau \max_{\boldsymbol{z}, \boldsymbol{w}} \left(\frac{\abs{\pdv{\mathcal{H}}{w_1}}}{h_{x_1}} + \frac{\abs{\pdv{\mathcal{H}}{w_2}}}{h_{x_2}} + \frac{\abs{\pdv{\mathcal{H}}{w_3}}}{h_{y_1}} + \frac{\abs{\pdv{\mathcal{H}}{w_4}}}{h_{y_2}}\right) < 1
   \end{equation*}
 \end{frame}

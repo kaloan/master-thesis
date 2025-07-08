@@ -37,3 +37,20 @@
     \caption{Оцветена снимка от електронен микроскоп на плазмодий нападащ еритроцит}
   \end{figure}
 \end{frame}
+
+\begin{frame}[t]{Краен вид на Хамилтонияна}
+  \begin{footnotesize}
+    \begin{multline*}
+      \label{eq:HamiltonianShort}
+      \mathcal{H}(\boldsymbol{z}, \grad{v}) = \\
+      \left[\gamma_1 x_1 - (1-x_1) \left(b_{11} y_1 + b_{12} y_2\right) \right] \pdv{v}{x_1} +
+      \left[\gamma_2 x_2 - (1-x_2) \left(b_{21} y_1 + b_{22} y_2\right) \right] \pdv{v}{x_2} + \\
+      \left[\mu_1 y_1 - (1-y_1) \left(c_{11} x_1 + c_{12} x_2\right) \right] \pdv{v}{y_1} +
+      \left[\mu_2 y_2 - (1-y_2) \left(c_{21} x_1 + c_{22} x_2\right)\right] \pdv{v}{y_2} + \\
+      \max\bigg\{0, \kappa \bar{u}_1 (1-x_1) \left(b_{11} y_1 + b_{12} y_2\right) \pdv{v}{x_1} + c_{11} \kappa \bar{u}_1 x_1 (1-y_1)\pdv{v}{y_1} + c_{21} \bar{u}_1 x_1 (1-y_2) \pdv{v}{y_2}
+      \bigg\} + \\
+      \max\bigg\{0, \kappa \bar{u}_2 (1-x_2) \left(b_{21} y_1 + b_{22} y_2\right) \pdv{v}{x_2} + c_{12} \bar{u}_2 x_2 (1-y_1)\pdv{v}{y_1} + c_{22}  \bar{u}_2 x_2 (1-y_2)\pdv{v}{y_2} \bigg\}
+    \end{multline*}
+
+  \end{footnotesize}
+\end{frame}

@@ -1,7 +1,8 @@
 \section{\hspace{1em} Числени симулации}
-\begin{frame}[t]{Стойности на параметри}
-  \begin{table}
-    \begin{small}
+\begin{frame}[t]{Таблица със стойности на параметри}
+  % \begin{table}
+  % \hskip-0.65cm
+  \begin{footnotesize}
       \begin{tabular}{ |c ||c c c c c c|  }
         % \hhline{~------}
         \hline
@@ -12,46 +13,46 @@
         $\beta_{vh}$ & \multicolumn{2}{c}{$0.5$} & \multicolumn{2}{c}{$0.5$}  & \multicolumn{2}{c|}{$0.5$}\\
         $\beta_{hv}$ & \multicolumn{2}{c}{$0.1$} & \multicolumn{2}{c}{$0.1$} & \multicolumn{2}{c|}{$0.1$}\\
         $a_i$ & $0.12$ & $0.18$ & $0.158$ & $0.159$ & $0.15$ & $0.24$\\
-        $M_i$ & $6 \times 10^7$ & $1.6 \times 10^8$ & $7320950$ & $4695340$ & $7320950$ & $4695340$\\
-        $\mu_i$ & $\frac{1}{21}$ & $\frac{1}{15}$ & $0.032$ & $0.046$ & $0.0397$ & $0.0335$\\
+        $M_i$ & $6 \times 10^7$ & $1.6 \times 10^8$ & $1.7 \times 10^7$ & $3 \times 10^7$ & $7.3 \times 10^6$ & $4.7 \times 10^6$\\
+        $\mu_i$ & $0.048$ & $0.067$ & $0.032$ & $0.046$ & $0.04$ & $0.034$\\
         $\tau$ & \multicolumn{2}{c}{$10$} & \multicolumn{2}{c}{$10$} & \multicolumn{2}{c|}{$10$}\\
-        $N_i$ & $8 \times 10^6$ & $2 \times 10^7$ & $9377980$ & $4467650$ & $755440$ & $3945290$\\
-        $\gamma_i$ & \multicolumn{2}{c}{$\frac{1}{14}$} & $0.0627$ & $0.0576$ & $0.0735$ & $0.0622$\\
+        $N_i$ & $8 \times 10^6$ & $2 \times 10^7$ & $9.4 \times 10^6$ & $4.5 \times 10^6$ & $7.6 \times 10^5$ & $4 \times 10^6$\\
+        $\gamma_i$ & $0.071$ & $0.071$ & $0.063$ & $0.058$ & $0.074$ & $0.062$\\
         $p_{ij}$ & \multicolumn{6}{c|}{различни ($p_{i1}+p_{i2}=1$)}\\
         $\kappa$ & \multicolumn{2}{c}{$0.44$} & \multicolumn{2}{c}{$0.37$} & \multicolumn{2}{c|}{$0.38$}\\
         $\bar{u}_i$ & $0.15$ & $0.3$ & $0.39$ & $0.12$ & $0.35$ & $0.3$\\
         $\bar{I}_i$ & $0.1$ & $0.14$ & $0.065$ & $0.12$ & $0.09$ & $0.09$\\
         \hline
       \end{tabular}
-    \end{small}
-    \caption{Таблица със стойностите на параметрите от таблица \ref{tbl:Definitions} за числени симулации}
-    \label{tbl:ParameterValues}
-  \end{table}
+    \end{footnotesize}
+    %   \caption{Таблица със стойностите на параметрите}
+    %   \label{tbl:ParameterValues}
+    % \end{table}
 \end{frame}
 
-\begin{frame}[t]{Числени симулации на равновесните точки}
+\begin{frame}[t]{Ендемичното състояние спрямо мобилността}
   \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{equilibrium-poster.pdf}
-    \caption{Равновесните точки на \eqref{eq:TheDimensionlessProblem}} с параметрите от набор 1 от таблица \ref{tbl:ParameterValues}
+    \caption{Пропорция заразени жители при равновесие на \eqref{eq:TheDimensionlessProblem}} при $\boldsymbol{u}(t) \equiv \bar{\boldsymbol{u}}$ с параметрите от набор 1.
     \label{fig:EquilibriumPoints-poster}
   \end{figure}
 \end{frame}
 
-\begin{frame}[t]{Числени симулации на равновесните точки}
+\begin{frame}[t]{Ендемичното състояние спрямо мобилността}
   \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{equilibrium-03-19-16-12-04.pdf}
-    \caption{Равновесните точки на \eqref{eq:TheDimensionlessProblem}} с параметрите от набор 2 от таблица \ref{tbl:ParameterValues}
+    \caption{Пропорция заразени жители при равновесие на \eqref{eq:TheDimensionlessProblem}} при $\boldsymbol{u}(t) \equiv \bar{\boldsymbol{u}}$ с параметрите от набор 2.
     \label{fig:EquilibriumPoints-03-19-16-12-04}
   \end{figure}
 \end{frame}
 
-\begin{frame}[t]{Числени симулации на равновесните точки}
+\begin{frame}[t]{Ендемичното състояние спрямо мобилността}
   \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{equilibrium-03-19-16-58-19.pdf}
-    \caption{Равновесните точки на \eqref{eq:TheDimensionlessProblem}} с параметрите от набор 3 от таблица \ref{tbl:ParameterValues}
+    \caption{Пропорция заразени жители при равновесие на \eqref{eq:TheDimensionlessProblem}} при $\boldsymbol{u}(t) \equiv \bar{\boldsymbol{u}}$ с параметрите от набор 3.
     \label{fig:EquilibriumPoints-03-19-16-58-19}
   \end{figure}
 \end{frame}
@@ -69,40 +70,48 @@
       0.8 & 3.519 & 3.540 & 3.559 & 3.580\\
       \hline
     \end{tabular}
-    \caption{4-мерната мярка на ядрото на слаба инвариантност на Белман $V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}})$ за различни стойности на мобилността с параметрите от набор 1 от таблица \ref{tbl:ParameterValues}. Стойността при случая без мобилност е взета за референтна.}
+    \caption{4-мерната мярка на $V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}})$ за параметрите от набор 1. Стойността при случая без мобилност е взета за референтна.}
     \label{tbl:ViabilityKernel-poster}
   \end{table}
 \end{frame}
 
-\begin{frame}[t]{Числени симулации на решението}
+\begin{frame}[t]{Динамика за $\boldsymbol{z}_0 \in V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}})$}
   \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{solution-poster.pdf}
-    \caption{Решението на \eqref{eq:TheDimensionlessProblem} с параметрите от набор 1 таблица \ref{tbl:ParameterValues} и $\mathbf{z}_0=(0.0572, 0.048, 0.052, 0.044)^T$.\\
-      Пунктирано: без употреба на репелент ($\mathbf{u}(t) \equiv \mathbf{0}$), плътно: максимална употреба на репелент ($\mathbf{u}(t) \equiv \bar{\mathbf{u}}$).\\
-    Червено: без мобилност ($p_{11}=p_{22}=1$), синьо: с мобилност ($p_{11}=p_{22}=0.85$)}
+    \caption{
+      Решението на \eqref{eq:TheDimensionlessProblem} с параметрите от набор 1 и $\boldsymbol{z}_0=(0.0572, 0.048, 0.052, 0.044)^T$.\\
+      \dashuline{Пунктирано}: $\boldsymbol{u}(t) \equiv \pmb{0}$, \underline{плътно}: $\boldsymbol{u}(t) \equiv \bar{\boldsymbol{u}}$.\\
+      \textcolor{red}{Червено}: $p_{11}=p_{22}=1$, \textcolor{blue}{синьо}: $p_{11}=p_{22}=0.85$.
+    }
     \label{fig:Solution-poster}
   \end{figure}
 \end{frame}
 
-\begin{frame}[t]{Числени симулации на решението}
+\begin{frame}[t]{Динамика за $\boldsymbol{z}_0 \notin V(\bar{\boldsymbol{I}}, \bar{\boldsymbol{u}})$}
   \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{solution-03-19-16-12-04.pdf}
-    \caption{Решението на \eqref{eq:TheDimensionlessProblem} с параметрите от набор 2 от таблица \ref{tbl:ParameterValues} и $\mathbf{z}_0=(0.0572, 0.048, 0.052, 0.044)^T$.\\
-      Пунктирано: без употреба на репелент ($\mathbf{u}(t) \equiv \mathbf{0}$), плътно: максимална употреба на репелент ($\mathbf{u}(t) \equiv \bar{\mathbf{u}}$).\\
-    Червено: без мобилност ($p_{11}=p_{22}=1$), синьо: с мобилност ($p_{11}=0.99, p_{22}=0.9$).}
+    \caption{
+      Решението на \eqref{eq:TheDimensionlessProblem} с параметрите от набор 2 и $\boldsymbol{z}_0=(0.0572, 0.048, 0.052, 0.044)^T$.\\
+      \dashuline{Пунктирано}: $\boldsymbol{u}(t) \equiv \pmb{0}$, \underline{плътно}: $\boldsymbol{u}(t) \equiv \bar{\boldsymbol{u}}$.\\
+      \textcolor{red}{Червено}: $p_{11}=p_{22}=1$, \textcolor{blue}{синьо}: $p_{11}=0.99, p_{22}=0.9$.
+    }
     \label{fig:Solution-03-19-16-12-04}
   \end{figure}
 \end{frame}
 
-\begin{frame}[t]{Числени симулации на решението}
+\begin{frame}[t]{Динамика спрямо мобилността}
   \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{solution-03-19-16-58-19.pdf}
-    \caption{Решението на \eqref{eq:TheDimensionlessProblem} с параметрите от набор 3 от таблица \ref{tbl:ParameterValues} и $\mathbf{z}_0=(0.02, 0.015, 0.04, 0.03)^T$, максимална употреба на репелент ($\mathbf{u}(t) \equiv \bar{\mathbf{u}}$).
-      За четирите криви е фиксирано $p_{11}=0.93$, а $p_{22}$ е различно.\\
-    Зелено: много висока мобилност ($p_{22}=0.85$), синьо: висока мобилност ($p_{22}=0.88$), лилаво: средна мобилност ($p_{22}=0.92$), кафяво: ниска мобилност ($p_{22}=0.97$).}
+    \includegraphics[width=\textwidth]{solution-03-19-16-58-19-bold.pdf}
+    \caption{
+      Решението на \eqref{eq:TheDimensionlessProblem} с параметрите от набор 3, $\boldsymbol{z}_0=(0.02, 0.015, 0.04, 0.03)^T$, $\boldsymbol{u}(t) \equiv \bar{\boldsymbol{u}}$, фиксирано $p_{11}=0.93$, а различно $p_{22}$.\\
+      \textcolor{Sienna4}{кафяво}: $p_{22}=0.97$,\\
+      \textcolor{Orchid4}{лилаво}: $p_{22}=0.92$,\\
+      \textcolor{MidnightBlue}{синьо}: $p_{22}=0.88$,\\
+      \textcolor{DarkChartreuse}{зелено}: $p_{22}=0.85$.\\
+    }
     \label{fig:Solution-03-19-16-58-19}
   \end{figure}
 \end{frame}

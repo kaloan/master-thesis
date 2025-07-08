@@ -13,11 +13,21 @@
 %   \end{proposition}
 % \end{frame}
 
-\begin{frame}[c]{Свойства на модела}
+\begin{frame}[t]{Свойства на модела}
+  \begin{equation}
+    \label{eq:TheDimensionlessProblem}
+    \begin{split}
+      &\dot{x}_1 = (1-x_1) (1-\kappa u_1) \left(b_{11} y_1 + b_{12} y_2\right) - \gamma_1 x_1 \\
+      &\dot{x}_2 = (1-x_2) (1-\kappa u_2)\left(b_{21} y_1 + b_{22} y_2\right) - \gamma_2 x_2 \\
+      &\dot{y}_1 = (1-y_1) \left(c_{11}(1-\kappa u_1) x_1 + c_{12}(1-\kappa u_2) x_2\right) - \mu_1 y_1 \\
+      &\dot{y}_2 = (1-y_2) \left(c_{21}(1-\kappa u_1) x_1 + c_{22} (1-\kappa u_2) x_2\right) - \mu_2 y_2 \\
+    \end{split}
+  \end{equation}
+
   \begin{proposition}
-    За всяко $\boldsymbol{u} \in \mathscr{U}$ задачата на Коши за \eqref{eq:TheDimensionlessProblem} има единствено решение.
+    За всяко $\boldsymbol{u} \in \mathcal{U}$ задачата на Коши за \eqref{eq:TheDimensionlessProblem} има единствено решение.
   \end{proposition}
-  \vspace{2em}
+  % \vspace{2em}
 
   % Доказва се с Липшицовост на $\boldsymbol{f}$ по $\boldsymbol{z}$.
   % Сметката се основава на свойства на нормата (хомогенност и неравенсто на триъгълника) и  е дълга, затова тук се пропуска.
@@ -39,17 +49,17 @@
 
 \begin{frame}[t]{Свойства на модела}
   \begin{proposition}
-    Системата \eqref{eq:TheDimensionlessProblem} е \underline{кооперативна}, т.е. Якобианът ѝ има неотрицателни компоненти извън главния диагонал.
+    Системата \eqref{eq:TheDimensionlessProblem} е \textcolor{red}{кооперативна}, т.е. Якобианът ѝ има неотрицателни компоненти извън главния диагонал.
   \end{proposition}
 
   \begin{proposition}
-    Системата \eqref{eq:TheDimensionlessProblem} е \underline{силно вдлъбната}, т.е. за Якобиана ѝ $\mathrm{D}\boldsymbol{f}$ е в сила $\pmb{0} < \boldsymbol{z}_1 < \boldsymbol{z}_2 \implies \mathrm{D}\boldsymbol{f}(\boldsymbol{z}_2) < \mathrm{D}\boldsymbol{f}(\boldsymbol{z}_1)$.
+    Системата \eqref{eq:TheDimensionlessProblem} е \textcolor{red}{силно вдлъбната}, т.е. за Якобиана ѝ $\mathrm{D}\boldsymbol{f}$ е в сила $\pmb{0} < \boldsymbol{z}_1 < \boldsymbol{z}_2 \implies \mathrm{D}\boldsymbol{f}(\boldsymbol{z}_2) < \mathrm{D}\boldsymbol{f}(\boldsymbol{z}_1)$.
     % т.е. Якобианът ѝ е с компоненти, които са намаляващи функции на координатите на точката, в която е взет.
     % т.е. Якобианът ѝ действа като покомпонентно вдлъбнато изображение.
   \end{proposition}
 
   \begin{proposition}
-    Системата \eqref{eq:TheDimensionlessProblem} е \underline{неразложима} при $p_{ij} \notin \{0, 1\}$, т.е. ненулевите компоненти на Якобиана ѝ образуват матрица на съседство на силно свързан ориентиран граф.
+    Системата \eqref{eq:TheDimensionlessProblem} е \textcolor{red}{неразложима} при $p_{ij} \notin \{0, 1\}$, т.е. ненулевите компоненти на Якобиана ѝ образуват матрица на съседство на силно свързан ориентиран граф.
   \end{proposition}
 \end{frame}
 
@@ -84,5 +94,5 @@
       \item $\pmb{0}$ е неустойчива равновесна точка и съществува точно една друга ендемична равновесна точка $\boldsymbol{E}^* = (x_1^*, x_2^*, y_1^*, y_2^*)$ (глобално асимптотично устойчива).
     \end{enumerate}
   \end{proposition}
-  Твърдението се доказва с помощта на изведените свойства на \eqref{eq:TheDimensionlessProblem} и теорема на Smith \cite{Smith1986}.
+  Твърдението се доказва с помощта на изведените свойства на \eqref{eq:TheDimensionlessProblem} и теорема на Smith \myfootcite{Smith1986}.
 \end{frame}
