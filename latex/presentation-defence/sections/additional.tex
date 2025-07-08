@@ -54,3 +54,23 @@
 
   \end{footnotesize}
 \end{frame}
+
+\begin{frame}[t]{Вискозно решение}
+  Нека е дадено уравнение от типа на Хамилтон-Якоби-Белман:
+  \begin{equation}
+    \label{eq:HJBGeneric}
+    F(\boldsymbol{z}, v(\boldsymbol{z}), \grad{v}(\boldsymbol{z}))=0, \Hquad \boldsymbol{z} \in \Omega - \text{отворена област в}~ \mathbb{R}^N, \Hquad F \in C^0(\Omega \times \mathbb{R} \times \mathbb{R}^N)
+  \end{equation}
+
+  Функцията $v \in C^0(\Omega)$ се нарича \textbf{вискозно субрешение} на \eqref{eq:HJBGeneric}, ако за всяко $\varphi \in C^1(\Omega)$ във всяка точка $\boldsymbol{z} \in \Omega$ на локален максимум на $v - \varphi$ е в сила:
+  \begin{equation*}
+    F(\boldsymbol{z}, v(\boldsymbol{z}), \grad{\varphi}(\boldsymbol{z})) \leq 0
+  \end{equation*}
+
+  Функцията $v \in C^0(\Omega)$ се нарича \textbf{вискозно суперрешение} на \eqref{eq:HJBGeneric}, ако за всяко $\varphi \in C^1(\Omega)$ във всяка точка $\boldsymbol{z} \in \Omega$ на локален минимум на $v - \varphi$ е в сила:
+  \begin{equation*}
+    F(\boldsymbol{z}, v(\boldsymbol{z}), \grad{\varphi}(\boldsymbol{z})) \geq 0
+  \end{equation*}
+
+  $v \in C^0(\Omega)$ се нарича \textbf{вискозно решение} на \eqref{eq:HJBGeneric}, ако е едновременно вискозно суперрешение и вискозно субрешение на \eqref{eq:HJBGeneric}\myfootcite{Bardi1997}.
+\end{frame}
