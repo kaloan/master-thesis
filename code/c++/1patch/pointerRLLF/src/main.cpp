@@ -45,8 +45,8 @@ constexpr auto c = BetaHV * a;
 // maximum infected
 constexpr auto Imax = .1;
 // set to reduce the size of the domain where the viability kernel lies
-constexpr auto xmax = .1;
-constexpr auto ymax = .2;
+constexpr auto xmax = .2;
+constexpr auto ymax = .25;
 
 // control
 constexpr auto k = .6;
@@ -64,9 +64,9 @@ constexpr auto Ny = 101;
 constexpr auto dy = ymax / (Ny - 1);
 
 // x and y
-constexpr auto padX = 6;
+constexpr auto padX = 0;
 array<double, Nx + 2 * padX> x;
-constexpr auto padY = 6;
+constexpr auto padY = 0;
 array<double, Ny + 2 * padY> y;
 const auto hx = make_unique<Array2D<x.size(), y.size()>>();
 const auto hy = make_unique<Array2D<x.size(), y.size()>>();

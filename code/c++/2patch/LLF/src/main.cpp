@@ -198,6 +198,7 @@ template <size_t n1, size_t n2, size_t n3, size_t n4>
 __always_inline void printSolutionOmega(const Array4D<n1, n2, n3, n4> &arr,
                                         ostream &stream = std::cout,
                                         const string &delim = ", ") noexcept {
+  auto insideKernel = 0;
   for (size_t i1 = 0; i1 < Nx1; ++i1) {
     for (size_t i2 = 0; i2 < Nx2; ++i2) {
       for (size_t j1 = 0; j1 < Ny1; ++j1) {
@@ -209,10 +210,22 @@ __always_inline void printSolutionOmega(const Array4D<n1, n2, n3, n4> &arr,
           stream << arr[i1 + padX1 + 3][i2 + padX2 + 3][j1 + padY1 + 3]
                        [j2 + padY2 + 3]
                  << "\n";
+          insideKernel += arr[i1 + padX1 + 3][i2 + padX2 + 3][j1 + padY1 + 3]
+                             [j2 + padY2 + 3] <= 0;
         }
       }
     }
   }
+  auto numberOfAllPoints = Nx1 * Nx2 * Ny1 * Ny2;
+  stream << insideKernel << delim << numberOfAllPoints << delim << fixed
+         << setprecision(8)
+         << ((double)insideKernel) / ((double)numberOfAllPoints) << "\n";
+  stream << Nx1 << delim << Nx2 << delim << Ny1 << delim << Ny2 << "\n";
+  stream << dx1 << delim << dx2 << delim << dy1 << delim << dy2 << "\n";
+  stream << setprecision(2) << x1max << delim << x2max << delim << y1max
+         << delim << y2max << "\n";
+  stream << setprecision(2) << p11 << delim << p22 << "\n";
+  stream << k << delim << umax1 << delim << umax2 << "\n";
 }
 
 template <size_t n1, size_t n2, size_t n3, size_t n4>
@@ -220,6 +233,7 @@ __always_inline void
 printSolutionExtended(const Array4D<n1, n2, n3, n4> &arr,
                       ostream &stream = std::cout,
                       const string &delim = ", ") noexcept {
+  auto insideKernel = 0;
   for (size_t i1 = 0; i1 < x1.size(); ++i1) {
     for (size_t i2 = 0; i2 < x2.size(); ++i2) {
       for (size_t j1 = 0; j1 < y1.size(); ++j1) {
@@ -229,10 +243,23 @@ printSolutionExtended(const Array4D<n1, n2, n3, n4> &arr,
                  << y2[j2] << delim;
           stream << scientific;
           stream << arr[i1 + 3][i2 + 3][j1 + 3][j2 + 3] << "\n";
+          insideKernel += arr[i1 + padX1 + 3][i2 + padX2 + 3][j1 + padY1 + 3]
+                             [j2 + padY2 + 3] <= 0;
         }
       }
     }
   }
+  auto numberOfAllPoints = x1.size() * x2.size() * y1.size() * y2.size();
+  stream << insideKernel << delim << numberOfAllPoints << delim << fixed
+         << setprecision(8)
+         << ((double)insideKernel) / ((double)numberOfAllPoints) << "\n";
+  stream << x1.size() << delim << x2.size() << delim << y1.size() << delim
+         << y2.size() << "\n";
+  stream << dx1 << delim << dx2 << delim << dy1 << delim << dy2 << "\n";
+  stream << setprecision(2) << x1max << delim << x2max << delim << y1max
+         << delim << y2max << "\n";
+  stream << setprecision(2) << p11 << delim << p22 << "\n";
+  stream << k << delim << umax1 << delim << umax2 << "\n";
 }
 
 template <size_t n1, size_t n2, size_t n3, size_t n4>

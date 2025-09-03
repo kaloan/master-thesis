@@ -232,11 +232,12 @@ __always_inline void calcHamiltonian() noexcept {
       const auto hxa = (*hx)[i][j] + chooseUMax * (*mx)[i][j];
       const auto hya = (*hy)[i][j] + chooseUMax * (*my)[i][j];
 
+      const auto ax = max(abs((*hx)[i][j]), abs(hxa));
+      const auto ay = max(abs((*hy)[i][j]), abs(hya));
+
       // Lax-Friedrichs step
-      hamilt +=
-          hamiltonianInDirection((*Fxp)[i][j], (*Fxm)[i][j], hxa, abs(hxa));
-      hamilt +=
-          hamiltonianInDirection((*Fyp)[i][j], (*Fym)[i][j], hya, abs(hya));
+      hamilt += hamiltonianInDirection((*Fxp)[i][j], (*Fxm)[i][j], hxa, ax);
+      hamilt += hamiltonianInDirection((*Fyp)[i][j], (*Fym)[i][j], hya, ay);
 
       (*hamiltonian)[i][j] = hamilt;
     }
